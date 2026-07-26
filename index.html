@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MetricHit — Платформа автоматизации поведенческих факторов</title>
+  <!-- Tailwind + базовые шрифты -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Доп. шрифт Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <style>
+    /* Кастомные переменные брендбука */
+    :root {
+      --bg-deep: #0B0F19;
+      --bg-slate: #1E2538;
+      --cyan: #00F0FF;
+      --muted: #94A3B8;
+      --white: #FFFFFF;
+    }
+    body {
+      background-color: var(--bg-deep);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+    }
+    /* Эффект неонового свечения для CTA */
+    .btn-cyan-glow {
+      background-color: var(--cyan);
+      color: var(--bg-deep);
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-cyan-glow:hover {
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+      transform: scale(1.02);
+    }
+    /* Логотип: "Hit" неоновый */
+    .logo-hit {
+      color: var(--cyan);
+    }
+    /* Текст заголовков и подзаголовков */
+    .text-muted {
+      color: var(--muted);
+    }
+    /* Для ссылок навигации */
+    .nav-link {
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--white);
+    }
+    /* Градиент для декоративных элементов (опционально) */
+    .gradient-cyan {
+      background: linear-gradient(135deg, var(--cyan), #0088ff);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="container mx-auto px-6 py-5 flex items-center justify-between flex-wrap">
+    <!-- Логотип -->
+    <div class="text-2xl font-extrabold tracking-tight">
+      <span class="text-white">Metric</span><span class="logo-hit">Hit</span>
+    </div>
+
+    <!-- Навигация (центр) – скрываем на мобильных, можно добавить бургер позже -->
+    <nav class="hidden md:flex space-x-8 text-sm font-medium">
+      <a href="#" class="nav-link">Технологии</a>
+      <a href="#" class="nav-link">Функции</a>
+      <a href="#" class="nav-link">Тарифы</a>
+      <a href="#" class="nav-link">API</a>
+    </nav>
+
+    <!-- Кнопки справа -->
+    <div class="flex items-center space-x-4">
+      <a href="#" class="text-sm text-muted hover:text-white transition">[ Войти ]</a>
+      <a href="#" class="px-5 py-2.5 text-sm font-bold rounded-lg btn-cyan-glow">Начать тест</a>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="container mx-auto px-6 py-16 md:py-24 flex flex-col items-center text-center">
+    <!-- Заголовок H1 -->
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight max-w-4xl">
+      Платформа автоматизации поведенческих факторов<br />
+      <span class="text-muted text-3xl md:text-4xl lg:text-5xl font-semibold">для закрытого пула SEO-агентств и инхаус-команд</span>
+    </h1>
+
+    <!-- Подзаголовок -->
+    <p class="text-muted text-base md:text-lg max-w-2xl mt-6 leading-relaxed">
+      Обход SmartCaptcha и лимитов Cloudflare без раздувания бюджета на капча-сервисы. Стабильный вывод в ТОП поисковых систем и маркетплейсов за счет 100% эмуляции человека на уровне ядра браузера.
+    </p>
+
+    <!-- CTA Кнопка -->
+    <div class="mt-8">
+      <a href="#" class="px-8 py-4 text-lg font-bold rounded-xl btn-cyan-glow inline-block">
+        Создать аккаунт и получить тест
+      </a>
+    </div>
+
+    <!-- Микро-текст под кнопкой -->
+    <p class="text-muted text-sm mt-4 max-w-lg">
+      Входная цена клика от 25 копеек. Депозитная система без сгорания баланса.
+    </p>
+
+    <!-- Небольшой декоративный индикатор (можно убрать) -->
+    <div class="mt-12 w-24 h-1 bg-cyan/30 rounded-full"></div>
+  </section>
+
+  <!-- Остальные блоки (Технологии, Калькулятор, Футер) будут добавлены позже -->
+
+  <!-- Базовый JavaScript (пока пустой) -->
+  <script>
+    // Здесь будет логика калькулятора, анимаций и т.д.
+    console.log('MetricHit лендинг готов');
+  </script>
+
+</body>
+</html>
