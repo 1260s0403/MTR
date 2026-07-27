@@ -1,146 +1,1231 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetricHit Intro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gravity — продвижение сайтов поведенческими факторами</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #050508;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0B0D14;
+            color: #E8EDF5;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- СТИКИ-БАР БОНУСА --- */
+        .bonus-bar {
+            background: #1C2230;
+            color: #A8B2D1;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 1px solid #2A3242;
+            letter-spacing: 0.3px;
+        }
+        .bonus-bar strong {
+            color: #00F0FF;
+            font-weight: 800;
+        }
+        .bonus-bar .highlight {
+            background: linear-gradient(90deg, #00F0FF, #7A4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* --- ШАПКА С ЛОГОТИПОМ --- */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #1C2230;
+        }
+        .header .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo svg {
+            height: 40px;
+            width: auto;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #FFFFFF, #A8B2D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-text span {
+            color: #00F0FF;
+            -webkit-text-fill-color: #00F0FF;
+        }
+        .header-cta {
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            color: #0B0D14;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        }
+        .header-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        /* --- ГЕРОЙ --- */
+        .hero {
+            padding: 40px 0 60px;
+            position: relative;
             overflow: hidden;
-            font-family: system-ui, sans-serif;
-            height: 100vh;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero .wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+        .hero-content h1 .gradient-text {
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content p {
+            font-size: 18px;
+            color: #A8B2D1;
+            margin-bottom: 24px;
+            max-width: 500px;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .hero-stat {
+            background: #141A26;
+            border-radius: 16px;
+            padding: 16px 20px;
+            border: 1px solid #1C2230;
+        }
+        .hero-stat .value {
+            font-size: 24px;
+            font-weight: 800;
+            color: #00F0FF;
+        }
+        .hero-stat .label {
+            font-size: 13px;
+            color: #6B768E;
+            margin-top: 4px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            color: #0B0D14;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #2A3242;
+            padding: 14px 32px;
+            border-radius: 50px;
+            color: #E8EDF5;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            background: #1C2230;
+            border-color: #00F0FF;
+        }
+
+        .hero-image {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+        .hero-image svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.1));
+        }
 
-        /* Контейнер интро */
-        .intro-container {
+        @media (max-width: 768px) {
+            .hero .wrap {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            .hero-content p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .header .wrap {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        /* --- ОБЩИЕ СТИЛИ --- */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #1C2230;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: #1C2230;
+            color: #00F0FF;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            border: 1px solid #2A3242;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+        .section-title .gradient-text {
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: #A8B2D1;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* --- КАРТОЧКИ ПРЕИМУЩЕСТВ --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .benefit-card {
+            background: #141A26;
+            border: 1px solid #1C2230;
+            border-radius: 20px;
+            padding: 28px 24px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .benefit-card:hover {
+            border-color: #2A3242;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .benefit-card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .benefit-card .title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .benefit-card .desc {
+            font-size: 15px;
+            color: #A8B2D1;
+            line-height: 1.7;
+        }
+        .benefit-card .badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            color: #0B0D14;
+            font-weight: 700;
+            font-size: 10px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- КАЛЬКУЛЯТОР --- */
+        .calculator {
+            background: #141A26;
+            border-radius: 24px;
+            padding: 40px 40px 48px;
+            border: 1px solid #1C2230;
+        }
+        .calculator .section-desc {
+            margin-bottom: 24px;
+        }
+        .calc-row {
+            display: flex;
+            gap: 24px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .calc-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .calc-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6B768E;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .calc-presets {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .calc-preset {
+            background: #1C2230;
+            border: 1px solid #2A3242;
+            padding: 8px 16px;
+            border-radius: 50px;
+            color: #E8EDF5;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .calc-preset:hover {
+            border-color: #00F0FF;
+            background: #2A3242;
+        }
+        .calc-preset.active {
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            border-color: transparent;
+            color: #0B0D14;
+        }
+        .calc-slider {
+            width: 100%;
+            -webkit-appearance: none;
+            background: #1C2230;
+            height: 6px;
+            border-radius: 10px;
+            outline: none;
+            margin: 16px 0 8px;
+        }
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        .calc-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .calc-slider-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #E8EDF5;
+        }
+        .calc-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #1C2230;
+        }
+        .calc-result-item {
+            text-align: center;
+        }
+        .calc-result-item .value {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .calc-result-item .label {
+            font-size: 13px;
+            color: #6B768E;
+            margin-top: 4px;
+        }
+        .calc-result-item.highlight .value {
+            -webkit-text-fill-color: #00F0FF;
+            background: none;
+            color: #00F0FF;
+        }
+        .calc-note {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: #1C2230;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #A8B2D1;
+            border-left: 3px solid #00F0FF;
+        }
+        .calc-note strong {
+            color: #E8EDF5;
+        }
+
+        /* --- ТАРИФЫ --- */
+        .pricing-table {
+            background: #141A26;
+            border-radius: 20px;
+            border: 1px solid #1C2230;
+            overflow: hidden;
+        }
+        .pricing-table .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 16px 24px;
+            border-bottom: 1px solid #1C2230;
+            align-items: center;
+        }
+        .pricing-table .row:last-child {
+            border-bottom: none;
+        }
+        .pricing-table .row.header {
+            background: #1C2230;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6B768E;
+        }
+        .pricing-table .row .amount {
+            font-weight: 700;
+        }
+        .pricing-table .row .price {
+            font-weight: 700;
+            color: #00F0FF;
+        }
+        .pricing-table .row .tag {
+            background: #2A3242;
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #A8B2D1;
+        }
+        .pricing-table .row.highlight {
+            background: #1C2230;
+            border-left: 3px solid #00F0FF;
+        }
+        .pricing-table .row.highlight .price {
+            color: #7A4DFF;
+        }
+
+        /* --- СТЕПЫ --- */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .step-item {
+            text-align: center;
+            background: #141A26;
+            border-radius: 20px;
+            padding: 24px 16px;
+            border: 1px solid #1C2230;
+        }
+        .step-item .number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00F0FF, #7A4DFF);
+            color: #0B0D14;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .step-item .title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .step-item .desc {
+            font-size: 14px;
+            color: #A8B2D1;
+        }
+
+        /* --- FAQ --- */
+        .faq-item {
+            background: #141A26;
+            border: 1px solid #1C2230;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            padding: 18px 24px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 24px;
+            color: #00F0FF;
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+        .faq-item .answer {
+            padding: 0 24px 24px;
+            color: #A8B2D1;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* --- CTA --- */
+        .cta-block {
+            background: linear-gradient(135deg, #141A26, #1C2230);
+            border-radius: 24px;
+            padding: 48px 40px;
+            border: 1px solid #2A3242;
+            text-align: center;
+        }
+        .cta-block .section-title {
+            margin-bottom: 12px;
+        }
+        .cta-block .section-desc {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 32px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-block .promo-code {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #0B0D14;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid #2A3242;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #A8B2D1;
+        }
+        .cta-block .promo-code code {
+            font-family: 'Inter', monospace;
+            background: #1C2230;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: #00F0FF;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .cta-block .promo-code code:hover {
+            background: #2A3242;
+        }
+        .cta-contacts {
+            margin-top: 24px;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #6B768E;
+        }
+        .cta-contacts a {
+            color: #00F0FF;
+            text-decoration: none;
+        }
+        .cta-contacts a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- ФУТЕР --- */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #1C2230;
+            font-size: 13px;
+            color: #6B768E;
+        }
+        .footer a {
+            color: #A8B2D1;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #00F0FF;
+        }
+        .footer .social {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        /* --- СКРОЛЛ-ОТЗЫВЫ --- */
+        .reviews-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 8px 4px 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .reviews-scroll img {
+            height: 300px;
+            width: auto;
+            border-radius: 16px;
+            border: 1px solid #1C2230;
+            scroll-snap-align: start;
+            cursor: zoom-in;
+            transition: transform 0.2s;
+        }
+        .reviews-scroll img:hover {
+            transform: scale(1.02);
+        }
+
+        #lightbox {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #0c0f1d 0%, #030305 100%);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s;
+            inset: 0;
+            background: rgba(11, 13, 20, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 20px;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 16px;
+        }
+        #lightbox.active {
+            display: flex;
         }
 
-        /* Обертка логотипа */
-        .logo-wrapper {
-            width: 85vw;
-            max-width: 750px;
-            opacity: 0;
-            transform: scale(0.95);
-            animation: fadeIn 0.8s ease forwards;
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+            .calculator {
+                padding: 24px;
+            }
+            .calc-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .pricing-table .row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                padding: 12px 16px;
+            }
+            .pricing-table .row .price {
+                text-align: left;
+            }
+            .cta-block {
+                padding: 32px 20px;
+            }
+            .hero-stat .value {
+                font-size: 20px;
+            }
         }
-
-        .logo-wrapper svg { width: 100%; height: auto; display: block; }
-        .neon { filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.8)); }
-
-        /* --- НАЧАЛЬНОЕ СОСТОЯНИЕ (Буквы спрятаны за H) --- */
-        
-        /* Буква M изначально сдвинута вправо к центру, к букве H */
-        .group-m {
-            transform: translateX(475px); 
-            transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        /* etric изначально спрятана еще глубже вправо (за букву H) */
-        .group-etric {
-            transform: translateX(475px);
-            opacity: 0;
-            transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
-        }
-        /* Буквы it изначально сдвинуты влево (за букву H) */
-        .group-it {
-            transform: translateX(-110px);
-            opacity: 0;
-            transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
-        }
-
-        /* --- АКТИВНОЕ СОСТОЯНИЕ (Буквы разъезжаются) --- */
-        .animated .group-m,
-        .animated .group-etric,
-        .animated .group-it {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        /* Кнопка "Войти" */
-        .enter-btn {
-            margin-top: 60px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff; padding: 12px 35px; font-size: 13px; letter-spacing: 4px;
-            text-transform: uppercase; cursor: pointer; border-radius: 4px;
-            opacity: 0; transform: translateY(10px);
-            transition: all 0.4s ease;
-        }
-        .animated .enter-btn { animation: fadeInBtn 0.8s ease forwards 1s; }
-        .enter-btn:hover { border-color: #00F0FF; color: #00F0FF; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
-        .intro-container.fade-out { opacity: 0; visibility: hidden; transform: scale(1.05); }
-
-        @keyframes fadeIn { to { opacity: 1; transform: scale(1); } }
-        @keyframes fadeInBtn { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <div class="intro-container" id="introScreen">
-        <div class="logo-wrapper">
-            <svg xmlns="http://w3.org" viewBox="40 430 920 140">
-                <defs>
-                    <!-- Маска для левой стороны: показывает всё, что левее буквы H (левее координаты 744) -->
-                    <clipPath id="clip-left"><rect x="40" y="430" width="704" height="140" /></clipPath>
-                    <!-- Маска для правой стороны: показывает всё, что правее буквы H (правее координаты 833) -->
-                    <clipPath id="clip-right"><rect x="833" y="430" width="130" height="140" /></clipPath>
-                </defs>
-
-                <!-- НЕПОДВИЖНАЯ ЦЕНТРАЛЬНАЯ БУКВА H (Неоновая) -->
-                <g>
-                    <polygon class="neon" fill="#00F0FF" points="744.112,554.48 744.112,455.232 770.2,455.232 770.2,491.103 806.355,491.103 806.355,455.232 832.443,455.232 832.443,554.48 806.355,554.48 806.355,514.923 770.2,514.923 770.2,554.48 "/>
-                </g>
-
-                <!-- ЛЕВАЯ ЧАСТЬ (Обрезается левой маской) -->
-                <g clip-path="url(#clip-left)">
-                    <!-- Буква M (Белая) -->
-                    <g class="group-m">
-                        <polygon fill="white" points="266.869,554.48 266.869,455.232 291.964,455.232 328.757,516.695 318.336,516.837 353.073,455.232 378.098,455.232 378.098,554.48 352.931,554.48 353.428,488.268 357.965,489.969 331.026,536.687 313.941,536.687 285.797,489.969 290.263,488.268 290.759,554.48 "/>
-                    </g>
-                    <!-- Буквы etric (Белые) -->
-                    <g class="group-etric">
-                        <!-- e -->
-                        <path fill="white" d="M433.606 556.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.572 1.985,-4.703 4.774,-8.767 8.365,-12.193 3.592,-3.427 7.846,-6.074 12.737,-7.964 4.892,-1.89 10.256,-2.836 16.116,-2.836 6.569,0 12.406,1.135 17.487,3.427 5.08,2.292 9.263,5.506 12.571,9.641 3.308,4.135 5.601,8.98 6.853,14.509 1.253,5.529 1.229,11.556 -0.047,18.077l-53.736 0c0.142,2.411 0.992,4.514 2.528,6.31 1.536,1.796 3.616,3.19 6.263,4.206 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.543 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.214 -8.744,4.561 -3.615,1.347 -7.491,2.433 -11.602,3.237 -4.112,0.803 -8.011,1.205 -11.697,1.205zm-15.667 -48.631l27.718 0c-0.047,-3.12 -1.252,-5.624 -3.639,-7.515 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.891 -4.183,4.395 -4.513,7.515z"/>
-                        <!-- t -->
-                        <path fill="white" d="M515.769 556.607c-8.413,0 -14.982,-2.363 -19.731,-7.065 -4.75,-4.703 -7.137,-11.674 -7.137,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.189 4.301,-0.543 1.442,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.83,1.394 -10.563,1.394zm-40.409 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                        <!-- r -->
-                        <path fill="white" d="M547.812 554.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.654 7.373,-2.481 11.579,-2.481 1.654,0 3.119,0.094 4.372,0.307 1.252,0.213 2.481,0.449 3.71,0.685l-2.978 26.443c-1.654,-0.662 -3.426,-1.182 -5.34,-1.536 -1.914,-0.355 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.355 -2.623,2.245 -3.947,5.648 -3.947,10.185l0 36.367 -25.804 0z"/>
-                        <!-- i -->
-                        <path fill="white" d="M612.181 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.608,1.253 10.61,3.758 3.001,2.505 4.49,5.907 4.49,10.208 0,4.348 -1.489,7.751 -4.49,10.232 -3.002,2.481 -6.546,3.734 -10.61,3.734z"/>
-                        <!-- c -->
-                        <path fill="white" d="M691.509 556.607c-7.751,0 -14.698,-1.701 -20.842,-5.08 -6.144,-3.38 -10.988,-7.964 -14.533,-13.777 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.586 3.167,-15.289 2.103,-4.702 5.033,-8.79 8.791,-12.287 3.757,-3.498 8.152,-6.215 13.209,-8.153 5.057,-1.938 10.515,-2.907 16.376,-2.907 5.671,0 10.964,0.78 15.856,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.07c-2.362,-2.221 -4.891,-3.852 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.937 -2.623,1.3 -4.655,3.191 -6.073,5.648 -1.417,2.458 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.264 4.75,12.193 3.167,2.931 7.515,4.396 13.044,4.396 3.308,0 6.475,-0.638 9.476,-1.891 3.001,-1.252 5.789,-3.095 8.389,-5.553l10.066 19.495c-4.112,3.12 -8.885,5.554 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                    </g>
-                </g>
-
-                <!-- ПРАВАЯ ЧАСТЬ (Обрезается правой маской) -->
-                <g clip-path="url(#clip-right)">
-                    <!-- Буквы it (Неоновые) -->
-                    <g class="group-it">
-                        <!-- i -->
-                        <path class="neon" fill="#00F0FF" d="M853.001 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.609,1.253 10.61,3.758 3.001,2.505 4.489,5.907 4.489,10.208 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.734 -10.61,3.734z"/>
-                        <!-- t -->
-                        <path class="neon" fill="#00F0FF" d="M929.848 556.607c-8.412,0 -14.982,-2.363 -19.732,-7.065 -4.749,-4.703 -7.136,-11.674 -7.136,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.189 4.301,-0.543 1.441,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <button class="enter-btn" id="enterBtn">Войти</button>
+    <!-- СТИКИ-БАР БОНУСА -->
+    <div class="bonus-bar">
+        🚀 Новым клиентам — <strong>+500 ₽</strong> на первый тестовый запуск
     </div>
 
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="wrap">
+            <div class="logo">
+                <!-- ВАШ SVG ЛОГОТИП -->
+                <svg width="40" height="40" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="white">
+                        <polygon points="137.796,455.339 138.005,498.347 115.673,537.074 98.529,537.074 74.84,497.75 75.268,554.929 51.295,554.929 51.295,455.339 76.477,455.339 108.053,508.087 "/>
+                        <polygon fill="#00F0FF" fill-rule="nonzero" points="143.942,554.93 143.942,455.339 170.12,455.339 170.12,491.334 206.399,491.334 206.399,455.339 232.578,455.339 232.578,554.93 206.399,554.93 206.399,515.236 170.12,515.236 170.12,554.93 "/>
+                        <polygon fill-rule="nonzero" points="266.869,554.48 266.869,455.232 291.964,455.232 328.757,516.695 318.336,516.837 353.073,455.232 378.098,455.232 378.098,554.48 352.931,554.48 353.428,488.268 357.965,489.969 331.026,536.687 313.941,536.687 285.797,489.969 290.263,488.268 290.759,554.48 "/>
+                        <path fill-rule="nonzero" d="M433.606 556.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.572 1.985,-4.703 4.774,-8.767 8.365,-12.193 3.592,-3.427 7.846,-6.074 12.737,-7.964 4.892,-1.89 10.256,-2.836 16.116,-2.836 6.569,0 12.406,1.135 17.487,3.427 5.08,2.292 9.263,5.506 12.571,9.641 3.308,4.135 5.601,8.98 6.853,14.509 1.253,5.529 1.229,11.556 -0.047,18.077l-53.736 0c0.142,2.411 0.992,4.514 2.528,6.31 1.536,1.796 3.616,3.19 6.263,4.206 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.543 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.214 -8.744,4.561 -3.615,1.347 -7.491,2.433 -11.602,3.237 -4.112,0.803 -8.011,1.205 -11.697,1.205zm-15.667 -48.631l27.718 0c-0.047,-3.12 -1.252,-5.624 -3.639,-7.515 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.891 -4.183,4.395 -4.513,7.515z"/>
+                        <path fill-rule="nonzero" d="M515.769 556.607c-8.413,0 -14.982,-2.363 -19.731,-7.065 -4.75,-4.703 -7.137,-11.674 -7.137,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.189 4.301,-0.543 1.442,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.83,1.394 -10.563,1.394zm-40.409 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
+                        <path fill-rule="nonzero" d="M547.812 554.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.654 7.373,-2.481 11.579,-2.481 1.654,0 3.119,0.094 4.372,0.307 1.252,0.213 2.481,0.449 3.71,0.685l-2.978 26.443c-1.654,-0.662 -3.426,-1.182 -5.34,-1.536 -1.914,-0.355 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.355 -2.623,2.245 -3.947,5.648 -3.947,10.185l0 36.367 -25.804 0z"/>
+                        <path fill-rule="nonzero" d="M612.181 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.608,1.253 10.61,3.758 3.001,2.505 4.49,5.907 4.49,10.208 0,4.348 -1.489,7.751 -4.49,10.232 -3.002,2.481 -6.546,3.734 -10.61,3.734z"/>
+                        <path fill-rule="nonzero" d="M691.509 556.607c-7.751,0 -14.698,-1.701 -20.842,-5.08 -6.144,-3.38 -10.988,-7.964 -14.533,-13.777 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.586 3.167,-15.289 2.103,-4.702 5.033,-8.79 8.791,-12.287 3.757,-3.498 8.152,-6.215 13.209,-8.153 5.057,-1.938 10.515,-2.907 16.376,-2.907 5.671,0 10.964,0.78 15.856,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.07c-2.362,-2.221 -4.891,-3.852 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.937 -2.623,1.3 -4.655,3.191 -6.073,5.648 -1.417,2.458 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.264 4.75,12.193 3.167,2.931 7.515,4.396 13.044,4.396 3.308,0 6.475,-0.638 9.476,-1.891 3.001,-1.252 5.789,-3.095 8.389,-5.553l10.066 19.495c-4.112,3.12 -8.885,5.554 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
+                        <polygon fill="#00F0FF" fill-rule="nonzero" points="744.112,554.48 744.112,455.232 770.2,455.232 770.2,491.103 806.355,491.103 806.355,455.232 832.443,455.232 832.443,554.48 806.355,554.48 806.355,514.923 770.2,514.923 770.2,554.48 "/>
+                        <path fill="#00F0FF" fill-rule="nonzero" d="M853.001 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.609,1.253 10.61,3.758 3.001,2.505 4.489,5.907 4.489,10.208 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.734 -10.61,3.734z"/>
+                        <path fill="#00F0FF" fill-rule="nonzero" d="M929.848 556.607c-8.412,0 -14.982,-2.363 -19.732,-7.065 -4.749,-4.703 -7.136,-11.674 -7.136,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.189 4.301,-0.543 1.441,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
+                    </g>
+                </svg>
+                <span class="logo-text">GRA<span>V</span>ITY</span>
+            </div>
+            <a href="https://t.me/express75" target="_blank" class="header-cta">Написать в Telegram</a>
+        </div>
+    </header>
+
+    <!-- ГЕРОЙ -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="hero-content">
+                <div class="section-label">🚀 Больше, чем просто клики</div>
+                <h1>
+                    Продвижение сайта <br>
+                    <span class="gradient-text">поведенческими факторами</span>
+                </h1>
+                <p>
+                    Живой трафик из поиска Яндекса по вашим запросам. Управляйте позициями без абонентской платы и скрытых комиссий.
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="value">от 0.40 ₽</div>
+                        <div class="label">Стоимость клика</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="value">+500 ₽</div>
+                        <div class="label">Бонус на тест</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="value">0 ₽</div>
+                        <div class="label">Абонентская плата</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="value">от 1 000 ₽</div>
+                        <div class="label">Стартовый бюджет</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#calc" class="btn-primary">Рассчитать бюджет</a>
+                    <a href="#start" class="btn-secondary">Как начать</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="80" width="60" height="120" rx="8" fill="#141A26" stroke="#2A3242" stroke-width="2"/>
+                    <rect x="120" y="40" width="60" height="160" rx="8" fill="#141A26" stroke="#2A3242" stroke-width="2"/>
+                    <rect x="200" y="60" width="60" height="140" rx="8" fill="#141A26" stroke="#2A3242" stroke-width="2"/>
+                    <rect x="280" y="20" width="60" height="180" rx="8" fill="#141A26" stroke="#2A3242" stroke-width="2"/>
+                    <path d="M370 30 L330 90 L290 50 L250 130 L210 70 L170 160 L130 100 L90 190 L50 130 L10 210" stroke="url(#lineGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="370" cy="30" r="6" fill="#00F0FF"/>
+                    <circle cx="330" cy="90" r="6" fill="#00F0FF"/>
+                    <circle cx="290" cy="50" r="6" fill="#00F0FF"/>
+                    <circle cx="250" cy="130" r="6" fill="#00F0FF"/>
+                    <circle cx="210" cy="70" r="6" fill="#00F0FF"/>
+                    <circle cx="170" cy="160" r="6" fill="#00F0FF"/>
+                    <circle cx="130" cy="100" r="6" fill="#00F0FF"/>
+                    <circle cx="90" cy="190" r="6" fill="#00F0FF"/>
+                    <circle cx="50" cy="130" r="6" fill="#00F0FF"/>
+                    <circle cx="10" cy="210" r="6" fill="#00F0FF"/>
+                    <defs>
+                        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#00F0FF"/>
+                            <stop offset="100%" stop-color="#7A4DFF"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="section" id="benefits">
+        <div class="wrap">
+            <span class="section-label">Почему мы</span>
+            <h2 class="section-title">Просто, честно и <span class="gradient-text">без риска</span></h2>
+            <p class="section-desc">Платите только за реальные клики. Никаких скрытых платежей, долгосрочных контрактов или обязательств.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="badge">Для теста</span>
+                    <span class="icon">💰</span>
+                    <div class="title">Старт от 1 000 ₽</div>
+                    <div class="desc">Начните с малого. Пополните баланс на любую сумму от тысячи и сразу увидите, как работает система на вашем проекте.</div>
+                </div>
+                <div class="benefit-card">
+                    <span class="badge">Подарок</span>
+                    <span class="icon">🎁</span>
+                    <div class="title">Бонус +500 ₽</div>
+                    <div class="desc">При первом запуске мы добавляем вам 500 ₽ на баланс. Это дополнительные 1 250 переходов в подарок.</div>
+                </div>
+                <div class="benefit-card">
+                    <span class="icon">🛡️</span>
+                    <div class="title">0 ₽ абонентской платы</div>
+                    <div class="desc">Никаких ежемесячных списаний за «ведение кабинета». Платите только за фактические клики.</div>
+                </div>
+                <div class="benefit-card">
+                    <span class="icon">⚡</span>
+                    <div class="title">Быстрый старт</div>
+                    <div class="desc">Пришлите домен, запросы и регион. Мы подготовим кабинет и настройки проекта за вас. Останется только запустить.</div>
+                </div>
+                <div class="benefit-card">
+                    <span class="icon">📊</span>
+                    <div class="title">Прозрачная статистика</div>
+                    <div class="desc">В личном кабинете видна вся динамика: количество кликов, расход, позиции запросов — в реальном времени.</div>
+                </div>
+                <div class="benefit-card">
+                    <span class="icon">🤝</span>
+                    <div class="title">Поддержка 24/7</div>
+                    <div class="desc">Любые вопросы — от подбора запросов до анализа статистики. Мы всегда на связи в Telegram.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАЛЬКУЛЯТОР -->
+    <section class="section" id="calc">
+        <div class="wrap">
+            <div class="calculator">
+                <span class="section-label">Калькулятор</span>
+                <h2 class="section-title">Сколько переходов вы получите?</h2>
+                <p class="section-desc">Выберите сумму пополнения и смотрите, как меняется цена клика и количество переходов.</p>
+
+                <div class="calc-row">
+                    <div class="calc-group">
+                        <label>Быстрый выбор</label>
+                        <div class="calc-presets">
+                            <button class="calc-preset active" data-val="1000">1 000 ₽</button>
+                            <button class="calc-preset" data-val="50000">50 000 ₽</button>
+                            <button class="calc-preset" data-val="100000">100 000 ₽</button>
+                            <button class="calc-preset" data-val="200000">200 000 ₽</button>
+                        </div>
+                    </div>
+                    <div class="calc-group">
+                        <label>Ваша сумма</label>
+                        <input type="range" class="calc-slider" id="budgetSlider" min="1000" max="250000" step="1000" value="1000">
+                        <div class="calc-slider-value" id="budgetDisplay">1 000 ₽</div>
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="calc-result-item">
+                        <div class="value" id="calcDeposit">1 000 ₽</div>
+                        <div class="label">Пополнение</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="value" id="calcCpc">0.40 ₽</div>
+                        <div class="label">Цена за клик</div>
+                    </div>
+                    <div class="calc-result-item highlight">
+                        <div class="value" id="calcClicks">≈ 2 500</div>
+                        <div class="label">Переходов на сайт</div>
+                    </div>
+                </div>
+
+                <div class="calc-note" id="calcNote">
+                    🎁 <strong>Новым клиентам:</strong> бонус +500 ₽ к балансу. При стартовом пополнении это даёт ещё ≈ 1 250 переходов.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТАРИФЫ -->
+    <section class="section">
+        <div class="wrap">
+            <span class="section-label">Тарифы</span>
+            <h2 class="section-title">Чем больше бюджет — <span class="gradient-text">тем выгоднее</span></h2>
+            <p class="section-desc">Стоимость клика снижается при увеличении объёма. Индивидуальные условия — от 250 000 ₽.</p>
+            <div class="pricing-table">
+                <div class="row header">
+                    <span>Сумма пополнения</span>
+                    <span>Цена за клик</span>
+                    <span>Переходов</span>
+                </div>
+                <div class="row highlight" data-tier="1000">
+                    <span class="amount">от 1 000 ₽</span>
+                    <span class="price">0.40 ₽</span>
+                    <span>≈ 2 500</span>
+                </div>
+                <div class="row" data-tier="50000">
+                    <span class="amount">от 50 000 ₽</span>
+                    <span class="price">0.35 ₽</span>
+                    <span>≈ 142 857</span>
+                </div>
+                <div class="row" data-tier="100000">
+                    <span class="amount">от 100 000 ₽</span>
+                    <span class="price">0.20 ₽</span>
+                    <span>≈ 500 000</span>
+                </div>
+                <div class="row" data-tier="150000">
+                    <span class="amount">от 150 000 ₽</span>
+                    <span class="price">0.17 ₽</span>
+                    <span>≈ 882 352</span>
+                </div>
+                <div class="row" data-tier="200000">
+                    <span class="amount">от 200 000 ₽</span>
+                    <span class="price">0.15 ₽</span>
+                    <span>≈ 1 333 333</span>
+                </div>
+                <div class="row">
+                    <span class="amount">от 250 000 ₽</span>
+                    <span class="price">индивидуально</span>
+                    <span><span class="tag">обсудим</span></span>
+                </div>
+            </div>
+            <p style="color:#6B768E; font-size:14px; margin-top:16px;">Для крупных объёмов действуют специальные условия. Напишите нам, чтобы обсудить ваш проект.</p>
+        </div>
+    </section>
+
+    <!-- КАК НАЧАТЬ -->
+    <section class="section" id="start">
+        <div class="wrap">
+            <span class="section-label">Старт</span>
+            <h2 class="section-title">4 шага до <span class="gradient-text">первых результатов</span></h2>
+            <p class="section-desc">Всё просто: регистрация, настройка, запуск. Мы поможем на каждом этапе.</p>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="number">1</div>
+                    <div class="title">Регистрация</div>
+                    <div class="desc">Перейдите в личный кабинет <a href="https://lk.express-geo.ru" target="_blank" style="color:#00F0FF;">lk.express-geo.ru</a> и создайте аккаунт.</div>
+                </div>
+                <div class="step-item">
+                    <div class="number">2</div>
+                    <div class="title">Отправьте данные</div>
+                    <div class="desc">Пришлите нам домен, ключевые запросы и регион — мы подготовим проект.</div>
+                </div>
+                <div class="step-item">
+                    <div class="number">3</div>
+                    <div class="title">Настройка</div>
+                    <div class="desc">Мы активируем бонус 500 ₽ и настроим кабинет под ваши цели.</div>
+                </div>
+                <div class="step-item">
+                    <div class="number">4</div>
+                    <div class="title">Контроль</div>
+                    <div class="desc">Получите доступ к статистике и управляйте проектом в реальном времени.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section class="section">
+        <div class="wrap">
+            <span class="section-label">Кейсы</span>
+            <h2 class="section-title">Что говорят <span class="gradient-text">наши клиенты</span></h2>
+            <p class="section-desc">Реальные результаты продвижения в разных нишах. Нажмите на скриншот, чтобы увеличить.</p>
+            <div class="reviews-scroll" id="reviewsScroll">
+                <img src="reviews/r01.jpg" alt="Благодарность" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r02.jpg" alt="Отзыв" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r03.jpg" alt="Результат: авто" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r04.jpg" alt="Результат: мебель" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r05.jpg" alt="Результат: выкуп авто" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r06.jpg" alt="Результат: меховые изделия" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r07.jpg" alt="Результат: испытания бетона" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r08.jpg" alt="Результат: ультразвуковой контроль" loading="lazy" onclick="openLightbox(this.src)">
+                <img src="reviews/r09.jpg" alt="Результат: контроль сварных швов" loading="lazy" onclick="openLightbox(this.src)">
+            </div>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 14px;">
+                <span>📱 <a href="https://t.me/donk1993/152" target="_blank" style="color:#00F0FF;">Скриншоты отзывов</a></span>
+                <span>📢 <a href="https://t.me/expresspf" target="_blank" style="color:#00F0FF;">Наш Telegram-канал</a></span>
+                <span>🔄 <a href="https://pf-agressor.ru" target="_blank" style="color:#00F0FF;">Второй сервис продвижения</a></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="wrap">
+            <span class="section-label">Вопросы</span>
+            <h2 class="section-title">Часто спрашивают</h2>
+            <div class="faq-item">
+                <summary>Почему у вас цена ниже, чем у других?</summary>
+                <div class="answer">Потому что вы работаете напрямую с разработчиками. Мы создаём технологию сами, а многие сервисы просто перепродают её с наценкой. Без посредников — цена ниже.</div>
+            </div>
+            <div class="faq-item">
+                <summary>Это безопасно для сайта?</summary>
+                <div class="answer">Да. Мы используем качественный трафик из поиска Яндекса. Посетители приходят по вашим запросам и ведут себя как реальные пользователи. Объём наращиваем постепенно, без резких всплесков.</div>
+            </div>
+            <div class="faq-item">
+                <summary>Как быстро я увижу результат?</summary>
+                <div class="answer">Это зависит от ниши и конкуренции. Именно поэтому мы рекомендуем начинать с теста от 1 000 ₽. Вы видите статистику в кабинете и принимаете решение о масштабировании.</div>
+            </div>
+            <div class="faq-item">
+                <summary>Что нужно от меня для старта?</summary>
+                <div class="answer">Домен, список ключевых запросов, регион и цель. Всё остальное мы делаем сами: настраиваем кабинет, активируем бонус и запускаем проект.</div>
+            </div>
+            <div class="faq-item">
+                <summary>Можно ли остановиться в любой момент?</summary>
+                <div class="answer">Конечно. Абонентской платы нет, вы платите только за клики. Пополняйте баланс по мере необходимости и управляйте проектами без обязательств.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-bottom: 60px;">
+        <div class="wrap">
+            <div class="cta-block">
+                <h2 class="section-title">Готовы <span class="gradient-text">начать?</span></h2>
+                <p class="section-desc">Зарегистрируйтесь в кабинете или просто напишите нам — подготовим всё для тестового запуска. Бонус +500 ₽ ждёт вас.</p>
+                <div class="cta-buttons">
+                    <a href="https://t.me/express75" target="_blank" class="btn-primary">Написать в Telegram</a>
+                    <a href="https://lk.express-geo.ru" target="_blank" class="btn-secondary">Перейти в кабинет</a>
+                </div>
+                <div class="promo-code">
+                    🎁 Промокод для первых клиентов:
+                    <code id="promoCode" onclick="copyPromo()">БЕРТ-74</code>
+                    <span style="color:#6B768E; font-size:13px;">(нажмите, чтобы скопировать)</span>
+                </div>
+                <div class="cta-contacts">
+                    <span>📱 <a href="https://t.me/express75" target="_blank">@express75</a></span>
+                    <span>📞 <a href="tel:+79229266684">+7 922 926-66-84</a></span>
+                    <span>✉️ <a href="mailto:profexpress.pf@gmail.com">profexpress.pf@gmail.com</a></span>
+                    <span>🔗 <a href="https://lk.express-geo.ru" target="_blank">lk.express-geo.ru</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЛАЙТБОКС -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="Увеличенный скриншот">
+    </div>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="social">
+                <a href="https://t.me/express75" target="_blank">Telegram</a>
+                <a href="https://t.me/expresspf" target="_blank">Канал</a>
+                <a href="https://pf-agressor.ru" target="_blank">pf-agressor.ru</a>
+            </div>
+            <p>© 2026 Gravity — сервис продвижения сайтов поведенческими факторами</p>
+            <p style="margin-top: 8px;"><a href="tel:+79229266684">+7 922 926-66-84</a> · <a href="mailto:profexpress.pf@gmail.com">profexpress.pf@gmail.com</a></p>
+        </div>
+    </footer>
+
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // Ровно через 600мс после загрузки запускаем красивый выезд букв
-            setTimeout(() => {
-                document.body.classList.add('animated');
-            }, 600);
+        // ===== КАЛЬКУЛЯТОР =====
+        const slider = document.getElementById('budgetSlider');
+        const display = document.getElementById('budgetDisplay');
+        const calcDeposit = document.getElementById('calcDeposit');
+        const calcCpc = document.getElementById('calcCpc');
+        const calcClicks = document.getElementById('calcClicks');
+        const calcNote = document.getElementById('calcNote');
+
+        const presets = document.querySelectorAll('.calc-preset');
+
+        function getCpc(amount) {
+            if (amount >= 250000) return null;
+            if (amount >= 200000) return 0.15;
+            if (amount >= 150000) return 0.17;
+            if (amount >= 100000) return 0.20;
+            if (amount >= 50000) return 0.35;
+            return 0.40;
+        }
+
+        function formatPrice(val) {
+            return val.toFixed(2).replace('.', ',') + ' ₽';
+        }
+
+        function formatNumber(num) {
+            return '≈ ' + Math.round(num).toLocaleString('ru-RU');
+        }
+
+        function updateCalculator(amount) {
+            const cpc = getCpc(amount);
+            const deposit = amount.toLocaleString('ru-RU') + ' ₽';
+
+            calcDeposit.textContent = deposit;
+            display.textContent = deposit;
+
+            if (cpc === null) {
+                calcCpc.textContent = 'индивидуально';
+                calcClicks.textContent = 'обсудим';
+                calcNote.innerHTML = '💎 <strong>От 250 000 ₽</strong> — специальные условия. Напишите нам, чтобы обсудить ваш проект.';
+            } else {
+                const clicks = amount / cpc;
+                calcCpc.textContent = formatPrice(cpc);
+                calcClicks.textContent = formatNumber(clicks);
+
+                if (cpc < 0.40) {
+                    const baseClicks = amount / 0.40;
+                    const extra = clicks - baseClicks;
+                    calcNote.innerHTML = `
+                        🎯 <strong>Выгода от объёма:</strong> при стандартной цене 0.40 ₽ вы получили бы ${Math.round(baseClicks).toLocaleString('ru-RU')} переходов.<br>
+                        На вашем тарифе — <strong>${Math.round(clicks).toLocaleString('ru-RU')}</strong>, что на <strong>${Math.round(extra).toLocaleString('ru-RU')}</strong> переходов больше.
+                    `;
+                } else {
+                    calcNote.innerHTML = '🎁 <strong>Новым клиентам:</strong> бонус +500 ₽ к балансу. При стартовом пополнении это даёт ещё ≈ 1 250 переходов.';
+                }
+            }
+        }
+
+        slider.addEventListener('input', function() {
+            const val = parseInt(this.value);
+            presets.forEach(p => p.classList.toggle('active', parseInt(p.dataset.val) === val));
+            updateCalculator(val);
         });
 
-        // Логика кнопки закрытия интро
+        presets.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const val = parseInt(this.dataset.val);
+                slider.value = val;
+                presets.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                updateCalculator(val);
+            });
+        });
+
+        // ===== ПРОМОКОД =====
+        function copyPromo() {
+            const code = document.getElementById('promoCode');
+            const text = 'БЕРТ-74';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    code.textContent = 'СКОПИРОВАНО ✓';
+                    setTimeout(() => code.textContent = text, 1500);
+                }).catch(() => fallbackCopy(text, code));
+            } else {
+                fallbackCopy(text, code);
+            }
+        }
+
+        function fallbackCopy(text, el) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            el.textContent = 'СКОПИРОВАНО ✓';
+            setTimeout(() => el.textContent = text, 1500);
+        }
+
+        // ===== ЛАЙТБОКС =====
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            img.src = src;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ===== ИНИЦИАЛИЗАЦИЯ =====
+        updateCalculator(1000);
+
+        // Выделяем активный пресет при загрузке
+        document.querySelector('.calc-preset[data-val="1000"]')?.classList.add('active');
+    </script>
+</body>
+</html>
