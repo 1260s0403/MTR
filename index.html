@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MetricHit — Продвижение сайтов поведенческими факторами</title>
+  <title>MetricHit — Управление поведенческими сигналами сайта</title>
   
   <!-- Tailwind + Inter шрифт -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
   
   <style>
-    /* ===== БРЕНДБУК ===== */
+    /* ===== БРЕНДБУК METRICHIT ===== */
     :root {
       --bg-deep: #0B0F19;
       --bg-slate: #1E2538;
@@ -33,35 +33,36 @@
     }
 
     /* ===== НЕОНОВОЕ СВЕЧЕНИЕ ===== */
-    .btn-cyan-glow {
+    .btn-neon {
       background: var(--cyan);
       color: var(--bg-deep);
       font-weight: 700;
       transition: all 0.25s ease;
       border: none;
       cursor: pointer;
+      position: relative;
     }
-    .btn-cyan-glow:hover {
+    .btn-neon:hover {
       box-shadow: 0 0 30px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.2);
       transform: scale(1.03);
     }
 
-    .btn-cyan-outline {
+    .btn-outline {
       background: transparent;
       color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.15);
       font-weight: 600;
       transition: all 0.25s ease;
       cursor: pointer;
     }
-    .btn-cyan-outline:hover {
+    .btn-outline:hover {
       border-color: var(--cyan);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.12);
     }
 
     /* ===== ЛОГОТИП ===== */
-    .logo-metric { color: var(--white); font-weight: 900; }
-    .logo-hit { color: var(--cyan); font-weight: 900; }
+    .logo-metric { color: var(--white); font-weight: 900; letter-spacing: -0.5px; }
+    .logo-hit { color: var(--cyan); font-weight: 900; letter-spacing: -0.5px; }
 
     /* ===== НАВИГАЦИЯ ===== */
     .nav-link {
@@ -70,34 +71,67 @@
       font-size: 14px;
       transition: color 0.2s;
       text-decoration: none;
+      position: relative;
     }
-    .nav-link:hover { color: var(--white); }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--cyan);
+      transition: width 0.3s;
+    }
+    .nav-link:hover {
+      color: var(--white);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
     /* ===== КАРТОЧКИ ===== */
-    .card-dark {
+    .card-glass {
       background: var(--bg-slate);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px;
       padding: 24px 22px;
-      transition: border-color 0.3s, transform 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .card-dark:hover {
-      border-color: rgba(0, 240, 255, 0.25);
+    .card-glass::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(0, 240, 255, 0.03), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .card-glass:hover {
+      border-color: rgba(0, 240, 255, 0.2);
       transform: translateY(-4px);
+    }
+    .card-glass:hover::before {
+      opacity: 1;
     }
 
     /* ===== КАЛЬКУЛЯТОР ===== */
-    .slider-cyan {
+    .slider-neon {
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      height: 6px;
+      height: 5px;
       border-radius: 4px;
       background: var(--bg-slate);
       outline: none;
       transition: background 0.2s;
     }
-    .slider-cyan::-webkit-slider-thumb {
+    .slider-neon::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
       width: 22px;
@@ -105,13 +139,13 @@
       border-radius: 50%;
       background: var(--cyan);
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
       transition: box-shadow 0.2s;
     }
-    .slider-cyan::-webkit-slider-thumb:hover {
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+    .slider-neon::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.5);
     }
-    .slider-cyan::-moz-range-thumb {
+    .slider-neon::-moz-range-thumb {
       width: 22px;
       height: 22px;
       border-radius: 50%;
@@ -133,18 +167,27 @@
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
     .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
 
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
-      50% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.25); }
+    @keyframes neonPulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.08); }
+      50% { box-shadow: 0 0 35px rgba(0, 240, 255, 0.2); }
     }
-    .glow-pulse {
-      animation: glowPulse 2.5s ease-in-out infinite;
+    .neon-pulse {
+      animation: neonPulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    .dot-pulse {
+      animation: dotPulse 1.8s ease-in-out infinite;
     }
 
     /* ===== ГРАДИЕНТНЫЙ ТЕКСТ ===== */
     .text-gradient-cyan {
-      background: linear-gradient(135deg, #00F0FF, #00C9FF);
+      background: linear-gradient(135deg, #00F0FF 0%, #00C9FF 50%, #0099FF 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -161,21 +204,29 @@
       scroll-snap-type: x mandatory;
       padding: 4px 2px 12px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(0, 240, 255, 0.2) transparent;
+      scrollbar-color: rgba(0, 240, 255, 0.15) transparent;
+    }
+    .carousel-track::-webkit-scrollbar {
+      height: 4px;
+    }
+    .carousel-track::-webkit-scrollbar-thumb {
+      background: rgba(0, 240, 255, 0.2);
+      border-radius: 4px;
     }
     .carousel-track img {
-      height: 280px;
+      height: 270px;
       width: auto;
       max-width: 80vw;
       flex-shrink: 0;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.06);
       scroll-snap-align: start;
       cursor: zoom-in;
-      transition: transform 0.2s;
+      transition: transform 0.25s, border-color 0.25s;
     }
     .carousel-track img:hover {
       transform: scale(1.02);
+      border-color: rgba(0, 240, 255, 0.2);
     }
     .carousel-btn {
       position: absolute;
@@ -185,15 +236,19 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.08);
       background: var(--bg-slate);
       color: var(--white);
       font-size: 18px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .carousel-btn:hover {
-      background: rgba(0, 240, 255, 0.2);
+      background: rgba(0, 240, 255, 0.12);
+      border-color: rgba(0, 240, 255, 0.3);
     }
     .carousel-btn.prev { left: -6px; }
     .carousel-btn.next { right: -6px; }
@@ -206,8 +261,8 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(11, 15, 25, 0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 15, 25, 0.94);
+      backdrop-filter: blur(10px);
       padding: 24px;
       cursor: zoom-out;
     }
@@ -216,7 +271,7 @@
       max-width: 94vw;
       max-height: 92vh;
       border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
     }
 
     /* ===== FAQ ===== */
@@ -226,6 +281,10 @@
       margin-bottom: 10px;
       background: var(--bg-slate);
       overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    details.faq-item:hover {
+      border-color: rgba(0, 240, 255, 0.1);
     }
     .faq-item summary {
       cursor: pointer;
@@ -238,6 +297,10 @@
       align-items: center;
       gap: 14px;
       color: var(--white);
+      transition: color 0.2s;
+    }
+    .faq-item summary:hover {
+      color: var(--cyan);
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
@@ -270,31 +333,66 @@
       font-family: var(--font);
       font-weight: 800;
       font-size: 14px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: var(--bg-deep);
       background: var(--cyan);
       border-radius: 8px;
-      padding: 5px 14px;
+      padding: 5px 16px;
       cursor: pointer;
-      transition: 0.15s;
+      transition: all 0.2s;
       user-select: none;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
     }
     .promo-code:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+    }
+    .promo-code.copied {
+      background: #00D4A0;
+    }
+
+    /* ===== STEP НУМЕРАЦИЯ ===== */
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    /* ===== БЭЙДЖИ ===== */
+    .badge-cyan {
+      display: inline-block;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.15);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
     }
 
     /* ===== АДАПТИВ ===== */
     @media (max-width: 768px) {
       .nav-desktop { display: none !important; }
       .nav-mobile { display: flex !important; }
-      .hero-title { font-size: 28px; line-height: 1.2; }
+      .hero-title { font-size: 28px; line-height: 1.15; }
       .hero-sub { font-size: 15px; }
-      .card-dark { padding: 18px 16px; }
-      .carousel-track img { height: 200px; }
+      .card-glass { padding: 18px 16px; }
+      .carousel-track img { height: 190px; }
       .carousel-btn { width: 32px; height: 32px; font-size: 14px; }
       .carousel-btn.prev { left: -4px; }
       .carousel-btn.next { right: -4px; }
+      .step-number { width: 30px; height: 30px; font-size: 12px; }
     }
     @media (min-width: 769px) {
       .nav-desktop { display: flex !important; }
@@ -302,12 +400,14 @@
     }
 
     /* Утилиты */
-    .border-cyan-dim { border-color: rgba(0, 240, 255, 0.15); }
-    .bg-cyan-dim { background: rgba(0, 240, 255, 0.06); }
+    .border-cyan-dim { border-color: rgba(0, 240, 255, 0.12); }
+    .bg-cyan-dim { background: rgba(0, 240, 255, 0.05); }
     .text-cyan { color: var(--cyan); }
     .text-muted { color: var(--muted); }
     .bg-deep { background: var(--bg-deep); }
     .bg-slate { background: var(--bg-slate); }
+    .gap-2 { gap: 8px; }
+    .gap-3 { gap: 12px; }
   </style>
 </head>
 <body>
@@ -315,41 +415,41 @@
 <!-- ============================================================ -->
 <!-- HEADER -->
 <!-- ============================================================ -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/90 backdrop-blur-xl border-b border-white/5">
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/85 backdrop-blur-xl border-b border-white/5">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- Логотип -->
-    <a href="#" class="text-2xl font-extrabold tracking-tight no-underline">
+    <a href="#" class="text-2xl font-extrabold tracking-tight no-underline flex items-center gap-1">
       <span class="logo-metric">Metric</span><span class="logo-hit">Hit</span>
     </a>
 
     <!-- Десктопная навигация -->
     <nav class="nav-desktop items-center gap-8">
-      <a href="#start" class="nav-link">Условия</a>
+      <a href="#start" class="nav-link">Старт</a>
       <a href="#calc" class="nav-link">Калькулятор</a>
-      <a href="#pricing" class="nav-link">Тарифы</a>
-      <a href="#how" class="nav-link">Как начать</a>
-      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#pricing" class="nav-link">Цены</a>
+      <a href="#how" class="nav-link">Шаги</a>
+      <a href="#faq" class="nav-link">Вопросы</a>
     </nav>
 
     <!-- Кнопки справа -->
     <div class="flex items-center gap-4">
       <a href="#" class="text-sm text-muted hover:text-white transition no-underline">Войти</a>
-      <a href="#cta" class="px-5 py-2.5 text-sm font-bold rounded-lg btn-cyan-glow no-underline">Начать тест</a>
+      <a href="#cta" class="px-5 py-2.5 text-sm font-bold rounded-lg btn-neon no-underline">Попробовать</a>
     </div>
 
     <!-- Мобильное меню (бургер) -->
-    <button class="nav-mobile text-white text-2xl" aria-label="Меню" onclick="toggleMobileMenu()">☰</button>
+    <button class="nav-mobile text-white text-2xl leading-none" aria-label="Меню" onclick="toggleMobileMenu()">☰</button>
   </div>
 
-  <!-- Мобильное меню (выпадающее) -->
-  <div id="mobileMenu" class="hidden bg-[#0B0F19] border-t border-white/5 px-6 py-4 flex flex-col gap-4">
-    <a href="#start" class="text-muted hover:text-white transition no-underline">Условия</a>
-    <a href="#calc" class="text-muted hover:text-white transition no-underline">Калькулятор</a>
-    <a href="#pricing" class="text-muted hover:text-white transition no-underline">Тарифы</a>
-    <a href="#how" class="text-muted hover:text-white transition no-underline">Как начать</a>
-    <a href="#faq" class="text-muted hover:text-white transition no-underline">FAQ</a>
-    <a href="#cta" class="px-5 py-2.5 text-center text-sm font-bold rounded-lg btn-cyan-glow no-underline">Начать тест</a>
+  <!-- Мобильное меню -->
+  <div id="mobileMenu" class="hidden bg-[#0B0F19] border-t border-white/5 px-6 py-5 flex flex-col gap-4">
+    <a href="#start" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Старт</a>
+    <a href="#calc" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Калькулятор</a>
+    <a href="#pricing" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Цены</a>
+    <a href="#how" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Шаги</a>
+    <a href="#faq" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Вопросы</a>
+    <a href="#cta" class="px-5 py-3 text-center text-sm font-bold rounded-lg btn-neon no-underline" onclick="toggleMobileMenu()">Попробовать</a>
   </div>
 </header>
 
@@ -358,66 +458,68 @@
 <!-- ============================================================ -->
 <section class="min-h-screen flex items-center justify-center text-center pt-28 pb-16 px-6 relative overflow-hidden">
   
-  <!-- Фоновое свечение -->
+  <!-- Фоновые свечения -->
   <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-cyan/5 rounded-full blur-[120px]"></div>
-    <div class="absolute top-1/4 right-0 w-[400px] h-[400px] bg-cyan/3 rounded-full blur-[100px]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-cyan/4 rounded-full blur-[120px]"></div>
+    <div class="absolute top-1/3 right-0 w-[300px] h-[400px] bg-cyan/2 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[300px] bg-cyan/2 rounded-full blur-[90px]"></div>
   </div>
 
   <div class="max-w-5xl mx-auto relative z-10">
     
     <!-- Бейдж -->
-    <div class="inline-flex items-center gap-2 bg-cyan/10 border border-cyan/20 text-cyan text-xs font-semibold px-4 py-2 rounded-full mb-8 animate-fade-up">
-      <span class="w-2 h-2 rounded-full bg-cyan animate-pulse"></span>
-      Запустите свой сайт в космос 🚀
+    <div class="inline-flex items-center gap-2 bg-cyan/8 border border-cyan/15 text-cyan text-xs font-semibold px-4 py-2 rounded-full mb-8 animate-fade-up">
+      <span class="w-2 h-2 rounded-full bg-cyan dot-pulse"></span>
+      Поведенческие сигналы, которые работают
     </div>
 
     <!-- Заголовок -->
     <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight animate-fade-up delay-1">
-      Продвижение сайта<br />
-      <span class="text-gradient-cyan">поведенческими факторами</span>
+      Управляйте<br />
+      <span class="text-gradient-cyan">поведенческими сигналами</span><br />
+      своего сайта
     </h1>
 
     <!-- Подзаголовок -->
     <p class="hero-sub text-muted text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed animate-fade-up delay-2">
-      Живые переходы из поиска Яндекса по вашим запросам. <br class="hidden md:block" />
-      Тестовый запуск от 1 000 ₽, без абонплаты и обязательного депозита.
+      Реальные посетители из поиска Яндекса.<br class="hidden md:block" />
+      Без абонплаты, скрытых комиссий и обязательных депозитов.
     </p>
 
     <!-- Бонус -->
-    <div class="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-full border border-cyan/30 bg-cyan/5 animate-fade-up delay-3 glow-pulse">
-      <span class="w-2.5 h-2.5 rounded-full bg-cyan animate-pulse"></span>
-      <span class="text-sm font-semibold">🎁 Новым пользователям — <span class="text-cyan">+500 ₽</span> бонуса на тестовый запуск</span>
+    <div class="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-full border border-cyan/20 bg-cyan/5 animate-fade-up delay-3 neon-pulse">
+      <span class="w-2.5 h-2.5 rounded-full bg-cyan dot-pulse"></span>
+      <span class="text-sm font-medium">🎁 <span class="text-white">+500 ₽</span> на первый запуск — проверьте результат до оплаты</span>
     </div>
 
     <!-- CTA -->
     <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-4">
-      <a href="#cta" class="px-8 py-4 text-lg font-bold rounded-xl btn-cyan-glow no-underline inline-flex items-center justify-center gap-2">
+      <a href="#cta" class="px-8 py-4 text-lg font-bold rounded-xl btn-neon no-underline inline-flex items-center justify-center gap-2 group">
         Начать тест
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <svg class="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="#calc" class="px-8 py-4 text-lg font-medium rounded-xl btn-cyan-outline no-underline inline-flex items-center justify-center gap-2">
-        Рассчитать объём
+      <a href="#calc" class="px-8 py-4 text-lg font-medium rounded-xl btn-outline no-underline inline-flex items-center justify-center gap-2">
+        Рассчитать трафик
       </a>
     </div>
 
     <!-- Статистика -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-14 animate-fade-up delay-5">
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 animate-fade-up delay-5">
+      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
         <div class="text-2xl md:text-3xl font-bold text-cyan">0,40 ₽</div>
-        <div class="text-sm text-muted">цена клика на старте</div>
+        <div class="text-xs text-muted mt-1">минимальная цена клика</div>
       </div>
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5">
+      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
         <div class="text-2xl md:text-3xl font-bold text-white">+500 ₽</div>
-        <div class="text-sm text-muted">бонус новичкам</div>
+        <div class="text-xs text-muted mt-1">бонус новым пользователям</div>
       </div>
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5">
+      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
         <div class="text-2xl md:text-3xl font-bold text-white">0 ₽</div>
-        <div class="text-sm text-muted">абонентская плата</div>
+        <div class="text-xs text-muted mt-1">абонентская плата</div>
       </div>
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5">
+      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
         <div class="text-2xl md:text-3xl font-bold text-cyan">от 1 000 ₽</div>
-        <div class="text-sm text-muted">хватит чтобы начать</div>
+        <div class="text-xs text-muted mt-1">достаточно для старта</div>
       </div>
     </div>
 
@@ -430,55 +532,46 @@
 <section id="start" class="py-20 px-6 border-t border-white/5">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Условия старта</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-3">Почему начать просто</h2>
+      <span class="badge-cyan">Старт без риска</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-4">5 причин попробовать</h2>
+      <p class="text-muted mt-3 max-w-lg mx-auto">Никаких скрытых платежей, только прозрачная работа</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       
       <!-- 1 -->
-      <div class="card-dark animate-fade-up delay-1">
-        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-4 text-2xl">
-          💰
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Старт от 1 000 ₽</h3>
-        <p class="text-muted text-sm leading-relaxed">Не нужно замораживать большой бюджет ради пробы. Тестируйте продвижение на одном сайте и увеличивайте объём после первых результатов.</p>
+      <div class="card-glass animate-fade-up delay-1">
+        <div class="text-3xl mb-4">💰</div>
+        <h3 class="text-lg font-bold text-white mb-2">Минимальный порог</h3>
+        <p class="text-muted text-sm leading-relaxed">Достаточно 1 000 ₽, чтобы запустить первый проект и увидеть, как работает система.</p>
       </div>
 
       <!-- 2 -->
-      <div class="card-dark animate-fade-up delay-2">
-        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-4 text-2xl">
-          🎁
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Бонус +500 ₽ на запуск</h3>
-        <p class="text-muted text-sm leading-relaxed">Каждому новому пользователю начисляем тестовый баланс. Активируем при настройке первого запуска, ещё до серьёзных пополнений.</p>
+      <div class="card-glass animate-fade-up delay-2">
+        <div class="text-3xl mb-4">🎁</div>
+        <h3 class="text-lg font-bold text-white mb-2">Бонус на тест</h3>
+        <p class="text-muted text-sm leading-relaxed">Каждый новый пользователь получает +500 ₽ на баланс — это дополнительные переходы без ваших вложений.</p>
       </div>
 
       <!-- 3 -->
-      <div class="card-dark animate-fade-up delay-3">
-        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-4 text-2xl">
-          📊
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Ноль абонплаты и депозитов</h3>
-        <p class="text-muted text-sm leading-relaxed">Платите только за фактические клики. Никаких ежемесячных списаний «за кабинет» и обязательных крупных взносов.</p>
+      <div class="card-glass animate-fade-up delay-3">
+        <div class="text-3xl mb-4">📊</div>
+        <h3 class="text-lg font-bold text-white mb-2">Нет абонплаты</h3>
+        <p class="text-muted text-sm leading-relaxed">Платите только за реальные клики. Никаких ежемесячных списаний за «доступ к кабинету».</p>
       </div>
 
       <!-- 4 -->
-      <div class="card-dark animate-fade-up delay-4">
-        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-4 text-2xl">
-          ⚡
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Быстрая подготовка запуска</h3>
-        <p class="text-muted text-sm leading-relaxed">Кабинет и настройки проекта подготовим за вас. Пришлите домен, запросы и регион — остальное сделаем сами.</p>
+      <div class="card-glass animate-fade-up delay-4">
+        <div class="text-3xl mb-4">⚡</div>
+        <h3 class="text-lg font-bold text-white mb-2">Готовим запуск за вас</h3>
+        <p class="text-muted text-sm leading-relaxed">Пришлите домен, запросы и регион — мы настроим кабинет и передадим готовый проект.</p>
       </div>
 
       <!-- 5 -->
-      <div class="card-dark animate-fade-up delay-5 lg:col-span-1 md:col-span-2">
-        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-4 text-2xl">
-          🤝
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Поддержка со всем поможет</h3>
-        <p class="text-muted text-sm leading-relaxed">В кабинете есть инструкции по каждому шагу. Если что-то непонятно — пишите, разберём вместе: от подбора запросов до чтения статистики.</p>
+      <div class="card-glass animate-fade-up delay-5 lg:col-span-1 md:col-span-2">
+        <div class="text-3xl mb-4">🤝</div>
+        <h3 class="text-lg font-bold text-white mb-2">Помощь на каждом шагу</h3>
+        <p class="text-muted text-sm leading-relaxed">Инструкции в кабинете и живая поддержка в Telegram — разберём всё, от подбора запросов до анализа статистики.</p>
       </div>
 
     </div>
@@ -491,9 +584,9 @@
 <section id="calc" class="py-20 px-6 border-t border-white/5">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-12">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Калькулятор</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-3">Посчитайте свой объём</h2>
-      <p class="text-muted mt-4">Подвиньте сумму пополнения — увидите цену клика и сколько переходов получит сайт.</p>
+      <span class="badge-cyan">Калькулятор</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-4">Сколько трафика получите за свой бюджет?</h2>
+      <p class="text-muted mt-3">Подвиньте ползунок — увидите цену клика и количество переходов</p>
     </div>
 
     <!-- Калькулятор -->
@@ -501,24 +594,24 @@
 
       <!-- Быстрые кнопки -->
       <div class="mb-6">
-        <div class="text-sm font-semibold text-muted mb-3">Сумма пополнения</div>
+        <div class="text-sm font-semibold text-muted mb-3">Быстрый выбор суммы</div>
         <div class="flex flex-wrap gap-2">
-          <button class="bopt px-4 py-2 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 text-white hover:border-cyan/50 transition" data-s="1000" onclick="setBudget(1000)">1 000 ₽</button>
-          <button class="bopt px-4 py-2 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 text-white hover:border-cyan/50 transition" data-s="50000" onclick="setBudget(50000)">50 000 ₽</button>
-          <button class="bopt px-4 py-2 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 text-white hover:border-cyan/50 transition" data-s="100000" onclick="setBudget(100000)">100 000 ₽</button>
-          <button class="bopt px-4 py-2 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 text-white hover:border-cyan/50 transition" data-s="150000" onclick="setBudget(150000)">150 000 ₽</button>
-          <button class="bopt px-4 py-2 rounded-lg text-sm font-semibold border border-white/10 bg-white/5 text-white hover:border-cyan/50 transition" data-s="200000" onclick="setBudget(200000)">200 000 ₽</button>
+          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="1000" onclick="setBudget(1000)">1 000 ₽</button>
+          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="50000" onclick="setBudget(50000)">50 000 ₽</button>
+          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="100000" onclick="setBudget(100000)">100 000 ₽</button>
+          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="150000" onclick="setBudget(150000)">150 000 ₽</button>
+          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="200000" onclick="setBudget(200000)">200 000 ₽</button>
         </div>
       </div>
 
       <!-- Ползунок -->
       <div class="mb-8">
         <div class="flex justify-between items-center mb-3">
-          <span class="text-white font-medium">Точная сумма</span>
+          <span class="text-white font-medium">Ваш бюджет</span>
           <span class="text-2xl font-bold text-cyan" id="budgetDisplay">1 000 ₽</span>
         </div>
-        <input type="range" min="1000" max="250000" step="1000" value="1000" class="slider-cyan" id="budgetSlider" oninput="setBudget(+this.value, true)" />
-        <div class="flex justify-between text-xs text-muted mt-1">
+        <input type="range" min="1000" max="250000" step="1000" value="1000" class="slider-neon" id="budgetSlider" oninput="setBudget(+this.value, true)" />
+        <div class="flex justify-between text-xs text-muted mt-1.5">
           <span>1 000 ₽</span>
           <span>250 000 ₽</span>
         </div>
@@ -528,558 +621,5 @@
       <div class="grid md:grid-cols-3 gap-4">
         
         <div class="bg-deep rounded-xl p-5 border border-white/5">
-          <div class="text-sm text-muted">Пополнение</div>
-          <div class="text-xl font-bold text-white mt-1" id="resultDeposit">1 000 ₽</div>
-        </div>
-
-        <div class="bg-deep rounded-xl p-5 border border-white/5">
-          <div class="text-sm text-muted">Цена клика</div>
-          <div class="text-xl font-bold text-cyan mt-1" id="resultCpc">0.40 ₽</div>
-        </div>
-
-        <div class="bg-deep rounded-xl p-5 border border-cyan/20 bg-cyan/5">
-          <div class="text-sm text-muted">Переходов на сайт</div>
-          <div class="text-xl font-bold text-white mt-1" id="resultClicks">2 500</div>
-        </div>
-
-      </div>
-
-      <!-- Экономия -->
-      <div class="mt-5 text-sm text-muted bg-deep/50 rounded-xl p-4 border border-white/5" id="savingsBlock">
-        Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.
-      </div>
-
-      <!-- Бонус -->
-      <div class="mt-5 flex items-center gap-3 bg-cyan/5 rounded-xl p-4 border border-cyan/20">
-        <span class="text-2xl">🎁</span>
-        <span class="text-sm text-muted"><span class="text-white font-semibold">Новичкам:</span> при первом запуске к вашему балансу добавится бонус 500 ₽ — это ещё примерно <span class="text-cyan font-semibold">+1 250 переходов</span> сверху.</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ТАРИФЫ -->
-<!-- ============================================================ -->
-<section id="pricing" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Тарифы</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-3">Тарифная сетка</h2>
-      <p class="text-muted mt-4">Чем больше пополнение, тем ниже цена клика</p>
-    </div>
-
-    <div class="bg-slate rounded-2xl overflow-hidden border border-white/5">
-      <div class="grid grid-cols-2 font-semibold text-sm text-muted border-b border-white/5 px-6 py-4">
-        <div>Объём пополнения</div>
-        <div class="text-right">Цена за клик</div>
-      </div>
-
-      <div class="divide-y divide-white/5">
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/5 transition" id="tier-0">
-          <div><span class="text-white font-semibold">Базовый</span> <span class="text-muted text-xs">(от 1 000 ₽)</span></div>
-          <div class="text-right font-bold text-cyan">0,40 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/5 transition" id="tier-50">
-          <div><span class="text-white font-semibold">от 50 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,35 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/5 transition" id="tier-100">
-          <div><span class="text-white font-semibold">от 100 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,20 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/5 transition" id="tier-150">
-          <div><span class="text-white font-semibold">от 150 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,17 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/5 transition" id="tier-200">
-          <div><span class="text-white font-semibold">от 200 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,15 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm bg-cyan/5 border-t border-cyan/20" id="tier-250">
-          <div><span class="text-white font-semibold">от 250 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">по договорённости</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-5 text-sm text-muted text-center">
-      Для крупных пополнений действуют индивидуальные условия — напишите, обсудим ваш объём. 
-      <a href="https://t.me/metrichit_bot" target="_blank" class="text-cyan hover:text-white transition no-underline">@metrichit_bot</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- КАК НАЧАТЬ -->
-<!-- ============================================================ -->
-<section id="how" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Запуск</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-3">Как начать</h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-5">
-      
-      <div class="card-dark flex gap-4 items-start animate-fade-up delay-1">
-        <div class="w-10 h-10 rounded-full bg-cyan/10 border border-cyan/20 flex items-center justify-center font-bold text-cyan shrink-0">1</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Регистрация</h4>
-          <p class="text-muted text-sm">Кабинет — <a href="#" class="text-cyan hover:text-white transition no-underline">lk.metrichit.ru</a>, ссылка закреплена в Telegram-профиле.</p>
-        </div>
-      </div>
-
-      <div class="card-dark flex gap-4 items-start animate-fade-up delay-2">
-        <div class="w-10 h-10 rounded-full bg-cyan/10 border border-cyan/20 flex items-center justify-center font-bold text-cyan shrink-0">2</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Данные проекта</h4>
-          <p class="text-muted text-sm">Пришлите домен, ключевые запросы, регион и цель — что хотите получить.</p>
-        </div>
-      </div>
-
-      <div class="card-dark flex gap-4 items-start animate-fade-up delay-3">
-        <div class="w-10 h-10 rounded-full bg-cyan/10 border border-cyan/20 flex items-center justify-center font-bold text-cyan shrink-0">3</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Настройка</h4>
-          <p class="text-muted text-sm">Подготовим кабинет, активируем бонус 500 ₽ и настроим тестовый запуск.</p>
-        </div>
-      </div>
-
-      <div class="card-dark flex gap-4 items-start animate-fade-up delay-4">
-        <div class="w-10 h-10 rounded-full bg-cyan/10 border border-cyan/20 flex items-center justify-center font-bold text-cyan shrink-0">4</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Контроль</h4>
-          <p class="text-muted text-sm">Передадим доступ — динамика кликов и расход видны в кабинете.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ЧТО ВАЖНО ЗНАТЬ -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-slate rounded-2xl p-8 border border-cyan/10">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="text-2xl">📌</span>
-        <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Важно знать заранее</span>
-      </div>
-      <ul class="space-y-3 text-muted text-sm">
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0">•</span>
-          <span><span class="text-white font-medium">Безопасность:</span> продвижение строится на качественном трафике, объём наращиваем постепенно — старт с небольшого теста, масштабирование после первых результатов.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0">•</span>
-          <span><span class="text-white font-medium">Начинаем с теста:</span> сначала смотрим, как ниша откликается на продвижение, и только потом масштабируем объём.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0">•</span>
-          <span><span class="text-white font-medium">Скорость результата:</span> зависит от ниши, конкуренции и состояния сайта. Первый шаг — тест от 1 000 ₽.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0">•</span>
-          <span><span class="text-white font-medium">Ссылка на кабинет:</span> актуальная ссылка всегда закреплена в описании нашего Telegram-профиля.</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- КОМАНДА -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-slate rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-64 h-64 bg-cyan/5 rounded-full blur-[80px] pointer-events-none"></div>
-      <div class="relative">
-        <span class="inline-block text-cyan text-xs font-semibold uppercase tracking-[0.2em] border border-cyan/20 rounded-full px-4 py-1.5 mb-4">20+ лет в разработке</span>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">Кто делает сервис</h2>
-        <p class="text-muted text-base leading-relaxed max-w-2xl">
-          MetricHit создала команда специалистов, которые больше двадцати лет занимаются разработкой. 
-          Мы привыкли оставаться за кадром и просто делать качественные продукты.
-        </p>
-        <p class="text-muted text-base leading-relaxed mt-4 max-w-2xl">
-          Технология полностью наша: мы развиваем её сами и продаём напрямую, без посредников. 
-          Отсюда и цены — вы платите разработчику, без чужих наценок.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Ещё направления</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-3">Чем ещё можем быть полезны</h2>
-      <p class="text-muted mt-3">Помимо поведенческих факторов берём смежные задачи. Стоимость зависит от объёма — напишите, обсудим.</p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">🛠</div>
-        <h4 class="font-bold text-white text-sm mb-1">Разработка сайтов</h4>
-        <p class="text-muted text-xs">Лендинги, корпоративные сайты, магазины</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">📈</div>
-        <h4 class="font-bold text-white text-sm mb-1">SEO-оптимизация</h4>
-        <p class="text-muted text-xs">Техническая база, структура, тексты</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">🎯</div>
-        <h4 class="font-bold text-white text-sm mb-1">Яндекс Директ</h4>
-        <p class="text-muted text-xs">Настройка и ведение кампаний</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">🌍</div>
-        <h4 class="font-bold text-white text-sm mb-1">Google Ads</h4>
-        <p class="text-muted text-xs">Запуск и оптимизация</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">📣</div>
-        <h4 class="font-bold text-white text-sm mb-1">Таргет ВКонтакте</h4>
-        <p class="text-muted text-xs">Подбор аудиторий, креативы</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">✍️</div>
-        <h4 class="font-bold text-white text-sm mb-1">Telegram-каналы</h4>
-        <p class="text-muted text-xs">Контент-план, посты, оформление</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">🤖</div>
-        <h4 class="font-bold text-white text-sm mb-1">GEO-оптимизация</h4>
-        <p class="text-muted text-xs">Продвижение в нейросетях и ИИ-поиске</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/20 transition">
-        <div class="text-3xl mb-3">⚙️</div>
-        <h4 class="font-bold text-white text-sm mb-1">Автоматизации</h4>
-        <p class="text-muted text-xs">Боты, интеграции, внутренние инструменты</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ОТЗЫВЫ -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em">Отзывы</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-3">Что говорят пользователи</h2>
-      <p class="text-muted mt-3">Скрины из нашего канала: благодарности и рост позиций по реальным проектам.</p>
-    </div>
-
-    <div class="carousel-wrap relative">
-      <button class="carousel-btn prev" onclick="scrollCarousel(-1)" aria-label="Назад">‹</button>
-      <div class="carousel-track" id="carouselTrack">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'%3E%3Crect width='400' height='280' fill='%231E2538'/%3E%3Ctext x='40' y='140' font-family='Inter' font-size='20' fill='%2394A3B8'%3EОтзыв пользователя%3C/text%3E%3C/svg%3E" alt="Отзыв пользователя" loading="lazy" onclick="openLightbox(this.src)" />
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'%3E%3Crect width='400' height='280' fill='%231E2538'/%3E%3Ctext x='40' y='140' font-family='Inter' font-size='20' fill='%2394A3B8'%3EРост позиций%3C/text%3E%3C/svg%3E" alt="Рост позиций" loading="lazy" onclick="openLightbox(this.src)" />
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'%3E%3Crect width='400' height='280' fill='%231E2538'/%3E%3Ctext x='40' y='140' font-family='Inter' font-size='20' fill='%2394A3B8'%3EРост позиций%3C/text%3E%3C/svg%3E" alt="Рост позиций" loading="lazy" onclick="openLightbox(this.src)" />
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280' viewBox='0 0 400 280'%3E%3Crect width='400' height='280' fill='%231E2538'/%3E%3Ctext x='40' y='140' font-family='Inter' font-size='20' fill='%2394A3B8'%3EБлагодарность%3C/text%3E%3C/svg%3E" alt="Благодарность" loading="lazy" onclick="openLightbox(this.src)" />
-      </div>
-      <button class="carousel-btn next" onclick="scrollCarousel(1)" aria-label="Вперёд">›</button>
-    </div>
-
-    <div class="mt-6 flex flex-wrap gap-4 text-sm text-muted">
-      <a href="#" class="text-cyan hover:text-white transition no-underline">📱 Все отзывы в Telegram →</a>
-      <a href="#" class="text-cyan hover:text-white transition no-underline">📢 Наш канал →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- FAQ -->
-<!-- ============================================================ -->
-<section id="faq" class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em">Вопросы и ответы</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-3">Частые вопросы</h2>
-    </div>
-
-    <details class="faq-item">
-      <summary>Почему у вас цена ниже, чем у конкурентов?</summary>
-      <div class="faq-answer">Потому что вы покупаете напрямую у разработчиков. Мы создаём и развиваем технологию сами. Убирая посредника, вы получаете ту же технологию по базовой цене. Чем больше пополнение, тем ниже цена клика — вплоть до индивидуальных условий от 250 000 ₽.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Это безопасно для сайта?</summary>
-      <div class="faq-answer">Мы работаем на качественном трафике: посетители приходят из поиска Яндекса по вашему запросу и ведут себя как обычные заинтересованные пользователи. Объём наращиваем постепенно, без резких всплесков, а старт всегда с небольшого теста.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Как быстро будет результат?</summary>
-      <div class="faq-answer">Зависит от ниши, конкуренции и состояния сайта. Первый шаг — тест от 1 000 ₽: динамику кликов вы видите в кабинете сразу, а по движению запросов в выдаче сами решаете, масштабировать ли объём.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Что нужно от меня для старта?</summary>
-      <div class="faq-answer">Четыре вещи: домен сайта, ключевые запросы, регион продвижения и цель. Дальше всё сделаем сами — подготовим кабинет, настроим проект, активируем бонус 500 ₽ и передадим доступ.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Могу ли я остановиться в любой момент?</summary>
-      <div class="faq-answer">Да. Абонентской платы нет, деньги списываются только за фактические клики. Пополняете баланс тогда, когда это нужно, и управляете проектами сами — без обязательств и договоров на месяцы вперёд.</div>
-    </details>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- CTA -->
-<!-- ============================================================ -->
-<section id="cta" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-slate rounded-2xl p-8 md:p-12 border border-white/5 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-cyan/5 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-72 h-72 bg-cyan/3 rounded-full blur-[80px] pointer-events-none"></div>
-      
-      <div class="relative">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Начнём с теста</h2>
-        <p class="text-muted text-base max-w-xl mb-6">
-          Зарегистрируйтесь на <a href="#" class="text-cyan hover:text-white transition no-underline">lk.metrichit.ru</a> — начислим тестовый баланс и поможем с первым запуском. 
-          Или просто пришлите в Telegram домен, запросы и регион.
-        </p>
-
-        <!-- Бонусы -->
-        <div class="flex flex-wrap gap-3 mb-6">
-          <div class="flex items-center gap-2 bg-cyan/5 rounded-full px-4 py-2 border border-cyan/20">
-            <span>🎁</span>
-            <span class="text-sm font-medium">+500 ₽ бонуса</span>
-          </div>
-          <div class="flex items-center gap-2 bg-cyan/5 rounded-full px-4 py-2 border border-cyan/20">
-            <span>⚙️</span>
-            <span class="text-sm font-medium">Настройка за вас</span>
-          </div>
-          <div class="flex items-center gap-2 bg-cyan/5 rounded-full px-4 py-2 border border-cyan/20">
-            <span>📊</span>
-            <span class="text-sm font-medium">Кабинет с нуля</span>
-          </div>
-        </div>
-
-        <!-- Кнопки -->
-        <div class="flex flex-wrap gap-4 mb-6">
-          <a href="https://t.me/metrichit_bot" target="_blank" class="px-8 py-4 font-bold rounded-xl btn-cyan-glow no-underline inline-flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-            Написать в Telegram
-          </a>
-          <button onclick="window.print()" class="px-8 py-4 text-lg font-medium rounded-xl btn-cyan-outline no-underline">
-            ↓ Скачать PDF
-          </button>
-        </div>
-
-        <!-- Промокод -->
-        <div class="flex flex-wrap items-center gap-3 bg-cyan/5 rounded-xl p-4 border border-cyan/20 max-w-xl">
-          <span class="text-sm text-muted">🔎 Промокод</span>
-          <span class="promo-code" onclick="copyPromo()" title="Нажмите, чтобы скопировать">HIT-2026</span>
-          <span class="text-sm text-muted">— дополнительно 3 000 кликов на тест</span>
-        </div>
-
-        <!-- Контакты -->
-        <div class="mt-6 flex flex-wrap gap-4 text-sm text-muted">
-          <span><span class="text-white font-medium">Telegram:</span> <a href="https://t.me/metrichit_bot" target="_blank" class="text-cyan hover:text-white transition no-underline">@metrichit_bot</a></span>
-          <span><span class="text-white font-medium">Кабинет:</span> <a href="#" class="text-cyan hover:text-white transition no-underline">lk.metrichit.ru</a></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- FOOTER -->
-<!-- ============================================================ -->
-<footer class="py-10 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
-    
-    <div class="text-xl font-extrabold tracking-tight">
-      <span class="logo-metric">Metric</span><span class="logo-hit">Hit</span>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-6 text-muted">
-      <a href="#start" class="hover:text-white transition no-underline">Условия</a>
-      <a href="#calc" class="hover:text-white transition no-underline">Калькулятор</a>
-      <a href="#pricing" class="hover:text-white transition no-underline">Тарифы</a>
-      <a href="#how" class="hover:text-white transition no-underline">Как начать</a>
-      <a href="#faq" class="hover:text-white transition no-underline">FAQ</a>
-      <a href="#" class="hover:text-white transition no-underline">Документация</a>
-    </div>
-
-    <a href="https://t.me/metrichit_bot" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan/10 border border-cyan/20 text-cyan text-sm font-semibold hover:bg-cyan/20 transition no-underline">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-      Telegram-бот
-    </a>
-
-  </div>
-
-  <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/5 text-center text-xs text-muted/50">
-    © 2026 MetricHit. Все права защищены. 
-    <span class="block md:inline mt-2 md:mt-0">Сервис продвижения сайтов поведенческими факторами.</span>
-  </div>
-</footer>
-
-<!-- ============================================================ -->
-<!-- ЛАЙТБОКС -->
-<!-- ============================================================ -->
-<div id="lightbox" onclick="closeLightbox()">
-  <img id="lightboxImg" src="" alt="Увеличенное изображение" />
-</div>
-
-<!-- ============================================================ -->
-<!-- JAVASCRIPT -->
-<!-- ============================================================ -->
-<script>
-  // ===== МОБИЛЬНОЕ МЕНЮ =====
-  function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
-  }
-
-  // ===== КАЛЬКУЛЯТОР =====
-  const TIERS = [
-    { min: 0, max: 49999, price: 0.40, label: 'Базовый' },
-    { min: 50000, max: 99999, price: 0.35, label: 'от 50 000 ₽' },
-    { min: 100000, max: 149999, price: 0.20, label: 'от 100 000 ₽' },
-    { min: 150000, max: 199999, price: 0.17, label: 'от 150 000 ₽' },
-    { min: 200000, max: 249999, price: 0.15, label: 'от 200 000 ₽' },
-    { min: 250000, max: Infinity, price: null, label: 'от 250 000 ₽' },
-  ];
-
-  function formatNumber(num) {
-    return Math.round(num).toLocaleString('ru-RU');
-  }
-
-  function getTier(budget) {
-    for (const tier of TIERS) {
-      if (budget >= tier.min && budget <= tier.max) return tier;
-    }
-    return TIERS[TIERS.length - 1];
-  }
-
-  function setBudget(value, fromSlider) {
-    const budget = Math.round(value);
-    
-    // Обновляем ползунок
-    if (!fromSlider) {
-      document.getElementById('budgetSlider').value = budget;
-    }
-    
-    // Обновляем отображение
-    document.getElementById('budgetDisplay').textContent = formatNumber(budget) + ' ₽';
-    
-    // Подсвечиваем быстрые кнопки
-    document.querySelectorAll('.bopt').forEach(btn => {
-      const val = parseInt(btn.dataset.s);
-      btn.style.borderColor = val === budget ? 'rgba(0, 240, 255, 0.5)' : 'rgba(255,255,255,0.1)';
-      btn.style.background = val === budget ? 'rgba(0, 240, 255, 0.15)' : 'rgba(255,255,255,0.05)';
-    });
-
-    // Получаем тариф
-    const tier = getTier(budget);
-    
-    // Результаты
-    document.getElementById('resultDeposit').textContent = formatNumber(budget) + ' ₽';
-    
-    if (tier.price === null) {
-      document.getElementById('resultCpc').textContent = 'обсудим';
-      document.getElementById('resultClicks').textContent = 'ещё выгоднее';
-      document.getElementById('savingsBlock').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/metrichit_bot" target="_blank" class="text-cyan hover:text-white transition">@metrichit_bot</a>.';
-      return;
-    }
-
-    const clicks = budget / tier.price;
-    document.getElementById('resultCpc').textContent = tier.price.toFixed(2).replace('.', ',') + ' ₽';
-    document.getElementById('resultClicks').textContent = formatNumber(clicks);
-
-    // Экономия
-    if (tier.price < 0.40) {
-      const baseClicks = budget / 0.40;
-      const extra = clicks - baseClicks;
-      document.getElementById('savingsBlock').innerHTML = 
-        'Скидка от объёма: на базовой цене 0,40 ₽ этих денег хватило бы на <span class="text-white font-semibold">' + 
-        formatNumber(baseClicks) + 
-        '</span> переходов, на вашем объёме — на <span class="text-cyan font-semibold">' + 
-        formatNumber(extra) + 
-        '</span> больше.';
-    } else {
-      document.getElementById('savingsBlock').innerHTML = 
-        'Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.';
-    }
-  }
-
-  // ===== КАРУСЕЛЬ =====
-  function scrollCarousel(dir) {
-    const track = document.getElementById('carouselTrack');
-    const scrollAmount = track.clientWidth * 0.7;
-    track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
-  }
-
-  // ===== ЛАЙТБОКС =====
-  function openLightbox(src) {
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    img.src = src;
-    lb.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    const lb = document.getElementById('lightbox');
-    lb.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // ===== ПРОМОКОД =====
-  function copyPromo() {
-    const el = document.querySelector('.promo-code');
-    const text = el.textContent.trim();
-    
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(() => {
-        el.textContent = '✓ СКОПИРОВАНО';
-        setTimeout(() => { el.textContent = text; }, 1500);
-      });
-    } else {
-      // Fallback
-      const range = document.createRange();
-      range.selectNode(el);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      el.textContent = '✓ СКОПИРОВАНО';
-      setTimeout(() => { el.textContent = text; }, 1500);
-    }
-  }
-
-  // ===== ИНИЦИАЛИЗАЦИЯ =====
-  document.addEventListener('DOMContentLoaded', () => {
-    setBudget(1000);
-  });
-</script>
-
-</body>
-</html>
+          <div class="text-xs text-muted font-medium uppercase tracking-wide">Ваш бюджет</div>
+          <div class="text-xl font-bold text-white mt-1.5" id="resultDeposit">1 000 ₽</
