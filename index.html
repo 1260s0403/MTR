@@ -3,88 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MetricHit — Интро</title>
+  <title>MetricHit</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: #0B0F19;
-      overflow: hidden;
       font-family: 'Inter', sans-serif;
+      overflow: hidden;
       height: 100vh;
-      width: 100vw;
     }
 
-    /* Canvas на весь экран */
-    #introCanvas {
+    /* ===== ИНТРО-ЭКРАН ===== */
+    #intro {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 100;
-      display: block;
-    }
-
-    /* Логотип (будет собран из частиц, но скрыт) */
-    #logoReveal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 101;
-    }
-
-    /* Основной контент (появится после анимации) */
-    #mainContent {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: none;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 50;
       background: #0B0F19;
-      color: #FFFFFF;
-      font-size: 24px;
-      font-weight: 300;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    #mainContent.visible {
-      display: flex;
+    #intro.hidden {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none;
     }
 
-    #mainContent .logo-small {
+    /* ===== ВЗРЫВ ===== */
+    #explosion {
       position: absolute;
-      top: 30px;
-      left: 30px;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -1px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00F0FF 0%, rgba(0, 240, 255, 0.4) 40%, transparent 70%);
+      opacity: 0;
+      transform: scale(0);
+      transition: none;
     }
-    #mainContent .logo-small span:first-child { color: #FFFFFF; }
-    #mainContent .logo-small span:last-child { color: #00F0FF; }
 
-    #mainContent h1 {
-      font-size: clamp(32px, 5vw, 64px);
+    #explosion.active {
+      animation: explode 1.2s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      20% {
+        opacity: 1;
+        transform: scale(0.5);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(2);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(3);
+      }
+    }
+
+    /* ===== ПЫЛИНКИ ===== */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00F0FF;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sparkle.fly {
+      animation: sparkleFly 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes sparkleFly {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+      }
+    }
+
+    /* ===== ЛОГОТИП ===== */
+    #logoContainer {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    #logoContainer.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #logoContainer .letter {
+      font-size: 80px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      display: inline-block;
+    }
+
+    #logoContainer .letter.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #logoContainer .letter.metric {
+      color: #FFFFFF;
+    }
+
+    #logoContainer .letter.hit {
+      color: #00F0FF;
+      text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    }
+
+    /* Специальный стиль для буквы H (она появляется первой) */
+    #logoContainer .letter.h-first {
+      color: #00F0FF;
+      text-shadow: 0 0 40px rgba(0, 240, 255, 0.5);
+      font-size: 90px;
+    }
+
+    /* ===== ЛОГОТИП УЛЕТАЕТ ВВЕРХ ===== */
+    #logoContainer.fly-up {
+      transform: translateY(-120px) scale(0.7);
+      opacity: 0.6;
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
+    }
+
+    /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+    #main {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px;
+      opacity: 0;
+      transition: opacity 0.8s ease 0.3s;
+      pointer-events: none;
+    }
+
+    #main.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #main h1 {
+      font-size: clamp(32px, 5vw, 56px);
       font-weight: 800;
       text-align: center;
-      max-width: 700px;
       line-height: 1.1;
+      max-width: 700px;
+      color: #FFFFFF;
     }
-    #mainContent h1 .highlight {
+
+    #main h1 .highlight {
       color: #00F0FF;
     }
-    #mainContent p {
+
+    #main p {
       color: #94A3B8;
-      font-size: clamp(16px, 2vw, 24px);
-      margin-top: 20px;
+      font-size: clamp(16px, 1.5vw, 22px);
+      margin-top: 16px;
+      text-align: center;
+      max-width: 500px;
     }
-    #mainContent .btn {
+
+    #main .btn {
       margin-top: 32px;
       padding: 16px 48px;
       border-radius: 12px;
@@ -94,477 +199,225 @@
       font-size: 18px;
       border: none;
       cursor: pointer;
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.3s, transform 0.2s;
     }
-    #mainContent .btn:hover {
+
+    #main .btn:hover {
       box-shadow: 0 0 50px rgba(0, 240, 255, 0.4);
+      transform: translateY(-2px);
     }
 
-    .content-center {
-      text-align: center;
-    }
-
-    /* Простой спиннер на время загрузки */
-    #loading {
+    /* Логотип в шапке основного контента */
+    .header-logo {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #0B0F19;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      color: #00F0FF;
-      font-size: 18px;
+      top: 24px;
+      left: 32px;
+      z-index: 101;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      opacity: 0;
+      transition: opacity 0.6s ease 0.8s;
     }
-    #loading.hidden {
-      display: none;
+
+    .header-logo.visible {
+      opacity: 1;
+    }
+
+    .header-logo span:first-child { color: #FFFFFF; }
+    .header-logo span:last-child { color: #00F0FF; }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 600px) {
+      #logoContainer .letter {
+        font-size: 40px;
+        letter-spacing: -2px;
+      }
+      #logoContainer .letter.h-first {
+        font-size: 48px;
+      }
+      #logoContainer.fly-up {
+        transform: translateY(-60px) scale(0.6);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Загрузочный экран -->
-  <div id="loading">Загрузка...</div>
-
-  <!-- Canvas для анимации -->
-  <canvas id="introCanvas"></canvas>
-
-  <!-- Скрытый логотип (для справки) -->
-  <svg id="logoReveal" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-    <g id="logoGroup">
-      <polygon fill="#FFFFFF" points="478.946,246.745 480.006,465.48 366.43,662.443 279.237,662.443 158.753,462.444 160.931,753.253 39.009,753.253 39.009,246.745 167.084,246.745 327.676,515.018"/>
-      <polygon fill="#00F0FF" points="510.201,753.255 510.201,246.747 643.339,246.747 643.339,429.813 827.853,429.813 827.853,246.747 960.992,246.747 960.992,753.255 827.853,753.255 827.853,551.376 643.339,551.376 643.339,753.255"/>
-    </g>
-  </svg>
-
-  <!-- Основной контент (появится после интро) -->
-  <div id="mainContent">
-    <div class="logo-small">
-      <span>Metric</span><span>Hit</span>
+  <!-- ===== ИНТРО ===== -->
+  <div id="intro">
+    <!-- Взрыв -->
+    <div id="explosion"></div>
+    <!-- Логотип (собирается из букв) -->
+    <div id="logoContainer">
+      <!-- Буквы будут добавлены через JS -->
     </div>
-    <div class="content-center">
-      <h1>Увеличиваем органический<br>трафик из <span class="highlight">Яндекса</span></h1>
-      <p>Реальные пользователи. Прозрачная модель. Без абонплаты.</p>
-      <button class="btn">Начать тест</button>
-    </div>
+  </div>
+
+  <!-- ===== ЛОГОТИП В ШАПКЕ ===== -->
+  <div class="header-logo" id="headerLogo">
+    <span>Metric</span><span>Hit</span>
+  </div>
+
+  <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+  <div id="main">
+    <h1>Увеличиваем органический<br>трафик из <span class="highlight">Яндекса</span></h1>
+    <p>Реальные пользователи. Прозрачная модель. Без абонплаты.</p>
+    <button class="btn">Начать тест</button>
   </div>
 
   <script>
     // ================================================================
-    //  1. НАСТРОЙКИ
+    //  КОНФИГ
     // ================================================================
     const CONFIG = {
-      // Цвета
-      bgColor: '#0B0F19',
-      accentColor: '#00F0FF',
-      whiteColor: '#FFFFFF',
-      
-      // Взрыв
-      explosionDuration: 1000,      // мс
-      explosionRadius: 300,         // пикселей
-      
-      // Пылинки
-      particleCount: 250,
-      particleSize: 3,              // пикселей
-      particleSpread: 500,          // пикселей
-      particleSpeed: 0.08,          // замедление
-      
-      // Сборка
-      collectDuration: 1200,        // мс
-      
-      // Появление букв
-      letterSlideDuration: 600,     // мс
-      
-      // Отъезд логотипа
-      logoFlyDuration: 900,         // мс
+      // Время между появлением букв (мс)
+      letterDelay: 80,
+      // Время до начала сборки после взрыва (мс)
+      collectDelay: 1800,
+      // Время до отъезда логотипа (мс)
+      flyDelay: 4200,
+      // Время до появления контента (мс)
+      contentDelay: 5200,
     };
 
     // ================================================================
-    //  2. CANVAS + КОНТЕКСТ
+    //  СОЗДАНИЕ ЛОГОТИПА ИЗ БУКВ
     // ================================================================
-    const canvas = document.getElementById('introCanvas');
-    const ctx = canvas.getContext('2d');
-    let W, H;
+    function createLogo() {
+      const container = document.getElementById('logoContainer');
+      const text = 'MetricHit';
+      const html = [];
 
-    function resizeCanvas() {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+      // Разбиваем на буквы
+      const letters = text.split('');
 
-    // ================================================================
-    //  3. ЗАГРУЗКА И РАЗБОР SVG ЛОГОТИПА
-    // ================================================================
-    let logoPoints = [];
+      for (let i = 0; i < letters.length; i++) {
+        const char = letters[i];
+        const isMetric = i < 6; // M e t r i c
+        const isH = i === 6; // H (первая буква Hit)
+        const className = isH ? 'letter h-first' : (isMetric ? 'letter metric' : 'letter hit');
+        html.push(`<span class="${className}" data-index="${i}">${char}</span>`);
+      }
 
-    function parseSvgToPoints() {
-      const svgEl = document.getElementById('logoReveal');
-      const pathData = svgEl.querySelectorAll('polygon');
-      const points = [];
-
-      pathData.forEach(poly => {
-        const pointsAttr = poly.getAttribute('points');
-        const pairs = pointsAttr.trim().split(/\s+/);
-        for (let i = 0; i < pairs.length; i++) {
-          const [x, y] = pairs[i].split(',').map(Number);
-          points.push({ x, y });
-        }
-      });
-
-      // Нормализуем координаты к центру (0,0) и масштабируем
-      // SVG размер 1000x1000, центр в 500,500
-      const cx = 500, cy = 500;
-      const scale = Math.min(W, H) / 1200; // адаптивный размер
-
-      logoPoints = points.map(p => ({
-        x: (p.x - cx) * scale,
-        y: (p.y - cy) * scale,
-      }));
-
-      console.log(`Загружено ${logoPoints.length} точек для логотипа`);
+      container.innerHTML = html.join('');
     }
 
-    // Загружаем точки после рендера
-    setTimeout(parseSvgToPoints, 50);
+    // ================================================================
+    //  СОЗДАНИЕ ПЫЛИНОК
+    // ================================================================
+    function createSparkles() {
+      const container = document.getElementById('intro');
+      const count = 40;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
-    // ================================================================
-    //  4. КЛАСС ЧАСТИЦ
-    // ================================================================
-    class Particle {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.originX = x;
-        this.originY = y;
-        
-        // Для взрыва
+      for (let i = 0; i < count; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
         const angle = Math.random() * Math.PI * 2;
-        const distance = 50 + Math.random() * CONFIG.particleSpread;
-        this.targetX = x + Math.cos(angle) * distance;
-        this.targetY = y + Math.sin(angle) * distance;
-        
-        // Скорость
-        this.speed = 0.02 + Math.random() * 0.06;
-        this.progress = 0;
-        
-        // Размер
-        this.size = CONFIG.particleSize * (0.5 + Math.random() * 1);
-        
-        // Цвет (от белого к бирюзовому)
-        const mix = Math.random();
-        this.r = Math.round(255 - mix * 200);
-        this.g = Math.round(255 - mix * 100);
-        this.b = Math.round(255 - mix * 100);
-        
-        // Фаза: 'explode' → 'collect' → 'done'
-        this.phase = 'explode';
-        
-        // Для сборки
-        this.collectTarget = null;
-        this.collectProgress = 0;
-      }
-
-      // Обновление
-      update() {
-        if (this.phase === 'explode') {
-          this.progress += this.speed;
-          if (this.progress >= 1) {
-            this.progress = 1;
-            this.phase = 'idle';
-          }
-          const t = this.progress;
-          // easeOutCubic
-          const ease = 1 - Math.pow(1 - t, 3);
-          this.x = this.originX + (this.targetX - this.originX) * ease;
-          this.y = this.originY + (this.targetY - this.originY) * ease;
-        } else if (this.phase === 'collect' && this.collectTarget) {
-          this.collectProgress += 0.035;
-          if (this.collectProgress >= 1) {
-            this.collectProgress = 1;
-            this.x = this.collectTarget.x;
-            this.y = this.collectTarget.y;
-            this.phase = 'done';
-          } else {
-            const t = this.collectProgress;
-            const ease = 1 - Math.pow(1 - t, 3);
-            this.x = this.x + (this.collectTarget.x - this.x) * ease;
-            this.y = this.y + (this.collectTarget.y - this.y) * ease;
-          }
-        }
-      }
-
-      // Рендер
-      draw(ctx) {
-        const alpha = this.phase === 'done' ? 0 : 1;
-        if (alpha < 0.05) return;
-        
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
+        const distance = 150 + Math.random() * 350;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        sparkle.style.setProperty('--tx', tx + 'px');
+        sparkle.style.setProperty('--ty', ty + 'px');
+        sparkle.style.left = centerX + 'px';
+        sparkle.style.top = centerY + 'px';
+        sparkle.style.width = (4 + Math.random() * 6) + 'px';
+        sparkle.style.height = sparkle.style.width;
+        sparkle.style.background = Math.random() > 0.5 ? '#00F0FF' : '#FFFFFF';
+        container.appendChild(sparkle);
       }
     }
 
     // ================================================================
-    //  5. СИСТЕМА ЧАСТИЦ
+    //  ЗАПУСК АНИМАЦИИ
     // ================================================================
-    let particles = [];
-    let animationPhase = 'explosion'; // explosion → collect → letterSlide → logoFly → done
-    let animationStartTime = 0;
-    let logoOffsetY = 0;
-    let letterProgress = 0;
-    let hasStartedCollect = false;
-    let hasStartedLetterSlide = false;
-    let hasStartedLogoFly = false;
-    let isDone = false;
+    function startAnimation() {
+      const explosion = document.getElementById('explosion');
+      const logoContainer = document.getElementById('logoContainer');
+      const letters = logoContainer.querySelectorAll('.letter');
+      const intro = document.getElementById('intro');
+      const main = document.getElementById('main');
+      const headerLogo = document.getElementById('headerLogo');
 
-    // Создание взрыва
-    function createExplosion() {
-      const cx = W / 2;
-      const cy = H / 2;
-      
-      particles = [];
-      for (let i = 0; i < CONFIG.particleCount; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const radius = 10 + Math.random() * 60;
-        const x = cx + Math.cos(angle) * radius;
-        const y = cy + Math.sin(angle) * radius;
-        const p = new Particle(x, y);
-        // Смещаем центр взрыва
-        p.originX = cx;
-        p.originY = cy;
-        p.targetX = cx + Math.cos(angle) * (100 + Math.random() * CONFIG.particleSpread);
-        p.targetY = cy + Math.sin(angle) * (100 + Math.random() * CONFIG.particleSpread);
-        particles.push(p);
-      }
-    }
+      // ---- ШАГ 1: ВЗРЫВ (0ms) ----
+      explosion.classList.add('active');
 
-    // Начало сборки в логотип
-    function startCollect() {
-      if (hasStartedCollect) return;
-      hasStartedCollect = true;
-      
-      if (logoPoints.length === 0) {
-        // Если логотип ещё не загружен, пробуем ещё раз
-        parseSvgToPoints();
-        if (logoPoints.length === 0) {
-          // Фолбэк: простой H
-          const cx = W / 2, cy = H / 2;
-          const s = 150;
-          logoPoints = [
-            { x: cx - 40, y: cy - s }, { x: cx - 40, y: cy + s },
-            { x: cx + 40, y: cy - s }, { x: cx + 40, y: cy + s },
-            { x: cx - 60, y: cy }, { x: cx + 60, y: cy },
-          ];
-        }
-      }
+      // ---- ШАГ 2: ПЫЛИНКИ (200ms) ----
+      setTimeout(() => {
+        document.querySelectorAll('.sparkle').forEach(el => {
+          el.classList.add('fly');
+        });
+      }, 200);
 
-      // Назначаем каждой частице цель из точек логотипа
-      const targetPoints = logoPoints.slice();
-      for (let i = 0; i < particles.length; i++) {
-        const idx = i % targetPoints.length;
-        particles[i].collectTarget = {
-          x: targetPoints[idx].x + W / 2,
-          y: targetPoints[idx].y + H / 2,
-        };
-        particles[i].phase = 'collect';
-        particles[i].collectProgress = 0;
-      }
-    }
+      // ---- ШАГ 3: ПОКАЗ ЛОГОТИПА (1800ms) ----
+      setTimeout(() => {
+        logoContainer.classList.add('visible');
 
-    // ================================================================
-    //  6. ОСНОВНОЙ ЦИКЛ АНИМАЦИИ
-    // ================================================================
-    function animate(timestamp) {
-      if (!animationStartTime) {
-        animationStartTime = timestamp;
-        createExplosion();
-      }
+        // Показываем буквы с задержкой
+        letters.forEach((letter, index) => {
+          setTimeout(() => {
+            letter.classList.add('show');
+          }, index * CONFIG.letterDelay);
+        });
+      }, CONFIG.collectDelay);
 
-      const elapsed = timestamp - animationStartTime;
+      // ---- ШАГ 4: ЛОГОТИП УЛЕТАЕТ (4200ms) ----
+      setTimeout(() => {
+        logoContainer.classList.add('fly-up');
+      }, CONFIG.flyDelay);
 
-      // --- ФАЗЫ ---
-      // Взрыв: 0-1500ms
-      if (elapsed > 1500 && !hasStartedCollect) {
-        startCollect();
-      }
+      // ---- ШАГ 5: ПОЯВЛЕНИЕ КОНТЕНТА (5200ms) ----
+      setTimeout(() => {
+        intro.classList.add('hidden');
+        main.classList.add('visible');
+        headerLogo.classList.add('visible');
 
-      // Сборка: 1500-3500ms
-      if (elapsed > 3500 && !hasStartedLetterSlide) {
-        hasStartedLetterSlide = true;
-        animationPhase = 'letterSlide';
-        // Показываем логотип поверх частиц
-        document.getElementById('logoReveal').style.opacity = '1';
-      }
-
-      // Появление букв: 3500-5000ms
-      if (elapsed > 5000 && !hasStartedLogoFly) {
-        hasStartedLogoFly = true;
-        animationPhase = 'logoFly';
-      }
-
-      // Отъезд: 5000-6500ms
-      if (elapsed > 6500 && !isDone) {
-        isDone = true;
-        animationPhase = 'done';
-        // Показываем основной контент
-        document.getElementById('mainContent').classList.add('visible');
-        document.getElementById('mainContent').style.opacity = '1';
-        // Скрываем интро через секунду
+        // Убираем интро из потока через 1 секунду
         setTimeout(() => {
-          document.getElementById('introCanvas').style.opacity = '0';
-          document.getElementById('introCanvas').style.transition = 'opacity 0.8s';
-        }, 400);
-        // Убираем загрузочный экран
-        document.getElementById('loading').classList.add('hidden');
-      }
-
-      // --- ОБНОВЛЕНИЕ ЧАСТИЦ ---
-      for (const p of particles) {
-        p.update();
-      }
-
-      // --- РЕНДЕР ---
-      ctx.clearRect(0, 0, W, H);
-
-      // Фон
-      const bgGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.7);
-      if (elapsed < 1500) {
-        // Во время взрыва — бирюзовый фон
-        const intensity = Math.min(elapsed / 800, 1);
-        const r = Math.round(11 + 229 * intensity);
-        const g = Math.round(15 + 225 * intensity);
-        const b = Math.round(25 + 230 * intensity);
-        bgGrad.addColorStop(0, `rgb(${Math.min(r, 240)}, ${Math.min(g, 255)}, ${Math.min(b, 255)})`);
-        bgGrad.addColorStop(0.3, `rgb(${Math.min(r, 200)}, ${Math.min(g, 220)}, ${Math.min(b, 240)})`);
-        bgGrad.addColorStop(1, '#0B0F19');
-      } else {
-        // После взрыва — тёмный фон
-        bgGrad.addColorStop(0, '#0B0F19');
-        bgGrad.addColorStop(1, '#0B0F19');
-      }
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, W, H);
-
-      // Рисуем частицы
-      for (const p of particles) {
-        p.draw(ctx);
-      }
-
-      // --- РИСУЕМ ЛОГОТИП ИЗ ЧАСТИЦ (ЕСЛИ СОБРАН) ---
-      if (elapsed > 3500 && logoPoints.length > 0) {
-        const collected = particles.filter(p => p.phase === 'done' || p.phase === 'collect');
-        if (collected.length > 10) {
-          // Рисуем контур логотипа поверх частиц
-          ctx.save();
-          ctx.globalAlpha = Math.min((elapsed - 3500) / 500, 0.15);
-          ctx.strokeStyle = '#00F0FF';
-          ctx.lineWidth = 2;
-          ctx.shadowColor = '#00F0FF';
-          ctx.shadowBlur = 20;
-          
-          // Соединяем точки логотипа
-          const pts = logoPoints.map(p => ({ x: p.x + W/2, y: p.y + H/2 }));
-          if (pts.length > 2) {
-            ctx.beginPath();
-            ctx.moveTo(pts[0].x, pts[0].y);
-            for (let i = 1; i < pts.length; i++) {
-              ctx.lineTo(pts[i].x, pts[i].y);
-            }
-            ctx.closePath();
-            ctx.stroke();
-          }
-          ctx.restore();
-        }
-      }
-
-      // --- ЭФЕКТ "СВЕЧЕНИЯ" В ЦЕНТРЕ ---
-      if (elapsed < 2000) {
-        const glow = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, 300);
-        const alpha = Math.max(0, 1 - elapsed / 2000);
-        glow.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.4})`);
-        glow.addColorStop(0.5, `rgba(0, 240, 255, ${alpha * 0.2})`);
-        glow.addColorStop(1, 'rgba(0, 240, 255, 0)');
-        ctx.fillStyle = glow;
-        ctx.fillRect(0, 0, W, H);
-      }
-
-      // --- ЛОГОТИП (ОТЪЕЗЖАЕТ ВВЕРХ) ---
-      if (elapsed > 5000 && isDone) {
-        const progress = Math.min((elapsed - 5000) / CONFIG.logoFlyDuration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        logoOffsetY = -eased * 150;
-        
-        // Рисуем логотип вверху
-        const svgEl = document.getElementById('logoReveal');
-        const logoSvg = svgEl.cloneNode(true);
-        const scale = Math.min(W, H) / 1000 * 0.3;
-        const logoX = W/2 - 500 * scale;
-        const logoY = 40 + logoOffsetY;
-        
-        // Преобразуем SVG в изображение на канвасе
-        // (Простой вариант — рисуем текстом)
-        ctx.save();
-        ctx.globalAlpha = Math.min((elapsed - 5000) / 400, 1);
-        ctx.font = `bold ${Math.round(32 * scale * 1.5)}px Inter, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'top';
-        
-        // Metric
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillText('Metric', W/2 - 40 * scale * 0.6, 20 + logoOffsetY);
-        
-        // Hit
-        ctx.fillStyle = '#00F0FF';
-        ctx.shadowColor = '#00F0FF';
-        ctx.shadowBlur = 20;
-        ctx.fillText('Hit', W/2 + 40 * scale * 0.6, 20 + logoOffsetY);
-        ctx.shadowBlur = 0;
-        
-        ctx.restore();
-      }
-
-      // --- ИНФОРМАЦИЯ О ФАЗЕ (ДЛЯ ОТЛАДКИ, МОЖНО УБРАТЬ) ---
-      if (elapsed < 7000) {
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.font = '12px monospace';
-        ctx.fillText(`Phase: ${animationPhase} | Particles: ${particles.length} | Elapsed: ${Math.round(elapsed)}ms`, 20, H - 30);
-      }
-
-      requestAnimationFrame(animate);
+          intro.style.display = 'none';
+        }, 1000);
+      }, CONFIG.contentDelay);
     }
 
     // ================================================================
-    //  7. ЗАПУСК
+    //  ИНИЦИАЛИЗАЦИЯ
     // ================================================================
-    // Ждём загрузки SVG
-    setTimeout(() => {
-      parseSvgToPoints();
-    }, 100);
+    function init() {
+      createLogo();
+      createSparkles();
 
-    // Запускаем анимацию
-    requestAnimationFrame(animate);
+      // Небольшая задержка перед стартом
+      setTimeout(startAnimation, 300);
 
-    // Фолбэк: если анимация зависла — показать контент через 10 сек
-    setTimeout(() => {
-      if (!isDone) {
-        document.getElementById('loading').classList.add('hidden');
-        document.getElementById('mainContent').classList.add('visible');
-        document.getElementById('introCanvas').style.opacity = '0';
-        document.getElementById('introCanvas').style.transition = 'opacity 0.8s';
-        isDone = true;
+      console.log('🚀 MetricHit Intro запущен!');
+    }
+
+    // Запускаем
+    document.addEventListener('DOMContentLoaded', init);
+
+    // Перезапуск при ресайзе (обновляем позиции пылинок)
+    window.addEventListener('resize', () => {
+      // Просто пересоздаём пылинки, если они ещё не улетели
+      const sparkles = document.querySelectorAll('.sparkle:not(.fly)');
+      if (sparkles.length > 0) {
+        sparkles.forEach(el => el.remove());
+        createSparkles();
       }
-    }, 12000);
+    });
 
-    console.log('🚀 MetricHit Intro запущен!');
-    console.log(`📐 Размер канваса: ${W}x${H}`);
-    console.log(`🔹 Частиц: ${CONFIG.particleCount}`);
+    // Фолбэк: если что-то пошло не так
+    setTimeout(() => {
+      const intro = document.getElementById('intro');
+      if (!intro.classList.contains('hidden')) {
+        console.warn('⚠️ Фолбэк: принудительный показ контента');
+        intro.classList.add('hidden');
+        document.getElementById('main').classList.add('visible');
+        document.getElementById('headerLogo').classList.add('visible');
+        setTimeout(() => { intro.style.display = 'none'; }, 1000);
+      }
+    }, 8000);
   </script>
 </body>
 </html>
