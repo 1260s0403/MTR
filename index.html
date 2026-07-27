@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MetricHit — Платформа автоматизации поведенческих факторов</title>
-  <!-- Tailwind + базовые шрифты -->
+  
+  <!-- Tailwind CSS + Inter шрифт -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Доп. шрифт Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+  
   <style>
-    /* Кастомные переменные брендбука */
+    /* ===== БРЕНДБУК ===== */
     :root {
       --bg-deep: #0B0F19;
       --bg-slate: #1E2538;
@@ -19,104 +20,584 @@
       --muted: #94A3B8;
       --white: #FFFFFF;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background-color: var(--bg-deep);
       font-family: 'Inter', sans-serif;
       color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    /* Эффект неонового свечения для CTA */
+
+    /* ===== НЕОНОВОЕ СВЕЧЕНИЕ ===== */
     .btn-cyan-glow {
-      background-color: var(--cyan);
+      background: var(--cyan);
       color: var(--bg-deep);
       font-weight: 700;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
     }
     .btn-cyan-glow:hover {
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
-      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.2);
+      transform: scale(1.03);
     }
-    /* Логотип: "Hit" неоновый */
-    .logo-hit {
-      color: var(--cyan);
+
+    .btn-cyan-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      font-weight: 600;
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
-    /* Текст заголовков и подзаголовков */
-    .text-muted {
-      color: var(--muted);
+    .btn-cyan-outline:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
     }
-    /* Для ссылок навигации */
+
+    /* ===== ЛОГОТИП ===== */
+    .logo-metric { color: var(--white); font-weight: 900; }
+    .logo-hit { color: var(--cyan); font-weight: 900; }
+
+    /* ===== НАВИГАЦИЯ ===== */
     .nav-link {
       color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
       transition: color 0.2s;
+      text-decoration: none;
     }
-    .nav-link:hover {
-      color: var(--white);
+    .nav-link:hover { color: var(--white); }
+
+    /* ===== ТЕКСТЫ ===== */
+    .text-muted { color: var(--muted); }
+    .text-cyan { color: var(--cyan); }
+
+    /* ===== КАРТОЧКИ ===== */
+    .card-tech {
+      background: var(--bg-slate);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.2s;
     }
-    /* Градиент для декоративных элементов (опционально) */
-    .gradient-cyan {
-      background: linear-gradient(135deg, var(--cyan), #0088ff);
+    .card-tech:hover {
+      border-color: rgba(0, 240, 255, 0.3);
+      transform: translateY(-4px);
     }
+
+    /* ===== КАЛЬКУЛЯТОР ===== */
+    .slider-cyan {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 4px;
+      background: var(--bg-slate);
+      outline: none;
+      transition: background 0.2s;
+    }
+    .slider-cyan::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+      transition: box-shadow 0.2s;
+    }
+    .slider-cyan::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+    }
+    .slider-cyan::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      border: none;
+    }
+
+    /* ===== АНИМАЦИИ ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.7s ease both;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 768px) {
+      .nav-desktop { display: none; }
+      .nav-mobile { display: flex; }
+      .hero-title { font-size: 28px; line-height: 1.2; }
+      .hero-sub { font-size: 15px; }
+      .card-tech { padding: 20px 18px; }
+    }
+    @media (min-width: 769px) {
+      .nav-desktop { display: flex; }
+      .nav-mobile { display: none; }
+    }
+
+    /* ===== СКРОЛЛ-БАР ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 4px; }
+
+    /* Дополнительные утилиты */
+    .border-cyan { border-color: rgba(0, 240, 255, 0.2); }
+    .bg-cyan-dim { background: rgba(0, 240, 255, 0.06); }
   </style>
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
-  <header class="container mx-auto px-6 py-5 flex items-center justify-between flex-wrap">
-    <!-- Логотип -->
-    <div class="text-2xl font-extrabold tracking-tight">
-      <span class="text-white">Metric</span><span class="logo-hit">Hit</span>
-    </div>
+<!-- ============================================================ -->
+<!-- HEADER -->
+<!-- ============================================================ -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/90 backdrop-blur-xl border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <!-- Навигация (центр) – скрываем на мобильных, можно добавить бургер позже -->
-    <nav class="hidden md:flex space-x-8 text-sm font-medium">
-      <a href="#" class="nav-link">Технологии</a>
-      <a href="#" class="nav-link">Функции</a>
-      <a href="#" class="nav-link">Тарифы</a>
-      <a href="#" class="nav-link">API</a>
+    <!-- Логотип -->
+    <a href="#" class="text-2xl font-extrabold tracking-tight no-underline">
+      <span class="logo-metric">Metric</span><span class="logo-hit">Hit</span>
+    </a>
+
+    <!-- Десктопная навигация -->
+    <nav class="nav-desktop items-center gap-8">
+      <a href="#tech" class="nav-link">Технологии</a>
+      <a href="#features" class="nav-link">Функции</a>
+      <a href="#pricing" class="nav-link">Тарифы</a>
+      <a href="#api" class="nav-link">API</a>
     </nav>
 
     <!-- Кнопки справа -->
-    <div class="flex items-center space-x-4">
-      <a href="#" class="text-sm text-muted hover:text-white transition">[ Войти ]</a>
-      <a href="#" class="px-5 py-2.5 text-sm font-bold rounded-lg btn-cyan-glow">Начать тест</a>
+    <div class="flex items-center gap-4">
+      <a href="#" class="text-sm text-muted hover:text-white transition no-underline">Войти</a>
+      <a href="#" class="px-5 py-2.5 text-sm font-bold rounded-lg btn-cyan-glow no-underline">Начать тест</a>
     </div>
-  </header>
 
-  <!-- ========== HERO SECTION ========== -->
-  <section class="container mx-auto px-6 py-16 md:py-24 flex flex-col items-center text-center">
-    <!-- Заголовок H1 -->
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight max-w-4xl">
-      Платформа автоматизации поведенческих факторов<br />
-      <span class="text-muted text-3xl md:text-4xl lg:text-5xl font-semibold">для закрытого пула SEO-агентств и инхаус-команд</span>
+    <!-- Мобильное меню (бургер) — упрощённо, можно потом добавить -->
+    <button class="nav-mobile text-white text-2xl" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================================ -->
+<section class="min-h-screen flex items-center justify-center text-center pt-32 pb-20 px-6 relative overflow-hidden">
+  
+  <!-- Фоновое свечение -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-cyan/5 rounded-full blur-[120px]"></div>
+  </div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <!-- Бейдж -->
+    <div class="inline-flex items-center gap-2 bg-cyan/10 border border-cyan/20 text-cyan text-xs font-semibold px-4 py-2 rounded-full mb-8 animate-fade-up">
+      <span class="w-2 h-2 rounded-full bg-cyan animate-pulse"></span>
+      Для SEO-агентств и инхаус-команд
+    </div>
+
+    <!-- H1 -->
+    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight animate-fade-up delay-1">
+      Платформа автоматизации<br />
+      <span class="text-cyan">поведенческих факторов</span>
     </h1>
-
-    <!-- Подзаголовок -->
-    <p class="text-muted text-base md:text-lg max-w-2xl mt-6 leading-relaxed">
-      Обход SmartCaptcha и лимитов Cloudflare без раздувания бюджета на капча-сервисы. Стабильный вывод в ТОП поисковых систем и маркетплейсов за счет 100% эмуляции человека на уровне ядра браузера.
+    <p class="hero-sub text-muted text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed animate-fade-up delay-2">
+      Обход SmartCaptcha и лимитов Cloudflare без раздувания бюджета на капча-сервисы. <br class="hidden md:block" />
+      Стабильный вывод в ТОП за счёт 100% эмуляции человека на уровне ядра браузера.
     </p>
 
-    <!-- CTA Кнопка -->
-    <div class="mt-8">
-      <a href="#" class="px-8 py-4 text-lg font-bold rounded-xl btn-cyan-glow inline-block">
+    <!-- CTA -->
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-3">
+      <a href="#" class="px-8 py-4 text-lg font-bold rounded-xl btn-cyan-glow no-underline inline-flex items-center justify-center gap-2">
         Создать аккаунт и получить тест
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#tech" class="px-8 py-4 text-lg font-medium rounded-xl btn-cyan-outline no-underline inline-flex items-center justify-center gap-2">
+        Узнать технологии
       </a>
     </div>
 
-    <!-- Микро-текст под кнопкой -->
-    <p class="text-muted text-sm mt-4 max-w-lg">
-      Входная цена клика от 25 копеек. Депозитная система без сгорания баланса.
+    <!-- Микро-УТП -->
+    <p class="text-sm text-muted/70 mt-6 animate-fade-up delay-4">
+      Входная цена клика от <span class="text-cyan font-semibold">25 копеек</span>. 
+      Депозитная система <span class="text-white font-medium">без сгорания баланса</span>.
     </p>
 
-    <!-- Небольшой декоративный индикатор (можно убрать) -->
-    <div class="mt-12 w-24 h-1 bg-cyan/30 rounded-full"></div>
-  </section>
+    <!-- Цифры -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fade-up delay-4">
+      <div>
+        <div class="text-2xl md:text-3xl font-bold text-cyan">99.7%</div>
+        <div class="text-sm text-muted">обход Cloudflare</div>
+      </div>
+      <div>
+        <div class="text-2xl md:text-3xl font-bold text-white">от 25₽</div>
+        <div class="text-sm text-muted">цена клика</div>
+      </div>
+      <div>
+        <div class="text-2xl md:text-3xl font-bold text-cyan">100%</div>
+        <div class="text-sm text-muted">эмуляция человека</div>
+      </div>
+      <div>
+        <div class="text-2xl md:text-3xl font-bold text-white">24/7</div>
+        <div class="text-sm text-muted">автоматизация</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Остальные блоки (Технологии, Калькулятор, Футер) будут добавлены позже -->
+<!-- ============================================================ -->
+<!-- TECH SPECIFICATIONS (4 карточки) -->
+<!-- ============================================================ -->
+<section id="tech" class="py-24 px-6 bg-[#0B0F19] border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Технологии</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3">Инфраструктурный уровень</h2>
+      <p class="text-muted max-w-xl mx-auto mt-4">Четыре ключевых компонента, обеспечивающих стабильный обход антибот-систем</p>
+    </div>
 
-  <!-- Базовый JavaScript (пока пустой) -->
-  <script>
-    // Здесь будет логика калькулятора, анимаций и т.д.
-    console.log('MetricHit лендинг готов');
-  </script>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Карточка 1 -->
+      <div class="card-tech animate-fade-up delay-1">
+        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Fingerprint Management</h3>
+        <p class="text-muted text-sm leading-relaxed">Подмена Canvas, WebGL, аудио-отпечатков, шрифтов и WebRTC. Каждый сеанс — уникальный цифровой след.</p>
+      </div>
 
+      <!-- Карточка 2 -->
+      <div class="card-tech animate-fade-up delay-2">
+        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3l18 18" />
+            <path d="M21 3l-18 18" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Эмуляция мыши и тач-скринов</h3>
+        <p class="text-muted text-sm leading-relaxed">Имитация естественных траекторий курсора, микро-задержек и скорости ввода текста. Поведение, неотличимое от человека.</p>
+      </div>
+
+      <!-- Карточка 3 -->
+      <div class="card-tech animate-fade-up delay-3">
+        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Resident Proxy Pool</h3>
+        <p class="text-muted text-sm leading-relaxed">Работа исключительно через чистые резидентские и мобильные IP-адреса. Никаких дата-центров и прокси-детектов.</p>
+      </div>
+
+      <!-- Карточка 4 -->
+      <div class="card-tech animate-fade-up delay-4">
+        <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Собственный бэкграунд</h3>
+        <p class="text-muted text-sm leading-relaxed">Прямой обход SmartCaptcha Яндекса без использования сторонних платных сервисов разгадывания. Снижение затрат до 90%.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- B2B INFRASTRUCTURE (Фичи для агентств) -->
+<!-- ============================================================ -->
+<section id="features" class="py-24 px-6 bg-[#0B0F19] border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">B2B-инфраструктура</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3">Для SEO-агентств и инхаус-команд</h2>
+      <p class="text-muted max-w-xl mx-auto mt-4">Инструменты, которые масштабируют ваш бизнес</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- 1 -->
+      <div class="bg-[#1E2538] rounded-2xl p-8 border border-white/5 hover:border-cyan/30 transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-6">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16v16H4z" />
+            <line x1="8" y1="8" x2="16" y2="16" />
+            <line x1="8" y1="16" x2="16" y2="8" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Whitelabel</h3>
+        <p class="text-muted text-sm leading-relaxed">Брендируйте отчёты и панель управления под свой бренд. Клиенты видят только ваш логотип и ваш стиль.</p>
+        <div class="mt-4 inline-block text-cyan text-sm font-semibold">Доступно от 300 000 ₽</div>
+      </div>
+
+      <!-- 2 -->
+      <div class="bg-[#1E2538] rounded-2xl p-8 border border-white/5 hover:border-cyan/30 transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-6">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16v16H4z" />
+            <rect x="8" y="8" width="8" height="8" />
+            <line x1="4" y1="8" x2="8" y2="8" />
+            <line x1="16" y1="8" x2="20" y2="8" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Полный API-доступ</h3>
+        <p class="text-muted text-sm leading-relaxed">Интеграция с вашей CRM, тикетами и внутренними скриптами. Автоматизация на всех уровнях.</p>
+        <div class="mt-4 inline-block text-cyan text-sm font-semibold">Доступно от 150 000 ₽</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="bg-[#1E2538] rounded-2xl p-8 border border-white/5 hover:border-cyan/30 transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-cyan/10 border border-cyan/20 flex items-center justify-center mb-6">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="2" />
+            <line x1="8" y1="2" x2="8" y2="22" />
+            <line x1="16" y1="2" x2="16" y2="22" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Изоляция проектов</h3>
+        <p class="text-muted text-sm leading-relaxed">Защита от перекрёстных фильтров поисковиков. Каждый проект работает в собственном изолированном окружении.</p>
+        <div class="mt-4 inline-block text-cyan text-sm font-semibold">Встроено во все тарифы</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- INTERACTIVE TARIFF CALCULATOR -->
+<!-- ============================================================ -->
+<section id="pricing" class="py-24 px-6 bg-[#0B0F19] border-t border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">Калькулятор</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3">Рассчитайте стоимость</h2>
+      <p class="text-muted mt-4">Депозитная система с прогрессивной шкалой. Чем больше бюджет — тем ниже цена клика.</p>
+    </div>
+
+    <!-- Калькулятор -->
+    <div class="bg-[#1E2538] rounded-2xl p-6 md:p-10 border border-white/5">
+      
+      <!-- Ползунок -->
+      <div class="mb-8">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-white font-medium">Ваш бюджет</span>
+          <span class="text-2xl font-bold text-cyan" id="budgetDisplay">50 000 ₽</span>
+        </div>
+        <input type="range" min="1000" max="1000000" step="1000" value="50000" 
+               class="slider-cyan" id="budgetSlider" />
+        <div class="flex justify-between text-xs text-muted mt-1">
+          <span>1 000 ₽</span>
+          <span>1 000 000 ₽</span>
+        </div>
+      </div>
+
+      <!-- Результаты -->
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <!-- Цена клика -->
+        <div class="bg-[#0B0F19] rounded-xl p-5 border border-white/5">
+          <div class="text-sm text-muted">Цена клика</div>
+          <div class="text-2xl font-bold text-cyan mt-1" id="pricePerClick">0.80 ₽</div>
+        </div>
+
+        <!-- Кол-во кликов -->
+        <div class="bg-[#0B0F19] rounded-xl p-5 border border-white/5">
+          <div class="text-sm text-muted">Кликов на баланс</div>
+          <div class="text-2xl font-bold text-white mt-1" id="totalClicks">62 500</div>
+        </div>
+
+        <!-- Опции -->
+        <div class="bg-[#0B0F19] rounded-xl p-5 border border-white/5">
+          <div class="text-sm text-muted">Доступные опции</div>
+          <div class="text-sm font-medium text-cyan mt-1" id="availableOptions">+ Планировщик задач</div>
+        </div>
+
+      </div>
+
+      <!-- Таблица тарифов (для справки) -->
+      <div class="mt-8 text-xs text-muted border-t border-white/5 pt-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div><span class="text-white font-medium">до 25 000 ₽</span> → 1.00 ₽</div>
+          <div><span class="text-white font-medium">до 40 000 ₽</span> → 0.80 ₽</div>
+          <div><span class="text-white font-medium">до 90 000 ₽</span> → 0.70 ₽</div>
+          <div><span class="text-white font-medium">до 150 000 ₽</span> → 0.50 ₽</div>
+          <div><span class="text-white font-medium">до 300 000 ₽</span> → 0.40 ₽</div>
+          <div><span class="text-white font-medium">до 1 000 000 ₽</span> → 0.25 ₽</div>
+          <div class="col-span-2"><span class="text-white font-medium">от 1 000 000 ₽</span> → Индивидуальные условия</div>
+        </div>
+      </div>
+
+      <!-- Важный текст -->
+      <div class="mt-6 p-4 bg-cyan/5 border border-cyan/20 rounded-xl">
+        <p class="text-sm text-muted text-center">
+          ⚡ <span class="text-white font-medium">Важно:</span> клики не сгорают по истечении месяца. 
+          Объёмы фиксируются за вашим аккаунтом <span class="text-cyan font-semibold">навсегда</span>.
+        </p>
+      </div>
+
+      <!-- CTA под калькулятором -->
+      <div class="mt-8 text-center">
+        <a href="#" class="px-8 py-4 text-lg font-bold rounded-xl btn-cyan-glow no-underline inline-block">
+          Начать тест-драйв →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- API SECTION (для ссылки в футере) -->
+<!-- ============================================================ -->
+<section id="api" class="py-16 px-6 bg-[#0B0F19] border-t border-white/5">
+  <div class="max-w-4xl mx-auto text-center">
+    <span class="text-cyan text-xs font-semibold uppercase tracking-[0.2em]">API</span>
+    <h3 class="text-2xl font-bold mt-3">REST API для интеграции</h3>
+    <p class="text-muted max-w-xl mx-auto mt-3">Полный доступ к управлению проектами, получению статистики и автоматизации процессов.</p>
+    <a href="#" class="inline-block mt-6 text-cyan hover:text-white transition font-medium border-b border-cyan/30 pb-0.5">
+      Документация API →
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="py-10 px-6 bg-[#0B0F19] border-t border-white/5">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    <!-- Логотип -->
+    <div class="text-xl font-extrabold tracking-tight">
+      <span class="logo-metric">Metric</span><span class="logo-hit">Hit</span>
+    </div>
+
+    <!-- Ссылки -->
+    <div class="flex flex-wrap items-center gap-6 text-sm">
+      <a href="#tech" class="text-muted hover:text-white transition no-underline">Технологии</a>
+      <a href="#features" class="text-muted hover:text-white transition no-underline">Функции</a>
+      <a href="#pricing" class="text-muted hover:text-white transition no-underline">Тарифы</a>
+      <a href="#api" class="text-muted hover:text-white transition no-underline">API</a>
+      <a href="#" class="text-muted hover:text-white transition no-underline">Документация</a>
+    </div>
+
+    <!-- Telegram-бот -->
+    <a href="https://t.me/metrichit_bot" target="_blank" 
+       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan/10 border border-cyan/20 text-cyan text-sm font-semibold hover:bg-cyan/20 transition no-underline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L11 13" />
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+      Telegram-бот поддержки
+    </a>
+
+  </div>
+
+  <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/5 text-center text-xs text-muted/50">
+    © 2026 MetricHit. Все права защищены.
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT: Калькулятор -->
+<!-- ============================================================ -->
+<script>
+  (function() {
+    const slider = document.getElementById('budgetSlider');
+    const budgetDisplay = document.getElementById('budgetDisplay');
+    const pricePerClick = document.getElementById('pricePerClick');
+    const totalClicks = document.getElementById('totalClicks');
+    const availableOptions = document.getElementById('availableOptions');
+
+    // Сетка тарифов
+    const tiers = [
+      { max: 25000, price: 1.00, label: 'Ручной ЛК' },
+      { max: 40000, price: 0.80, label: '+ Планировщик задач' },
+      { max: 90000, price: 0.70, label: '+ Приоритетный поток' },
+      { max: 150000, price: 0.50, label: '+ Приоритетная поддержка' },
+      { max: 300000, price: 0.40, label: '+ Полный API-доступ' },
+      { max: 1000000, price: 0.25, label: '+ Whitelabel панель' },
+      { max: Infinity, price: 0, label: 'Индивидуальные условия' }
+    ];
+
+    function formatNumber(num) {
+      return new Intl.NumberFormat('ru-RU').format(num);
+    }
+
+    function updateCalculator() {
+      const budget = parseInt(slider.value, 10);
+      budgetDisplay.textContent = formatNumber(budget) + ' ₽';
+
+      let currentTier = tiers[0];
+      for (const tier of tiers) {
+        if (budget <= tier.max) {
+          currentTier = tier;
+          break;
+        }
+      }
+
+      let price = currentTier.price;
+      let label = currentTier.label;
+
+      // Если бюджет больше 1M — индивидуально
+      if (budget > 1000000) {
+        price = 0;
+        label = 'Индивидуальные условия';
+        pricePerClick.textContent = '💬 договорная';
+        totalClicks.textContent = '—';
+        availableOptions.textContent = 'Свяжитесь с нами';
+        return;
+      }
+
+      const clicks = Math.floor(budget / price);
+      pricePerClick.textContent = price.toFixed(2) + ' ₽';
+      totalClicks.textContent = formatNumber(clicks);
+      availableOptions.textContent = label;
+    }
+
+    slider.addEventListener('input', updateCalculator);
+    updateCalculator();
+
+    // ===== ПЛАВНАЯ АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+    const cards = document.querySelectorAll('.card-tech, .bg-\\[\\#1E2538\\].rounded-2xl');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+
+  })();
+</script>
+
+<!-- Для Vercel статика не требует дополнительных настроек -->
 </body>
 </html>
