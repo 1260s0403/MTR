@@ -3,1176 +3,921 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MetricHit — Управление поведенческими сигналами сайта</title>
+  <title>MetricHit — увеличиваем органический трафик из Яндекса</title>
   
-  <!-- Tailwind + Inter шрифт -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
   
   <style>
-    /* ===== БРЕНДБУК METRICHIT ===== */
+    /* ===== БАЗА ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg-deep: #0B0F19;
-      --bg-slate: #1E2538;
-      --cyan: #00F0FF;
-      --muted: #94A3B8;
-      --white: #FFFFFF;
+      --bg: #080C18;
+      --surface: #111827;
+      --surface-light: #1A2332;
+      --border: rgba(255,255,255,0.06);
+      --text: #E8EDF5;
+      --muted: #8494A8;
+      --accent-start: #4F7CFF;
+      --accent-end: #8B5CF6;
+      --glow: rgba(79, 124, 255, 0.3);
+      --radius: 16px;
       --font: 'Inter', sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      background: var(--bg-deep);
+      background: var(--bg);
       font-family: var(--font);
-      color: var(--white);
+      color: var(--text);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* ===== НЕОНОВОЕ СВЕЧЕНИЕ ===== */
-    .btn-neon {
-      background: var(--cyan);
-      color: var(--bg-deep);
-      font-weight: 700;
-      transition: all 0.25s ease;
-      border: none;
-      cursor: pointer;
-      position: relative;
-    }
-    .btn-neon:hover {
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.2);
-      transform: scale(1.03);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.15);
-      font-weight: 600;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-    .btn-outline:hover {
-      border-color: var(--cyan);
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.12);
-    }
-
-    /* ===== ЛОГОТИП ===== */
-    .logo-metric { color: var(--white); font-weight: 900; letter-spacing: -0.5px; }
-    .logo-hit { color: var(--cyan); font-weight: 900; letter-spacing: -0.5px; }
-
-    /* ===== НАВИГАЦИЯ ===== */
-    .nav-link {
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 14px;
-      transition: color 0.2s;
-      text-decoration: none;
-      position: relative;
-    }
-    .nav-link::after {
+    /* Шумовая текстура */
+    body::before {
       content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--cyan);
-      transition: width 0.3s;
-    }
-    .nav-link:hover {
-      color: var(--white);
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    /* ===== КАРТОЧКИ ===== */
-    .card-glass {
-      background: var(--bg-slate);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 24px 22px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .card-glass::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 20%, rgba(0, 240, 255, 0.03), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
       pointer-events: none;
-    }
-    .card-glass:hover {
-      border-color: rgba(0, 240, 255, 0.2);
-      transform: translateY(-4px);
-    }
-    .card-glass:hover::before {
-      opacity: 1;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
     }
 
-    /* ===== КАЛЬКУЛЯТОР ===== */
-    .slider-neon {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 5px;
-      border-radius: 4px;
-      background: var(--bg-slate);
-      outline: none;
-      transition: background 0.2s;
-    }
-    .slider-neon::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--cyan);
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-      transition: box-shadow 0.2s;
-    }
-    .slider-neon::-webkit-slider-thumb:hover {
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.5);
-    }
-    .slider-neon::-moz-range-thumb {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--cyan);
-      cursor: pointer;
-      border: none;
+    /* ===== КОНТЕЙНЕР ===== */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ===== АНИМАЦИИ ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-up {
-      animation: fadeUp 0.7s ease both;
-    }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
-    .delay-6 { animation-delay: 0.6s; }
-
-    @keyframes neonPulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.08); }
-      50% { box-shadow: 0 0 35px rgba(0, 240, 255, 0.2); }
-    }
-    .neon-pulse {
-      animation: neonPulse 2.8s ease-in-out infinite;
+    /* ===== ШАПКА ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 16px 24px;
+      background: rgba(8, 12, 24, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
-    }
-    .dot-pulse {
-      animation: dotPulse 1.8s ease-in-out infinite;
+    header .inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* ===== ГРАДИЕНТНЫЙ ТЕКСТ ===== */
-    .text-gradient-cyan {
-      background: linear-gradient(135deg, #00F0FF 0%, #00C9FF 50%, #0099FF 100%);
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .logo span:first-child { color: var(--text); }
+    .logo span:last-child {
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    /* ===== КАРУСЕЛЬ ===== */
-    .carousel-wrap {
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-actions a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-actions a:hover { color: var(--text); }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      color: #fff;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 40px var(--glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .menu-toggle { display: block; }
+      .nav-actions .btn-primary { display: none; }
+    }
+
+    /* ===== ГЕРОЙ ===== */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
       position: relative;
     }
-    .carousel-track {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 4px 2px 12px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0, 240, 255, 0.15) transparent;
-    }
-    .carousel-track::-webkit-scrollbar {
-      height: 4px;
-    }
-    .carousel-track::-webkit-scrollbar-thumb {
-      background: rgba(0, 240, 255, 0.2);
-      border-radius: 4px;
-    }
-    .carousel-track img {
-      height: 270px;
-      width: auto;
-      max-width: 80vw;
-      flex-shrink: 0;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.06);
-      scroll-snap-align: start;
-      cursor: zoom-in;
-      transition: transform 0.25s, border-color 0.25s;
-    }
-    .carousel-track img:hover {
-      transform: scale(1.02);
-      border-color: rgba(0, 240, 255, 0.2);
-    }
-    .carousel-btn {
+    .hero::after {
+      content: '';
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: var(--bg-slate);
-      color: var(--white);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(79,124,255,0.08), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero * { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
       font-size: 18px;
+      max-width: 560px;
+      margin: 20px auto 0;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .hero-actions .btn-primary { padding: 14px 36px; font-size: 16px; }
+    .hero-actions .btn-secondary { padding: 14px 36px; font-size: 16px; }
+
+    /* ===== ПРЕИМУЩЕСТВА ===== */
+    .features {
+      padding: 60px 0 80px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(79,124,255,0.2);
+      transform: translateY(-3px);
+    }
+    .feature-card .icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== КАЛЬКУЛЯТОР ===== */
+    .calc-section {
+      padding: 60px 0 80px;
+    }
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 44px;
+    }
+    .calc-box h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .calc-box .sub {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .calc-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .calc-row input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--surface-light);
+      outline: none;
+    }
+    .calc-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
       cursor: pointer;
-      transition: all 0.2s;
+      box-shadow: 0 0 24px var(--glow);
+    }
+    .calc-row input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 24px var(--glow);
+    }
+    .calc-value {
+      font-size: 22px;
+      font-weight: 700;
+      min-width: 110px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .calc-result {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+    }
+    .calc-result .label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .calc-result .value {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .calc-result.highlight {
+      border-color: rgba(79,124,255,0.2);
+      background: rgba(79,124,255,0.04);
+    }
+    .calc-result.highlight .value {
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @media (max-width: 600px) {
+      .calc-box { padding: 24px 20px; }
+      .calc-results { grid-template-columns: 1fr; }
+      .calc-row { flex-direction: column; align-items: stretch; }
+      .calc-value { text-align: left; min-width: auto; }
+    }
+
+    /* ===== КАК ЭТО РАБОТАЕТ ===== */
+    .how-section {
+      padding: 60px 0 80px;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .how-step {
+      text-align: center;
+      padding: 28px 20px;
+    }
+    .how-step .num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      color: #fff;
     }
-    .carousel-btn:hover {
-      background: rgba(0, 240, 255, 0.12);
-      border-color: rgba(0, 240, 255, 0.3);
+    .how-step h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
-    .carousel-btn.prev { left: -6px; }
-    .carousel-btn.next { right: -6px; }
+    .how-step p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
 
-    /* ===== ЛАЙТБОКС ===== */
-    #lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(11, 15, 25, 0.94);
-      backdrop-filter: blur(10px);
-      padding: 24px;
-      cursor: zoom-out;
+    @media (max-width: 768px) {
+      .how-grid { grid-template-columns: 1fr; }
     }
-    #lightbox.active { display: flex; }
-    #lightbox img {
-      max-width: 94vw;
-      max-height: 92vh;
-      border-radius: 12px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+
+    /* ===== ТАРИФЫ ===== */
+    .pricing-section {
+      padding: 60px 0 80px;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .pricing-table th {
+      text-align: left;
+      padding: 14px 18px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .highlight-row td {
+      background: rgba(79,124,255,0.04);
+      border-color: rgba(79,124,255,0.08);
+    }
+    .pricing-table .price {
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .pricing-table .price.accent {
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .pricing-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .pricing-note a {
+      color: var(--accent-start);
+      text-decoration: none;
+    }
+    .pricing-note a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .pricing-table td, .pricing-table th { padding: 12px 14px; font-size: 14px; }
     }
 
     /* ===== FAQ ===== */
-    details.faq-item {
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 14px;
-      margin-bottom: 10px;
-      background: var(--bg-slate);
-      overflow: hidden;
-      transition: border-color 0.3s;
+    .faq-section {
+      padding: 60px 0 80px;
     }
-    details.faq-item:hover {
-      border-color: rgba(0, 240, 255, 0.1);
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
     }
+    .faq-item:last-child { border-bottom: none; }
     .faq-item summary {
       cursor: pointer;
-      padding: 18px 22px;
-      font-weight: 700;
-      font-size: 15px;
+      font-weight: 600;
+      font-size: 16px;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
-      color: var(--white);
-      transition: color 0.2s;
-    }
-    .faq-item summary:hover {
-      color: var(--cyan);
+      gap: 16px;
+      color: var(--text);
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
       content: '+';
-      flex-shrink: 0;
       font-size: 20px;
-      color: var(--cyan);
+      color: var(--accent-start);
+      flex-shrink: 0;
       transition: transform 0.25s;
     }
-    .faq-item[open] summary::after {
-      transform: rotate(45deg);
-    }
-    .faq-item .faq-answer {
-      padding: 0 22px 20px;
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item .answer {
       color: var(--muted);
       font-size: 15px;
       line-height: 1.7;
-    }
-    .faq-item[open] .faq-answer {
-      animation: fadeIn 0.3s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-6px); }
-      to { opacity: 1; transform: translateY(0); }
+      padding-top: 12px;
+      padding-right: 20px;
     }
 
-    /* ===== ПРОМОКОД ===== */
-    .promo-code {
-      display: inline-block;
-      font-family: var(--font);
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      color: var(--bg-deep);
-      background: var(--cyan);
-      border-radius: 8px;
-      padding: 5px 16px;
-      cursor: pointer;
-      transition: all 0.2s;
-      user-select: none;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+    /* ===== CTA ===== */
+    .cta-section {
+      padding: 60px 0 80px;
     }
-    .promo-code:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+    .cta-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .promo-code.copied {
-      background: #00D4A0;
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(79,124,255,0.05), transparent 70%);
+      pointer-events: none;
     }
-
-    /* ===== STEP НУМЕРАЦИЯ ===== */
-    .step-number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(0, 240, 255, 0.12);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
-      color: var(--cyan);
-      flex-shrink: 0;
-    }
-
-    /* ===== БЭЙДЖИ ===== */
-    .badge-cyan {
-      display: inline-block;
-      background: rgba(0, 240, 255, 0.08);
-      border: 1px solid rgba(0, 240, 255, 0.15);
-      border-radius: 100px;
-      padding: 4px 14px;
-      font-size: 11px;
+    .cta-box * { position: relative; z-index: 1; }
+    .cta-box h2 {
+      font-size: 28px;
       font-weight: 700;
+    }
+    .cta-box p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 480px;
+      margin: 12px auto 0;
+    }
+    .cta-box .btn-primary {
+      margin-top: 28px;
+      padding: 14px 40px;
+      font-size: 16px;
+    }
+    .cta-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 28px;
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cta-contacts a {
+      color: var(--accent-start);
+      text-decoration: none;
+    }
+    .cta-contacts a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .cta-box { padding: 32px 24px; }
+    }
+
+    /* ===== ФУТЕР ===== */
+    footer {
+      padding: 32px 0 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--text); }
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 24px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== ОБЩИЕ ===== */
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--cyan);
+      color: var(--accent-start);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 16px;
     }
 
-    /* ===== АДАПТИВ ===== */
-    @media (max-width: 768px) {
-      .nav-desktop { display: none !important; }
-      .nav-mobile { display: flex !important; }
-      .hero-title { font-size: 28px; line-height: 1.15; }
-      .hero-sub { font-size: 15px; }
-      .card-glass { padding: 18px 16px; }
-      .carousel-track img { height: 190px; }
-      .carousel-btn { width: 32px; height: 32px; font-size: 14px; }
-      .carousel-btn.prev { left: -4px; }
-      .carousel-btn.next { right: -4px; }
-      .step-number { width: 30px; height: 30px; font-size: 12px; }
-    }
-    @media (min-width: 769px) {
-      .nav-desktop { display: flex !important; }
-      .nav-mobile { display: none !important; }
-    }
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 8px; }
+    .mt-3 { margin-top: 16px; }
+    .mt-4 { margin-top: 24px; }
 
-    /* Утилиты */
-    .border-cyan-dim { border-color: rgba(0, 240, 255, 0.12); }
-    .bg-cyan-dim { background: rgba(0, 240, 255, 0.05); }
-    .text-cyan { color: var(--cyan); }
-    .text-muted { color: var(--muted); }
-    .bg-deep { background: var(--bg-deep); }
-    .bg-slate { background: var(--bg-slate); }
-    .gap-2 { gap: 8px; }
-    .gap-3 { gap: 12px; }
+    /* ===== АНИМАЦИИ ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .fade-up-1 { animation-delay: 0.08s; }
+    .fade-up-2 { animation-delay: 0.16s; }
+    .fade-up-3 { animation-delay: 0.24s; }
+    .fade-up-4 { animation-delay: 0.32s; }
   </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- HEADER -->
-<!-- ============================================================ -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/85 backdrop-blur-xl border-b border-white/5">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-
-    <!-- Логотип -->
-    <a href="#" class="text-2xl font-extrabold tracking-tight no-underline flex items-center gap-1">
-      <span class="logo-metric">Metric</span><span class="logo-hit">Hit</span>
-    </a>
-
-    <!-- Десктопная навигация -->
-    <nav class="nav-desktop items-center gap-8">
-      <a href="#start" class="nav-link">Старт</a>
-      <a href="#calc" class="nav-link">Калькулятор</a>
-      <a href="#pricing" class="nav-link">Цены</a>
-      <a href="#how" class="nav-link">Шаги</a>
-      <a href="#faq" class="nav-link">Вопросы</a>
+<!-- ===== ШАПКА ===== -->
+<header>
+  <div class="inner">
+    <a href="#" class="logo"><span>Metric</span><span>Hit</span></a>
+    <nav>
+      <a href="#features">Старт</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#pricing">Цены</a>
+      <a href="#how">Как работает</a>
+      <a href="#faq">Вопросы</a>
     </nav>
-
-    <!-- Кнопки справа -->
-    <div class="flex items-center gap-4">
-      <a href="#" class="text-sm text-muted hover:text-white transition no-underline">Войти</a>
-      <a href="#cta" class="px-5 py-2.5 text-sm font-bold rounded-lg btn-neon no-underline">Попробовать</a>
+    <div class="nav-actions">
+      <a href="#">Войти</a>
+      <a href="#cta" class="btn-primary">Попробовать</a>
     </div>
-
-    <!-- Мобильное меню (бургер) -->
-    <button class="nav-mobile text-white text-2xl leading-none" aria-label="Меню" onclick="toggleMobileMenu()">☰</button>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Меню">☰</button>
   </div>
-
-  <!-- Мобильное меню -->
-  <div id="mobileMenu" class="hidden bg-[#0B0F19] border-t border-white/5 px-6 py-5 flex flex-col gap-4">
-    <a href="#start" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Старт</a>
-    <a href="#calc" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Калькулятор</a>
-    <a href="#pricing" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Цены</a>
-    <a href="#how" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Шаги</a>
-    <a href="#faq" class="text-muted hover:text-white transition no-underline" onclick="toggleMobileMenu()">Вопросы</a>
-    <a href="#cta" class="px-5 py-3 text-center text-sm font-bold rounded-lg btn-neon no-underline" onclick="toggleMobileMenu()">Попробовать</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features" onclick="toggleMenu()">Старт</a>
+    <a href="#calc" onclick="toggleMenu()">Калькулятор</a>
+    <a href="#pricing" onclick="toggleMenu()">Цены</a>
+    <a href="#how" onclick="toggleMenu()">Как работает</a>
+    <a href="#faq" onclick="toggleMenu()">Вопросы</a>
+    <a href="#cta" onclick="toggleMenu()" class="btn-primary" style="text-align:center;">Попробовать</a>
   </div>
 </header>
 
-<!-- ============================================================ -->
-<!-- HERO -->
-<!-- ============================================================ -->
-<section class="min-h-screen flex items-center justify-center text-center pt-28 pb-16 px-6 relative overflow-hidden">
-  
-  <!-- Фоновые свечения -->
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-cyan/4 rounded-full blur-[120px]"></div>
-    <div class="absolute top-1/3 right-0 w-[300px] h-[400px] bg-cyan/2 rounded-full blur-[100px]"></div>
-    <div class="absolute bottom-0 left-0 w-[400px] h-[300px] bg-cyan/2 rounded-full blur-[90px]"></div>
-  </div>
-
-  <div class="max-w-5xl mx-auto relative z-10">
-    
-    <!-- Бейдж -->
-    <div class="inline-flex items-center gap-2 bg-cyan/8 border border-cyan/15 text-cyan text-xs font-semibold px-4 py-2 rounded-full mb-8 animate-fade-up">
-      <span class="w-2 h-2 rounded-full bg-cyan dot-pulse"></span>
-      Поведенческие сигналы, которые работают
-    </div>
-
-    <!-- Заголовок -->
-    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight animate-fade-up delay-1">
-      Управляйте<br />
-      <span class="text-gradient-cyan">поведенческими сигналами</span><br />
-      своего сайта
+<!-- ===== ГЕРОЙ ===== -->
+<section class="hero">
+  <div class="container">
+    <h1 class="fade-up">
+      Увеличиваем органический<br />
+      трафик из <span class="highlight">Яндекса</span>
     </h1>
-
-    <!-- Подзаголовок -->
-    <p class="hero-sub text-muted text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed animate-fade-up delay-2">
-      Реальные посетители из поиска Яндекса.<br class="hidden md:block" />
-      Без абонплаты, скрытых комиссий и обязательных депозитов.
+    <p class="fade-up fade-up-1">
+      Реальные пользователи приходят на ваш сайт по целевым запросам.
+      Прозрачная модель — платите только за клики.
     </p>
-
-    <!-- Бонус -->
-    <div class="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-full border border-cyan/20 bg-cyan/5 animate-fade-up delay-3 neon-pulse">
-      <span class="w-2.5 h-2.5 rounded-full bg-cyan dot-pulse"></span>
-      <span class="text-sm font-medium">🎁 <span class="text-white">+500 ₽</span> на первый запуск — проверьте результат до оплаты</span>
-    </div>
-
-    <!-- CTA -->
-    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-4">
-      <a href="#cta" class="px-8 py-4 text-lg font-bold rounded-xl btn-neon no-underline inline-flex items-center justify-center gap-2 group">
-        Начать тест
-        <svg class="group-hover:translate-x-1 transition-transform" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="#calc" class="px-8 py-4 text-lg font-medium rounded-xl btn-outline no-underline inline-flex items-center justify-center gap-2">
-        Рассчитать трафик
-      </a>
-    </div>
-
-    <!-- Статистика -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 animate-fade-up delay-5">
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
-        <div class="text-2xl md:text-3xl font-bold text-cyan">0,40 ₽</div>
-        <div class="text-xs text-muted mt-1">минимальная цена клика</div>
-      </div>
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
-        <div class="text-2xl md:text-3xl font-bold text-white">+500 ₽</div>
-        <div class="text-xs text-muted mt-1">бонус новым пользователям</div>
-      </div>
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
-        <div class="text-2xl md:text-3xl font-bold text-white">0 ₽</div>
-        <div class="text-xs text-muted mt-1">абонентская плата</div>
-      </div>
-      <div class="bg-slate/50 rounded-xl p-4 border border-white/5 hover:border-cyan/10 transition">
-        <div class="text-2xl md:text-3xl font-bold text-cyan">от 1 000 ₽</div>
-        <div class="text-xs text-muted mt-1">достаточно для старта</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- УСЛОВИЯ СТАРТА -->
-<!-- ============================================================ -->
-<section id="start" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14">
-      <span class="badge-cyan">Старт без риска</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-4">5 причин попробовать</h2>
-      <p class="text-muted mt-3 max-w-lg mx-auto">Никаких скрытых платежей, только прозрачная работа</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      
-      <!-- 1 -->
-      <div class="card-glass animate-fade-up delay-1">
-        <div class="text-3xl mb-4">💰</div>
-        <h3 class="text-lg font-bold text-white mb-2">Минимальный порог</h3>
-        <p class="text-muted text-sm leading-relaxed">Достаточно 1 000 ₽, чтобы запустить первый проект и увидеть, как работает система.</p>
-      </div>
-
-      <!-- 2 -->
-      <div class="card-glass animate-fade-up delay-2">
-        <div class="text-3xl mb-4">🎁</div>
-        <h3 class="text-lg font-bold text-white mb-2">Бонус на тест</h3>
-        <p class="text-muted text-sm leading-relaxed">Каждый новый пользователь получает +500 ₽ на баланс — это дополнительные переходы без ваших вложений.</p>
-      </div>
-
-      <!-- 3 -->
-      <div class="card-glass animate-fade-up delay-3">
-        <div class="text-3xl mb-4">📊</div>
-        <h3 class="text-lg font-bold text-white mb-2">Нет абонплаты</h3>
-        <p class="text-muted text-sm leading-relaxed">Платите только за реальные клики. Никаких ежемесячных списаний за «доступ к кабинету».</p>
-      </div>
-
-      <!-- 4 -->
-      <div class="card-glass animate-fade-up delay-4">
-        <div class="text-3xl mb-4">⚡</div>
-        <h3 class="text-lg font-bold text-white mb-2">Готовим запуск за вас</h3>
-        <p class="text-muted text-sm leading-relaxed">Пришлите домен, запросы и регион — мы настроим кабинет и передадим готовый проект.</p>
-      </div>
-
-      <!-- 5 -->
-      <div class="card-glass animate-fade-up delay-5 lg:col-span-1 md:col-span-2">
-        <div class="text-3xl mb-4">🤝</div>
-        <h3 class="text-lg font-bold text-white mb-2">Помощь на каждом шагу</h3>
-        <p class="text-muted text-sm leading-relaxed">Инструкции в кабинете и живая поддержка в Telegram — разберём всё, от подбора запросов до анализа статистики.</p>
-      </div>
-
+    <div class="hero-actions fade-up fade-up-2">
+      <a href="#cta" class="btn-primary">Начать тест</a>
+      <a href="#how" class="btn-secondary">Как это работает</a>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- КАЛЬКУЛЯТОР -->
-<!-- ============================================================ -->
-<section id="calc" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="badge-cyan">Калькулятор</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-4">Сколько трафика получите за свой бюджет?</h2>
-      <p class="text-muted mt-3">Подвиньте ползунок — увидите цену клика и количество переходов</p>
+<!-- ===== ПРЕИМУЩЕСТВА ===== -->
+<section id="features" class="features">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="section-label">Почему мы</span>
+      <h2 class="section-title">Три принципа работы</h2>
+      <p class="section-sub">Просто, прозрачно, без скрытых условий</p>
     </div>
-
-    <!-- Калькулятор -->
-    <div class="bg-slate rounded-2xl p-6 md:p-10 border border-white/5">
-
-      <!-- Быстрые кнопки -->
-      <div class="mb-6">
-        <div class="text-sm font-semibold text-muted mb-3">Быстрый выбор суммы</div>
-        <div class="flex flex-wrap gap-2">
-          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="1000" onclick="setBudget(1000)">1 000 ₽</button>
-          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="50000" onclick="setBudget(50000)">50 000 ₽</button>
-          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="100000" onclick="setBudget(100000)">100 000 ₽</button>
-          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="150000" onclick="setBudget(150000)">150 000 ₽</button>
-          <button class="bopt px-4 py-2.5 rounded-lg text-sm font-semibold border border-white/8 bg-white/4 text-white hover:border-cyan/30 transition" data-s="200000" onclick="setBudget(200000)">200 000 ₽</button>
-        </div>
+    <div class="features-grid mt-4">
+      <div class="feature-card fade-up fade-up-1">
+        <div class="icon">📊</div>
+        <h3>Качественный трафик</h3>
+        <p>Посетители приходят из поиска Яндекса по вашим запросам и ведут себя как заинтересованные пользователи.</p>
       </div>
-
-      <!-- Ползунок -->
-      <div class="mb-8">
-        <div class="flex justify-between items-center mb-3">
-          <span class="text-white font-medium">Ваш бюджет</span>
-          <span class="text-2xl font-bold text-cyan" id="budgetDisplay">1 000 ₽</span>
-        </div>
-        <input type="range" min="1000" max="250000" step="1000" value="1000" class="slider-neon" id="budgetSlider" oninput="setBudget(+this.value, true)" />
-        <div class="flex justify-between text-xs text-muted mt-1.5">
-          <span>1 000 ₽</span>
-          <span>250 000 ₽</span>
-        </div>
+      <div class="feature-card fade-up fade-up-2">
+        <div class="icon">💰</div>
+        <h3>Платите за клики</h3>
+        <p>Никаких абонентских плат, депозитов и скрытых комиссий. Только фактическая стоимость переходов.</p>
       </div>
-
-      <!-- Результаты -->
-      <div class="grid md:grid-cols-3 gap-4">
-        
-        <div class="bg-deep rounded-xl p-5 border border-white/5">
-          <div class="text-xs text-muted font-medium uppercase tracking-wide">Ваш бюджет</div>
-          <div class="text-xl font-bold text-white mt-1.5" id="resultDeposit">1 000 ₽</div>
-        </div>
-
-        <div class="bg-deep rounded-xl p-5 border border-white/5">
-          <div class="text-xs text-muted font-medium uppercase tracking-wide">Цена за клик</div>
-          <div class="text-xl font-bold text-cyan mt-1.5" id="resultCpc">0.40 ₽</div>
-        </div>
-
-        <div class="bg-deep rounded-xl p-5 border border-cyan/15 bg-cyan/5">
-          <div class="text-xs text-muted font-medium uppercase tracking-wide">Переходов на сайт</div>
-          <div class="text-xl font-bold text-white mt-1.5" id="resultClicks">2 500</div>
-        </div>
-
-      </div>
-
-      <!-- Экономия -->
-      <div class="mt-5 text-sm text-muted bg-deep/60 rounded-xl p-4 border border-white/5" id="savingsBlock">
-        Этого достаточно для тестового запуска. После первых результатов решаете, масштабировать ли объём.
-      </div>
-
-      <!-- Бонус -->
-      <div class="mt-5 flex items-center gap-3 bg-cyan/5 rounded-xl p-4 border border-cyan/15">
-        <span class="text-2xl">🎁</span>
-        <span class="text-sm text-muted"><span class="text-white font-medium">Для новых пользователей:</span> +500 ₽ на баланс — это примерно <span class="text-cyan font-semibold">ещё +1 250 переходов</span> в подарок</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ТАРИФЫ -->
-<!-- ============================================================ -->
-<section id="pricing" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="badge-cyan">Цены</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-4">Цена зависит от объёма</h2>
-      <p class="text-muted mt-3">Чем крупнее бюджет — тем выгоднее цена клика</p>
-    </div>
-
-    <div class="bg-slate rounded-2xl overflow-hidden border border-white/5">
-      <div class="grid grid-cols-2 font-semibold text-xs text-muted uppercase tracking-wider border-b border-white/5 px-6 py-4">
-        <div>Сумма пополнения</div>
-        <div class="text-right">Цена за клик</div>
-      </div>
-
-      <div class="divide-y divide-white/5">
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/4 transition" id="tier-0">
-          <div><span class="text-white font-semibold">Стартовый</span> <span class="text-muted text-xs">(от 1 000 ₽)</span></div>
-          <div class="text-right font-bold text-cyan">0,40 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/4 transition" id="tier-50">
-          <div><span class="text-white font-semibold">от 50 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,35 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/4 transition" id="tier-100">
-          <div><span class="text-white font-semibold">от 100 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,20 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/4 transition" id="tier-150">
-          <div><span class="text-white font-semibold">от 150 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,17 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm hover:bg-white/4 transition" id="tier-200">
-          <div><span class="text-white font-semibold">от 200 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">0,15 ₽</div>
-        </div>
-        <div class="grid grid-cols-2 px-6 py-4 text-sm bg-cyan/5 border-t border-cyan/15" id="tier-250">
-          <div><span class="text-white font-semibold">от 250 000 ₽</span></div>
-          <div class="text-right font-bold text-cyan">индивидуально</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-5 text-sm text-muted text-center">
-      Для крупных объёмов предлагаем персональные условия — обсудим в 
-      <a href="https://t.me/metrichit_bot" target="_blank" class="text-cyan hover:text-white transition no-underline">Telegram</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- КАК НАЧАТЬ -->
-<!-- ============================================================ -->
-<section id="how" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="badge-cyan">Алгоритм</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-4">4 шага до первых кликов</h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-5">
-      
-      <div class="card-glass flex gap-4 items-start animate-fade-up delay-1">
-        <div class="step-number">1</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Регистрация</h4>
-          <p class="text-muted text-sm">Создайте аккаунт в кабинете — ссылка есть в Telegram-профиле.</p>
-        </div>
-      </div>
-
-      <div class="card-glass flex gap-4 items-start animate-fade-up delay-2">
-        <div class="step-number">2</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Данные проекта</h4>
-          <p class="text-muted text-sm">Пришлите домен, ключевые запросы и регион — мы всё настроим.</p>
-        </div>
-      </div>
-
-      <div class="card-glass flex gap-4 items-start animate-fade-up delay-3">
-        <div class="step-number">3</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Запуск</h4>
-          <p class="text-muted text-sm">Активируем бонус 500 ₽, подготавливаем кабинет и передаём доступ.</p>
-        </div>
-      </div>
-
-      <div class="card-glass flex gap-4 items-start animate-fade-up delay-4">
-        <div class="step-number">4</div>
-        <div>
-          <h4 class="font-bold text-white mb-1">Контроль</h4>
-          <p class="text-muted text-sm">Следите за кликами и расходом в реальном времени прямо в кабинете.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ВАЖНО ЗНАТЬ -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-slate rounded-2xl p-8 border border-cyan/10">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="text-2xl">📌</span>
-        <span class="badge-cyan">Важно</span>
-      </div>
-      <ul class="space-y-3 text-muted text-sm">
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0 mt-1">▸</span>
-          <span><span class="text-white font-medium">Постепенный рост:</span> начинаем с теста, наращиваем объём только после первых результатов — никаких резких скачков.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0 mt-1">▸</span>
-          <span><span class="text-white font-medium">Результат зависит от ниши:</span> скорость выхода в топ варьируется, поэтому первый шаг — тестовый запуск.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0 mt-1">▸</span>
-          <span><span class="text-white font-medium">Качественный трафик:</span> посетители приходят из поиска Яндекса, ведут себя как реальные пользователи.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="text-cyan shrink-0 mt-1">▸</span>
-          <span><span class="text-white font-medium">Актуальная ссылка:</span> всегда закреплена в описании нашего Telegram-профиля.</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- КОМАНДА -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-slate rounded-2xl p-8 md:p-10 border border-white/5 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-64 h-64 bg-cyan/4 rounded-full blur-[80px] pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-48 h-48 bg-cyan/2 rounded-full blur-[60px] pointer-events-none"></div>
-      <div class="relative">
-        <span class="badge-cyan mb-4">О команде</span>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">За сервисом — команда с 20-летним опытом</h2>
-        <p class="text-muted text-base leading-relaxed max-w-2xl">
-          MetricHit создали разработчики, которые больше двух десятилетий занимаются интернет-технологиями. 
-          Мы не публичные личности — нам важнее качество продукта, чем громкие имена.
-        </p>
-        <p class="text-muted text-base leading-relaxed mt-4 max-w-2xl">
-          Технология полностью собственная: мы пишем код, развиваем платформу и продаём напрямую. 
-          Без посредников — поэтому цены ниже, а контроль над качеством выше.
-        </p>
+      <div class="feature-card fade-up fade-up-3">
+        <div class="icon">⚡</div>
+        <h3>Гибкий старт</h3>
+        <p>Начните с небольшого теста, оцените результат и масштабируйте объём, когда будете готовы.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="badge-cyan">Ещё направления</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-4">Чем ещё можем помочь</h2>
-      <p class="text-muted mt-3">Смежные задачи по сайтам и трафику — стоимость обсуждаем индивидуально</p>
-    </div>
+<!-- ===== КАЛЬКУЛЯТОР ===== -->
+<section id="calc" class="calc-section">
+  <div class="container">
+    <div class="calc-box fade-up">
+      <h2>Сколько трафика вы получите?</h2>
+      <p class="sub">Укажите бюджет — увидите цену клика и количество переходов</p>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🛠</div>
-        <h4 class="font-bold text-white text-sm mb-1">Разработка сайтов</h4>
-        <p class="text-muted text-xs">Лендинги, магазины, корпоративные</p>
+      <div class="calc-row">
+        <input type="range" id="budgetSlider" min="1000" max="250000" step="1000" value="10000" />
+        <span class="calc-value" id="budgetDisplay">10 000 ₽</span>
       </div>
 
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">📈</div>
-        <h4 class="font-bold text-white text-sm mb-1">SEO-оптимизация</h4>
-        <p class="text-muted text-xs">Техническая база, структура, контент</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎯</div>
-        <h4 class="font-bold text-white text-sm mb-1">Яндекс Директ</h4>
-        <p class="text-muted text-xs">Запуск и ведение кампаний</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🌍</div>
-        <h4 class="font-bold text-white text-sm mb-1">Google Ads</h4>
-        <p class="text-muted text-xs">Настройка и оптимизация</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">📣</div>
-        <h4 class="font-bold text-white text-sm mb-1">Таргет ВКонтакте</h4>
-        <p class="text-muted text-xs">Аудитории, креативы, тесты</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">✍️</div>
-        <h4 class="font-bold text-white text-sm mb-1">Telegram-каналы</h4>
-        <p class="text-muted text-xs">Контент, оформление, рост</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🤖</div>
-        <h4 class="font-bold text-white text-sm mb-1">GEO-оптимизация</h4>
-        <p class="text-muted text-xs">Продвижение в нейросетях</p>
-      </div>
-
-      <div class="bg-slate rounded-xl p-5 border border-white/5 text-center hover:border-cyan/15 transition group">
-        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">⚙️</div>
-        <h4 class="font-bold text-white text-sm mb-1">Автоматизации</h4>
-        <p class="text-muted text-xs">Боты, интеграции, скрипты</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- ОТЗЫВЫ -->
-<!-- ============================================================ -->
-<section class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="badge-cyan">Отзывы</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-4">Что говорят пользователи</h2>
-      <p class="text-muted mt-3">Реальные скрины из нашего канала</p>
-    </div>
-
-    <div class="carousel-wrap relative">
-      <button class="carousel-btn prev" onclick="scrollCarousel(-1)" aria-label="Назад">‹</button>
-      <div class="carousel-track" id="carouselTrack">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='270' viewBox='0 0 400 270'%3E%3Crect width='400' height='270' fill='%231E2538'/%3E%3Ctext x='50' y='135' font-family='Inter' font-size='18' fill='%2394A3B8'%3E📱 Отзыв пользователя%3C/text%3E%3C/svg%3E" alt="Отзыв пользователя" loading="lazy" onclick="openLightbox(this.src)" />
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='270' viewBox='0 0 400 270'%3E%3Crect width='400' height='270' fill='%231E2538'/%3E%3Ctext x='50' y='135' font-family='Inter' font-size='18' fill='%2394A3B8'%3E📈 Рост позиций%3C/text%3E%3C/svg%3E" alt="Рост позиций" loading="lazy" onclick="openLightbox(this.src)" />
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='270' viewBox='0 0 400 270'%3E%3Crect width='400' height='270' fill='%231E2538'/%3E%3Ctext x='50' y='135' font-family='Inter' font-size='18' fill='%2394A3B8'%3E📊 Результаты%3C/text%3E%3C/svg%3E" alt="Результаты" loading="lazy" onclick="openLightbox(this.src)" />
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='270' viewBox='0 0 400 270'%3E%3Crect width='400' height='270' fill='%231E2538'/%3E%3Ctext x='50' y='135' font-family='Inter' font-size='18' fill='%2394A3B8'%3E⭐ Благодарность%3C/text%3E%3C/svg%3E" alt="Благодарность" loading="lazy" onclick="openLightbox(this.src)" />
-      </div>
-      <button class="carousel-btn next" onclick="scrollCarousel(1)" aria-label="Вперёд">›</button>
-    </div>
-
-    <div class="mt-6 flex flex-wrap gap-4 text-sm">
-      <a href="#" class="text-cyan hover:text-white transition no-underline">📱 Все отзывы →</a>
-      <a href="#" class="text-cyan hover:text-white transition no-underline">📢 Наш канал →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- FAQ -->
-<!-- ============================================================ -->
-<section id="faq" class="py-16 px-6 border-t border-white/5">
-  <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-10">
-      <span class="badge-cyan">Вопросы и ответы</span>
-      <h2 class="text-2xl md:text-3xl font-bold mt-4">Главные вопросы</h2>
-    </div>
-
-    <details class="faq-item">
-      <summary>Почему у вас цена ниже рыночной?</summary>
-      <div class="faq-answer">Потому что вы работаете напрямую с разработчиками. Мы создаём технологию сами и продаём без посредников. Никаких наценок — только стоимость разработки и поддержки. Чем крупнее бюджет, тем выгоднее цена.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Безопасно ли это для сайта?</summary>
-      <div class="faq-answer">Да. Посетители приходят из поиска Яндекса по вашим запросам и ведут себя как обычные пользователи. Объём наращиваем постепенно, без резких всплесков. Начинаем с небольшого теста, чтобы вы могли оценить эффект.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Когда ждать первых результатов?</summary>
-      <div class="faq-answer">Скорость зависит от ниши и конкуренции. Поэтому мы рекомендуем начинать с теста от 1 000 ₽ — вы видите динамику кликов сразу, а по движению запросов в выдаче сами принимаете решение о масштабировании.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Что нужно предоставить для старта?</summary>
-      <div class="faq-answer">Всего четыре пункта: домен сайта, список ключевых запросов, регион продвижения и цель. Всё остальное мы сделаем сами — настроим кабинет, активируем бонус и передадим доступ.</div>
-    </details>
-
-    <details class="faq-item">
-      <summary>Можно ли остановиться в любой момент?</summary>
-      <div class="faq-answer">Конечно. Абонентской платы нет, списываются только реальные клики. Вы пополняете баланс по необходимости и управляете проектами без долгосрочных обязательств.</div>
-    </details>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- CTA -->
-<!-- ============================================================ -->
-<section id="cta" class="py-20 px-6 border-t border-white/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-slate rounded-2xl p-8 md:p-12 border border-white/5 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-cyan/4 rounded-full blur-[100px] pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-72 h-72 bg-cyan/2 rounded-full blur-[80px] pointer-events-none"></div>
-      
-      <div class="relative">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Готовы проверить? Начните с теста</h2>
-        <p class="text-muted text-base max-w-xl mb-6">
-          Зарегистрируйтесь в кабинете <a href="#" class="text-cyan hover:text-white transition no-underline">lk.metrichit.ru</a> — мы начислим бонус и поможем с запуском. Или просто напишите в Telegram: домен, запросы, регион.
-        </p>
-
-        <!-- Бонусы -->
-        <div class="flex flex-wrap gap-3 mb-6">
-          <div class="flex items-center gap-2 bg-cyan/5 rounded-full px-4 py-2 border border-cyan/15">
-            <span>🎁</span>
-            <span class="text-sm font-medium">+500 ₽ бонуса</span>
-          </div>
-          <div class="flex items-center gap-2 bg-cyan/5 rounded-full px-4 py-2 border border-cyan/15">
-            <span>⚙️</span>
-            <span class="text-sm font-medium">Настройка за вас</span>
-          </div>
-          <div class="flex items-center gap-2 bg-cyan/5 rounded-full px-4 py-2 border border-cyan/15">
-            <span>📊</span>
-            <span class="text-sm font-medium">Готовый кабинет</span>
-          </div>
+      <div class="calc-results">
+        <div class="calc-result">
+          <div class="label">Ваш бюджет</div>
+          <div class="value" id="resultBudget">10 000 ₽</div>
         </div>
-
-        <!-- Кнопки -->
-        <div class="flex flex-wrap gap-4 mb-6">
-          <a href="https://t.me/metrichit_bot" target="_blank" class="px-8 py-4 font-bold rounded-xl btn-neon no-underline inline-flex items-center gap-2 group">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-            Написать в Telegram
-            <span class="group-hover:translate-x-0.5 transition-transform">→</span>
-          </a>
-          <button onclick="window.print()" class="px-8 py-4 text-lg font-medium rounded-xl btn-outline no-underline">
-            Скачать PDF
-          </button>
+        <div class="calc-result">
+          <div class="label">Цена за клик</div>
+          <div class="value" id="resultCpc">0,40 ₽</div>
         </div>
-
-        <!-- Промокод -->
-        <div class="flex flex-wrap items-center gap-3 bg-cyan/5 rounded-xl p-4 border border-cyan/15 max-w-xl">
-          <span class="text-sm text-muted">🔑 Промокод на +3 000 кликов</span>
-          <span class="promo-code" onclick="copyPromo()" title="Нажмите, чтобы скопировать">HIT-2026</span>
-          <span class="text-xs text-muted">(нажмите, чтобы скопировать)</span>
-        </div>
-
-        <!-- Контакты -->
-        <div class="mt-6 flex flex-wrap gap-5 text-sm text-muted">
-          <span><span class="text-white font-medium">Telegram:</span> <a href="https://t.me/metrichit_bot" target="_blank" class="text-cyan hover:text-white transition no-underline">@metrichit_bot</a></span>
-          <span><span class="text-white font-medium">Кабинет:</span> <a href="#" class="text-cyan hover:text-white transition no-underline">lk.metrichit.ru</a></span>
+        <div class="calc-result highlight">
+          <div class="label">Переходов на сайт</div>
+          <div class="value" id="resultClicks">≈ 25 000</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- FOOTER -->
-<!-- ============================================================ -->
-<footer class="py-10 px-6 border-t border-white/5">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
-    
-    <div class="text-xl font-extrabold tracking-tight">
-      <span class="logo-metric">Metric</span><span class="logo-hit">Hit</span>
+<!-- ===== КАК ЭТО РАБОТАЕТ ===== -->
+<section id="how" class="how-section">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="section-label">Алгоритм</span>
+      <h2 class="section-title">Как это работает</h2>
+      <p class="section-sub">Три шага до первых результатов</p>
     </div>
-
-    <div class="flex flex-wrap items-center gap-6 text-muted">
-      <a href="#start" class="hover:text-white transition no-underline">Старт</a>
-      <a href="#calc" class="hover:text-white transition no-underline">Калькулятор</a>
-      <a href="#pricing" class="hover:text-white transition no-underline">Цены</a>
-      <a href="#how" class="hover:text-white transition no-underline">Шаги</a>
-      <a href="#faq" class="hover:text-white transition no-underline">Вопросы</a>
-      <a href="#" class="hover:text-white transition no-underline">Документация</a>
+    <div class="how-grid mt-4">
+      <div class="how-step fade-up fade-up-1">
+        <div class="num">1</div>
+        <h3>Регистрация и настройка</h3>
+        <p>Создаёте аккаунт, присылаете домен и запросы — мы подготавливаем кабинет.</p>
+      </div>
+      <div class="how-step fade-up fade-up-2">
+        <div class="num">2</div>
+        <h3>Запуск трафика</h3>
+        <p>Пополняете баланс, активируете проект — пользователи начинают приходить из поиска.</p>
+      </div>
+      <div class="how-step fade-up fade-up-3">
+        <div class="num">3</div>
+        <h3>Анализ и масштабирование</h3>
+        <p>Смотрите статистику в кабинете и решаете, увеличивать ли объём.</p>
+      </div>
     </div>
-
-    <a href="https://t.me/metrichit_bot" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan/8 border border-cyan/15 text-cyan text-sm font-semibold hover:bg-cyan/15 transition no-underline">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-      Telegram
-    </a>
-
   </div>
+</section>
 
-  <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/5 text-center text-xs text-muted/50">
-    © 2026 MetricHit. Все права защищены. Сервис продвижения сайтов поведенческими факторами.
+<!-- ===== ТАРИФЫ ===== -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="section-label">Цены</span>
+      <h2 class="section-title">Тарифная сетка</h2>
+      <p class="section-sub">Чем крупнее бюджет — тем выгоднее цена</p>
+    </div>
+    <table class="pricing-table mt-4">
+      <thead>
+        <tr><th>Сумма пополнения</th><th class="price">Цена за клик</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>от 1 000 ₽</td><td class="price">0,40 ₽</td></tr>
+        <tr><td>от 50 000 ₽</td><td class="price">0,35 ₽</td></tr>
+        <tr><td>от 100 000 ₽</td><td class="price">0,20 ₽</td></tr>
+        <tr><td>от 150 000 ₽</td><td class="price">0,17 ₽</td></tr>
+        <tr><td>от 200 000 ₽</td><td class="price">0,15 ₽</td></tr>
+        <tr class="highlight-row"><td>от 250 000 ₽</td><td class="price accent">индивидуально</td></tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">
+      Для крупных объёмов предлагаем персональные условия — обсудим в <a href="https://t.me/metrichit_bot" target="_blank">Telegram</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="section-label">Вопросы и ответы</span>
+      <h2 class="section-title">Часто спрашивают</h2>
+    </div>
+    <div class="mt-4">
+      <details class="faq-item">
+        <summary>Почему у вас цена ниже, чем у других?</summary>
+        <div class="answer">Мы — разработчики, работаем напрямую без посредников. Вы платите за технологию, а не за наценки партнёров. Чем больше бюджет, тем выгоднее условия.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Безопасно ли это для сайта?</summary>
+        <div class="answer">Да. Трафик поступает из поиска Яндекса естественным образом. Объём наращивается постепенно, без резких скачков. Начинаем с теста, чтобы вы могли оценить эффект.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Когда я увижу результат?</summary>
+        <div class="answer">Скорость зависит от ниши и конкуренции. Поэтому мы рекомендуем начать с теста — вы видите динамику кликов сразу и сами принимаете решение о дальнейших шагах.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что нужно для старта?</summary>
+        <div class="answer">Домен сайта, ключевые запросы и регион. Всё остальное мы настроим сами и передадим готовый кабинет.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Можно ли остановиться в любой момент?</summary>
+        <div class="answer">Да. Абонентской платы нет, списываются только реальные клики. Вы управляете проектами без долгосрочных обязательств.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta" class="cta-section">
+  <div class="container">
+    <div class="cta-box fade-up">
+      <h2>Готовы попробовать?</h2>
+      <p>Напишите нам в Telegram — обсудим ваш проект, поможем с настройкой и запустим тест.</p>
+      <a href="https://t.me/metrichit_bot" target="_blank" class="btn-primary">Написать в Telegram</a>
+      <div class="cta-contacts">
+        <span>📱 <a href="https://t.me/metrichit_bot" target="_blank">@metrichit_bot</a></span>
+        <span>🌐 <a href="#">lk.metrichit.ru</a></span>
+        <span>📄 <a href="#" onclick="window.print(); return false;">Скачать PDF</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ФУТЕР ===== -->
+<footer>
+  <div class="container">
+    <div class="links">
+      <a href="#features">Старт</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#pricing">Цены</a>
+      <a href="#how">Как работает</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#">Документация</a>
+    </div>
+    <div>
+      <span style="font-weight:700;">MetricHit</span> · увеличиваем органический трафик из Яндекса<br />
+      <span style="opacity:0.5;">© 2026 · Все права защищены</span>
+    </div>
   </div>
 </footer>
 
-<!-- ============================================================ -->
-<!-- ЛАЙТБОКС -->
-<!-- ============================================================ -->
-<div id="lightbox" onclick="closeLightbox()">
-  <img id="lightboxImg" src="" alt="Увеличенное изображение" />
-</div>
-
-<!-- ============================================================ -->
-<!-- JAVASCRIPT -->
-<!-- ============================================================ -->
+<!-- ===== JAVASCRIPT ===== -->
 <script>
   // ===== МОБИЛЬНОЕ МЕНЮ =====
-  function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
   }
 
   // ===== КАЛЬКУЛЯТОР =====
-  const TIERS = [
-    { min: 0, max: 49999, price: 0.40, label: 'Стартовый' },
-    { min: 50000, max: 99999, price: 0.35, label: 'от 50 000 ₽' },
-    { min: 100000, max: 149999, price: 0.20, label: 'от 100 000 ₽' },
-    { min: 150000, max: 199999, price: 0.17, label: 'от 150 000 ₽' },
-    { min: 200000, max: 249999, price: 0.15, label: 'от 200 000 ₽' },
-    { min: 250000, max: Infinity, price: null, label: 'от 250 000 ₽' },
+  const tiers = [
+    { min: 0, max: 49999, price: 0.40 },
+    { min: 50000, max: 99999, price: 0.35 },
+    { min: 100000, max: 149999, price: 0.20 },
+    { min: 150000, max: 199999, price: 0.17 },
+    { min: 200000, max: 249999, price: 0.15 },
+    { min: 250000, max: Infinity, price: null },
   ];
 
-  function formatNumber(num) {
-    return Math.round(num).toLocaleString('ru-RU');
+  function fmt(n) {
+    return Math.round(n).toLocaleString('ru-RU');
   }
 
   function getTier(budget) {
-    for (const tier of TIERS) {
-      if (budget >= tier.min && budget <= tier.max) return tier;
+    for (const t of tiers) {
+      if (budget >= t.min && budget <= t.max) return t;
     }
-    return TIERS[TIERS.length - 1];
+    return tiers[tiers.length - 1];
   }
 
-  function setBudget(value, fromSlider) {
-    const budget = Math.round(value);
-    
-    if (!fromSlider) {
-      document.getElementById('budgetSlider').value = budget;
-    }
-    
-    document.getElementById('budgetDisplay').textContent = formatNumber(budget) + ' ₽';
-    
-    document.querySelectorAll('.bopt').forEach(btn => {
-      const val = parseInt(btn.dataset.s);
-      btn.style.borderColor = val === budget ? 'rgba(0, 240, 255, 0.4)' : 'rgba(255,255,255,0.08)';
-      btn.style.background = val === budget ? 'rgba(0, 240, 255, 0.12)' : 'rgba(255,255,255,0.04)';
-    });
+  function updateCalc() {
+    const slider = document.getElementById('budgetSlider');
+    const budget = parseInt(slider.value, 10);
+
+    document.getElementById('budgetDisplay').textContent = fmt(budget) + ' ₽';
+    document.getElementById('resultBudget').textContent = fmt(budget) + ' ₽';
 
     const tier = getTier(budget);
-    
-    document.getElementById('resultDeposit').textContent = formatNumber(budget) + ' ₽';
-    
+
     if (tier.price === null) {
       document.getElementById('resultCpc').textContent = 'индивидуально';
       document.getElementById('resultClicks').textContent = '—';
-      document.getElementById('savingsBlock').innerHTML = 'От 250 000 ₽ условия обсуждаем персонально — напишите в <a href="https://t.me/metrichit_bot" target="_blank" class="text-cyan hover:text-white transition">Telegram</a>.';
       return;
     }
 
     const clicks = budget / tier.price;
     document.getElementById('resultCpc').textContent = tier.price.toFixed(2).replace('.', ',') + ' ₽';
-    document.getElementById('resultClicks').textContent = formatNumber(clicks);
-
-    if (tier.price < 0.40) {
-      const baseClicks = budget / 0.40;
-      const extra = clicks - baseClicks;
-      document.getElementById('savingsBlock').innerHTML = 
-        'На базовой цене 0,40 ₽ эти деньги дали бы <span class="text-white font-semibold">' + 
-        formatNumber(baseClicks) + 
-        '</span> переходов. Ваша скидка даёт <span class="text-cyan font-semibold">+' + 
-        formatNumber(extra) + 
-        '</span> переходов дополнительно.';
-    } else {
-      document.getElementById('savingsBlock').innerHTML = 
-        'Этого достаточно для тестового запуска. После первых результатов решаете, масштабировать ли объём.';
-    }
+    document.getElementById('resultClicks').textContent = '≈ ' + fmt(clicks);
   }
 
-  // ===== КАРУСЕЛЬ =====
-  function scrollCarousel(dir) {
-    const track = document.getElementById('carouselTrack');
-    const scrollAmount = track.clientWidth * 0.7;
-    track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
-  }
-
-  // ===== ЛАЙТБОКС =====
-  function openLightbox(src) {
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    img.src = src;
-    lb.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    const lb = document.getElementById('lightbox');
-    lb.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // ===== ПРОМОКОД =====
-  function copyPromo() {
-    const el = document.querySelector('.promo-code');
-    const text = el.textContent.trim();
-    
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(() => {
-        el.textContent = '✓ Скопировано!';
-        el.classList.add('copied');
-        setTimeout(() => {
-          el.textContent = text;
-          el.classList.remove('copied');
-        }, 1800);
-      });
-    } else {
-      const range = document.createRange();
-      range.selectNode(el);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      el.textContent = '✓ Скопировано!';
-      el.classList.add('copied');
-      setTimeout(() => {
-        el.textContent = text;
-        el.classList.remove('copied');
-      }, 1800);
-    }
-  }
-
-  // ===== ИНИЦИАЛИЗАЦИЯ =====
-  document.addEventListener('DOMContentLoaded', () => {
-    setBudget(1000);
-  });
+  document.getElementById('budgetSlider').addEventListener('input', updateCalc);
+  document.addEventListener('DOMContentLoaded', updateCalc);
 </script>
 
 </body>
