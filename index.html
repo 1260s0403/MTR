@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
     <title>Рост ПФ — продвижение сайтов в Яндексе через AI-ботов</title>
-    <meta name="description" content="Продвижение сайтов в Яндексе через AI-ботов с уникальной поведенческой историей. Без абонплаты. От 1000 ₽ на запуск. Бесплатный тест 5 дней. Цена клика от 0,40 ₽.">
+    <meta name="description" content="Продвижение сайтов в Яндексе через AI-ботов с уникальной поведенческой историей. Без абонплаты. От 1000 ₽ на запуск. Цена клика от 0,40 ₽. Бесплатный тест 5 дней.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+
     <style>
         /* ===== RESET & BASE ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font: 16px/1.7 'Onest', 'Segoe UI', Arial, sans-serif;
-            color: #00183D;
-            background: #FFFFFF;
+            color: #F1F5F9;
+            background: #0B0E14;
             -webkit-font-smoothing: antialiased;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        a { color: #4F7CFF; text-decoration: none; transition: opacity .2s; }
-        a:hover { opacity: .7; }
+        a { color: #8B5CF6; text-decoration: none; transition: all .25s; }
+        a:hover { opacity: .8; }
         strong, b { font-weight: 700; }
-        img { max-width: 100%; display: block; }
 
         /* ===== ШРИФТЫ ===== */
         .h1, .h2, .h3, .display { font-family: 'Unbounded', sans-serif; font-weight: 800; letter-spacing: -0.01em; }
-        .h1 { font-size: clamp(30px, 4.5vw, 48px); line-height: 1.08; }
-        .h2 { font-size: clamp(22px, 3vw, 34px); line-height: 1.15; }
+        .h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.08; }
+        .h2 { font-size: clamp(24px, 3.2vw, 36px); line-height: 1.15; }
         .h3 { font-size: 18px; font-weight: 700; }
         .tag {
             display: inline-block;
@@ -36,7 +36,7 @@
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #4F7CFF;
+            color: #8B5CF6;
             margin-bottom: 12px;
         }
         .tag::before {
@@ -52,22 +52,27 @@
 
         /* ===== ЦВЕТА ===== */
         :root {
-            --primary: #00183D;
+            --primary: #0B0E14;
+            --primary2: #131820;
             --accent: #4F7CFF;
             --accent2: #8B5CF6;
             --cyan: #00F0FF;
-            --green: #128152;
-            --muted: #5B6470;
-            --line: #E5E9EF;
-            --soft: #F5F7FA;
-            --grad: linear-gradient(100deg, #4F7CFF, #00F0FF);
-            --grad-dark: linear-gradient(100deg, #00183D, #0A2A5E);
+            --green: #2BB81F;
+            --muted: #7A8294;
+            --line: rgba(255,255,255,0.06);
+            --grad: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            --grad-green: linear-gradient(100deg, #2BB81F, #6AC523);
         }
-        .bg-dark { background: var(--primary); color: #F1F5F9; }
-        .bg-soft { background: var(--soft); }
-        .bg-cyan { background: var(--cyan); color: var(--primary); }
+        .bg-dark { background: var(--primary); }
+        .bg-card { background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 16px; }
         .text-gradient {
             background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .text-green {
+            background: var(--grad-green);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -78,10 +83,10 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.94);
-            backdrop-filter: blur(14px);
+            background: rgba(11,14,20,0.92);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--line);
-            padding: 8px 0;
+            padding: 10px 0;
         }
         .header .container {
             display: flex;
@@ -93,11 +98,16 @@
             display: flex;
             align-items: center;
             flex-shrink: 0;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: #fff;
         }
-        .logo svg { height: 32px; width: auto; }
-        .nav { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
-        .nav a { color: var(--primary); }
-        .nav a:hover { color: var(--accent); opacity: 1; }
+        .logo svg { height: 30px; width: auto; }
+        .logo span { color: var(--cyan); }
+        .nav { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+        .nav a { color: #B0B8C8; }
+        .nav a:hover { color: #fff; opacity: 1; }
         .btn {
             display: inline-flex;
             align-items: center;
@@ -115,38 +125,39 @@
         .btn-primary {
             background: var(--grad);
             color: #fff;
-            box-shadow: 0 6px 20px rgba(79,124,255,0.3);
+            box-shadow: 0 4px 24px rgba(79,124,255,0.25);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(79,124,255,0.4); opacity: 1; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,124,255,0.35); opacity: 1; }
         .btn-ghost {
             background: transparent;
-            color: var(--primary);
-            border: 1.5px solid var(--line);
+            color: #B0B8C8;
+            border: 1.5px solid rgba(255,255,255,0.1);
         }
-        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
-        .btn-white { background: #fff; color: var(--primary); }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); opacity: 1; }
-        .btn-cyan { background: var(--cyan); color: var(--primary); }
-        .btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,240,255,0.3); opacity: 1; }
+        .btn-ghost:hover { border-color: var(--accent); color: #fff; opacity: 1; }
+        .btn-green {
+            background: var(--grad-green);
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(43,184,31,0.25);
+        }
+        .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(43,184,31,0.35); opacity: 1; }
         .btn-sm { padding: 6px 16px; font-size: 12px; }
-        .btn-lg { padding: 14px 32px; font-size: 16px; }
+        .btn-lg { padding: 14px 34px; font-size: 16px; }
         .btn-full { width: 100%; justify-content: center; }
 
         /* ===== HERO ===== */
         .hero {
             position: relative;
             overflow: hidden;
-            padding: 50px 0 60px;
+            padding: 60px 0 70px;
             background: var(--primary);
-            color: #F1F5F9;
         }
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 500px 500px at 10% 20%, rgba(79,124,255,0.2), transparent 70%),
-                radial-gradient(ellipse 400px 400px at 90% 80%, rgba(0,240,255,0.12), transparent 70%);
+                radial-gradient(ellipse 500px 500px at 10% 20%, rgba(79,124,255,0.12), transparent 70%),
+                radial-gradient(ellipse 400px 400px at 90% 80%, rgba(139,92,246,0.08), transparent 70%);
             pointer-events: none;
         }
         .hero .container { position: relative; z-index: 2; }
@@ -156,27 +167,27 @@
             gap: 40px;
             align-items: center;
         }
-        .hero h1 { margin-bottom: 14px; }
+        .hero h1 { margin-bottom: 16px; }
         .hero h1 .highlight { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero p { font-size: 17px; color: #C4CFE0; max-width: 520px; margin-bottom: 20px; }
+        .hero p { font-size: 17px; color: #7A8294; max-width: 520px; margin-bottom: 20px; }
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 8px 18px;
             border-radius: 100px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
             font-weight: 600;
             font-size: 13px;
-            color: #CBB2FF;
+            color: #8B5CF6;
             margin-bottom: 20px;
         }
         .hero-badge .dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #7CFFB2;
+            background: #2BB81F;
             position: relative;
             flex-shrink: 0;
         }
@@ -185,7 +196,7 @@
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            border: 2px solid rgba(124,255,178,0.4);
+            border: 2px solid rgba(43,184,31,0.3);
             animation: ping 1.6s ease-out infinite;
         }
         @keyframes ping {
@@ -199,8 +210,8 @@
             margin-top: 28px;
         }
         .hero-stat {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
             border-radius: 12px;
             padding: 14px 12px;
         }
@@ -208,17 +219,17 @@
             font-family: 'Unbounded', sans-serif;
             font-weight: 800;
             font-size: 20px;
-            background: linear-gradient(95deg, #9DB8FF, #00F0FF);
+            background: var(--grad);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .hero-stat .label { font-size: 12px; color: #AAB6C9; margin-top: 2px; }
+        .hero-stat .label { font-size: 12px; color: #5A6272; margin-top: 2px; }
 
         .hero-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.03);
             border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid var(--line);
             padding: 28px 24px;
             max-width: 400px;
             width: 100%;
@@ -227,50 +238,48 @@
             font-family: 'Unbounded', sans-serif;
             font-weight: 700;
             font-size: 14px;
-            color: #9DB8FF;
+            color: #8B5CF6;
             margin-bottom: 14px;
         }
         .hero-card .row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid var(--line);
             font-size: 13px;
-            color: #C4CFE0;
+            color: #7A8294;
         }
         .hero-card .row:last-child { border-bottom: none; }
         .hero-card .row .val { font-weight: 700; color: #fff; }
-        .hero-card .row .val.green { color: #7CFFB2; }
+        .hero-card .row .val.green { color: #2BB81F; }
         .hero-card .row .val.cyan { color: var(--cyan); }
         .hero-card .note {
             margin-top: 14px;
             padding: 10px 14px;
             border-radius: 10px;
-            background: rgba(79,124,255,0.12);
-            border: 1px solid rgba(79,124,255,0.15);
+            background: rgba(79,124,255,0.08);
+            border: 1px solid rgba(79,124,255,0.1);
             text-align: center;
             font-size: 12px;
-            color: #9DB8FF;
+            color: #8B5CF6;
         }
 
         /* ===== СЕКЦИИ ===== */
         section { padding: 56px 0; }
         .section-head { text-align: center; max-width: 700px; margin: 0 auto 36px; }
-        .section-head .tag { color: var(--accent); }
-        .section-head p { color: var(--muted); font-size: 16px; }
+        .section-head .tag { color: var(--accent2); }
+        .section-head p { color: #5A6272; font-size: 16px; }
 
         /* ===== КАРТОЧКИ ===== */
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
         .card {
-            background: #fff;
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--line);
             border-radius: 16px;
             padding: 24px 20px;
             transition: all .3s;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            position: relative;
         }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.06); }
+        .card:hover { transform: translateY(-4px); border-color: rgba(79,124,255,0.3); }
         .card .icon {
             width: 44px;
             height: 44px;
@@ -284,23 +293,19 @@
             margin-bottom: 14px;
         }
         .card h3 { margin-bottom: 4px; font-size: 17px; }
-        .card p { color: var(--muted); font-size: 14px; }
-        .card.highlight {
-            border-color: var(--cyan);
-            background: linear-gradient(180deg, #F0FDFF, #FFFFFF);
-        }
+        .card p { color: #5A6272; font-size: 14px; }
+        .card.highlight { border-color: rgba(79,124,255,0.25); background: rgba(79,124,255,0.04); }
         .card .badge {
-            position: absolute;
-            top: -10px;
-            right: 14px;
-            background: var(--cyan);
-            color: var(--primary);
+            display: inline-block;
+            background: var(--grad-green);
+            color: #fff;
             font-size: 9px;
             font-weight: 800;
             padding: 2px 10px;
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            margin-bottom: 10px;
         }
 
         /* ===== ТАРИФЫ ===== */
@@ -316,8 +321,8 @@
         .tariff-table th {
             text-align: left;
             padding: 12px 16px;
-            background: var(--primary);
-            color: #C7D4F5;
+            background: rgba(255,255,255,0.04);
+            color: #B0B8C8;
             font-size: 10px;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -326,34 +331,40 @@
         .tariff-table td {
             padding: 12px 16px;
             border-top: 1px solid var(--line);
-            background: #fff;
+            background: transparent;
+            color: #B0B8C8;
         }
-        .tariff-table tr.highlight td { background: linear-gradient(90deg, rgba(79,124,255,0.06), rgba(0,240,255,0.06)); font-weight: 700; }
+        .tariff-table tr.highlight td {
+            background: rgba(79,124,255,0.06);
+            border-color: rgba(79,124,255,0.15);
+            color: #fff;
+            font-weight: 700;
+        }
         .tariff-table td:last-child { text-align: right; font-weight: 600; }
 
-        /* ===== КАЛЬКУЛЯТОР (улучшенная версия) ===== */
+        /* ===== КАЛЬКУЛЯТОР ===== */
         .calc-block {
-            background: var(--primary);
-            color: #F1F5F9;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
             border-radius: 22px;
-            padding: 40px 44px;
+            padding: 36px 40px;
             position: relative;
             overflow: hidden;
         }
         .calc-block::before {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            right: -120px;
-            top: -160px;
+            width: 350px;
+            height: 350px;
+            right: -100px;
+            top: -140px;
             border-radius: 50%;
             filter: blur(80px);
-            background: radial-gradient(circle, rgba(0,240,255,0.2), transparent 65%);
+            background: radial-gradient(circle, rgba(79,124,255,0.1), transparent 65%);
             pointer-events: none;
         }
         .calc-block > * { position: relative; z-index: 2; }
-        .calc-block .label { font-size: 12px; font-weight: 700; color: #9DB0CC; text-transform: uppercase; letter-spacing: 0.06em; margin: 18px 0 10px; }
+        .calc-block .label { font-size: 12px; font-weight: 700; color: #5A6272; text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px; }
         .calc-block .label:first-of-type { margin-top: 0; }
         .calc-presets {
             display: flex;
@@ -361,24 +372,23 @@
             gap: 8px;
         }
         .calc-preset {
-            padding: 10px 20px;
-            border-radius: 12px;
-            border: 1.5px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.05);
-            color: #DBE4F2;
+            padding: 8px 18px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.03);
+            color: #B0B8C8;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             transition: all .2s;
             font-family: 'Onest', sans-serif;
-            position: relative;
         }
-        .calc-preset:hover { border-color: var(--cyan); }
+        .calc-preset:hover { border-color: var(--accent); color: #fff; }
         .calc-preset.active {
             background: var(--grad);
             border-color: transparent;
             color: #fff;
-            box-shadow: 0 6px 24px rgba(79,124,255,0.35);
+            box-shadow: 0 4px 20px rgba(79,124,255,0.25);
         }
         .calc-preset .rec {
             display: block;
@@ -387,9 +397,9 @@
             text-transform: uppercase;
             letter-spacing: 0.06em;
             color: var(--cyan);
-            margin-top: 2px;
+            margin-top: 1px;
         }
-        .calc-preset.active .rec { color: #B8E8FF; }
+        .calc-preset.active .rec { color: rgba(255,255,255,0.6); }
 
         .calc-slider-wrap {
             display: flex;
@@ -399,35 +409,29 @@
         }
         .calc-slider-wrap input[type="range"] {
             flex: 1;
-            accent-color: var(--cyan);
-            height: 5px;
-            background: rgba(255,255,255,0.12);
+            accent-color: var(--accent);
+            height: 4px;
+            background: rgba(255,255,255,0.06);
             border-radius: 4px;
             -webkit-appearance: none;
-            transition: all .2s;
         }
         .calc-slider-wrap input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--grad);
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0,240,255,0.4);
-            border: 2px solid rgba(255,255,255,0.3);
-            transition: all .2s;
-        }
-        .calc-slider-wrap input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0,240,255,0.6);
+            box-shadow: 0 0 20px rgba(79,124,255,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
         }
         .calc-slider-wrap .value {
             font-family: 'Unbounded', sans-serif;
             font-weight: 800;
-            font-size: 22px;
+            font-size: 20px;
             min-width: 100px;
             text-align: right;
-            background: linear-gradient(95deg, #9DB8FF, #00F0FF);
+            background: var(--grad);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -437,69 +441,66 @@
         .calc-results {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 28px;
+            gap: 14px;
+            margin-top: 24px;
         }
         .calc-result {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 14px;
-            padding: 18px 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px;
             text-align: center;
-            transition: all .3s;
         }
-        .calc-result:hover { background: rgba(255,255,255,0.08); }
-        .calc-result .k { font-size: 11px; color: #9DB0CC; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .calc-result .k { font-size: 11px; color: #5A6272; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
         .calc-result .v {
             font-family: 'Unbounded', sans-serif;
             font-weight: 800;
-            font-size: 26px;
+            font-size: 24px;
             margin-top: 4px;
-            transition: all .3s;
         }
         .calc-result.highlight {
             background: var(--grad);
             border-color: transparent;
         }
-        .calc-result.highlight .k { color: rgba(255,255,255,0.8); }
+        .calc-result.highlight .k { color: rgba(255,255,255,0.7); }
         .calc-result.highlight .v { color: #fff; }
         .calc-result .sub {
-            font-size: 12px;
-            color: #9DB0CC;
+            font-size: 11px;
+            color: #5A6272;
             margin-top: 2px;
         }
-        .calc-result.highlight .sub { color: rgba(255,255,255,0.6); }
+        .calc-result.highlight .sub { color: rgba(255,255,255,0.5); }
 
         .calc-bonus {
-            margin-top: 20px;
-            padding: 14px 20px;
-            border-radius: 14px;
-            background: rgba(0,240,255,0.08);
-            border: 1px solid rgba(0,240,255,0.2);
-            font-size: 14px;
-            color: #B8E8FF;
+            margin-top: 18px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: rgba(43,184,31,0.06);
+            border: 1px solid rgba(43,184,31,0.12);
+            font-size: 13px;
+            color: #7A8294;
             display: flex;
             align-items: flex-start;
             gap: 12px;
         }
-        .calc-bonus b { color: var(--cyan); }
-        .calc-note { margin-top: 16px; font-size: 13px; color: #9DB0CC; }
+        .calc-bonus b { color: #2BB81F; }
+        .calc-note { margin-top: 14px; font-size: 13px; color: #5A6272; }
 
         /* ===== ШАГИ ===== */
         .steps { margin-top: 6px; }
         .step {
             position: relative;
-            padding: 0 0 20px 40px;
+            padding: 0 0 20px 44px;
         }
         .step:last-child { padding-bottom: 0; }
         .step::before {
             content: '';
             position: absolute;
-            left: 10px;
+            left: 12px;
             top: 22px;
             bottom: -4px;
             width: 2px;
-            background: linear-gradient(180deg, var(--accent), var(--cyan));
+            background: linear-gradient(180deg, var(--accent), var(--accent2));
             opacity: 0.3;
         }
         .step:last-child::before { display: none; }
@@ -508,18 +509,18 @@
             position: absolute;
             left: 0;
             top: 4px;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: var(--grad);
-            box-shadow: 0 0 0 4px rgba(79,124,255,0.12);
+            box-shadow: 0 0 0 4px rgba(79,124,255,0.1);
         }
         .step .num {
             position: absolute;
             left: 0;
             top: 4px;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -530,81 +531,96 @@
             z-index: 2;
         }
         .step h3 { font-size: 16px; margin-bottom: 2px; }
-        .step p { color: var(--muted); font-size: 14px; }
+        .step p { color: #5A6272; font-size: 14px; }
 
-        /* ===== ПРЕИМУЩЕСТВА ===== */
-        .adv-grid {
+        /* ===== СРАВНЕНИЕ ===== */
+        .compare-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
         }
-        .adv-item {
-            text-align: center;
-            padding: 24px 16px;
-            background: #fff;
+        .compare-col {
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--line);
-            border-radius: 14px;
-            transition: all .3s;
+            border-radius: 16px;
+            padding: 24px;
         }
-        .adv-item:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
-        .adv-item .icon { font-size: 32px; margin-bottom: 10px; }
-        .adv-item .num {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 800;
-            font-size: 28px;
-            color: var(--accent);
+        .compare-col h3 { margin-bottom: 12px; font-size: 18px; }
+        .compare-col ul { list-style: none; padding: 0; }
+        .compare-col ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #B0B8C8;
         }
-        .adv-item .num.cyan { color: var(--cyan); }
-        .adv-item .desc { font-size: 14px; color: var(--muted); margin-top: 4px; }
+        .compare-col ul li:last-child { border-bottom: none; }
+        .compare-col ul li .check { color: #2BB81F; font-weight: 700; }
+        .compare-col ul li .cross { color: #FF4D4D; font-weight: 700; }
+        .compare-col.highlight { border-color: rgba(79,124,255,0.25); background: rgba(79,124,255,0.04); }
 
-        /* ===== КОМУ ПОДХОДИТ ===== */
-        .who-grid {
+        /* ===== ТЕХНОЛОГИИ ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .tech-col {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .tech-col h3 { margin-bottom: 14px; font-size: 18px; }
+        .tech-col .item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+            color: #B0B8C8;
+        }
+        .tech-col .item:last-child { border-bottom: none; }
+        .tech-col .item .icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+        .tech-col .item strong { color: #fff; }
+        .tech-col .item .x { color: #FF4D4D; font-weight: 700; margin-right: 6px; }
+        .tech-col .item .check { color: #2BB81F; font-weight: 700; margin-right: 6px; }
+
+        /* ===== КЕЙСЫ ===== */
+        .cases-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
         }
-        .who-item {
-            background: #fff;
+        .case-item {
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--line);
             border-radius: 14px;
             padding: 18px 16px;
             text-align: center;
-            font-size: 14px;
-            color: var(--muted);
             transition: all .3s;
         }
-        .who-item:hover { border-color: var(--cyan); }
-        .who-item strong { color: var(--primary); }
-
-        /* ===== БЕЗОПАСНОСТЬ ===== */
-        .safe-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .case-item:hover { border-color: rgba(79,124,255,0.2); }
+        .case-item .num {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .safe-item {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 22px 18px;
-            text-align: center;
-            transition: all .3s;
-        }
-        .safe-item:hover { border-color: var(--cyan); }
-        .safe-item .icon { font-size: 30px; margin-bottom: 10px; }
-        .safe-item h3 { font-size: 16px; }
-        .safe-item p { font-size: 14px; color: var(--muted); margin-top: 4px; }
+        .case-item .label { color: #5A6272; font-size: 13px; margin-top: 4px; }
 
         /* ===== FAQ ===== */
         .faq-item {
             border: 1px solid var(--line);
             border-radius: 12px;
             margin-bottom: 10px;
-            background: #fff;
+            background: rgba(255,255,255,0.02);
             overflow: hidden;
-            transition: all .2s;
         }
-        .faq-item:hover { border-color: var(--cyan); }
         .faq-item summary {
             cursor: pointer;
             padding: 14px 18px;
@@ -615,6 +631,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 12px;
+            color: #F1F5F9;
         }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after {
@@ -622,13 +639,13 @@
             flex-shrink: 0;
             font-family: 'Unbounded', sans-serif;
             font-size: 18px;
-            color: var(--cyan);
+            color: var(--accent2);
             transition: transform .25s;
         }
         .faq-item[open] summary::after { transform: rotate(45deg); }
         .faq-item .answer {
             padding: 0 18px 18px;
-            color: var(--muted);
+            color: #5A6272;
             font-size: 14px;
             line-height: 1.7;
         }
@@ -637,7 +654,8 @@
 
         /* ===== CTA ===== */
         .cta-block {
-            background: var(--grad-dark);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
             border-radius: 22px;
             padding: 44px 48px;
             color: #F1F5F9;
@@ -647,18 +665,18 @@
         .cta-block::before {
             content: '';
             position: absolute;
-            width: 450px;
-            height: 450px;
-            right: -140px;
-            bottom: -180px;
+            width: 400px;
+            height: 400px;
+            right: -120px;
+            bottom: -160px;
             border-radius: 50%;
             filter: blur(80px);
-            background: radial-gradient(circle, rgba(0,240,255,0.15), transparent 65%);
+            background: radial-gradient(circle, rgba(139,92,246,0.1), transparent 65%);
             pointer-events: none;
         }
         .cta-block > * { position: relative; z-index: 2; }
         .cta-block h2 { color: #fff; }
-        .cta-block p { color: #B9C6DB; max-width: 520px; font-size: 16px; }
+        .cta-block p { color: #7A8294; max-width: 520px; font-size: 16px; }
         .cta-block .btns { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
         .cta-block .guarantee {
             margin-top: 14px;
@@ -667,9 +685,10 @@
             gap: 10px;
             padding: 12px 16px;
             border-radius: 12px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--line);
             font-size: 13px;
+            color: #7A8294;
             max-width: 520px;
         }
         .cta-block .promo {
@@ -680,9 +699,9 @@
             gap: 8px;
             padding: 12px 16px;
             border-radius: 12px;
-            border: 1.5px dashed rgba(0,240,255,0.3);
+            border: 1.5px dashed rgba(43,184,31,0.2);
             font-size: 13px;
-            color: #B8E8FF;
+            color: #7A8294;
             max-width: 520px;
         }
         .promo-code {
@@ -692,25 +711,24 @@
             letter-spacing: 0.08em;
             padding: 3px 14px;
             border-radius: 6px;
-            background: var(--cyan);
-            color: var(--primary);
+            background: var(--grad-green);
+            color: #fff;
             cursor: pointer;
             transition: .15s;
             white-space: nowrap;
         }
-        .promo-code:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,240,255,0.3); }
+        .promo-code:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(43,184,31,0.2); }
 
         /* ===== FOOTER ===== */
         .footer {
             padding: 32px 0 28px;
-            color: var(--muted);
+            color: #5A6272;
             font-size: 12px;
             text-align: center;
             border-top: 1px solid var(--line);
         }
-        .footer a { color: var(--accent); }
+        .footer a { color: var(--accent2); }
         .footer .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 6px; }
-        .footer .logo-ft svg { height: 24px; width: auto; margin-bottom: 6px; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
@@ -718,7 +736,8 @@
             .hero-stats { grid-template-columns: repeat(2, 1fr); }
             .calc-results { grid-template-columns: 1fr 1fr; }
             .nav { display: none; }
-            .safe-grid { grid-template-columns: 1fr 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             section { padding: 40px 0; }
@@ -729,9 +748,8 @@
             .calc-results { grid-template-columns: 1fr; }
             .cta-block { padding: 28px 20px; }
             .calc-presets { gap: 6px; }
-            .calc-preset { padding: 8px 14px; font-size: 12px; }
+            .calc-preset { padding: 6px 12px; font-size: 12px; }
             .hero-card { padding: 20px 16px; }
-            .safe-grid { grid-template-columns: 1fr; }
             .calc-slider-wrap .value { font-size: 18px; min-width: 80px; }
         }
         @media (max-width: 480px) {
@@ -757,7 +775,7 @@
             display: block;
             width: 24px;
             height: 2px;
-            background: var(--primary);
+            background: #B0B8C8;
             border-radius: 3px;
             transition: .25s;
         }
@@ -767,8 +785,8 @@
             position: fixed;
             inset: 0;
             z-index: 200;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(6px);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
             opacity: 0;
             visibility: hidden;
             transition: all .3s;
@@ -778,7 +796,8 @@
         }
         .mobile-menu.open { opacity: 1; visibility: visible; }
         .mobile-menu-inner {
-            background: #fff;
+            background: var(--primary2);
+            border: 1px solid var(--line);
             border-radius: 20px;
             padding: 32px 28px;
             max-width: 380px;
@@ -792,16 +811,17 @@
             padding: 10px 0;
             font-size: 16px;
             font-weight: 600;
-            color: var(--primary);
+            color: #B0B8C8;
             border-bottom: 1px solid var(--line);
         }
         .mobile-menu-inner a:last-child { border-bottom: none; }
+        .mobile-menu-inner a:hover { color: #fff; }
         .mobile-menu-close {
             float: right;
             background: none;
             border: none;
             font-size: 24px;
-            color: var(--muted);
+            color: #5A6272;
             cursor: pointer;
             line-height: 1;
         }
@@ -819,6 +839,16 @@
         .delay-2 { animation-delay: .2s; }
         .delay-3 { animation-delay: .3s; }
         .delay-4 { animation-delay: .4s; }
+
+        /* ===== ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ===== */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .glow-purple { background: radial-gradient(circle, rgba(139,92,246,0.12), transparent 70%); }
+        .glow-blue { background: radial-gradient(circle, rgba(79,124,255,0.08), transparent 70%); }
     </style>
 </head>
 <body>
@@ -827,24 +857,12 @@
 <header class="header">
     <div class="container">
         <a href="#" class="logo">
-            <!-- Твой логотип -->
-            <svg width="auto" height="32" viewBox="0 0 910 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    <polygon fill="#00183D" points="225.803,114.48 225.803,15.232 250.898,15.232 287.691,76.695 277.27,76.837 312.006,15.232 337.031,15.232 337.031,114.48 311.865,114.48 312.361,48.268 316.898,49.969 289.96,96.686 272.874,96.686 244.73,49.969 249.197,48.268 249.693,114.48 "/>
-                    <path fill="#00183D" d="M392.54 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.097,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.773,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.6,8.979 6.853,14.509 1.252,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.141,2.411 0.992,4.514 2.528,6.309 1.536,1.797 3.616,3.191 6.263,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.506,-0.544 12.334,-1.607 3.829,-1.063 7.586,-2.741 11.272,-5.057l7.798 17.227c-2.221,1.701 -5.128,3.213 -8.743,4.56 -3.615,1.347 -7.491,2.434 -11.603,3.237 -4.111,0.804 -8.01,1.206 -11.696,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.253,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.547,-2.836 -4.017,0 -7.349,0.946 -10.019,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
-                    <path fill="#00183D" d="M474.702 116.607c-8.412,0 -14.981,-2.363 -19.731,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.655,1.418 3.687,2.127 6.097,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.295,3.284 -3.308,0.922 -6.829,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                    <path fill="#00183D" d="M506.746 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.371,0.308 1.253,0.212 2.482,0.449 3.71,0.684l-2.977 26.443c-1.654,-0.661 -3.427,-1.181 -5.341,-1.536 -1.914,-0.354 -3.804,-0.52 -5.647,-0.52 -4.065,0 -7.397,1.111 -10.02,3.356 -2.623,2.245 -3.946,5.647 -3.946,10.185l0 36.367 -25.804 0z"/>
-                    <path fill="#00183D" d="M571.115 114.48l0 -73.018 25.804 0 0 73.018 -25.804 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.514,-5.884 -4.514,-10.232 0,-4.301 1.513,-7.704 4.514,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.609,3.757 3.001,2.505 4.49,5.908 4.49,10.209 0,4.348 -1.489,7.751 -4.49,10.232 -3.001,2.481 -6.545,3.733 -10.609,3.733z"/>
-                    <path fill="#00183D" d="M650.443 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.989,-7.964 -14.533,-13.776 -3.545,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.063,-10.587 3.166,-15.289 2.104,-4.703 5.034,-8.791 8.791,-12.288 3.757,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.856,2.363 4.892,1.584 9.287,3.923 13.21,6.995l-11.201 19.069c-2.363,-2.221 -4.892,-3.851 -7.609,-4.868 -2.718,-1.016 -5.577,-1.512 -8.554,-1.512 -3.734,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.166,2.931 7.514,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.475,-1.89 3.002,-1.252 5.79,-3.096 8.389,-5.553l10.067 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                    <polygon fill="#00F0FF" points="703.046,114.48 703.046,15.232 729.134,15.232 729.134,51.103 765.289,51.103 765.289,15.232 791.376,15.232 791.376,114.48 765.289,114.48 765.289,74.923 729.134,74.923 729.134,114.48 "/>
-                    <path fill="#00F0FF" d="M811.935 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.902 -83.156c-4.064,0 -7.585,-1.252 -10.586,-3.733 -3.001,-2.481 -4.514,-5.884 -4.514,-10.232 0,-4.301 1.513,-7.704 4.514,-10.209 3.001,-2.505 6.522,-3.757 10.586,-3.757 4.065,0 7.609,1.252 10.611,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.611,3.733z"/>
-                    <path fill="#00F0FF" d="M888.781 116.607c-8.412,0 -14.981,-2.363 -19.731,-7.066 -4.749,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.828,5.955 2.481,7.373 1.655,1.418 3.687,2.127 6.097,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.993,-1.583l3.049 20.133c-2.222,1.276 -4.986,2.363 -8.295,3.284 -3.308,0.922 -6.829,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                </g>
-                <g>
-                    <polygon fill="#00183D" points="88.863,14.556 89.071,57.564 66.74,96.292 49.596,96.292 25.906,56.968 26.334,114.147 2.361,114.147 2.361,14.556 27.544,14.556 59.12,67.305 "/>
-                    <polygon fill="#00F0FF" points="95.008,114.147 95.008,14.557 121.186,14.557 121.186,50.552 157.466,50.552 157.466,14.557 183.644,14.557 183.644,114.147 157.466,114.147 157.466,74.454 121.186,74.454 121.186,114.147 "/>
-                </g>
+            <svg viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0L2 7L12 14L22 7L12 0Z" fill="#4F7CFF"/>
+                <path d="M2 7V21L12 28V14L2 7Z" fill="#8B5CF6" opacity="0.7"/>
+                <path d="M22 7V21L12 28V14L22 7Z" fill="#4F7CFF" opacity="0.5"/>
             </svg>
+            Рост <span>ПФ</span>
         </a>
         <nav class="nav">
             <a href="#about">О сервисе</a>
@@ -869,7 +887,7 @@
         <a href="#calc" onclick="toggleMenu()">Калькулятор</a>
         <a href="#steps" onclick="toggleMenu()">Как начать</a>
         <a href="#faq" onclick="toggleMenu()">FAQ</a>
-        <a href="https://t.me/iclobot_manager" target="_blank" style="color:var(--accent);font-weight:700;" onclick="toggleMenu()">Telegram</a>
+        <a href="https://t.me/iclobot_manager" target="_blank" style="color:var(--accent2);font-weight:700;" onclick="toggleMenu()">Telegram</a>
     </div>
 </div>
 
@@ -892,7 +910,7 @@ function toggleMenu() {
                 <p>Продвижение в Яндексе через AI-ботов с уникальной поведенческой историей. Регистрируйся и получай бесплатный тест-драйв на 5 дней.</p>
                 <div style="display:flex;flex-wrap:wrap;gap:10px;">
                     <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary btn-lg">Бесплатный тест-драйв</a>
-                    <a href="#calc" class="btn btn-cyan btn-lg">Рассчитать стоимость</a>
+                    <a href="#calc" class="btn btn-green btn-lg">Рассчитать стоимость</a>
                 </div>
                 <div class="hero-stats">
                     <div class="hero-stat"><div class="num">5 дней</div><div class="label">среднее время вывода в топ-10</div></div>
@@ -920,91 +938,172 @@ function toggleMenu() {
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">О сервисе</div>
-            <h2>Что делает <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">Рост ПФ</span></h2>
-            <p>Это сервис для ускоренного продвижения запросов через работу с поведенческими факторами в Яндексе.</p>
+            <h2>Что делает <span class="text-gradient">Рост ПФ</span></h2>
+            <p>Сервис для ускоренного продвижения запросов через работу с поведенческими факторами в Яндексе.</p>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
             <div class="fade-up delay-1">
-                <div style="background:var(--soft);border-radius:16px;padding:24px;border:1px solid var(--line);">
-                    <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:var(--primary);margin-bottom:10px;">Ключевые факты</div>
+                <div style="background:rgba(255,255,255,0.03);border-radius:16px;padding:24px;border:1px solid var(--line);">
+                    <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:#fff;margin-bottom:10px;">Ключевые факты</div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                        <div><span style="color:var(--muted);font-size:12px;">Старт</span><div style="font-weight:700;">от 1 000 ₽</div></div>
-                        <div><span style="color:var(--muted);font-size:12px;">Абонплата</span><div style="font-weight:700;color:var(--green);">0 ₽</div></div>
-                        <div><span style="color:var(--muted);font-size:12px;">Тест-драйв</span><div style="font-weight:700;color:var(--cyan);">5 дней</div></div>
-                        <div><span style="color:var(--muted);font-size:12px;">Цена клика</span><div style="font-weight:700;">от 0,40 ₽</div></div>
+                        <div><span style="color:#5A6272;font-size:12px;">Старт</span><div style="font-weight:700;color:#fff;">от 1 000 ₽</div></div>
+                        <div><span style="color:#5A6272;font-size:12px;">Абонплата</span><div style="font-weight:700;color:#2BB81F;">0 ₽</div></div>
+                        <div><span style="color:#5A6272;font-size:12px;">Тест-драйв</span><div style="font-weight:700;color:var(--cyan);">5 дней</div></div>
+                        <div><span style="color:#5A6272;font-size:12px;">Цена клика</span><div style="font-weight:700;color:#fff;">от 0,40 ₽</div></div>
                     </div>
                 </div>
             </div>
-            <div class="fade-up delay-2" style="font-size:15px;color:var(--muted);line-height:1.8;">
-                <p><strong style="color:var(--primary);">Как работает сервис?</strong> Технология основана на переходе индивидуально обученных AI-ботов из поисковых систем на продвигаемый сайт.</p>
-                <p style="margin-top:10px;"><strong style="color:var(--primary);">По каким правилам?</strong> Каждый переход осуществляется исключительно по правилам ранжирования Яндекса, что обеспечивает быстрый рост позиций по выбранным запросам.</p>
-                <p style="margin-top:10px;"><strong style="color:var(--primary);">В чём уникальность?</strong> AI-бот имеет уникальную поведенческую историю и совершает значимые действия в интернете, отличить его от «живых» переходов невозможно.</p>
+            <div class="fade-up delay-2" style="font-size:15px;color:#7A8294;line-height:1.8;">
+                <p><strong style="color:#fff;">Как работает сервис?</strong> Технология основана на переходе индивидуально обученных AI-ботов из поисковых систем на продвигаемый сайт.</p>
+                <p style="margin-top:10px;"><strong style="color:#fff;">По каким правилам?</strong> Каждый переход осуществляется исключительно по правилам ранжирования Яндекса, что обеспечивает быстрый рост позиций по выбранным запросам.</p>
+                <p style="margin-top:10px;"><strong style="color:#fff;">В чём уникальность?</strong> AI-бот имеет уникальную поведенческую историю и совершает значимые действия в интернете, отличить его от «живых» переходов невозможно.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY SITES DON'T GROW ===== -->
+<section style="background:var(--primary2);">
+    <div class="container">
+        <div class="section-head fade-up">
+            <div class="tag">Проблема</div>
+            <h2>Почему сайты не растут <span class="text-gradient">в топ выдачи?</span></h2>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div class="bg-card fade-up delay-1" style="padding:28px 24px;text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">📊</div>
+                <h3 style="color:#fff;font-size:17px;">Обычного SEO не хватает</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:6px;">Работа с поведенческими факторами стала нормой. Пользуются все, даже те, кто говорит, что нет.</p>
+            </div>
+            <div class="bg-card fade-up delay-2" style="padding:28px 24px;text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">⚠️</div>
+                <h3 style="color:#fff;font-size:17px;">Старые сервисы больше не работают</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:6px;">Изменения алгоритмов Яндекса делают почти невозможным продвижение «как раньше».</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ===== ADVANTAGES ===== -->
-<section id="advantages" style="background:var(--soft);">
+<section>
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">Преимущества</div>
-            <h2>Почему выбирают <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">Рост ПФ</span></h2>
+            <h2>Почему выбирают <span class="text-gradient">Рост ПФ</span></h2>
         </div>
-        <div class="adv-grid">
-            <div class="adv-item fade-up delay-1">
+        <div class="card-grid">
+            <div class="card fade-up delay-1">
                 <div class="icon">♾️</div>
-                <div class="desc">Не ограниченное количество запросов</div>
+                <h3>Без ограничений</h3>
+                <p>Не ограниченное количество запросов. Продвигайте сколько нужно.</p>
             </div>
-            <div class="adv-item fade-up delay-2">
-                <div class="num cyan">5</div>
-                <div class="desc">дней — среднее время вывода запросов в топ-10</div>
+            <div class="card fade-up delay-2 highlight">
+                <div class="badge">быстро</div>
+                <div class="icon">⚡</div>
+                <h3>5 дней до результата</h3>
+                <p>Среднее время вывода запросов в топ-10. Первые сдвиги уже на 2-3 день.</p>
             </div>
-            <div class="adv-item fade-up delay-3">
+            <div class="card fade-up delay-3">
                 <div class="icon">🧠</div>
-                <div class="desc">Живой AI-бот с уникальной поведенческой историей</div>
+                <h3>Живой AI-бот</h3>
+                <p>С уникальной поведенческой историей. Неотличим от реального пользователя.</p>
             </div>
-            <div class="adv-item fade-up delay-4">
+            <div class="card fade-up delay-4">
                 <div class="icon">📊</div>
-                <div class="desc">Еженедельная отчётность по каждому проекту</div>
+                <h3>Еженедельная отчётность</h3>
+                <p>По каждому проекту. Прозрачная статистика по кликам и позициям.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ===== WHO SUITS ===== -->
-<section id="who">
+<section style="background:var(--primary2);">
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">Кому подходит</div>
-            <h2>Кому сервис <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">подходит</span></h2>
+            <h2>Кому сервис <span class="text-gradient">подходит</span></h2>
         </div>
-        <div class="who-grid">
-            <div class="who-item fade-up delay-1"><strong>Всем сайтам</strong><br>на которых заметен долгий рост позиций, либо позиции начали идти вниз</div>
-            <div class="who-item fade-up delay-2"><strong>Молодым сайтам</strong><br>и лендингам</div>
-            <div class="who-item fade-up delay-3"><strong>Сайтам со сверхвысокой конкуренцией</strong></div>
-            <div class="who-item fade-up delay-4"><strong>Интернет-магазинам</strong><br>и сайтам услуг</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+            <div class="bg-card fade-up delay-1" style="padding:18px 16px;text-align:center;">
+                <strong style="color:#fff;">Всем сайтам</strong>
+                <div style="color:#5A6272;font-size:14px;margin-top:4px;">на которых заметен долгий рост позиций, либо позиции начали идти вниз</div>
+            </div>
+            <div class="bg-card fade-up delay-2" style="padding:18px 16px;text-align:center;">
+                <strong style="color:#fff;">Молодым сайтам</strong>
+                <div style="color:#5A6272;font-size:14px;margin-top:4px;">и лендингам</div>
+            </div>
+            <div class="bg-card fade-up delay-3" style="padding:18px 16px;text-align:center;">
+                <strong style="color:#fff;">Сайтам со сверхвысокой конкуренцией</strong>
+            </div>
+            <div class="bg-card fade-up delay-4" style="padding:18px 16px;text-align:center;">
+                <strong style="color:#fff;">Интернет-магазинам</strong>
+                <div style="color:#5A6272;font-size:14px;margin-top:4px;">и сайтам услуг</div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ===== WHEN RESULT ===== -->
-<section id="result" style="background:var(--soft);">
+<!-- ===== COMPARE ===== -->
+<section>
     <div class="container">
         <div class="section-head fade-up">
-            <div class="tag">Результат</div>
-            <h2>А когда <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">результат?</span></h2>
-            <p>Увидеть результаты продвижения в большинстве случаев возможно уже <strong>в первую неделю</strong> работы AI-бота!</p>
+            <div class="tag">Сравнение</div>
+            <h2>Рост ПФ <span class="text-gradient">vs другие сервисы</span></h2>
         </div>
-        <div style="display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;background:#fff;border-radius:18px;border:1px solid var(--line);padding:30px 24px;" class="fade-up">
-            <div style="text-align:center;">
-                <div style="font-family:'Unbounded',sans-serif;font-size:48px;font-weight:800;background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">5</div>
-                <div style="font-size:16px;color:var(--muted);">дней</div>
+        <div class="compare-grid">
+            <div class="compare-col fade-up delay-1">
+                <h3 style="color:#7A8294;">🔴 Другие сервисы</h3>
+                <ul>
+                    <li><span>Цена за клик</span><span class="cross">от 0,80 ₽</span></li>
+                    <li><span>Абонентская плата</span><span class="cross">есть</span></li>
+                    <li><span>Минимальный депозит</span><span class="cross">от 5 000 ₽</span></li>
+                    <li><span>Прямая цена</span><span class="cross">посредники</span></li>
+                    <li><span>Поддержка</span><span class="cross">долгие ответы</span></li>
+                    <li><span>Фингерпринты</span><span class="cross">публичные, устаревшие</span></li>
+                    <li><span>Прокси</span><span class="cross">публичные, 1-2 региона</span></li>
+                </ul>
             </div>
-            <div style="font-size:18px;font-weight:600;color:var(--primary);max-width:400px;text-align:center;">
-                Первые результаты уже <span style="color:var(--cyan);">в первую неделю</span> работы AI-бота!
+            <div class="compare-col highlight fade-up delay-2">
+                <h3 style="color:#fff;">✅ Рост ПФ</h3>
+                <ul>
+                    <li><span>Цена за клик</span><span class="check">от 0,15 ₽</span></li>
+                    <li><span>Абонентская плата</span><span class="check">0 ₽</span></li>
+                    <li><span>Минимальный депозит</span><span class="check">1 000 ₽</span></li>
+                    <li><span>Прямая цена</span><span class="check">без посредников</span></li>
+                    <li><span>Поддержка</span><span class="check">быстрый ответ</span></li>
+                    <li><span>Фингерпринты</span><span class="check">реальные, свежие</span></li>
+                    <li><span>Прокси</span><span class="check">собственная сеть по всей России</span></li>
+                </ul>
             </div>
-            <div style="font-size:40px;">🚀</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TECH COMPARE ===== -->
+<section style="background:var(--primary2);">
+    <div class="container">
+        <div class="section-head fade-up">
+            <div class="tag">Технологии</div>
+            <h2>Как работает <span class="text-gradient">у всех vs у нас</span></h2>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-col fade-up delay-1">
+                <h3 style="color:#7A8294;">❌ Как работает у всех</h3>
+                <div class="item"><span class="icon">🖥️</span><div><span class="x">✕</span> <strong>Публичные фингерпринты</strong><br><span style="color:#5A6272;">Многократно использованные и устаревшие базы</span></div></div>
+                <div class="item"><span class="icon">🌐</span><div><span class="x">✕</span> <strong>Публичные прокси</strong><br><span style="color:#5A6272;">Низкая стабильность, география ограничена 1-2 регионами</span></div></div>
+                <div class="item"><span class="icon">📋</span><div><span class="x">✕</span> <strong>Единый алгоритм</strong><br><span style="color:#5A6272;">Однообразная навигация, базовый скролл сверху-вниз</span></div></div>
+                <div class="item"><span class="icon">🔍</span><div><span class="x">✕</span> <strong>Синтетические запросы</strong><br><span style="color:#5A6272;">Несостыковка долгосрочных интересов</span></div></div>
+                <div class="item"><span class="icon">🤖</span><div><span class="x">✕</span> <strong>Одинаковый софт</strong><br><span style="color:#5A6272;">Работа через BAS или Zennoposter. Роботность в метрике 50%+</span></div></div>
+            </div>
+            <div class="tech-col highlight fade-up delay-2" style="border-color:rgba(79,124,255,0.2);">
+                <h3 style="color:#fff;">✅ Как работает у нас</h3>
+                <div class="item"><span class="icon">🖥️</span><div><span class="check">✓</span> <strong>Реальные фингерпринты</strong><br><span style="color:#5A6272;">Свежие, перепроверенные вручную</span></div></div>
+                <div class="item"><span class="icon">🌐</span><div><span class="check">✓</span> <strong>Собственная прокси сеть</strong><br><span style="color:#5A6272;">Полный контроль, география по всей России</span></div></div>
+                <div class="item"><span class="icon">📋</span><div><span class="check">✓</span> <strong>Скрипты под каждый сайт</strong><br><span style="color:#5A6272;">Поведение неотличимо от человека</span></div></div>
+                <div class="item"><span class="icon">🔍</span><div><span class="check">✓</span> <strong>Запросы реальных пользователей</strong><br><span style="color:#5A6272;">Органичные долгосрочные интересы</span></div></div>
+                <div class="item"><span class="icon">🤖</span><div><span class="check">✓</span> <strong>Собственный браузер</strong><br><span style="color:#5A6272;">Роботность в метрике &lt;0.2%</span></div></div>
+            </div>
         </div>
     </div>
 </section>
@@ -1014,35 +1113,35 @@ function toggleMenu() {
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">Стоимость</div>
-            <h2>Цены на <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">продвижение</span></h2>
+            <h2>Цены на <span class="text-gradient">продвижение</span></h2>
             <p>Цена клика от 0,40 ₽. Без абонплаты и обязательного депозита.</p>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
-            <div style="background:#fff;border-radius:18px;border:1px solid var(--line);padding:28px 24px;" class="fade-up delay-1">
-                <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:32px;color:var(--primary);">
-                    0,40 ₽<span style="font-size:16px;font-weight:400;color:var(--muted);">/клик</span>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:18px;padding:28px 24px;" class="fade-up delay-1">
+                <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:32px;color:#fff;">
+                    0,40 ₽<span style="font-size:16px;font-weight:400;color:#5A6272;">/клик</span>
                 </div>
-                <div style="font-size:14px;color:var(--muted);margin:8px 0 16px;">
-                    <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);color:#fff;padding:2px 14px;border-radius:4px;font-size:13px;font-weight:700;">от 1 000 ₽ на запуск</span>
+                <div style="font-size:14px;color:#5A6272;margin:8px 0 16px;">
+                    <span style="background:var(--grad);color:#fff;padding:2px 14px;border-radius:4px;font-size:13px;font-weight:700;">от 1 000 ₽ на запуск</span>
                 </div>
-                <div style="font-size:14px;color:var(--muted);">
-                    Расчёт стоимости производится в AI-калькуляторе.
-                    <a href="#calc" style="font-weight:700;color:var(--cyan);">Рассчитать сейчас →</a>
+                <div style="font-size:14px;color:#5A6272;">
+                    Расчёт стоимости в AI-калькуляторе.
+                    <a href="#calc" style="color:var(--cyan);font-weight:700;">Рассчитать сейчас →</a>
                 </div>
                 <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
                     <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary">Зарегистрироваться</a>
                     <a href="#calc" class="btn btn-ghost">Калькулятор</a>
                 </div>
             </div>
-            <div style="background:var(--primary);border-radius:18px;padding:24px;color:#F1F5F9;" class="fade-up delay-2">
+            <div style="background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:18px;padding:24px;" class="fade-up delay-2">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <span style="background:var(--cyan);color:var(--primary);padding:2px 14px;border-radius:4px;font-size:14px;font-weight:700;">free</span>
-                    <span style="font-weight:700;font-size:16px;">Бесплатный пробный период</span>
+                    <span style="background:var(--grad-green);color:#fff;padding:2px 14px;border-radius:4px;font-size:14px;font-weight:700;">free</span>
+                    <span style="font-weight:700;font-size:16px;color:#fff;">Бесплатный пробный период</span>
                 </div>
-                <p style="color:#B9C6DB;font-size:14px;margin-top:10px;">
-                    Каждому клиенту мы предоставляем тестовый период для оценки возможностей продвижения через AI-бота
+                <p style="color:#7A8294;font-size:14px;margin-top:10px;">
+                    Каждому клиенту предоставляем тестовый период для оценки возможностей продвижения через AI-бота
                 </p>
-                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-cyan" style="margin-top:14px;">Начать тест-драйв</a>
+                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-green" style="margin-top:14px;">Начать тест-драйв</a>
             </div>
         </div>
 
@@ -1058,21 +1157,21 @@ function toggleMenu() {
                     <tr><td>от 250 000 ₽</td><td>по договорённости</td></tr>
                 </tbody>
             </table>
-            <div style="font-size:13px;color:var(--muted);margin-top:12px;">
-                💡 Для агентств и крупных заказчиков действует система лояльности — <a href="https://t.me/iclobot_manager" target="_blank" style="font-weight:700;">напишите нам</a> для индивидуального расчёта.
+            <div style="font-size:13px;color:#5A6272;margin-top:12px;">
+                💡 Для агентств и крупных заказчиков — система лояльности. <a href="https://t.me/iclobot_manager" target="_blank" style="color:var(--cyan);font-weight:700;">Напишите нам</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== CALCULATOR (улучшенная версия) ===== -->
-<section id="calc" style="background:var(--primary);color:#F1F5F9;padding:56px 0;">
+<!-- ===== CALCULATOR ===== -->
+<section id="calc" style="background:var(--primary2);">
     <div class="container">
         <div style="max-width:900px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:28px;" class="fade-up">
-                <div class="tag" style="color:#9DB8FF;">Калькулятор</div>
+                <div class="tag" style="color:var(--cyan);">Калькулятор</div>
                 <h2 style="color:#fff;">Рассчитайте <span style="color:var(--cyan);">стоимость</span></h2>
-                <p style="color:#9DB0CC;font-size:16px;">Выберите сумму пополнения — увидите цену клика и количество переходов</p>
+                <p style="color:#5A6272;font-size:16px;">Выберите сумму пополнения — увидите цену клика и количество переходов</p>
             </div>
 
             <div class="calc-block">
@@ -1097,11 +1196,11 @@ function toggleMenu() {
                 <div class="calc-results">
                     <div class="calc-result" id="resDepBox">
                         <div class="k">💰 Пополнение</div>
-                        <div class="v" id="resDep">—</div>
+                        <div class="v" id="resDep" style="color:#fff;">—</div>
                     </div>
                     <div class="calc-result" id="resCpcBox">
                         <div class="k">📊 Цена клика</div>
-                        <div class="v" id="resCpc">—</div>
+                        <div class="v" id="resCpc" style="color:#fff;">—</div>
                     </div>
                     <div class="calc-result highlight" id="resClicksBox">
                         <div class="k">👆 Переходов на сайт</div>
@@ -1157,7 +1256,7 @@ function setAmount(value, fromSlider) {
         document.getElementById('resCpc').textContent = 'обсудим';
         document.getElementById('resClicks').textContent = 'ещё выгоднее';
         document.getElementById('resClicksSub').textContent = '';
-        document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/iclobot_manager" target="_blank" style="color:#00F0FF;font-weight:700;">Telegram</a>.';
+        document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/iclobot_manager" target="_blank" style="color:var(--cyan);font-weight:700;">Telegram</a>.';
     } else {
         const clicks = value / tier.cpc;
         document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
@@ -1168,7 +1267,7 @@ function setAmount(value, fromSlider) {
             document.getElementById('resClicksSub').textContent = 'на ' + formatNumber(extra) + ' больше, чем по базовой цене';
             document.getElementById('calcNote').innerHTML =
                 'Скидка от объёма: на базовой цене 0,40 ₽ этих денег хватило бы на <strong style="color:#fff;">' +
-                formatNumber(value / 0.40) + '</strong> переходов, на вашем объёме — на <strong style="color:#00F0FF;">' +
+                formatNumber(value / 0.40) + '</strong> переходов, на вашем объёме — на <strong style="color:#2BB81F;">' +
                 formatNumber(extra) + '</strong> больше.';
         } else {
             document.getElementById('resClicksSub').textContent = 'хватит на тестовый запуск';
@@ -1180,49 +1279,80 @@ setAmount(1000);
 </script>
 
 <!-- ===== STEPS ===== -->
-<section id="steps" style="background:var(--soft);">
+<section id="steps">
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">Как начать</div>
-            <h2>Регистрация и запуск <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">в 1 клик</span></h2>
+            <h2>Запуск продвижения <span class="text-gradient">в три шага</span></h2>
         </div>
-        <div style="max-width:700px;margin:0 auto;">
-            <div class="steps">
-                <div class="step fade-up delay-1"><span class="num">1</span><h3>Регистрация</h3><p>Пройдите простую регистрацию в <a href="https://lk.iclobot.ru/register" target="_blank">личном кабинете</a></p></div>
-                <div class="step fade-up delay-2"><span class="num">2</span><h3>Данные проекта</h3><p>Укажите домен, ключевые запросы, регион и цель продвижения</p></div>
-                <div class="step fade-up delay-3"><span class="num">3</span><h3>Запуск</h3><p>Активируйте бесплатный тест-драйв на 5 дней или оплатите продвижение</p></div>
-                <div class="step fade-up delay-4"><span class="num">4</span><h3>Контроль</h3><p>Следите за динамикой кликов и позиций в личном кабинете</p></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+            <div class="bg-card fade-up delay-1" style="padding:28px 20px;text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">📋</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:14px;margin-bottom:10px;">1</div>
+                <h3 style="color:#fff;font-size:17px;">Выберите ключи</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:4px;">Укажите запросы, по которым хотите продвигаться</p>
+            </div>
+            <div class="bg-card fade-up delay-2" style="padding:28px 20px;text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">📊</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:14px;margin-bottom:10px;">2</div>
+                <h3 style="color:#fff;font-size:17px;">Задайте объём</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:4px;">Определите количество переходов и бюджет</p>
+            </div>
+            <div class="bg-card fade-up delay-3" style="padding:28px 20px;text-align:center;">
+                <div style="font-size:48px;margin-bottom:12px;">🚀</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;font-size:14px;margin-bottom:10px;">3</div>
+                <h3 style="color:#fff;font-size:17px;">Нажмите старт</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:4px;">Запустите продвижение и получайте результаты</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== CASES ===== -->
+<section style="background:var(--primary2);">
+    <div class="container">
+        <div class="section-head fade-up">
+            <div class="tag">Кейсы</div>
+            <h2>Результаты <span class="text-gradient">наших клиентов</span></h2>
+            <p>Рост позиций в ТОП-10 по основным запросам после подключения</p>
+        </div>
+        <div class="cases-grid">
+            <div class="case-item fade-up delay-1"><div class="num">85%</div><div class="label">Услуги грузового ремонта</div></div>
+            <div class="case-item fade-up delay-2"><div class="num">92%</div><div class="label">Перевозка грузов из Китая</div></div>
+            <div class="case-item fade-up delay-3"><div class="num">100%</div><div class="label">Стоматология</div></div>
+            <div class="case-item fade-up delay-4"><div class="num">93%</div><div class="label">Магазин стройматериалов</div></div>
+            <div class="case-item fade-up delay-5"><div class="num">89%</div><div class="label">Косметология</div></div>
+            <div class="case-item fade-up delay-6"><div class="num">94%</div><div class="label">Офисная мебель</div></div>
+        </div>
+    </div>
+</section>
+
 <!-- ===== SAFE ===== -->
-<section id="safe" style="background:var(--soft);">
+<section>
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">Безопасность</div>
-            <h2>Сервис <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">безопасен</span></h2>
+            <h2>Сервис <span class="text-gradient">безопасен</span></h2>
         </div>
-        <div class="safe-grid">
-            <div class="safe-item fade-up delay-1">
-                <div class="icon">🛡️</div>
-                <h3>Надёжно</h3>
-                <p>Каждый переход осуществляется исключительно по правилам ранжирования Яндекс.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+            <div class="bg-card fade-up delay-1" style="padding:22px 18px;text-align:center;">
+                <div style="font-size:30px;margin-bottom:10px;">🛡️</div>
+                <h3 style="color:#fff;font-size:16px;">Надёжно</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:4px;">Каждый переход осуществляется по правилам ранжирования Яндекс.</p>
             </div>
-            <div class="safe-item fade-up delay-2">
-                <div class="icon">⭐</div>
-                <h3>Качественно</h3>
-                <p>AI-бот имеет уникальную поведенческую историю в интернете и не отличается от человека.</p>
+            <div class="bg-card fade-up delay-2" style="padding:22px 18px;text-align:center;">
+                <div style="font-size:30px;margin-bottom:10px;">⭐</div>
+                <h3 style="color:#fff;font-size:16px;">Качественно</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:4px;">AI-бот имеет уникальную поведенческую историю и не отличается от человека.</p>
             </div>
-            <div class="safe-item fade-up delay-3">
-                <div class="icon">🔒</div>
-                <h3>Анонимно</h3>
-                <p>Мы не раскрываем своих клиентов и сохраняем полную анонимность.</p>
+            <div class="bg-card fade-up delay-3" style="padding:22px 18px;text-align:center;">
+                <div style="font-size:30px;margin-bottom:10px;">🔒</div>
+                <h3 style="color:#fff;font-size:16px;">Анонимно</h3>
+                <p style="color:#5A6272;font-size:14px;margin-top:4px;">Мы не раскрываем клиентов и сохраняем полную анонимность.</p>
             </div>
         </div>
-        <div style="background:#fff;border-radius:16px;border:1px solid var(--line);padding:20px 24px;margin-top:20px;text-align:center;" class="fade-up delay-4">
-            <div style="font-size:14px;color:var(--muted);">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-top:20px;text-align:center;" class="fade-up delay-4">
+            <div style="font-size:14px;color:#5A6272;">
                 Если с вашим сайтом что-то случится по вине сервиса — мы вернём все позиции бесплатно.
             </div>
         </div>
@@ -1230,11 +1360,11 @@ setAmount(1000);
 </section>
 
 <!-- ===== FAQ ===== -->
-<section id="faq">
+<section id="faq" style="background:var(--primary2);">
     <div class="container">
         <div class="section-head fade-up">
             <div class="tag">Вопросы</div>
-            <h2>Частые <span style="background:linear-gradient(100deg,#4F7CFF,#00F0FF);-webkit-background-clip:text;background-clip:text;color:transparent;">вопросы</span></h2>
+            <h2>Частые <span class="text-gradient">вопросы</span></h2>
         </div>
         <div style="max-width:800px;margin:0 auto;">
             <details class="faq-item fade-up">
@@ -1242,40 +1372,40 @@ setAmount(1000);
                 <div class="answer">
                     Всё зависит от нескольких факторов:<br>
                     а) Насколько хорошо ваш сайт оптимизирован. Чем лучше проработано стандартное SEO, тем меньше переходов потребуется.<br>
-                    б) Частотность фразы. Чем выше частотность, тем больше переходов будет совершено.<br>
-                    в) Конкурентность ниши. Необходимо совершать больше переходов по фразам, чем совершают ваши конкуренты.<br><br>
-                    Наш уникальный алгоритм, основанный на искусственном интеллекте, автоматически анализирует все показатели и высчитывает оптимальное количество переходов. Результат будет достигнут!
+                    б) Частотность фразы. Чем выше частотность, тем больше переходов.<br>
+                    в) Конкурентность ниши. Нужно больше переходов, чем у конкурентов.<br><br>
+                    Наш алгоритм на основе ИИ автоматически анализирует все показатели и высчитывает оптимальное количество переходов.
                 </div>
             </details>
             <details class="faq-item fade-up delay-1">
                 <summary>Это безопасно?</summary>
                 <div class="answer">
-                    Да, все переходы осуществляются строго по алгоритмам ранжирования Яндекса. AI-бот имеет поведенческий фактор как у настоящего человека, он ежедневно совершает различные действия в интернете (читает новости, смотрит погоду, вводит различные запросы) так же как и мы с вами, это его и отличает от других подобных сервисов. Поэтому сервис полностью безопасен.
+                    Да, все переходы осуществляются строго по алгоритмам ранжирования Яндекса. AI-бот имеет поведенческий фактор как у настоящего человека, он ежедневно совершает различные действия в интернете (читает новости, смотрит погоду, вводит различные запросы) так же как и мы с вами. Поэтому сервис полностью безопасен.
                 </div>
             </details>
             <details class="faq-item fade-up delay-2">
                 <summary>Как правильно подобрать запросы?</summary>
                 <div class="answer">
-                    Не советуем останавливать свой выбор исключительно на высокочастотных запросах: как правило, с них много трафика, но мало заявок. Подберите запросы с максимально коммерческими фразами, используйте НЧ запросы по названию товара или его характеристикам. Если возникли сложности, обратитесь в службу поддержки с фразой «нужна помощь в подборе запросов».
+                    Не советуем останавливаться только на высокочастотных запросах: с них много трафика, но мало заявок. Используйте НЧ запросы по названию товара или его характеристикам. Если возникли сложности, обратитесь в поддержку — поможем.
                 </div>
             </details>
             <details class="faq-item fade-up delay-3">
                 <summary>Как отслеживать результат?</summary>
                 <div class="answer">
-                    1. С помощью наших отчётов. В отчёт будут включены: точная частотность каждого запроса, позиция сайта на момент запуска и на момент окончания.<br><br>
-                    2. С помощью мониторинга поисковой выдачи. Как правило, на 1-3 день видно положительную динамику продвижения.
+                    1. С помощью наших отчётов. В отчёт входят: точная частотность каждого запроса, позиция сайта на момент запуска и на момент окончания.<br><br>
+                    2. С помощью мониторинга поисковой выдачи. Уже на 1-3 день видна положительная динамика.
                 </div>
             </details>
             <details class="faq-item fade-up delay-4">
                 <summary>Сколько нужно пользоваться сервисом?</summary>
                 <div class="answer">
-                    Как и в базовом SEO, здесь также нельзя с точностью сказать сколько будет держаться результат. Конкуренты не спят и стараются продвинуть свой сайт выше. Предлагаем сначала получить желаемый результат в позициях, просчитать количество новых клиентов и следить за динамикой своих позиций. Если результаты пойдут вниз, воспользуйтесь сервисом повторно.
+                    Как и в базовом SEO, здесь нельзя точно сказать, сколько будет держаться результат. Конкуренты не спят. Предлагаем сначала получить желаемый результат, просчитать количество новых клиентов и следить за динамикой. Если результаты пойдут вниз — воспользуйтесь сервисом повторно.
                 </div>
             </details>
             <details class="faq-item fade-up delay-5">
                 <summary>Что такое поведенческие факторы?</summary>
                 <div class="answer">
-                    Поведенческие факторы — это сигналы, которые показывают, как пользователи взаимодействуют с сайтом и поисковой выдачей. Поисковым системам важно понять: человек нашёл на странице то, что искал, или быстро вернулся назад. На ПФ влияет: заголовок в выдаче, описание страницы, скорость загрузки, структура, доверие к компании, качество текста, наличие цен и отзывов.
+                    Поведенческие факторы — это сигналы, которые показывают, как пользователи взаимодействуют с сайтом и поисковой выдачей. Поисковым системам важно понять: человек нашёл то, что искал, или вернулся назад. На ПФ влияет: заголовок в выдаче, описание страницы, скорость загрузки, структура, контент, наличие цен и отзывов.
                 </div>
             </details>
         </div>
@@ -1287,12 +1417,12 @@ setAmount(1000);
     <div class="container">
         <div class="cta-block fade-up">
             <h2>Готовы <span style="color:var(--cyan);">поднять</span> сайт в ТОП?</h2>
-            <p>Зарегистрируйтесь в личном кабинете и получите бесплатный тест-драйв на 5 дней. Оцените эффективность до оплаты.</p>
+            <p>Зарегистрируйтесь и получите бесплатный тест-драйв на 5 дней. Оцените эффективность до оплаты.</p>
             <div class="guarantee">🎁 <span><b>Бесплатный тест-драйв 5 дней</b> — оцените продвижение до оплаты.</span></div>
             <div class="guarantee">⚙️ <span>Индивидуально обученный AI-бот — неотличим от живого пользователя.</span></div>
             <div class="btns">
-                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-cyan btn-lg">Бесплатный тест-драйв</a>
-                <a href="https://t.me/iclobot_manager" target="_blank" class="btn btn-white btn-lg">Написать в Telegram</a>
+                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary btn-lg">Бесплатный тест-драйв</a>
+                <a href="https://t.me/iclobot_manager" target="_blank" class="btn btn-ghost btn-lg">Написать в Telegram</a>
             </div>
             <div class="promo">
                 🔎 <span>По промокоду</span>
@@ -1323,33 +1453,17 @@ function showCopied(el) {
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
     <div class="container">
-        <div class="logo-ft">
-            <svg width="auto" height="24" viewBox="0 0 910 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    <polygon fill="#00183D" points="225.803,114.48 225.803,15.232 250.898,15.232 287.691,76.695 277.27,76.837 312.006,15.232 337.031,15.232 337.031,114.48 311.865,114.48 312.361,48.268 316.898,49.969 289.96,96.686 272.874,96.686 244.73,49.969 249.197,48.268 249.693,114.48 "/>
-                    <path fill="#00183D" d="M392.54 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.097,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.773,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.6,8.979 6.853,14.509 1.252,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.141,2.411 0.992,4.514 2.528,6.309 1.536,1.797 3.616,3.191 6.263,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.506,-0.544 12.334,-1.607 3.829,-1.063 7.586,-2.741 11.272,-5.057l7.798 17.227c-2.221,1.701 -5.128,3.213 -8.743,4.56 -3.615,1.347 -7.491,2.434 -11.603,3.237 -4.111,0.804 -8.01,1.206 -11.696,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.253,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.547,-2.836 -4.017,0 -7.349,0.946 -10.019,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
-                    <path fill="#00183D" d="M474.702 116.607c-8.412,0 -14.981,-2.363 -19.731,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.655,1.418 3.687,2.127 6.097,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.295,3.284 -3.308,0.922 -6.829,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                    <path fill="#00183D" d="M506.746 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.371,0.308 1.253,0.212 2.482,0.449 3.71,0.684l-2.977 26.443c-1.654,-0.661 -3.427,-1.181 -5.341,-1.536 -1.914,-0.354 -3.804,-0.52 -5.647,-0.52 -4.065,0 -7.397,1.111 -10.02,3.356 -2.623,2.245 -3.946,5.647 -3.946,10.185l0 36.367 -25.804 0z"/>
-                    <path fill="#00183D" d="M571.115 114.48l0 -73.018 25.804 0 0 73.018 -25.804 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.514,-5.884 -4.514,-10.232 0,-4.301 1.513,-7.704 4.514,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.609,3.757 3.001,2.505 4.49,5.908 4.49,10.209 0,4.348 -1.489,7.751 -4.49,10.232 -3.001,2.481 -6.545,3.733 -10.609,3.733z"/>
-                    <path fill="#00183D" d="M650.443 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.989,-7.964 -14.533,-13.776 -3.545,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.063,-10.587 3.166,-15.289 2.104,-4.703 5.034,-8.791 8.791,-12.288 3.757,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.856,2.363 4.892,1.584 9.287,3.923 13.21,6.995l-11.201 19.069c-2.363,-2.221 -4.892,-3.851 -7.609,-4.868 -2.718,-1.016 -5.577,-1.512 -8.554,-1.512 -3.734,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.166,2.931 7.514,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.475,-1.89 3.002,-1.252 5.79,-3.096 8.389,-5.553l10.067 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                    <polygon fill="#00F0FF" points="703.046,114.48 703.046,15.232 729.134,15.232 729.134,51.103 765.289,51.103 765.289,15.232 791.376,15.232 791.376,114.48 765.289,114.48 765.289,74.923 729.134,74.923 729.134,114.48 "/>
-                    <path fill="#00F0FF" d="M811.935 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.902 -83.156c-4.064,0 -7.585,-1.252 -10.586,-3.733 -3.001,-2.481 -4.514,-5.884 -4.514,-10.232 0,-4.301 1.513,-7.704 4.514,-10.209 3.001,-2.505 6.522,-3.757 10.586,-3.757 4.065,0 7.609,1.252 10.611,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.611,3.733z"/>
-                    <path fill="#00F0FF" d="M888.781 116.607c-8.412,0 -14.981,-2.363 -19.731,-7.066 -4.749,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.828,5.955 2.481,7.373 1.655,1.418 3.687,2.127 6.097,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.993,-1.583l3.049 20.133c-2.222,1.276 -4.986,2.363 -8.295,3.284 -3.308,0.922 -6.829,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                </g>
-                <g>
-                    <polygon fill="#00183D" points="88.863,14.556 89.071,57.564 66.74,96.292 49.596,96.292 25.906,56.968 26.334,114.147 2.361,114.147 2.361,14.556 27.544,14.556 59.12,67.305 "/>
-                    <polygon fill="#00F0FF" points="95.008,114.147 95.008,14.557 121.186,14.557 121.186,50.552 157.466,50.552 157.466,14.557 183.644,14.557 183.644,114.147 157.466,114.147 157.466,74.454 121.186,74.454 121.186,114.147 "/>
-                </g>
-            </svg>
+        <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:#fff;">
+            Рост <span style="color:var(--cyan);">ПФ</span>
         </div>
-        <div style="margin-top:4px;font-size:13px;color:var(--muted);">Сервис продвижения сайтов в Яндексе через AI-ботов</div>
+        <div style="margin-top:4px;font-size:13px;">Сервис продвижения сайтов в Яндексе через AI-ботов</div>
         <div class="links">
             <a href="https://t.me/iclobot_manager" target="_blank">Telegram</a>
             <a href="tel:+79088096637">+7 (908) 809-66-37</a>
             <a href="mailto:manager@iclobot.ru">manager@iclobot.ru</a>
             <a href="https://lk.iclobot.ru/register" target="_blank">Личный кабинет</a>
         </div>
-        <div style="margin-top:10px;font-size:11px;color:#AAB6C9;">
+        <div style="margin-top:10px;font-size:11px;color:#3A4050;">
             © 2026 Рост ПФ · Все права защищены
         </div>
     </div>
