@@ -836,41 +836,51 @@
         .delay-5 { animation-delay: .5s; }
         .delay-6 { animation-delay: .6s; }
 
-        /* ===== ФИКС ДЛЯ СТАТИСТИКИ (ВЕБ-ВЕРСИЯ) ===== */
-        @media (min-width: 769px) {
-            /* Поднимаем правую карточку вверх */
-            .hero-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 50px;
-                align-items: start;
-                position: relative;
-            }
+        /* ===== СТАТИСТИКА НА ВСЮ ШИРИНУ ===== */
+@media (min-width: 769px) {
+    /* Заставляем статистику выйти за пределы левой колонки */
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: start;
+        position: relative;
+    }
 
-            /* Статистика — на всю ширину от левого края до правой карточки */
-            .hero-stats {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-                gap: 16px;
-                grid-column: 1 / -1;
-                width: 100%;
-                margin-top: 32px;
-            }
+    /* Статистика — на всю ширину сетки */
+    .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+        grid-column: 1 / -1;
+        width: 100%;
+        margin-top: 32px;
+    }
 
-            .hero-stat {
-                padding: 18px 16px;
-                text-align: center;
-            }
+    .hero-stat {
+        padding: 18px 16px;
+        text-align: center;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+    }
 
-            .hero-stat .num {
-                font-size: 24px;
-            }
+    .hero-stat .num {
+        font-size: 24px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 
-            .hero-grid > div:first-child {
-                display: flex;
-                flex-direction: column;
-            }
-        }
+    .hero-stat .label {
+        font-size: 13px;
+        color: #8892A6;
+        margin-top: 4px;
+    }
+}
     </style>
 </head>
 <body>
