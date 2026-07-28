@@ -1186,6 +1186,126 @@
                 font-size: 26px;
             }
         }
+                /* ===== КОМПАКТНЫЙ БЛОК: ПОЧЕМУ МЫ ===== */
+        .why-section {
+            padding: 50px 0 40px;
+            background: var(--bg);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .why-tag {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .why-tag--red { background: rgba(232,96,96,0.12); color: #E86060; }
+        .why-tag--green { background: rgba(45,155,78,0.12); color: #2D9B4E; }
+
+        .why-problem h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .why-problem p {
+            color: #8892A6;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .why-problem p strong { color: #E8EDF5; }
+
+        .why-solution h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .why-solution p {
+            color: #8892A6;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .why-solution p strong { color: #E8EDF5; }
+
+        .why-formula-inline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #E8EDF5;
+        }
+        .why-formula-text { color: #E8EDF5; }
+        .why-formula-text.why-accent { color: var(--accent); }
+        .why-formula-text.why-result { color: #2D9B4E; }
+        .why-arrow { color: #8892A6; }
+
+        .why-steps-inline {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .why-step-inline {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .why-step-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        .why-step-inline strong {
+            display: block;
+            font-size: 14px;
+            color: #E8EDF5;
+        }
+        .why-step-inline span {
+            font-size: 12px;
+            color: #8892A6;
+        }
+
+        .why-result-compact {
+            text-align: center;
+            padding: 14px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .why-result-compact p {
+            font-size: 15px;
+            color: #8892A6;
+        }
+        .why-result-compact p strong {
+            color: #E8EDF5;
+        }
+
+        @media (max-width: 768px) {
+            .why-grid { grid-template-columns: 1fr; gap: 24px; }
+            .why-steps-inline { grid-template-columns: 1fr; }
+            .why-formula-inline { font-size: 15px; flex-wrap: wrap; }
+            .why-step-inline { padding: 10px 14px; }
+            .why-section { padding: 30px 0 20px; }
+        }
     </style>
 </head>
 <body>
@@ -1287,7 +1407,7 @@ function toggleMenu() {
     </div>
 </section>
 
-<!-- ===== НОВЫЙ БЛОК: ПОЧЕМУ СЕЙЧАС СЛОЖНО ВЫЙТИ В ТОП ===== -->
+<!-- ===== КОМПАКТНЫЙ БЛОК: ПОЧЕМУ МЫ ===== -->
 <section class="why-section">
     <div class="container">
         <div class="why-grid">
@@ -1296,112 +1416,58 @@ function toggleMenu() {
             <div class="why-problem">
                 <span class="why-tag why-tag--red">ПРОБЛЕМА</span>
                 <h2>Почему сейчас сложно<br>выйти в <span class="text-gradient">ТОП</span></h2>
-                <p>Раньше SEO работало просто: написал тексты, купил ссылки, подождал — и сайт в ТОП.</p>
-                <p>Сейчас — <strong>нет</strong>.</p>
-                <p>Конкуренты уже используют поведенческие факторы. Яндекс смотрит не на то, что написано на сайте, а на то, <strong>как пользователи с ним взаимодействуют</strong>.</p>
-                <div class="why-formula">
-                    <span>Поведение</span>
-                    <span class="why-formula-eq">=</span>
-                    <span>Позиции</span>
-                </div>
+                <p>Раньше SEO работало: тексты + ссылки = ТОП. Сейчас — нет. Конкуренты уже используют поведенческие факторы. Яндекс смотрит не на текст, а на то, <strong>как пользователи ведут себя на сайте</strong>.</p>
             </div>
 
             <!-- ПРАВАЯ КОЛОНКА: решение -->
             <div class="why-solution">
                 <span class="why-tag why-tag--green">РЕШЕНИЕ</span>
                 <h3>Что мы делаем <span class="text-gradient">по-другому</span></h3>
-                <p>Мы не "накручиваем" ботов — мы <strong>создаём поведение</strong>.</p>
-                <p>Наши AI-боты — это не безликие скрипты. У каждого своя история поиска, свои интересы, свой "почерк" в интернете.</p>
-
-                <!-- Формула роста -->
-                <div class="why-formula-box">
-                    <div class="why-formula-item">
-                        <span class="why-formula-icon">🏗️</span>
-                        <span>SEO</span>
-                        <small>фундамент</small>
-                    </div>
-                    <span class="why-formula-arrow">→</span>
-                    <div class="why-formula-item why-formula-item--accent">
-                        <span class="why-formula-icon">⚡</span>
-                        <span>ПФ</span>
-                        <small>ускоритель</small>
-                    </div>
-                    <span class="why-formula-arrow">→</span>
-                    <div class="why-formula-item why-formula-item--result">
-                        <span class="why-formula-icon">🏆</span>
-                        <span>ТОП</span>
-                        <small>результат</small>
-                    </div>
-                </div>
-
-                <p>Они ищут твой сайт в Яндексе. Заходят на него. Изучают страницы. Ведут себя как обычные пользователи. А Яндекс фиксирует: <strong>сайт интересен, люди остаются</strong>. Значит, сайт должен быть в ТОП.</p>
+                <p>Мы не "накручиваем" ботов — мы <strong>создаём поведение</strong>. У каждого AI-бота своя история поиска и интересы. Они ищут твой сайт, заходят, изучают — ведут себя как люди. Яндекс фиксирует интерес и поднимает сайт в ТОП.</p>
             </div>
 
         </div>
 
-        <!-- ===== 3 ШАГА ===== -->
-        <div class="why-steps">
-            <div class="why-steps-title">
-                <span class="why-tag">КАК МЫ ЭТО ДЕЛАЕМ</span>
-                <h2>3 шага к <span class="text-gradient">стабильному росту</span></h2>
+        <!-- ФОРМУЛА + 3 ШАГА (компактно) -->
+        <div class="why-compact">
+            <!-- Формула -->
+            <div class="why-formula-inline">
+                <span class="why-formula-text">SEO</span>
+                <span class="why-arrow">→</span>
+                <span class="why-formula-text why-accent">ПФ</span>
+                <span class="why-arrow">→</span>
+                <span class="why-formula-text why-result">ТОП</span>
             </div>
-            <div class="why-steps-grid">
-                <div class="why-step">
-                    <div class="why-step-icon">👤</div>
-                    <div class="why-step-num">01</div>
-                    <h4>Создаём "живых" пользователей</h4>
-                    <p>Каждый бот — уникальная личность. У него своя история в интернете: что искал, куда заходил, что читал.</p>
+
+            <!-- 3 шага в одну строку -->
+            <div class="why-steps-inline">
+                <div class="why-step-inline">
+                    <span class="why-step-icon">👤</span>
+                    <div>
+                        <strong>Живые боты</strong>
+                        <span>У каждого своя история и интересы</span>
+                    </div>
                 </div>
-                <div class="why-step">
-                    <div class="why-step-icon">🔍</div>
-                    <div class="why-step-num">02</div>
-                    <h4>Формируем естественное поведение</h4>
-                    <p>Бот не просто кликает и уходит. Он ищет по запросу, смотрит выдачу, сравнивает страницы — как настоящий человек.</p>
+                <div class="why-step-inline">
+                    <span class="why-step-icon">🔍</span>
+                    <div>
+                        <strong>Естественное поведение</strong>
+                        <span>Ищут, скроллят, сравнивают как люди</span>
+                    </div>
                 </div>
-                <div class="why-step">
-                    <div class="why-step-icon">🚀</div>
-                    <div class="why-step-num">03</div>
-                    <h4>Приводим на твой сайт</h4>
-                    <p>Бот находит твой сайт в поиске, заходит и изучает. Яндекс видит интерес — сайт поднимается. Рост позиций уже на 2-3 день.</p>
+                <div class="why-step-inline">
+                    <span class="why-step-icon">🚀</span>
+                    <div>
+                        <strong>Рост в ТОП</strong>
+                        <span>Яндекс видит интерес — позиции растут</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== СРАВНЕНИЕ ===== -->
-        <div class="why-compare">
-            <div class="why-compare-title">
-                <span class="why-tag">В ЧЁМ РАЗНИЦА</span>
-                <h2>Другие сервисы <span class="text-gradient">vs Мы</span></h2>
-            </div>
-            <div class="why-compare-grid">
-                <div class="why-compare-col why-compare-col--bad">
-                    <h4>❌ Другие сервисы</h4>
-                    <ul>
-                        <li><span class="cross">✕</span> Публичные прокси, которые "палятся"</li>
-                        <li><span class="cross">✕</span> Боты с одинаковым поведением</li>
-                        <li><span class="cross">✕</span> Результат на неделю, потом просадка</li>
-                    </ul>
-                </div>
-                <div class="why-compare-col why-compare-col--good">
-                    <h4>✅ Мы</h4>
-                    <ul>
-                        <li><span class="check">✓</span> Собственная сеть прокси по всей России</li>
-                        <li><span class="check">✓</span> Каждый бот с уникальной историей</li>
-                        <li><span class="check">✓</span> Стабильный рост, а не "выстрел"</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== ИТОГ ===== -->
-        <div class="why-result">
-            <div class="why-result-inner">
-                <span class="why-tag why-tag--gold">ИТОГ</span>
-                <h2>Ты получаешь <span class="text-gradient">систему</span></h2>
-                <p>Не просто "накрутку". А систему, которая заставляет Яндекс считать твой сайт <strong>лучшим в нише</strong>.</p>
-                <p class="why-result-action">Первые результаты — через <strong>2-3 дня</strong>.</p>
-                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary btn-lg">Получить бонус</a>
-            </div>
+        <!-- ИТОГ (одна строка) -->
+        <div class="why-result-compact">
+            <p><strong>✅ Итог:</strong> система, которая заставляет Яндекс считать твой сайт лучшим. Первые результаты — через <strong>2-3 дня</strong>.</p>
         </div>
     </div>
 </section>
