@@ -836,27 +836,40 @@
                 .delay-5 { animation-delay: .5s; }
         .delay-6 { animation-delay: .6s; }
 
-        /* ===== ПОДНИМАЕМ ПРАВУЮ КАРТОЧКУ И РАСТЯГИВАЕМ СТАТИСТИКУ ===== */
+        /* ===== ЗАСТАВЛЯЕМ СТАТИСТИКУ ЗАНИМАТЬ ВСЮ ШИРИНУ ===== */
 @media (min-width: 769px) {
     /* Поднимаем правую карточку вверх */
     .hero-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 50px;
-        align-items: start; /* было center — стало start */
+        align-items: start;
     }
 
-    /* Растягиваем карточки статистики на всю ширину */
+    /* Заставляем левую колонку растягиваться */
+    .hero-grid > div:first-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Статистика — на всю ширину */
     .hero-stats {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 16px;
-        width: 100%;
+        width: 100% !important;
+        max-width: 100%;
+        margin-top: 32px;
     }
+
+    /* Каждая карточка статистики */
     .hero-stat {
         padding: 18px 16px;
         text-align: center;
+        flex: 1;
     }
+
     .hero-stat .num {
         font-size: 24px;
     }
