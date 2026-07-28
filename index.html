@@ -836,11 +836,20 @@
                 .delay-5 { animation-delay: .5s; }
         .delay-6 { animation-delay: .6s; }
 
-        /* ===== РАСТЯГИВАЕМ КАРТОЧКИ СТАТИСТИКИ ПО ШИРИНЕ ===== */
+        /* ===== ПОДНИМАЕМ ПРАВУЮ КАРТОЧКУ И РАСТЯГИВАЕМ СТАТИСТИКУ ===== */
 @media (min-width: 769px) {
+    /* Поднимаем правую карточку вверх */
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: start; /* было center — стало start */
+    }
+
+    /* Растягиваем карточки статистики на всю ширину */
     .hero-stats {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 колонки равной ширины */
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 16px;
         width: 100%;
     }
