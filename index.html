@@ -1,1228 +1,1351 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Рост ПФ — продвижение сайтов поведенческими факторами в Яндексе</title>
-<meta name="description" content="Управляйте поведенческими факторами сайта в Яндексе. Цена клика от 0,15 ₽. Без абонплаты, депозитов и посредников. Тестовый запуск от 1000 ₽.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
-/* ===== RESET & BASE ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font: 16px/1.7 'Onest', 'Segoe UI', Arial, sans-serif;
-  color: #00183D;
-  background: #FFFFFF;
-  -webkit-font-smoothing: antialiased;
-}
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-a { color: #4F7CFF; text-decoration: none; transition: opacity .2s; }
-a:hover { opacity: .7; }
-strong { font-weight: 700; }
-img { max-width: 100%; display: block; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+    <title>Рост ПФ — накрутка поведенческих факторов для Яндекса. Вывод в ТОП за 5 дней</title>
+    <meta name="description" content="Накрутка ПФ в Яндексе через AI-ботов с уникальной поведенческой историей. Вывод запросов в топ-10 за 5 дней. Безопасно, анонимно, от 280 ₽/месяц за запрос. Бесплатный тест-драйв 5 дней.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font: 16px/1.7 'Onest', 'Segoe UI', Arial, sans-serif;
+            color: #00183D;
+            background: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        a { color: #4F7CFF; text-decoration: none; transition: opacity .2s; }
+        a:hover { opacity: .7; }
+        strong, b { font-weight: 700; }
+        img { max-width: 100%; display: block; }
 
-/* ===== ШРИФТЫ ===== */
-.h1, .h2, .h3, .display { font-family: 'Unbounded', sans-serif; font-weight: 800; letter-spacing: -0.01em; }
-.h1 { font-size: clamp(32px, 4.8vw, 48px); line-height: 1.1; }
-.h2 { font-size: clamp(22px, 3vw, 32px); line-height: 1.2; }
-.h3 { font-size: 18px; font-weight: 700; }
-.tag {
-  display: inline-block;
-  font-family: 'Unbounded', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #4F7CFF;
-  margin-bottom: 12px;
-}
-.tag::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 3px;
-  background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
-  border-radius: 3px;
-  margin-right: 10px;
-  vertical-align: middle;
-}
+        /* ===== ШРИФТЫ ===== */
+        .h1, .h2, .h3, .display { font-family: 'Unbounded', sans-serif; font-weight: 800; letter-spacing: -0.01em; }
+        .h1 { font-size: clamp(30px, 4.5vw, 48px); line-height: 1.08; }
+        .h2 { font-size: clamp(22px, 3vw, 34px); line-height: 1.15; }
+        .h3 { font-size: 18px; font-weight: 700; }
+        .tag {
+            display: inline-block;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #4F7CFF;
+            margin-bottom: 12px;
+        }
+        .tag::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 3px;
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            border-radius: 3px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
 
-/* ===== ЦВЕТА ===== */
-:root {
-  --primary: #00183D;
-  --accent: #4F7CFF;
-  --accent2: #8B5CF6;
-  --green: #128152;
-  --muted: #5B6470;
-  --line: #E5E9EF;
-  --soft: #F5F7FA;
-  --grad: linear-gradient(100deg, #4F7CFF, #8B5CF6);
-}
-.bg-dark { background: var(--primary); color: #F1F5F9; }
-.bg-soft { background: var(--soft); }
-.text-gradient {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+        /* ===== ЦВЕТА ===== */
+        :root {
+            --primary: #00183D;
+            --accent: #4F7CFF;
+            --accent2: #8B5CF6;
+            --green: #128152;
+            --muted: #5B6470;
+            --line: #E5E9EF;
+            --soft: #F5F7FA;
+            --grad: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            --bg-theme-1: #4F7CFF;
+            --bg-theme-2: #8B5CF6;
+            --bg-theme-3: #E8F0FE;
+        }
+        .bg-dark { background: var(--primary); color: #F1F5F9; }
+        .bg-soft { background: var(--soft); }
+        .text-gradient {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .tilt-block {
+            display: inline-block;
+            padding: 0 8px;
+            transform: rotate(-2deg) skewX(-2deg);
+            font-weight: 800;
+        }
+        .tilt-block.background-theme-1 { background: var(--bg-theme-1); color: #fff; }
+        .tilt-block.background-theme-2 { background: var(--bg-theme-2); color: #fff; }
+        .tilt-block.background-theme-3 { background: var(--bg-theme-3); color: var(--primary); }
 
-/* ===== HEADER ===== */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-  padding: 12px 0;
-}
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-.logo {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.logo svg { height: 30px; width: auto; }
-.logo span { color: var(--accent); }
-.nav { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
-.nav a { color: var(--primary); }
-.nav a:hover { color: var(--accent); opacity: 1; }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-  transition: all .25s;
-  font-family: 'Onest', sans-serif;
-  text-decoration: none;
-}
-.btn-primary {
-  background: var(--grad);
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(79,124,255,0.35);
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(79,124,255,0.45); opacity: 1; }
-.btn-ghost {
-  background: transparent;
-  color: var(--primary);
-  border: 1.5px solid var(--line);
-}
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
-.btn-white { background: #fff; color: var(--primary); }
-.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); opacity: 1; }
-.btn-sm { padding: 8px 18px; font-size: 13px; }
-.btn-lg { padding: 16px 36px; font-size: 17px; }
-.btn-full { width: 100%; justify-content: center; }
+        /* ===== HEADER ===== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            padding: 10px 0;
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .logo {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .logo svg { height: 28px; width: auto; }
+        .logo span { color: var(--accent); }
+        .nav { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
+        .nav a { color: var(--primary); }
+        .nav a:hover { color: var(--accent); opacity: 1; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all .25s;
+            font-family: 'Onest', sans-serif;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(79,124,255,0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(79,124,255,0.4); opacity: 1; }
+        .btn-ghost {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--line);
+        }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+        .btn-white { background: #fff; color: var(--primary); }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); opacity: 1; }
+        .btn-sm { padding: 6px 16px; font-size: 12px; }
+        .btn-lg { padding: 14px 32px; font-size: 16px; }
+        .btn-full { width: 100%; justify-content: center; }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding: 60px 0 70px;
-  background: var(--primary);
-  color: #F1F5F9;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 600px 600px at 10% 20%, rgba(79,124,255,0.25), transparent 70%),
-    radial-gradient(ellipse 500px 500px at 90% 80%, rgba(139,92,246,0.2), transparent 70%);
-  pointer-events: none;
-}
-.hero .container { position: relative; z-index: 2; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-}
-.hero h1 { margin-bottom: 18px; }
-.hero h1 .highlight { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero p { font-size: 18px; color: #C4CFE0; max-width: 540px; margin-bottom: 24px; }
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  border-radius: 100px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  font-weight: 600;
-  font-size: 13px;
-  color: #CBB2FF;
-  margin-bottom: 24px;
-}
-.hero-badge .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #7CFFB2;
-  position: relative;
-  flex-shrink: 0;
-}
-.hero-badge .dot::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid rgba(124,255,178,0.5);
-  animation: ping 1.6s ease-out infinite;
-}
-@keyframes ping {
-  0% { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(2); opacity: 0; }
-}
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 36px;
-}
-.hero-stat {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 14px;
-  padding: 16px 14px;
-}
-.hero-stat .num {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-  background: linear-gradient(95deg, #9DB8FF, #CBB2FF);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-stat .label { font-size: 13px; color: #AAB6C9; margin-top: 4px; }
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 50px 0 60px;
+            background: var(--primary);
+            color: #F1F5F9;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 500px 500px at 10% 20%, rgba(79,124,255,0.2), transparent 70%),
+                radial-gradient(ellipse 400px 400px at 90% 80%, rgba(139,92,246,0.15), transparent 70%);
+            pointer-events: none;
+        }
+        .hero .container { position: relative; z-index: 2; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero h1 { margin-bottom: 14px; }
+        .hero h1 .highlight { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero p { font-size: 17px; color: #C4CFE0; max-width: 520px; margin-bottom: 20px; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-weight: 600;
+            font-size: 13px;
+            color: #CBB2FF;
+            margin-bottom: 20px;
+        }
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7CFFB2;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .hero-badge .dot::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(124,255,178,0.4);
+            animation: ping 1.6s ease-out infinite;
+        }
+        @keyframes ping {
+            0% { transform: scale(0.6); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 28px;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 14px 12px;
+        }
+        .hero-stat .num {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            background: linear-gradient(95deg, #9DB8FF, #CBB2FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-stat .label { font-size: 12px; color: #AAB6C9; margin-top: 2px; }
 
-.hero-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 32px;
-  max-width: 420px;
-  width: 100%;
-}
-.hero-card .title {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #9DB8FF;
-  margin-bottom: 16px;
-}
-.hero-card .row {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-size: 14px;
-  color: #C4CFE0;
-}
-.hero-card .row:last-child { border-bottom: none; }
-.hero-card .row .val { font-weight: 700; color: #fff; }
-.hero-card .row .val.green { color: #7CFFB2; }
-.hero-card .note {
-  margin-top: 18px;
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(79,124,255,0.12);
-  border: 1px solid rgba(79,124,255,0.2);
-  text-align: center;
-  font-size: 13px;
-  color: #9DB8FF;
-}
+        .hero-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 28px 24px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .hero-card .title {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: #9DB8FF;
+            margin-bottom: 14px;
+        }
+        .hero-card .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 13px;
+            color: #C4CFE0;
+        }
+        .hero-card .row:last-child { border-bottom: none; }
+        .hero-card .row .val { font-weight: 700; color: #fff; }
+        .hero-card .row .val.green { color: #7CFFB2; }
+        .hero-card .note {
+            margin-top: 14px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(79,124,255,0.12);
+            border: 1px solid rgba(79,124,255,0.15);
+            text-align: center;
+            font-size: 12px;
+            color: #9DB8FF;
+        }
 
-/* ===== СЕКЦИИ ===== */
-section { padding: 64px 0; }
-.section-head { text-align: center; max-width: 720px; margin: 0 auto 44px; }
-.section-head .tag { color: var(--accent); }
-.section-head p { color: var(--muted); font-size: 17px; }
+        /* ===== СЕКЦИИ ===== */
+        section { padding: 56px 0; }
+        .section-head { text-align: center; max-width: 700px; margin: 0 auto 36px; }
+        .section-head .tag { color: var(--accent); }
+        .section-head p { color: var(--muted); font-size: 16px; }
 
-/* ===== КАРТОЧКИ ===== */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 28px 24px;
-  transition: all .3s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-  position: relative;
-}
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
-.card .icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: var(--grad);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 22px;
-  margin-bottom: 16px;
-}
-.card h3 { margin-bottom: 6px; }
-.card p { color: var(--muted); font-size: 15px; }
-.card.highlight {
-  border-color: var(--accent);
-  background: linear-gradient(180deg, #F8FAFF, #FFFFFF);
-}
-.card .badge {
-  position: absolute;
-  top: -10px;
-  right: 16px;
-  background: #F5B84A;
-  color: #3A2A05;
-  font-size: 10px;
-  font-weight: 800;
-  padding: 3px 12px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
+        /* ===== КАРТОЧКИ ===== */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px 20px;
+            transition: all .3s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.06); }
+        .card .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+        .card h3 { margin-bottom: 4px; font-size: 17px; }
+        .card p { color: var(--muted); font-size: 14px; }
+        .card.highlight {
+            border-color: var(--accent);
+            background: linear-gradient(180deg, #F8FAFF, #FFFFFF);
+        }
+        .card .badge {
+            position: absolute;
+            top: -10px;
+            right: 14px;
+            background: #F5B84A;
+            color: #3A2A05;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
 
-/* ===== ТАРИФЫ ===== */
-.tariff-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  font-size: 15px;
-}
-.tariff-table th {
-  text-align: left;
-  padding: 14px 18px;
-  background: var(--primary);
-  color: #C7D4F5;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.tariff-table td {
-  padding: 14px 18px;
-  border-top: 1px solid var(--line);
-  background: #fff;
-}
-.tariff-table tr:last-child td { border-bottom: none; }
-.tariff-table tr.highlight td { background: linear-gradient(90deg, rgba(79,124,255,0.06), rgba(139,92,246,0.06)); font-weight: 700; }
-.tariff-table td:last-child { text-align: right; font-weight: 600; }
-.tariff-note { font-size: 14px; color: var(--muted); margin-top: 16px; }
+        /* ===== ТАРИФЫ ===== */
+        .tariff-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            font-size: 14px;
+        }
+        .tariff-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--primary);
+            color: #C7D4F5;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .tariff-table td {
+            padding: 12px 16px;
+            border-top: 1px solid var(--line);
+            background: #fff;
+        }
+        .tariff-table tr.highlight td { background: linear-gradient(90deg, rgba(79,124,255,0.06), rgba(139,92,246,0.06)); font-weight: 700; }
+        .tariff-table td:last-child { text-align: right; font-weight: 600; }
 
-/* ===== КАЛЬКУЛЯТОР ===== */
-.calc-block {
-  background: var(--primary);
-  color: #F1F5F9;
-  border-radius: 24px;
-  padding: 40px 44px;
-  position: relative;
-  overflow: hidden;
-}
-.calc-block::before {
-  content: '';
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  right: -120px;
-  top: -160px;
-  border-radius: 50%;
-  filter: blur(70px);
-  background: radial-gradient(circle, rgba(79,124,255,0.35), transparent 65%);
-  pointer-events: none;
-}
-.calc-block > * { position: relative; z-index: 2; }
-.calc-block .label { font-size: 13px; font-weight: 700; color: #9DB0CC; text-transform: uppercase; letter-spacing: 0.06em; margin: 20px 0 10px; }
-.calc-block .label:first-of-type { margin-top: 0; }
-.calc-presets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.calc-preset {
-  padding: 10px 20px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.05);
-  color: #DBE4F2;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all .2s;
-  font-family: 'Onest', sans-serif;
-}
-.calc-preset:hover { border-color: var(--accent); }
-.calc-preset.active {
-  background: var(--grad);
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(79,124,255,0.3);
-}
-.calc-preset .rec {
-  display: block;
-  font-size: 9px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #F5B84A;
-  margin-top: 2px;
-}
-.calc-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 8px;
-}
-.calc-row input[type="range"] {
-  flex: 1;
-  accent-color: var(--accent);
-  height: 6px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 4px;
-  -webkit-appearance: none;
-}
-.calc-row input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--grad);
-  cursor: pointer;
-  box-shadow: 0 0 16px rgba(79,124,255,0.5);
-}
-.calc-value {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-  min-width: 130px;
-  text-align: right;
-  background: linear-gradient(95deg, #9DB8FF, #CBB2FF);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.calc-results {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 28px;
-}
-.calc-result {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 14px;
-  padding: 16px 18px;
-  text-align: center;
-}
-.calc-result .k { font-size: 12px; color: #9DB0CC; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
-.calc-result .v {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 24px;
-  margin-top: 6px;
-}
-.calc-result.highlight {
-  background: var(--grad);
-  border-color: transparent;
-}
-.calc-result.highlight .k { color: rgba(255,255,255,0.8); }
-.calc-result.highlight .v { color: #fff; }
-.calc-bonus {
-  margin-top: 20px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  background: rgba(245,184,74,0.12);
-  border: 1px solid rgba(245,184,74,0.3);
-  font-size: 14px;
-  color: #F3D8A8;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-.calc-bonus b { color: #FFC670; }
-.calc-note { margin-top: 18px; font-size: 14px; color: #9DB0CC; }
+        /* ===== КАЛЬКУЛЯТОР ===== */
+        .calc-block {
+            background: var(--primary);
+            color: #F1F5F9;
+            border-radius: 22px;
+            padding: 36px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .calc-block::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            right: -100px;
+            top: -140px;
+            border-radius: 50%;
+            filter: blur(70px);
+            background: radial-gradient(circle, rgba(79,124,255,0.3), transparent 65%);
+            pointer-events: none;
+        }
+        .calc-block > * { position: relative; z-index: 2; }
+        .calc-block .label { font-size: 12px; font-weight: 700; color: #9DB0CC; text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px; }
+        .calc-block .label:first-of-type { margin-top: 0; }
+        .calc-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .calc-preset {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+            color: #DBE4F2;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all .2s;
+            font-family: 'Onest', sans-serif;
+        }
+        .calc-preset:hover { border-color: var(--accent); }
+        .calc-preset.active {
+            background: var(--grad);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(79,124,255,0.3);
+        }
+        .calc-preset .rec {
+            display: block;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #F5B84A;
+            margin-top: 1px;
+        }
+        .calc-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 6px;
+        }
+        .calc-row input[type="range"] {
+            flex: 1;
+            accent-color: var(--accent);
+            height: 5px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 4px;
+            -webkit-appearance: none;
+        }
+        .calc-row input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--grad);
+            cursor: pointer;
+            box-shadow: 0 0 14px rgba(79,124,255,0.4);
+        }
+        .calc-value {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            min-width: 110px;
+            text-align: right;
+            background: linear-gradient(95deg, #9DB8FF, #CBB2FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .calc-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+        .calc-result {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .calc-result .k { font-size: 11px; color: #9DB0CC; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .calc-result .v {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            margin-top: 4px;
+        }
+        .calc-result.highlight {
+            background: var(--grad);
+            border-color: transparent;
+        }
+        .calc-result.highlight .k { color: rgba(255,255,255,0.8); }
+        .calc-result.highlight .v { color: #fff; }
+        .calc-bonus {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(245,184,74,0.1);
+            border: 1px solid rgba(245,184,74,0.25);
+            font-size: 13px;
+            color: #F3D8A8;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .calc-bonus b { color: #FFC670; }
+        .calc-note { margin-top: 14px; font-size: 13px; color: #9DB0CC; }
 
-/* ===== ШАГИ ===== */
-.steps { margin-top: 8px; }
-.step {
-  position: relative;
-  padding: 0 0 24px 44px;
-}
-.step:last-child { padding-bottom: 0; }
-.step::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 24px;
-  bottom: -4px;
-  width: 2.5px;
-  background: linear-gradient(180deg, var(--accent), var(--accent2));
-  opacity: 0.3;
-}
-.step:last-child::before { display: none; }
-.step::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--grad);
-  box-shadow: 0 0 0 4px rgba(79,124,255,0.15);
-}
-.step .num {
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  color: #fff;
-  z-index: 2;
-}
-.step h3 { font-size: 17px; margin-bottom: 2px; }
-.step p { color: var(--muted); font-size: 15px; }
+        /* ===== ШАГИ ===== */
+        .steps { margin-top: 6px; }
+        .step {
+            position: relative;
+            padding: 0 0 20px 40px;
+        }
+        .step:last-child { padding-bottom: 0; }
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 22px;
+            bottom: -4px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--accent2));
+            opacity: 0.3;
+        }
+        .step:last-child::before { display: none; }
+        .step::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--grad);
+            box-shadow: 0 0 0 4px rgba(79,124,255,0.12);
+        }
+        .step .num {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 11px;
+            color: #fff;
+            z-index: 2;
+        }
+        .step h3 { font-size: 16px; margin-bottom: 2px; }
+        .step p { color: var(--muted); font-size: 14px; }
 
-/* ===== СРАВНЕНИЕ ===== */
-.compare-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-.compare-col {
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  padding: 28px 24px;
-}
-.compare-col h3 { margin-bottom: 12px; }
-.compare-col ul { list-style: none; padding: 0; }
-.compare-col ul li {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-}
-.compare-col ul li:last-child { border-bottom: none; }
-.compare-col ul li .check { color: var(--green); font-weight: 700; }
-.compare-col ul li .cross { color: #E53E3E; font-weight: 700; }
-.compare-col.highlight {
-  border-color: var(--accent);
-  background: linear-gradient(180deg, #F8FAFF, #FFFFFF);
-}
+        /* ===== ПРЕИМУЩЕСТВА ===== */
+        .advantages-items {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px 30px;
+        }
+        .advantages-item {
+            text-align: center;
+            min-width: 140px;
+        }
+        .advantages-item .num {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            color: var(--accent);
+        }
+        .advantages-item .desc { font-size: 14px; color: var(--muted); margin-top: 4px; }
+        .adv-sep { color: var(--line); font-size: 20px; }
 
-/* ===== КЕЙСЫ ===== */
-.cases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-.case-item {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  transition: all .3s;
-}
-.case-item:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
-.case-item .num {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 28px;
-  color: var(--accent);
-}
-.case-item .label { color: var(--muted); font-size: 14px; margin-top: 4px; }
+        /* ===== КОМУ ПОДХОДИТ ===== */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .who-item {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px 16px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--muted);
+        }
+        .who-item strong { color: var(--primary); }
 
-/* ===== FAQ ===== */
-.faq-item {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  margin-bottom: 12px;
-  background: #fff;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
-.faq-item summary {
-  cursor: pointer;
-  padding: 16px 20px;
-  font-weight: 700;
-  font-size: 15px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 14px;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after {
-  content: '+';
-  flex-shrink: 0;
-  font-family: 'Unbounded', sans-serif;
-  font-size: 18px;
-  color: var(--accent);
-  transition: transform .25s;
-}
-.faq-item[open] summary::after { transform: rotate(45deg); }
-.faq-item .answer {
-  padding: 0 20px 20px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
-}
-.faq-item[open] .answer { animation: fadeIn .3s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+        /* ===== БЕЗОПАСНОСТЬ ===== */
+        .safe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .safe-item {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-align: center;
+        }
+        .safe-item .icon { font-size: 28px; margin-bottom: 10px; }
+        .safe-item h3 { font-size: 16px; }
+        .safe-item p { font-size: 14px; color: var(--muted); margin-top: 4px; }
 
-/* ===== CTA ===== */
-.cta-block {
-  background: var(--primary);
-  border-radius: 24px;
-  padding: 48px 52px;
-  color: #F1F5F9;
-  position: relative;
-  overflow: hidden;
-}
-.cta-block::before {
-  content: '';
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  right: -160px;
-  bottom: -200px;
-  border-radius: 50%;
-  filter: blur(80px);
-  background: radial-gradient(circle, rgba(139,92,246,0.3), transparent 65%);
-  pointer-events: none;
-}
-.cta-block > * { position: relative; z-index: 2; }
-.cta-block h2 { color: #fff; }
-.cta-block p { color: #B9C6DB; max-width: 560px; font-size: 17px; }
-.cta-block .btns { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
-.cta-block .guarantee {
-  margin-top: 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  font-size: 14px;
-  max-width: 560px;
-}
-.cta-block .promo {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  border: 1.5px dashed rgba(245,184,74,0.4);
-  font-size: 14px;
-  color: #F3D8A8;
-  max-width: 560px;
-}
-.promo-code {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  padding: 4px 14px;
-  border-radius: 8px;
-  background: #F5B84A;
-  color: #3A2A05;
-  cursor: pointer;
-  transition: .15s;
-  white-space: nowrap;
-}
-.promo-code:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(245,184,74,0.3); }
+        /* ===== FAQ ===== */
+        .faq-item {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            padding: 14px 18px;
+            font-weight: 700;
+            font-size: 14px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            flex-shrink: 0;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 16px;
+            color: var(--accent);
+            transition: transform .25s;
+        }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item .answer {
+            padding: 0 18px 18px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .faq-item[open] .answer { animation: fadeIn .3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
-/* ===== FOOTER ===== */
-.footer {
-  padding: 40px 0 32px;
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
-  border-top: 1px solid var(--line);
-}
-.footer a { color: var(--accent); }
-.footer .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin-top: 8px; }
+        /* ===== CTA ===== */
+        .cta-block {
+            background: var(--primary);
+            border-radius: 22px;
+            padding: 40px 44px;
+            color: #F1F5F9;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-block::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            right: -120px;
+            bottom: -160px;
+            border-radius: 50%;
+            filter: blur(70px);
+            background: radial-gradient(circle, rgba(139,92,246,0.25), transparent 65%);
+            pointer-events: none;
+        }
+        .cta-block > * { position: relative; z-index: 2; }
+        .cta-block h2 { color: #fff; }
+        .cta-block p { color: #B9C6DB; max-width: 520px; font-size: 16px; }
+        .cta-block .btns { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .cta-block .guarantee {
+            margin-top: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 13px;
+            max-width: 520px;
+        }
+        .cta-block .promo {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1.5px dashed rgba(245,184,74,0.3);
+            font-size: 13px;
+            color: #F3D8A8;
+            max-width: 520px;
+        }
+        .promo-code {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            padding: 3px 12px;
+            border-radius: 6px;
+            background: #F5B84A;
+            color: #3A2A05;
+            cursor: pointer;
+            transition: .15s;
+            white-space: nowrap;
+        }
+        .promo-code:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(245,184,74,0.25); }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
-  .calc-results { grid-template-columns: 1fr 1fr; }
-  .nav { display: none; }
-  .compare-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
-  section { padding: 40px 0; }
-  .hero { padding: 40px 0 50px; }
-  .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .hero-stat .num { font-size: 18px; }
-  .calc-block { padding: 28px 20px; }
-  .calc-results { grid-template-columns: 1fr; }
-  .cta-block { padding: 32px 24px; }
-  .calc-presets { gap: 8px; }
-  .calc-preset { padding: 8px 14px; font-size: 13px; }
-  .hero-card { padding: 20px; }
-}
-@media (max-width: 480px) {
-  .hero-stats { grid-template-columns: 1fr 1fr; }
-  .hero h1 { font-size: 26px; }
-  .btn-lg { padding: 14px 24px; font-size: 15px; }
-  .container { padding: 0 16px; }
-}
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 32px 0 28px;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+        .footer a { color: var(--accent); }
+        .footer .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 6px; }
 
-/* ===== КНОПКА БУРГЕРА ===== */
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-.burger span {
-  display: block;
-  width: 26px;
-  height: 2.5px;
-  background: var(--primary);
-  border-radius: 4px;
-  transition: .25s;
-}
-@media (max-width: 1024px) { .burger { display: flex; } }
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .calc-results { grid-template-columns: 1fr 1fr; }
+            .nav { display: none; }
+            .safe-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 40px 0; }
+            .hero { padding: 32px 0 40px; }
+            .hero-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .hero-stat .num { font-size: 17px; }
+            .calc-block { padding: 24px 18px; }
+            .calc-results { grid-template-columns: 1fr; }
+            .cta-block { padding: 28px 20px; }
+            .calc-presets { gap: 6px; }
+            .calc-preset { padding: 6px 12px; font-size: 12px; }
+            .hero-card { padding: 20px 16px; }
+            .safe-grid { grid-template-columns: 1fr; }
+            .advantages-items { gap: 12px; }
+        }
+        @media (max-width: 480px) {
+            .hero-stats { grid-template-columns: 1fr 1fr; }
+            .hero h1 { font-size: 24px; }
+            .btn-lg { padding: 12px 20px; font-size: 14px; }
+            .container { padding: 0 14px; }
+            .tariff-table { font-size: 12px; }
+            .tariff-table th, .tariff-table td { padding: 8px 10px; }
+        }
 
-/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  visibility: hidden;
-  transition: all .3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mobile-menu.open { opacity: 1; visibility: visible; }
-.mobile-menu-inner {
-  background: #fff;
-  border-radius: 24px;
-  padding: 40px 32px;
-  max-width: 400px;
-  width: 90%;
-  transform: scale(0.95) translateY(20px);
-  transition: all .3s;
-}
-.mobile-menu.open .mobile-menu-inner { transform: scale(1) translateY(0); }
-.mobile-menu-inner a {
-  display: block;
-  padding: 12px 0;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--primary);
-  border-bottom: 1px solid var(--line);
-}
-.mobile-menu-inner a:last-child { border-bottom: none; }
-.mobile-menu-close {
-  float: right;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: var(--muted);
-  cursor: pointer;
-  line-height: 1;
-}
-</style>
+        /* ===== БУРГЕР ===== */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .burger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: .25s;
+        }
+        @media (max-width: 1024px) { .burger { display: flex; } }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-menu.open { opacity: 1; visibility: visible; }
+        .mobile-menu-inner {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 28px;
+            max-width: 380px;
+            width: 90%;
+            transform: scale(0.95) translateY(16px);
+            transition: all .3s;
+        }
+        .mobile-menu.open .mobile-menu-inner { transform: scale(1) translateY(0); }
+        .mobile-menu-inner a {
+            display: block;
+            padding: 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 1px solid var(--line);
+        }
+        .mobile-menu-inner a:last-child { border-bottom: none; }
+        .mobile-menu-close {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--muted);
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* ===== LEft-Right WRAP ===== */
+        .left-right-wrap {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .left-right-wrap .left-block .h2 { font-size: clamp(20px, 2.6vw, 30px); }
+        @media (max-width: 768px) {
+            .left-right-wrap { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
 </head>
 <body>
 
 <!-- ===== HEADER ===== -->
 <header class="header">
-  <div class="container">
-    <a href="#" class="logo">
-      <svg viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 0L2 7L12 14L22 7L12 0Z" fill="#4F7CFF"/>
-        <path d="M2 7V21L12 28V14L2 7Z" fill="#8B5CF6" opacity="0.7"/>
-        <path d="M22 7V21L12 28V14L22 7Z" fill="#4F7CFF" opacity="0.5"/>
-      </svg>
-      Рост <span>ПФ</span>
-    </a>
-    <nav class="nav">
-      <a href="#about">О сервисе</a>
-      <a href="#pricing">Цены</a>
-      <a href="#calc">Калькулятор</a>
-      <a href="#steps">Как начать</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a href="https://t.me/express75" target="_blank" class="btn btn-primary btn-sm">Связаться</a>
-    <button class="burger" onclick="toggleMenu()" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+    <div class="container">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0L2 7L12 14L22 7L12 0Z" fill="#4F7CFF"/>
+                <path d="M2 7V21L12 28V14L2 7Z" fill="#8B5CF6" opacity="0.7"/>
+                <path d="M22 7V21L12 28V14L22 7Z" fill="#4F7CFF" opacity="0.5"/>
+            </svg>
+            Рост <span>ПФ</span>
+        </a>
+        <nav class="nav">
+            <a href="#about">О сервисе</a>
+            <a href="#pricing">Цены</a>
+            <a href="#calc">Калькулятор</a>
+            <a href="#steps">Как начать</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <a href="https://t.me/iclobot_manager" target="_blank" class="btn btn-primary btn-sm">Связаться</a>
+        <button class="burger" onclick="toggleMenu()" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </header>
 
 <!-- ===== MOBILE MENU ===== -->
 <div class="mobile-menu" id="mobileMenu" onclick="if(event.target===this) toggleMenu()">
-  <div class="mobile-menu-inner">
-    <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
-    <a href="#about" onclick="toggleMenu()">О сервисе</a>
-    <a href="#pricing" onclick="toggleMenu()">Цены</a>
-    <a href="#calc" onclick="toggleMenu()">Калькулятор</a>
-    <a href="#steps" onclick="toggleMenu()">Как начать</a>
-    <a href="#faq" onclick="toggleMenu()">FAQ</a>
-    <a href="https://t.me/express75" target="_blank" style="color:var(--accent);font-weight:700;" onclick="toggleMenu()">Telegram @express75</a>
-  </div>
+    <div class="mobile-menu-inner">
+        <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+        <a href="#about" onclick="toggleMenu()">О сервисе</a>
+        <a href="#pricing" onclick="toggleMenu()">Цены</a>
+        <a href="#calc" onclick="toggleMenu()">Калькулятор</a>
+        <a href="#steps" onclick="toggleMenu()">Как начать</a>
+        <a href="#faq" onclick="toggleMenu()">FAQ</a>
+        <a href="https://t.me/iclobot_manager" target="_blank" style="color:var(--accent);font-weight:700;" onclick="toggleMenu()">Telegram</a>
+    </div>
 </div>
 
 <script>
 function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
 }
 </script>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge">
-          <span class="dot"></span>
-          Бесплатный тест +500 ₽ каждому новому пользователю
+    <div class="container">
+        <div class="hero-grid">
+            <div>
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Бесплатный тест-драйв 5 дней
+                </div>
+                <h1>Ваш сайт в <span class="highlight">топ-3</span><br>за первую неделю</h1>
+                <p>Накрутка ПФ через AI-ботов с уникальной поведенческой историей. Регистрируйся и получай бесплатный тест-драйв на 5 дней.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary btn-lg">Бесплатный тест-драйв</a>
+                    <a href="#calc" class="btn btn-white btn-lg">Рассчитать стоимость</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><div class="num">5 дней</div><div class="label">среднее время вывода в топ-10</div></div>
+                    <div class="hero-stat"><div class="num">280 ₽</div><div class="label">от 280 ₽/месяц за 1 запрос</div></div>
+                    <div class="hero-stat"><div class="num">Живой</div><div class="label">AI-бот с уникальной историей</div></div>
+                    <div class="hero-stat"><div class="num">0 ₽</div><div class="label">абонентская плата</div></div>
+                </div>
+            </div>
+            <div style="display:flex;justify-content:center;align-items:center;">
+                <div class="hero-card">
+                    <div class="title">🚀 Запустите сайт в ТОП</div>
+                    <div class="row"><span>Цена за 1 запрос</span><span class="val">от 280 ₽/мес</span></div>
+                    <div class="row"><span>Средний срок</span><span class="val green">5 дней</span></div>
+                    <div class="row"><span>Тест-драйв</span><span class="val green">5 дней бесплатно</span></div>
+                    <div class="row"><span>Абонентская плата</span><span class="val green">0 ₽</span></div>
+                    <div class="note">🎯 Индивидуально обученный AI-бот — неотличим от живого пользователя</div>
+                </div>
+            </div>
         </div>
-        <h1>Продвижение сайта<br><span class="highlight">поведенческими факторами</span></h1>
-        <p>Живые переходы из поиска Яндекса по вашим запросам. Управляйте ПФ в личном кабинете. Без абонплаты и обязательного депозита.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:12px;">
-          <a href="#calc" class="btn btn-primary btn-lg">Рассчитать бюджет</a>
-          <a href="https://t.me/express75" target="_blank" class="btn btn-white btn-lg">Написать в Telegram</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat"><div class="num">0,40 ₽</div><div class="label">цена клика на старте</div></div>
-          <div class="hero-stat"><div class="num">+500 ₽</div><div class="label">бонус на тест</div></div>
-          <div class="hero-stat"><div class="num">0 ₽</div><div class="label">абонентская плата</div></div>
-          <div class="hero-stat"><div class="num">от 1000 ₽</div><div class="label">достаточно для старта</div></div>
-        </div>
-      </div>
-      <div style="display:flex;justify-content:center;align-items:center;">
-        <div class="hero-card">
-          <div class="title">⚡ Запустите сайт в ТОП</div>
-          <div class="row"><span>Цена клика</span><span class="val">от 0,15 ₽</span></div>
-          <div class="row"><span>Минимальный запуск</span><span class="val">1 000 ₽</span></div>
-          <div class="row"><span>Бонус новичкам</span><span class="val green">+500 ₽</span></div>
-          <div class="row"><span>Абонентская плата</span><span class="val green">0 ₽</span></div>
-          <div class="note">🎯 Первые результаты — через 2–4 недели</div>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <!-- ===== ABOUT ===== -->
 <section id="about">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">О сервисе</div>
-      <h2>Что такое Рост ПФ и как он работает</h2>
-      <p>Личный кабинет, в котором вы управляете поведенческими факторами своего сайта. Пользователи находят его в Яндексе по вашим запросам, переходят и ведут себя как заинтересованные посетители.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
-      <div>
-        <div style="background:#F5F7FA;border-radius:18px;padding:28px;border:1px solid var(--line);">
-          <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:16px;color:var(--primary);margin-bottom:12px;">Условия коротко</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div><span style="color:var(--muted);font-size:13px;">Старт</span><div style="font-weight:700;">от 1 000 ₽</div></div>
-            <div><span style="color:var(--muted);font-size:13px;">Абонплата</span><div style="font-weight:700;color:var(--green);">0 ₽</div></div>
-            <div><span style="color:var(--muted);font-size:13px;">Депозит</span><div style="font-weight:700;">не обязателен</div></div>
-            <div><span style="color:var(--muted);font-size:13px;">Цена клика</span><div style="font-weight:700;">от 0,15 ₽</div></div>
-            <div><span style="color:var(--muted);font-size:13px;">Бонус новичку</span><div style="font-weight:700;color:var(--accent);">+500 ₽</div></div>
-            <div><span style="color:var(--muted);font-size:13px;">Поддержка</span><div style="font-weight:700;">Telegram</div></div>
-          </div>
-          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;">
-            <span style="background:linear-gradient(90deg,rgba(79,124,255,0.1),rgba(139,92,246,0.1));color:#4F7CFF;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;">Яндекс</span>
-            <span style="background:linear-gradient(90deg,rgba(79,124,255,0.1),rgba(139,92,246,0.1));color:#4F7CFF;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;">Поведенческие факторы</span>
-            <span style="background:linear-gradient(90deg,rgba(79,124,255,0.1),rgba(139,92,246,0.1));color:#4F7CFF;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;">Личный кабинет</span>
-          </div>
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">О сервисе</div>
+            <h2>Что делает <span class="tilt-block background-theme-2">Рост ПФ</span></h2>
+            <p>Это сервис для ускоренного продвижения запросов через накрутку поведенческих факторов в Яндексе.</p>
         </div>
-      </div>
-      <div style="font-size:16px;color:var(--muted);line-height:1.8;">
-        <p><strong style="color:var(--primary);">Логика простая:</strong> сначала проверяем продвижение на одном проекте — затем масштабируем. Поисковик видит живой интерес к сайту — именно этот поведенческий сигнал учитывается при ранжировании.</p>
-        <p style="margin-top:12px;">Всё управление у вас: проекты, запросы, регионы и расход видны в кабинете в любой момент. Платите только за клики — пополнили баланс, запустили проект, дальше сервис работает сам.</p>
-        <p style="margin-top:12px;"><strong>Почему это работает?</strong> Яндекс ориентируется на поведение пользователей — мы это поведение создаём. Яндекс видит, что сайт отвечает на запросы людей, а значит — должен быть в поиске выше.</p>
-      </div>
+        <div class="left-right-wrap">
+            <div class="left-block">
+                <div style="background:var(--soft);border-radius:16px;padding:24px;border:1px solid var(--line);">
+                    <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:15px;color:var(--primary);margin-bottom:10px;">Ключевые факты</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                        <div><span style="color:var(--muted);font-size:12px;">Старт</span><div style="font-weight:700;">от 280 ₽/мес</div></div>
+                        <div><span style="color:var(--muted);font-size:12px;">Абонплата</span><div style="font-weight:700;color:var(--green);">0 ₽</div></div>
+                        <div><span style="color:var(--muted);font-size:12px;">Тест-драйв</span><div style="font-weight:700;color:var(--accent);">5 дней</div></div>
+                        <div><span style="color:var(--muted);font-size:12px;">Результат</span><div style="font-weight:700;">топ-10 за 5 дней</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-block">
+                <div style="font-size:15px;color:var(--muted);line-height:1.8;">
+                    <p><strong style="color:var(--primary);">Как работает сервис?</strong> Технология накрутки ПФ основана на переходе индивидуально обученных AI-ботов из поисковых систем на продвигаемый сайт.</p>
+                    <p style="margin-top:10px;"><strong style="color:var(--primary);">По каким правилам?</strong> Каждый переход осуществляется исключительно по правилам ранжирования Яндекса, что обеспечивает быстрый рост позиций по выбранным запросам.</p>
+                    <p style="margin-top:10px;"><strong style="color:var(--primary);">В чём уникальность?</strong> AI-бот имеет уникальную поведенческую историю и совершает значимые действия в интернете, отличить его от «живых» переходов невозможно.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- ===== WHY EASY ===== -->
-<section id="why" style="background:var(--soft);">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">Почему начать просто</div>
-      <h2>Старт без риска для бюджета</h2>
+<!-- ===== ADVANTAGES ===== -->
+<section id="advantages" style="background:var(--soft);">
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Преимущества</div>
+            <h2>Почему выбирают <span class="tilt-block background-theme-3">Рост ПФ</span></h2>
+        </div>
+        <div class="advantages-items">
+            <div class="advantages-item">
+                <div class="num">♾️</div>
+                <div class="desc">Не ограниченное количество запросов</div>
+            </div>
+            <span class="adv-sep">—</span>
+            <div class="advantages-item">
+                <div class="num">5 дней</div>
+                <div class="desc">среднее время вывода запросов в топ-10</div>
+            </div>
+            <span class="adv-sep">—</span>
+            <div class="advantages-item">
+                <div class="num">🧠</div>
+                <div class="desc">Живой AI-бот с уникальной поведенческой историей</div>
+            </div>
+        </div>
     </div>
-    <div class="card-grid">
-      <div class="card highlight">
-        <span class="badge">без риска</span>
-        <div class="icon">1</div>
-        <h3>Старт от 1 000 ₽</h3>
-        <p>Не нужно замораживать большой бюджет ради пробы. Тестируйте на одном сайте, увеличивайте объём, когда увидите первые результаты.</p>
-      </div>
-      <div class="card">
-        <div class="icon">2</div>
-        <h3>Бонус +500 ₽ на запуск</h3>
-        <p>Каждому новому пользователю начисляем тестовый баланс при настройке первого запуска.</p>
-      </div>
-      <div class="card">
-        <div class="icon">3</div>
-        <h3>Ноль абонплаты</h3>
-        <p>Платите только за фактические клики. Никаких ежемесячных списаний «за кабинет».</p>
-      </div>
-      <div class="card">
-        <div class="icon">4</div>
-        <h3>Быстрая подготовка</h3>
-        <p>Кабинет и настройки проекта подготовим за вас: пришлите домен, запросы и регион — остальное сделаем сами.</p>
-      </div>
-      <div class="card">
-        <div class="icon">5</div>
-        <h3>Поддержка со всем поможет</h3>
-        <p>В кабинете есть инструкции. Если непонятно — пишите, разберём вместе от подбора запросов до чтения статистики.</p>
-      </div>
+</section>
+
+<!-- ===== WHO SUITS ===== -->
+<section id="who">
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Кому подходит</div>
+            <h2>Кому сервис <span class="tilt-block background-theme-3">подходит</span></h2>
+        </div>
+        <div class="who-grid">
+            <div class="who-item"><strong>Всем сайтам</strong><br>на которых заметен долгий рост позиций, либо позиции начали идти вниз</div>
+            <div class="who-item"><strong>Молодым сайтам</strong><br>и лендингам</div>
+            <div class="who-item"><strong>Сайтам со сверхвысокой конкуренцией</strong></div>
+            <div class="who-item"><strong>Интернет-магазинам</strong><br>и сайтам услуг</div>
+        </div>
     </div>
-  </div>
+</section>
+
+<!-- ===== WHEN RESULT ===== -->
+<section id="result" style="background:var(--soft);">
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Результат</div>
+            <h2>А когда <span class="tilt-block background-theme-1">результат?</span></h2>
+            <p>Увидеть результаты ПФ продвижения в большинстве случаев возможно уже <strong>в первую неделю</strong> работы AI-бота!</p>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;background:#fff;border-radius:18px;border:1px solid var(--line);padding:30px 24px;">
+            <div style="text-align:center;">
+                <div style="font-family:'Unbounded',sans-serif;font-size:48px;font-weight:800;color:var(--accent);">5</div>
+                <div style="font-size:16px;color:var(--muted);">дней</div>
+            </div>
+            <div style="font-size:18px;font-weight:600;color:var(--primary);max-width:400px;text-align:center;">
+                Первые результаты уже <span style="color:var(--accent);">в первую неделю</span> работы AI-бота!
+            </div>
+            <div style="font-size:40px;">🚀</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MORE IMPORTANTLY ===== -->
+<section id="important">
+    <div class="container">
+        <div class="left-right-wrap">
+            <div class="left-block">
+                <div class="h2">Что ещё <span class="tilt-block background-theme-1">важно</span></div>
+            </div>
+            <div class="right-block">
+                <div style="background:var(--soft);border-radius:16px;padding:24px;border:1px solid var(--line);">
+                    <div style="font-weight:700;font-size:17px;color:var(--primary);margin-bottom:10px;">
+                        Сайт должен иметь позиции в топ-50 выдачи Яндекса
+                    </div>
+                    <p style="color:var(--muted);font-size:15px;">
+                        Если сайт таких позиций не имеет, то рекомендуем выполнить SEO-оптимизацию.
+                    </p>
+                    <a href="https://t.me/iclobot_manager" target="_blank" class="btn btn-primary" style="margin-top:14px;">Заказать аудит</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ===== PRICING ===== -->
-<section id="pricing">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">Тарифы</div>
-      <h2>Цена клика зависит от объёма</h2>
-      <p>Чем больше пополнение — тем ниже цена за переход. От 0,40 ₽ до индивидуальных условий.</p>
+<section id="pricing" style="background:var(--soft);">
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Стоимость</div>
+            <h2>Цены на <span class="tilt-block background-theme-2">продвижение</span></h2>
+            <p>От 280 ₽/месяц за 1 запрос. Расчёт стоимости производится в AI-калькуляторе.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+            <div style="background:#fff;border-radius:18px;border:1px solid var(--line);padding:28px 24px;">
+                <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:32px;color:var(--primary);">
+                    От 280 ₽<span style="font-size:16px;font-weight:400;color:var(--muted);">/месяц</span>
+                </div>
+                <div style="font-size:14px;color:var(--muted);margin:8px 0 16px;">
+                    <span class="tilt-block background-theme-2" style="color:#fff;padding:2px 10px;font-size:13px;">за 1 запрос</span>
+                </div>
+                <div style="font-size:14px;color:var(--muted);">
+                    Расчёт стоимости производится в AI-калькуляторе.
+                    <a href="#calc" style="font-weight:700;">Рассчитать сейчас →</a>
+                </div>
+                <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+                    <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary">Зарегистрироваться</a>
+                    <a href="#calc" class="btn btn-ghost">Калькулятор</a>
+                </div>
+            </div>
+            <div style="background:var(--primary);border-radius:18px;padding:24px;color:#F1F5F9;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span class="tilt-block background-theme-1" style="color:#fff;padding:2px 14px;font-size:14px;">free</span>
+                    <span style="font-weight:700;font-size:16px;">Бесплатный пробный период</span>
+                </div>
+                <p style="color:#B9C6DB;font-size:14px;margin-top:10px;">
+                    Каждому клиенту мы предоставляем тестовый период для оценки возможностей накрутки ПФ через AI-бота
+                </p>
+                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-white" style="margin-top:14px;">Начать тест-драйв</a>
+            </div>
+        </div>
+
+        <div style="margin-top:32px;">
+            <table class="tariff-table">
+                <thead><tr><th>Объём запросов</th><th>Цена за 1 запрос в месяц</th></tr></thead>
+                <tbody>
+                    <tr><td>от 1 запроса</td><td>280 ₽</td></tr>
+                    <tr><td>от 10 запросов</td><td>250 ₽</td></tr>
+                    <tr><td>от 50 запросов</td><td>200 ₽</td></tr>
+                    <tr class="highlight"><td>от 100 запросов</td><td>от 150 ₽</td></tr>
+                </tbody>
+            </table>
+            <div style="font-size:13px;color:var(--muted);margin-top:12px;">
+                Для агентств и крупных заказчиков действует система лояльности — <a href="https://t.me/iclobot_manager" target="_blank">напишите нам</a> для индивидуального расчёта.
+            </div>
+        </div>
     </div>
-    <table class="tariff-table">
-      <thead><tr><th>Объём пополнения</th><th>Цена за клик</th></tr></thead>
-      <tbody>
-        <tr class="highlight" id="t0"><td>Базовый (от 1 000 ₽)</td><td>0,40 ₽</td></tr>
-        <tr id="t50"><td>от 50 000 ₽</td><td>0,35 ₽</td></tr>
-        <tr id="t100"><td>от 100 000 ₽</td><td>0,20 ₽</td></tr>
-        <tr id="t150"><td>от 150 000 ₽</td><td>0,17 ₽</td></tr>
-        <tr id="t200"><td>от 200 000 ₽</td><td>0,15 ₽</td></tr>
-        <tr id="t250"><td>от 250 000 ₽</td><td>по договорённости</td></tr>
-      </tbody>
-    </table>
-    <div class="tariff-note">
-      💡 Стартовая 1 000 ₽ по базовой цене — это <strong>2 500 переходов</strong> на сайт. С бонусом +500 ₽ — <strong>3 750 переходов</strong>. Для крупных пополнений — индивидуальные условия.
-    </div>
-  </div>
 </section>
 
 <!-- ===== CALCULATOR ===== -->
-<section id="calc" style="background:var(--primary);color:#F1F5F9;padding:64px 0;">
-  <div class="container">
-    <div style="max-width:900px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:32px;">
-        <div class="tag" style="color:#9DB8FF;">Калькулятор</div>
-        <h2 style="color:#fff;">Рассчитайте свой бюджет</h2>
-        <p style="color:#9DB0CC;font-size:17px;">Подвиньте сумму — увидите цену клика и количество переходов</p>
-      </div>
+<section id="calc" style="background:var(--primary);color:#F1F5F9;padding:56px 0;">
+    <div class="container">
+        <div style="max-width:900px;margin:0 auto;">
+            <div style="text-align:center;margin-bottom:28px;">
+                <div class="tag" style="color:#9DB8FF;">Калькулятор</div>
+                <h2 style="color:#fff;">Рассчитайте <span style="color:#CBB2FF;">стоимость</span></h2>
+                <p style="color:#9DB0CC;font-size:16px;">Выберите количество запросов — увидите цену за 1 запрос и общую стоимость</p>
+            </div>
 
-      <div class="calc-block">
-        <div class="label">Сумма пополнения</div>
-        <div class="calc-presets">
-          <button class="calc-preset active" data-s="1000" onclick="setAmount(1000)">
-            1 000 ₽
-            <span class="rec">для теста</span>
-          </button>
-          <button class="calc-preset" data-s="50000" onclick="setAmount(50000)">50 000 ₽</button>
-          <button class="calc-preset" data-s="100000" onclick="setAmount(100000)">100 000 ₽</button>
-          <button class="calc-preset" data-s="150000" onclick="setAmount(150000)">150 000 ₽</button>
-          <button class="calc-preset" data-s="200000" onclick="setAmount(200000)">200 000 ₽</button>
-        </div>
+            <div class="calc-block">
+                <div class="label">Количество запросов</div>
+                <div class="calc-presets">
+                    <button class="calc-preset active" data-q="1" onclick="setQueries(1)">1</button>
+                    <button class="calc-preset" data-q="5" onclick="setQueries(5)">5</button>
+                    <button class="calc-preset" data-q="10" onclick="setQueries(10)">10</button>
+                    <button class="calc-preset" data-q="25" onclick="setQueries(25)">25</button>
+                    <button class="calc-preset" data-q="50" onclick="setQueries(50)">50</button>
+                    <button class="calc-preset" data-q="100" onclick="setQueries(100)">100</button>
+                </div>
 
-        <div class="label">Или точная сумма</div>
-        <div class="calc-row">
-          <input type="range" id="depSlider" min="1000" max="250000" step="1000" value="1000" oninput="setAmount(+this.value, true)">
-          <div class="calc-value" id="depDisplay">1 000 ₽</div>
-        </div>
+                <div class="label">Или точное количество</div>
+                <div class="calc-row">
+                    <input type="range" id="queriesSlider" min="1" max="200" step="1" value="1" oninput="setQueries(+this.value, true)">
+                    <div class="calc-value" id="queriesDisplay">1</div>
+                </div>
 
-        <div class="calc-results">
-          <div class="calc-result"><div class="k">Пополнение</div><div class="v" id="resDep">—</div></div>
-          <div class="calc-result"><div class="k">Цена клика</div><div class="v" id="resCpc">—</div></div>
-          <div class="calc-result highlight"><div class="k">Переходов на сайт</div><div class="v" id="resClicks">—</div></div>
-        </div>
+                <div class="calc-results">
+                    <div class="calc-result"><div class="k">Запросов</div><div class="v" id="resQueries">—</div></div>
+                    <div class="calc-result"><div class="k">Цена за 1 запрос</div><div class="v" id="resPrice">—</div></div>
+                    <div class="calc-result highlight"><div class="k">Стоимость в месяц</div><div class="v" id="resTotal">—</div></div>
+                </div>
 
-        <div class="calc-bonus">
-          <span>🎁</span>
-          <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽ — на базовой цене это ещё примерно 1 250 переходов сверху.</span>
-        </div>
+                <div class="calc-bonus">
+                    <span>🎁</span>
+                    <span><b>Новым клиентам:</b> бесплатный тест-драйв на 5 дней — оцените эффективность до оплаты.</span>
+                </div>
 
-        <div class="calc-note" id="calcNote">
-          Этого хватит на тестовый запуск одного проекта.
+                <div class="calc-note" id="calcNote">
+                    Для агентств и объёмов от 100 запросов — индивидуальные условия.
+                </div>
+                <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+                    <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary" style="background:#fff;color:var(--primary);">Зарегистрироваться</a>
+                    <a href="https://t.me/iclobot_manager" target="_blank" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.2);color:#fff;">Уточнить условия</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <script>
-let currentAmount = 1000;
+let currentQueries = 1;
 
-function getTier(amount) {
-  if (amount >= 250000) return { id: 't250', cpc: null };
-  if (amount >= 200000) return { id: 't200', cpc: 0.15 };
-  if (amount >= 150000) return { id: 't150', cpc: 0.17 };
-  if (amount >= 100000) return { id: 't100', cpc: 0.20 };
-  if (amount >= 50000)  return { id: 't50',  cpc: 0.35 };
-  return { id: 't0', cpc: 0.40 };
+function getPrice(q) {
+    if (q >= 100) return 150;
+    if (q >= 50) return 200;
+    if (q >= 10) return 250;
+    return 280;
 }
 
 function formatNumber(n) {
-  return Math.round(n).toLocaleString('ru-RU');
+    return Math.round(n).toLocaleString('ru-RU');
 }
 
-function setAmount(value, fromSlider) {
-  currentAmount = value;
-  if (!fromSlider) {
-    document.getElementById('depSlider').value = value;
-  }
-  document.getElementById('depDisplay').textContent = formatNumber(value) + ' ₽';
-
-  document.querySelectorAll('.calc-preset').forEach(el => {
-    el.classList.toggle('active', +el.dataset.s === value);
-  });
-
-  const tier = getTier(value);
-  document.getElementById('resDep').textContent = formatNumber(value) + ' ₽';
-
-  ['t0','t50','t100','t150','t200','t250'].forEach(id => {
-    const row = document.getElementById(id);
-    if (row) row.classList.toggle('highlight', id === tier.id);
-  });
-
-  if (tier.cpc === null) {
-    document.getElementById('resCpc').textContent = 'обсудим';
-    document.getElementById('resClicks').textContent = 'ещё выгоднее';
-    document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/express75" target="_blank" style="color:#9DB8FF;font-weight:700;">@express75</a>.';
-  } else {
-    const clicks = value / tier.cpc;
-    document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
-    document.getElementById('resClicks').textContent = '≈ ' + formatNumber(clicks);
-
-    if (tier.cpc < 0.40) {
-      const extra = clicks - value / 0.40;
-      document.getElementById('calcNote').innerHTML =
-        'Скидка от объёма: на базовой цене 0,40 ₽ этих денег хватило бы на <strong style="color:#fff;">' +
-        formatNumber(value / 0.40) + '</strong> переходов, на вашем объёме — на <strong style="color:#7CFFB2;">' +
-        formatNumber(extra) + '</strong> больше.';
-    } else {
-      document.getElementById('calcNote').innerHTML = 'Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.';
+function setQueries(value, fromSlider) {
+    currentQueries = value;
+    if (!fromSlider) {
+        document.getElementById('queriesSlider').value = value;
     }
-  }
+    document.getElementById('queriesDisplay').textContent = value;
+
+    document.querySelectorAll('.calc-preset').forEach(el => {
+        el.classList.toggle('active', +el.dataset.q === value);
+    });
+
+    const price = getPrice(value);
+    const total = value * price;
+
+    document.getElementById('resQueries').textContent = value;
+    document.getElementById('resPrice').textContent = price + ' ₽';
+    document.getElementById('resTotal').textContent = formatNumber(total) + ' ₽';
+
+    if (value >= 100) {
+        document.getElementById('calcNote').innerHTML = 'Для объёмов от 100 запросов действуют индивидуальные условия — <a href="https://t.me/iclobot_manager" target="_blank" style="color:#9DB8FF;font-weight:700;">напишите нам</a>.';
+    } else {
+        document.getElementById('calcNote').innerHTML = 'Для агентств и объёмов от 100 запросов — индивидуальные условия.';
+    }
 }
-setAmount(1000);
+setQueries(1);
 </script>
 
 <!-- ===== STEPS ===== -->
 <section id="steps" style="background:var(--soft);">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">Как начать</div>
-      <h2>Запуск за 4 шага</h2>
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Как начать</div>
+            <h2>Регистрация и запуск <span class="tilt-block background-theme-3">в 1 клик</span></h2>
+        </div>
+        <div style="max-width:700px;margin:0 auto;">
+            <div class="steps">
+                <div class="step"><span class="num">1</span><h3>Регистрация</h3><p>Пройдите простую регистрацию в <a href="https://lk.iclobot.ru/register" target="_blank">личном кабинете</a></p></div>
+                <div class="step"><span class="num">2</span><h3>Данные проекта</h3><p>Укажите домен, ключевые запросы, регион и цель продвижения</p></div>
+                <div class="step"><span class="num">3</span><h3>Запуск</h3><p>Активируйте бесплатный тест-драйв на 5 дней или оплатите продвижение</p></div>
+                <div class="step"><span class="num">4</span><h3>Контроль</h3><p>Следите за динамикой кликов и позиций в личном кабинете</p></div>
+            </div>
+        </div>
     </div>
-    <div style="max-width:700px;margin:0 auto;">
-      <div class="steps">
-        <div class="step"><span class="num">1</span><h3>Регистрация</h3><p>Кабинет — <a href="https://lk.express-geo.ru" target="_blank">lk.express-geo.ru</a>, рабочая ссылка закреплена в описании нашего Telegram-профиля.</p></div>
-        <div class="step"><span class="num">2</span><h3>Данные проекта</h3><p>Пришлите домен, ключевые запросы, регион и цель — что хотите получить в итоге.</p></div>
-        <div class="step"><span class="num">3</span><h3>Настройка</h3><p>Подготовим кабинет, активируем бонус 500 ₽ и настроим тестовый запуск.</p></div>
-        <div class="step"><span class="num">4</span><h3>Контроль</h3><p>Передадим доступ — динамика кликов и расход видны прямо в кабинете.</p></div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- ===== COMPARE ===== -->
-<section id="compare">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">Почему мы</div>
-      <h2>Рост ПФ vs другие сервисы</h2>
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why-choose">
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Почему нас выбирают</div>
+            <h2>Преимущества <span class="tilt-block background-theme-3">Рост ПФ</span></h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-weight:700;color:var(--primary);">Удобно:</div>
+                <div style="font-size:14px;color:var(--muted);">быстрая и простая регистрация на сервисе</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);">техническая поддержка <strong style="color:var(--primary);">24/7</strong></div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);">собственные производственные мощности и прокси фермы</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);">еженедельная <strong style="color:var(--primary);">отчётность</strong> по каждому проекту</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-weight:700;color:var(--primary);">Выгодно:</div>
+                <div style="font-size:14px;color:var(--muted);">система <strong style="color:var(--primary);">лояльности</strong> для агентств и крупных заказчиков</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);"><strong style="color:var(--primary);">бесплатные</strong> пробные периоды</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);">Вы не останетесь один на один с цифрами: наше <span class="tilt-block background-theme-1" style="color:#fff;padding:0 6px;font-size:12px;">сопровождение</span> поможет в любой момент!</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);">высокая эффективность</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;">
+                <div style="font-size:14px;color:var(--muted);">реферальная система с <strong style="color:var(--primary);">доходностью до 20%</strong> от оборота</div>
+            </div>
+        </div>
     </div>
-    <div class="compare-grid">
-      <div class="compare-col">
-        <h3>🔴 Другие сервисы</h3>
-        <ul>
-          <li><span>Цена за клик</span><span class="cross">от 0,80 ₽</span></li>
-          <li><span>Абонентская плата</span><span class="cross">есть</span></li>
-          <li><span>Минимальный депозит</span><span class="cross">от 5 000 ₽</span></li>
-          <li><span>Прямая цена</span><span class="cross">посредники</span></li>
-          <li><span>Поддержка</span><span class="cross">долгие ответы</span></li>
-        </ul>
-      </div>
-      <div class="compare-col highlight">
-        <h3>✅ Рост ПФ</h3>
-        <ul>
-          <li><span>Цена за клик</span><span class="check">от 0,15 ₽</span></li>
-          <li><span>Абонентская плата</span><span class="check">0 ₽</span></li>
-          <li><span>Минимальный депозит</span><span class="check">1 000 ₽</span></li>
-          <li><span>Прямая цена</span><span class="check">без посредников</span></li>
-          <li><span>Поддержка</span><span class="check">быстрый ответ</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- ===== CASES ===== -->
-<section id="cases" style="background:var(--soft);">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">Кейсы</div>
-      <h2>Результаты наших клиентов</h2>
-      <p>Рост позиций в ТОП-10 по основным запросам после подключения</p>
+<!-- ===== SAFE ===== -->
+<section id="safe" style="background:var(--soft);">
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Безопасность</div>
+            <h2>Сервис <span class="tilt-block background-theme-1">безопасен</span></h2>
+        </div>
+        <div class="safe-grid">
+            <div class="safe-item">
+                <div class="icon">🛡️</div>
+                <h3>Надёжно</h3>
+                <p>Каждый переход осуществляется исключительно по правилам ранжирования Яндекс.</p>
+            </div>
+            <div class="safe-item">
+                <div class="icon">⭐</div>
+                <h3>Качественно</h3>
+                <p>AI-бот имеет уникальную поведенческую историю в интернете и не отличается от человека.</p>
+            </div>
+            <div class="safe-item">
+                <div class="icon">🔒</div>
+                <h3>Безопасно</h3>
+                <p>Мы не раскрываем своих клиентов и сохраняем полную анонимность.</p>
+            </div>
+        </div>
+        <div style="background:#fff;border-radius:16px;border:1px solid var(--line);padding:20px 24px;margin-top:20px;text-align:center;">
+            <div style="font-size:14px;color:var(--muted);">
+                Если с вашим сайтом что-то случится по вине сервиса — мы вернём все позиции бесплатно.
+            </div>
+        </div>
     </div>
-    <div class="cases-grid">
-      <div class="case-item"><div class="num">85%</div><div class="label">Услуги грузового ремонта</div></div>
-      <div class="case-item"><div class="num">92%</div><div class="label">Перевозка грузов из Китая</div></div>
-      <div class="case-item"><div class="num">100%</div><div class="label">Стоматология</div></div>
-      <div class="case-item"><div class="num">93%</div><div class="label">Магазин стройматериалов</div></div>
-      <div class="case-item"><div class="num">89%</div><div class="label">Косметология</div></div>
-      <div class="case-item"><div class="num">94%</div><div class="label">Офисная мебель</div></div>
-    </div>
-  </div>
 </section>
 
 <!-- ===== FAQ ===== -->
 <section id="faq">
-  <div class="container">
-    <div class="section-head">
-      <div class="tag">Вопросы</div>
-      <h2>Часто задаваемые вопросы</h2>
+    <div class="container">
+        <div class="section-head">
+            <div class="tag">Вопросы</div>
+            <h2>Частые <span class="tilt-block background-theme-2">вопросы</span></h2>
+        </div>
+        <div style="max-width:800px;margin:0 auto;">
+            <details class="faq-item">
+                <summary>Сколько будет совершено переходов?</summary>
+                <div class="answer">
+                    Всё зависит от нескольких факторов:<br>
+                    а) Насколько хорошо ваш сайт оптимизирован. Чем лучше проработано стандартное SEO, тем меньше переходов потребуется.<br>
+                    б) Частотность фразы. Чем выше частотность, тем больше переходов будет совершено.<br>
+                    в) Конкурентность ниши. Необходимо совершать больше переходов по фразам, чем совершают ваши конкуренты.<br><br>
+                    Наш уникальный алгоритм, основанный на искусственном интеллекте, автоматически анализирует все показатели и высчитывает оптимальное количество переходов. Результат будет достигнут!
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Это безопасно?</summary>
+                <div class="answer">
+                    Да, все переходы осуществляются строго по алгоритмам ранжирования Яндекса. AI-бот имеет поведенческий фактор как у настоящего человека, он ежедневно совершает различные действия в интернете (читает новости, смотрит погоду, вводит различные запросы) так же как и мы с вами, это его и отличает от других подобных сервисов. Поэтому сервис полностью безопасен.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Как правильно подобрать запросы?</summary>
+                <div class="answer">
+                    Не советуем останавливать свой выбор исключительно на высокочастотных запросах: как правило, с них много трафика, но мало заявок. Подберите запросы с максимально коммерческими фразами, используйте НЧ запросы по названию товара или его характеристикам. Если возникли сложности, обратитесь в службу поддержки с фразой «нужна помощь в подборе запросов».
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Как отслеживать результат?</summary>
+                <div class="answer">
+                    1. С помощью наших отчётов. В отчёт будут включены: точная частотность каждого запроса, позиция сайта на момент запуска и на момент окончания.<br><br>
+                    2. С помощью мониторинга поисковой выдачи. Как правило, на 1-3 день видно положительную динамику продвижения.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Сколько нужно пользоваться сервисом?</summary>
+                <div class="answer">
+                    Как и в базовом SEO, здесь также нельзя с точностью сказать сколько будет держаться результат. Конкуренты не спят и стараются продвинуть свой сайт выше. Предлагаем сначала получить желаемый результат в позициях, просчитать количество новых клиентов и следить за динамикой своих позиций. Если результаты пойдут вниз, воспользуйтесь сервисом повторно.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Что такое поведенческие факторы?</summary>
+                <div class="answer">
+                    Поведенческие факторы — это сигналы, которые показывают, как пользователи взаимодействуют с сайтом и поисковой выдачей. Поисковым системам важно понять: человек нашёл на странице то, что искал, или быстро вернулся назад. На ПФ влияет: заголовок в выдаче, описание страницы, скорость загрузки, структура, доверие к компании, качество текста, наличие цен и отзывов.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Нужно ли менять стратегию для разных типов бизнеса?</summary>
+                <div class="answer">
+                    Да. Для интернет-магазинов важны глубина просмотра и время на сайте, для сайтов услуг — отзывы и кейсы, для информационных сайтов — долгое чтение статей. Мы адаптируем подход под вашу нишу.
+                </div>
+            </details>
+        </div>
     </div>
-    <div style="max-width:800px;margin:0 auto;">
-      <details class="faq-item">
-        <summary>Почему у вас цена ниже, чем у конкурентов?</summary>
-        <div class="answer">Потому что вы покупаете напрямую у разработчиков. Мы создаём и развиваем технологию сами, и под нами работает ряд других сервисов, которые перепродают наши услуги со своей наценкой. Убирая посредника, вы получаете ту же технологию по базовой цене.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Это безопасно для сайта?</summary>
-        <div class="answer">Мы работаем на качественном трафике: посетители приходят из поиска Яндекса по вашему запросу и ведут себя как обычные заинтересованные пользователи. Объём наращиваем постепенно, без резких всплесков. Старт всегда с небольшого теста.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Как быстро будет результат?</summary>
-        <div class="answer">Зависит от ниши, конкуренции и состояния сайта, поэтому конкретные позиции и сроки мы не обещаем. Первый шаг — тест от 1 000 ₽: динамику кликов вы видите в кабинете сразу, а по движению запросов в выдаче сами решаете, масштабировать ли объём.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Что нужно от меня для старта?</summary>
-        <div class="answer">Четыре вещи: домен сайта, ключевые запросы, регион продвижения и цель. Дальше всё сделаем сами — подготовим кабинет, настроим проект, активируем бонус 500 ₽ и передадим доступ.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Могу ли я остановиться в любой момент?</summary>
-        <div class="answer">Да. Абонентской платы нет, деньги списываются только за фактические клики. Пополняете баланс тогда, когда это нужно, и управляете проектами сами — без обязательств и договоров на месяцы вперёд.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Как получить бонус +500 ₽?</summary>
-        <div class="answer">Зарегистрируйтесь в кабинете и напишите нам в Telegram — активируем бонус при настройке первого запуска. Бонус начисляется на баланс и расходуется на клики по вашим запросам.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Что такое поведенческие факторы?</summary>
-        <div class="answer">Поведенческие факторы (ПФ) — это показатели, отражающие взаимодействие пользователей с сайтом: время на сайте, глубина просмотра, показатель отказов и кликабельность (CTR). Поисковые системы, такие как Яндекс, используют эти данные для оценки качества и релевантности ресурса.</div>
-      </details>
-      <details class="faq-item">
-        <summary>Нужно ли менять стратегию для разных типов бизнеса?</summary>
-        <div class="answer">Да. Для интернет-магазинов важны глубина просмотра и время на сайте, для сайтов услуг — отзывы и кейсы, для информационных сайтов — долгое чтение статей. Мы адаптируем подход под вашу нишу.</div>
-      </details>
-    </div>
-  </div>
 </section>
 
 <!-- ===== CTA ===== -->
 <section id="cta">
-  <div class="container">
-    <div class="cta-block">
-      <h2>Начнём с теста</h2>
-      <p>Зарегистрируйтесь на <a href="https://lk.express-geo.ru" target="_blank" style="color:#9DB8FF;">lk.express-geo.ru</a> или просто пришлите в Telegram домен, запросы и регион — подготовим кабинет, запустим тест, а дальше решите по цифрам.</p>
-      <div class="guarantee">🎁 <span><b>Новым пользователям</b> — бонус +500 ₽ на тестовый запуск.</span></div>
-      <div class="guarantee">⚙️ <span>Кабинет и настройки проекта подготовим за вас — от вас только домен, запросы и регион.</span></div>
-      <div class="btns">
-        <a href="https://t.me/express75" target="_blank" class="btn btn-primary btn-lg">Написать в Telegram</a>
-        <a href="https://lk.express-geo.ru" target="_blank" class="btn btn-white btn-lg">Перейти в кабинет</a>
-      </div>
-      <div class="promo">
-        🔎 <span>Для особо внимательных: по промокоду</span>
-        <span class="promo-code" onclick="copyPromo()" title="Нажмите, чтобы скопировать">РОСТ-500</span>
-        <span>— дополнительно 500 ₽ на баланс.</span>
-      </div>
+    <div class="container">
+        <div class="cta-block">
+            <h2>Готовы попробовать?</h2>
+            <p>Зарегистрируйтесь в личном кабинете и получите бесплатный тест-драйв на 5 дней. Оцените эффективность до оплаты.</p>
+            <div class="guarantee">🎁 <span><b>Бесплатный тест-драйв 5 дней</b> — оцените продвижение до оплаты.</span></div>
+            <div class="guarantee">⚙️ <span>Индивидуально обученный AI-бот — неотличим от живого пользователя.</span></div>
+            <div class="btns">
+                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary btn-lg">Бесплатный тест-драйв</a>
+                <a href="https://t.me/iclobot_manager" target="_blank" class="btn btn-white btn-lg">Написать в Telegram</a>
+            </div>
+            <div class="promo">
+                🔎 <span>По промокоду</span>
+                <span class="promo-code" onclick="copyPromo()" title="Нажмите, чтобы скопировать">РОСТПФ-500</span>
+                <span>— дополнительно 500 ₽ на баланс.</span>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <script>
 function copyPromo() {
-  const el = document.querySelector('.promo-code');
-  const text = el.textContent;
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => showCopied(el), () => showCopied(el));
-  } else {
-    showCopied(el);
-  }
+    const el = document.querySelector('.promo-code');
+    const text = el.textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showCopied(el), () => showCopied(el));
+    } else {
+        showCopied(el);
+    }
 }
 function showCopied(el) {
-  const orig = el.textContent;
-  el.textContent = '✓ СКОПИРОВАНО';
-  setTimeout(() => { el.textContent = orig; }, 1600);
+    const orig = el.textContent;
+    el.textContent = '✓ СКОПИРОВАНО';
+    setTimeout(() => { el.textContent = orig; }, 1600);
 }
 </script>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <div class="container">
-    <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:var(--primary);">Рост <span style="color:var(--accent);">ПФ</span></div>
-    <div style="margin-top:6px;font-size:14px;">Сервис продвижения сайтов поведенческими факторами</div>
-    <div class="links">
-      <a href="https://t.me/express75" target="_blank">Telegram @express75</a>
-      <a href="tel:+79229266684">+7 922 926-66-84</a>
-      <a href="mailto:profexpress.pf@gmail.com">profexpress.pf@gmail.com</a>
-      <a href="https://lk.express-geo.ru" target="_blank">lk.express-geo.ru</a>
+    <div class="container">
+        <div style="font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:var(--primary);">
+            Рост <span style="color:var(--accent);">ПФ</span>
+        </div>
+        <div style="margin-top:4px;font-size:13px;color:var(--muted);">Сервис накрутки поведенческих факторов в Яндексе</div>
+        <div class="links">
+            <a href="https://t.me/iclobot_manager" target="_blank">Telegram</a>
+            <a href="tel:+79088096637">+7 (908) 809-66-37</a>
+            <a href="mailto:manager@iclobot.ru">manager@iclobot.ru</a>
+            <a href="https://lk.iclobot.ru/register" target="_blank">Личный кабинет</a>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#AAB6C9;">
+            © 2026 Рост ПФ · Все права защищены
+        </div>
     </div>
-    <div style="margin-top:12px;font-size:12px;color:#AAB6C9;">
-      © 2026 Рост ПФ · Все права защищены
-    </div>
-  </div>
 </footer>
 
 </body>
