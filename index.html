@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MetricHit — Управление поведенческими факторами</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetricHit — Продвижение сайтов поведенческими факторами</title>
+    <meta name="description" content="Продвижение сайта в Яндексе через поведенческие факторы. Реальные пользователи, живой трафик. От 2 ₽ за клик, без абонентской платы.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
-           RESET
+           ROOT & RESET
            ============================================================ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0d14;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(0, 240, 255, 0.2);
+            --text: #e8edf5;
+            --text-muted: #8a94a6;
+            --text-dim: #6a7a8e;
+            --accent: #00F0FF;
+            --accent-dim: rgba(0, 240, 255, 0.1);
+            --accent-glow: rgba(0, 240, 255, 0.15);
+            --green: #4ade80;
+            --red: #ff6b6b;
+            --amber: #fbbf24;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --transition: 0.3s ease;
         }
 
         html {
@@ -21,16 +42,111 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0d14;
-            color: #e8edf5;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color var(--transition);
+        }
+
+        a:hover {
+            color: #00d4e0;
+        }
+
+        /* ============================================================
+           SCROLLBAR
+           ============================================================ */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-dim);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 240, 255, 0.3);
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            min-height: 52px;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .btn--primary {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 4px 24px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn--primary:hover {
+            background: #00d4e0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.35);
+            color: var(--bg);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn--outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+        }
+
+        .btn--lg {
+            font-size: 18px;
+            padding: 18px 48px;
+            min-height: 60px;
+            border-radius: 16px;
+        }
+
+        .btn--full {
+            width: 100%;
+        }
+
+        .btn--sm {
+            font-size: 13px;
+            padding: 10px 20px;
+            min-height: 40px;
+            border-radius: 10px;
         }
 
         /* ============================================================
@@ -44,9 +160,9 @@
             z-index: 1000;
             background: rgba(10, 13, 20, 0.92);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             padding: 12px 0;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
         }
 
         .header.scrolled {
@@ -77,7 +193,7 @@
         }
 
         .logo svg {
-            height: 48px;
+            height: 44px;
             width: auto;
             display: block;
         }
@@ -90,7 +206,7 @@
         }
 
         .logo-text span {
-            color: #00F0FF;
+            color: var(--accent);
         }
 
         .header-nav {
@@ -99,24 +215,23 @@
         }
 
         .header-nav a {
-            color: #8a94a6;
-            font-size: 15px;
+            color: var(--text-muted);
+            font-size: 14px;
             font-weight: 500;
             padding: 8px 18px;
-            border-radius: 12px;
+            border-radius: 10px;
+            transition: all var(--transition);
             text-decoration: none;
-            transition: all 0.25s ease;
-            position: relative;
         }
 
         .header-nav a:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .header-nav a.active {
-            color: #00F0FF;
-            background: rgba(0, 240, 255, 0.08);
+            color: var(--accent);
+            background: var(--accent-dim);
         }
 
         .header-actions {
@@ -125,58 +240,13 @@
             gap: 12px;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 10px 28px;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            letter-spacing: 0.2px;
+        .header-actions .btn {
+            min-height: 40px;
+            padding: 10px 24px;
+            font-size: 14px;
+            border-radius: 10px;
         }
 
-        .btn-outline {
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            border-color: #00F0FF;
-            color: #00F0FF;
-            background: rgba(0, 240, 255, 0.06);
-            transform: translateY(-1px);
-        }
-
-        .btn-primary {
-            background: #00F0FF;
-            color: #0a0d14;
-            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
-        }
-
-        .btn-primary:hover {
-            background: #00d4e0;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.35);
-        }
-
-        .btn-primary--large {
-            padding: 16px 48px;
-            font-size: 18px;
-            min-height: 56px;
-            border-radius: 16px;
-        }
-
-        /* ============================================================
-           MOBILE MENU TOGGLE
-           ============================================================ */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -193,7 +263,7 @@
             height: 2.5px;
             background: #ffffff;
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
         }
 
         .menu-toggle.active span:nth-child(1) {
@@ -216,7 +286,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             padding: 0;
-            margin-top: 72px;
+            margin-top: 68px;
         }
 
         .sub-nav-inner {
@@ -235,13 +305,13 @@
         }
 
         .sub-nav-links a {
-            color: #6a7a8e;
+            color: var(--text-dim);
             font-size: 14px;
             font-weight: 500;
             padding: 10px 20px;
             border-radius: 10px;
             text-decoration: none;
-            transition: all 0.25s ease;
+            transition: all var(--transition);
         }
 
         .sub-nav-links a:hover {
@@ -250,8 +320,15 @@
         }
 
         .sub-nav-links a.active {
-            color: #00F0FF;
-            background: rgba(0, 240, 255, 0.08);
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+
+        .sub-nav-actions .btn {
+            min-height: 36px;
+            padding: 8px 20px;
+            font-size: 13px;
+            border-radius: 10px;
         }
 
         /* ============================================================
@@ -259,7 +336,7 @@
            ============================================================ */
         .hero {
             padding: 120px 0 80px;
-            background: #0a0d14;
+            background: var(--bg);
             position: relative;
             overflow: hidden;
         }
@@ -298,9 +375,9 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(0, 240, 255, 0.1);
+            background: var(--accent-dim);
             border: 1px solid rgba(0, 240, 255, 0.15);
-            color: #00F0FF;
+            color: var(--accent);
             font-size: 13px;
             font-weight: 600;
             padding: 6px 20px;
@@ -308,9 +385,14 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             margin-bottom: 24px;
+            animation: pulseGlow 2.4s ease-in-out infinite;
         }
 
-        /* Анимированные слова */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+            50% { box-shadow: 0 0 30px 4px rgba(0, 240, 255, 0.15); }
+        }
+
         .hero-headlines {
             display: flex;
             justify-content: center;
@@ -343,15 +425,15 @@
 
         .hero-word:nth-child(1) {
             animation-delay: 0s;
-            color: #00F0FF;
+            color: var(--accent);
         }
         .hero-word:nth-child(2) {
             animation-delay: 3s;
-            color: #ff6b6b;
+            color: var(--red);
         }
         .hero-word:nth-child(3) {
             animation-delay: 6s;
-            color: #51cf66;
+            color: var(--green);
         }
 
         @keyframes slideWord {
@@ -389,7 +471,7 @@
         }
 
         .hero-static .highlight {
-            color: #00F0FF;
+            color: var(--accent);
             background: rgba(0, 240, 255, 0.1);
             padding: 0 16px;
             border-radius: 12px;
@@ -397,7 +479,7 @@
 
         .hero-description {
             font-size: 20px;
-            color: #8a94a6;
+            color: var(--text-muted);
             max-width: 640px;
             margin: 24px auto 0;
             line-height: 1.8;
@@ -414,83 +496,48 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 60px;
+            gap: 48px;
             margin-top: 56px;
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
+            flex-wrap: wrap;
         }
 
         .hero-stats-item {
             text-align: center;
         }
 
-        .hero-stats-item h3 {
+        .hero-stats-item .number {
             font-size: 36px;
             font-weight: 800;
-            color: #00F0FF;
+            color: var(--accent);
             letter-spacing: -0.5px;
         }
 
-        .hero-stats-item p {
+        .hero-stats-item .label {
             font-size: 14px;
-            color: #6a7a8e;
+            color: var(--text-dim);
             margin-top: 4px;
         }
 
         /* ============================================================
-           TRUST
-           ============================================================ */
-        .trust {
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .trust p {
-            text-align: center;
-            color: #6a7a8e;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .trust-logos {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-
-        .trust-logos span {
-            color: #4a5a6e;
-            font-weight: 600;
-            font-size: 18px;
-            letter-spacing: 1px;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-        }
-
-        .trust-logos span:hover {
-            opacity: 1;
-        }
-
-        /* ============================================================
-           SECTION TITLES
+           SECTION COMMON
            ============================================================ */
         .section {
-            padding: 80px 0;
+            padding: 72px 0;
         }
 
         .section--dark {
             background: rgba(255, 255, 255, 0.02);
         }
 
+        .section--gradient {
+            background: linear-gradient(180deg, var(--bg) 0%, rgba(0, 240, 255, 0.02) 100%);
+        }
+
         .section-label {
             display: inline-block;
-            color: #00F0FF;
+            color: var(--accent);
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 1.5px;
@@ -499,7 +546,7 @@
         }
 
         .section-title {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: -1px;
@@ -507,12 +554,12 @@
         }
 
         .section-title .highlight {
-            color: #00F0FF;
+            color: var(--accent);
         }
 
         .section-subtitle {
             font-size: 18px;
-            color: #8a94a6;
+            color: var(--text-muted);
             max-width: 560px;
             margin-top: 16px;
             line-height: 1.7;
@@ -528,6 +575,46 @@
         }
 
         /* ============================================================
+           TRUST
+           ============================================================ */
+        .trust {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .trust p {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-logos span {
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            transition: opacity var(--transition);
+        }
+
+        .trust-logos span:hover {
+            opacity: 1;
+        }
+
+        /* ============================================================
            HOW IT WORKS
            ============================================================ */
         .steps-grid {
@@ -537,12 +624,12 @@
         }
 
         .step-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             padding: 40px 32px;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -556,13 +643,14 @@
             bottom: 0;
             background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.03), transparent 70%);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity var(--transition);
             pointer-events: none;
         }
 
         .step-card:hover {
-            border-color: rgba(0, 240, 255, 0.2);
+            border-color: var(--border-hover);
             transform: translateY(-6px);
+            background: var(--bg-card-hover);
         }
 
         .step-card:hover::before {
@@ -572,14 +660,14 @@
         .step-number {
             font-size: 48px;
             font-weight: 900;
-            color: rgba(0, 240, 255, 0.15);
+            color: rgba(0, 240, 255, 0.12);
             line-height: 1;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .step-icon {
-            font-size: 40px;
+            font-size: 36px;
             margin-bottom: 16px;
             display: block;
         }
@@ -593,7 +681,7 @@
 
         .step-card p {
             font-size: 15px;
-            color: #8a94a6;
+            color: var(--text-muted);
             line-height: 1.7;
         }
 
@@ -604,26 +692,28 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            margin-top: 8px;
         }
 
         .pricing-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             padding: 40px 32px;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all var(--transition);
             position: relative;
         }
 
         .pricing-card:hover {
-            border-color: rgba(0, 240, 255, 0.2);
-            transform: translateY(-6px);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
         }
 
         .pricing-card.popular {
-            border-color: #00F0FF;
-            box-shadow: 0 0 60px rgba(0, 240, 255, 0.05);
+            border-color: var(--accent);
+            box-shadow: 0 0 60px rgba(0, 240, 255, 0.04);
         }
 
         .pricing-card.popular::before {
@@ -632,8 +722,8 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: #00F0FF;
-            color: #0a0d14;
+            background: var(--accent);
+            color: var(--bg);
             font-size: 12px;
             font-weight: 700;
             padding: 4px 24px;
@@ -646,13 +736,13 @@
             font-size: 20px;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .pricing-card .price {
             font-size: 48px;
             font-weight: 900;
-            color: #00F0FF;
+            color: var(--accent);
             margin: 16px 0 4px;
             letter-spacing: -1px;
         }
@@ -660,12 +750,12 @@
         .pricing-card .price span {
             font-size: 18px;
             font-weight: 400;
-            color: #6a7a8e;
+            color: var(--text-dim);
             letter-spacing: 0;
         }
 
         .pricing-card .plan-desc {
-            color: #8a94a6;
+            color: var(--text-muted);
             font-size: 15px;
             margin-bottom: 24px;
         }
@@ -692,7 +782,7 @@
 
         .pricing-card ul li::before {
             content: '✓';
-            color: #00F0FF;
+            color: var(--accent);
             font-weight: 700;
             font-size: 18px;
         }
@@ -702,14 +792,431 @@
         }
 
         /* ============================================================
-           CTA
+           COMPARISON TABLE
+           ============================================================ */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 8px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            min-width: 500px;
+        }
+
+        .compare-table th {
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .compare-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            vertical-align: middle;
+        }
+
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table tr.total td {
+            background: var(--accent-dim);
+            font-weight: 700;
+        }
+
+        .compare-table tr.total td:last-child {
+            color: var(--accent);
+        }
+
+        .compare-table .highlight-row td {
+            background: var(--accent-dim);
+        }
+
+        .table-note {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-top: 16px;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           FEATURES / CARDS
+           ============================================================ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 28px 24px;
+            transition: all var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            background: var(--bg-card-hover);
+        }
+
+        .feature-card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .feature-card .badge {
+            display: inline-block;
+            background: var(--accent-dim);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 40px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================================
+           CALCULATOR
+           ============================================================ */
+        .calc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calc::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            right: -150px;
+            top: -150px;
+            border-radius: 50%;
+            filter: blur(70px);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+
+        .calc>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .calc .calc-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .calc-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .calc-option {
+            position: relative;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            border-radius: var(--radius-sm);
+            padding: 12px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all var(--transition);
+        }
+
+        .calc-option:hover {
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .calc-option.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .calc-option .rec {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--amber);
+            color: #0a0d14;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calc-slider-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .calc-slider-wrap input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            border-radius: 4px;
+            background: var(--border);
+            outline: none;
+            transition: background var(--transition);
+        }
+
+        .calc-slider-wrap input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transition: all var(--transition);
+        }
+
+        .calc-slider-wrap input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+
+        .calc-slider-wrap input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: none;
+        }
+
+        .calc-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--accent);
+            min-width: 120px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .calc-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .calc-result-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            text-align: center;
+        }
+
+        .calc-result-item .label {
+            font-size: 12px;
+            color: var(--text-dim);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calc-result-item .value {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 4px;
+        }
+
+        .calc-result-item .value.accent {
+            color: var(--accent);
+        }
+
+        .calc-result-item.highlight {
+            background: var(--accent-dim);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .calc-result-item.highlight .value {
+            color: var(--accent);
+        }
+
+        .calc-bonus {
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(0, 240, 255, 0.04);
+            border: 1px solid rgba(0, 240, 255, 0.08);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .calc-bonus b {
+            color: var(--accent);
+        }
+
+        /* ============================================================
+           FAQ
+           ============================================================ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            padding: 18px 24px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #ffffff;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            transition: background var(--transition);
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            flex-shrink: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--accent);
+            transition: transform var(--transition);
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item[open] .faq-answer {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ============================================================
+           CTA SECTION
            ============================================================ */
         .cta-section {
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.04), rgba(0, 240, 255, 0.01));
             border-top: 1px solid rgba(0, 240, 255, 0.06);
             border-bottom: 1px solid rgba(0, 240, 255, 0.06);
-            padding: 80px 0;
+            padding: 72px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            right: -200px;
+            top: -200px;
+            border-radius: 50%;
+            filter: blur(80px);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section>* {
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section h2 {
@@ -720,65 +1227,61 @@
         }
 
         .cta-section h2 .highlight {
-            color: #00F0FF;
+            color: var(--accent);
         }
 
         .cta-section p {
             font-size: 18px;
-            color: #8a94a6;
-            max-width: 520px;
+            color: var(--text-muted);
+            max-width: 540px;
             margin: 16px auto 32px;
             line-height: 1.7;
         }
 
-        .cta-form {
+        .cta-guarantees {
             display: flex;
-            gap: 12px;
-            justify-content: center;
             flex-wrap: wrap;
-            max-width: 560px;
-            margin: 0 auto;
+            justify-content: center;
+            gap: 16px;
+            max-width: 640px;
+            margin: 24px auto 0;
         }
 
-        .cta-form input {
-            flex: 1;
-            min-width: 200px;
-            padding: 16px 24px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
+        .cta-guarantee {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .cta-guarantee b {
             color: #ffffff;
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: all 0.3s ease;
-            min-height: 56px;
         }
 
-        .cta-form input::placeholder {
-            color: #6a7a8e;
+        .cta-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 32px;
+            margin-top: 32px;
+            font-size: 14px;
+            color: var(--text-dim);
         }
 
-        .cta-form input:focus {
-            border-color: #00F0FF;
-            box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.08);
-        }
-
-        .cta-form .btn {
-            min-width: 180px;
-        }
-
-        .cta-disclaimer {
-            font-size: 13px;
-            color: #6a7a8e;
-            margin-top: 20px;
+        .cta-contacts b {
+            color: var(--text-muted);
         }
 
         /* ============================================================
            FOOTER
            ============================================================ */
         .footer {
-            padding: 48px 0 32px;
+            padding: 40px 0 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
@@ -792,7 +1295,7 @@
 
         .footer p {
             font-size: 14px;
-            color: #6a7a8e;
+            color: var(--text-dim);
         }
 
         .footer-links {
@@ -802,14 +1305,14 @@
         }
 
         .footer-links a {
-            color: #6a7a8e;
+            color: var(--text-dim);
             font-size: 14px;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color var(--transition);
         }
 
         .footer-links a:hover {
-            color: #00F0FF;
+            color: var(--accent);
         }
 
         /* ============================================================
@@ -818,6 +1321,9 @@
         @media (max-width: 1024px) {
             .steps-grid,
             .pricing-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .calc-results {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -837,20 +1343,11 @@
                 background: rgba(10, 13, 20, 0.98);
                 padding: 20px 24px;
                 gap: 4px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                border-bottom: 1px solid var(--border);
             }
 
             .menu-toggle {
                 display: flex;
-            }
-
-            .sub-nav-links a {
-                font-size: 13px;
-                padding: 8px 14px;
-            }
-
-            .sub-nav-actions .btn-outline {
-                display: none;
             }
 
             .hero-word,
@@ -868,19 +1365,22 @@
 
             .hero-stats {
                 gap: 32px;
-                flex-wrap: wrap;
             }
 
-            .hero-stats-item h3 {
+            .hero-stats-item .number {
                 font-size: 28px;
             }
 
             .section-title {
                 font-size: 32px;
             }
+
+            .sub-nav-actions .btn--outline {
+                display: none;
+            }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .hero {
                 padding: 100px 0 60px;
             }
@@ -903,13 +1403,17 @@
             }
 
             .hero-stats {
-                gap: 20px;
                 flex-direction: column;
                 align-items: center;
+                gap: 16px;
             }
 
             .steps-grid,
             .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calc-results {
                 grid-template-columns: 1fr;
             }
 
@@ -919,14 +1423,6 @@
 
             .cta-section h2 {
                 font-size: 28px;
-            }
-
-            .cta-form input {
-                min-width: 100%;
-            }
-
-            .cta-form .btn {
-                min-width: 100%;
             }
 
             .header-inner {
@@ -945,10 +1441,10 @@
                 font-size: 18px;
             }
 
-            .btn {
-                font-size: 14px;
-                padding: 8px 20px;
-                min-height: 38px;
+            .btn--lg {
+                font-size: 16px;
+                padding: 14px 32px;
+                min-height: 52px;
             }
 
             .footer-inner {
@@ -964,8 +1460,72 @@
                 justify-content: center;
             }
 
-            .sub-nav-actions .btn-primary {
+            .calc {
+                padding: 24px;
+            }
+
+            .calc-options {
+                gap: 8px;
+            }
+
+            .calc-option {
+                font-size: 13px;
+                padding: 10px 16px;
+            }
+
+            .cta-guarantees {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-contacts {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .compare-table {
+                font-size: 13px;
+                min-width: 400px;
+            }
+            .compare-table th,
+            .compare-table td {
+                padding: 12px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-actions .btn--outline {
                 display: none;
+            }
+            .logo svg {
+                height: 30px;
+            }
+            .logo-text {
+                font-size: 16px;
+            }
+            .hero-word,
+            .hero-static {
+                font-size: 22px;
+            }
+            .hero-words-wrapper {
+                height: 32px;
+            }
+            .hero-headlines {
+                min-height: 44px;
+            }
+            .hero-badge {
+                font-size: 11px;
+                padding: 4px 14px;
+            }
+            .section {
+                padding: 48px 0;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .section-subtitle {
+                font-size: 16px;
             }
         }
     </style>
@@ -980,8 +1540,8 @@
             <div class="header-inner">
                 <div class="header-left">
                     <a href="#" class="logo">
-                        <!-- Ваш логотип -->
-                        <svg width="auto" height="48" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Логотип MetricHit -->
+                        <svg width="auto" height="44" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <polygon fill="#ffffff" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
                                 <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
@@ -1001,15 +1561,15 @@
 
                     <nav class="header-nav" id="headerNav">
                         <a href="#how-it-works" class="active">Как это работает</a>
-                        <a href="#cases">Кейсы</a>
                         <a href="#pricing">Цены</a>
+                        <a href="#features">Преимущества</a>
                         <a href="#faq">FAQ</a>
                     </nav>
                 </div>
 
                 <div class="header-actions">
-                    <a href="#cta" class="btn btn-outline">Связаться с нами</a>
-                    <a href="#cta" class="btn btn-primary">Начать</a>
+                    <a href="#cta" class="btn btn--outline btn--sm">Связаться</a>
+                    <a href="#cta" class="btn btn--primary btn--sm">Начать</a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
                         <span></span>
                         <span></span>
@@ -1028,13 +1588,13 @@
             <div class="sub-nav-inner">
                 <div class="sub-nav-links">
                     <a href="#how-it-works" class="active">Как это работает</a>
-                    <a href="#cases">Кейсы</a>
                     <a href="#pricing">Цены</a>
+                    <a href="#features">Преимущества</a>
                     <a href="#faq">FAQ</a>
                 </div>
                 <div class="sub-nav-actions">
-                    <a href="#cta" class="btn btn-outline" style="padding:6px 20px;min-height:36px;font-size:13px;">Связаться с нами</a>
-                    <a href="#cta" class="btn btn-primary" style="padding:6px 20px;min-height:36px;font-size:13px;">Начать</a>
+                    <a href="#cta" class="btn btn--outline btn--sm">Связаться</a>
+                    <a href="#cta" class="btn btn--primary btn--sm">Начать</a>
                 </div>
             </div>
         </div>
@@ -1046,7 +1606,7 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">🚀 Новая эра продвижения</div>
+                <div class="hero-badge">🚀 Продвижение сайтов нового поколения</div>
 
                 <div class="hero-headlines">
                     <div class="hero-words-wrapper" aria-hidden="true">
@@ -1060,26 +1620,30 @@
                 </div>
 
                 <p class="hero-description">
-                    Естественная имитация активности реальных пользователей для улучшения ранжирования вашего сайта в поисковых системах.
+                    Управляйте поведенческими факторами вашего сайта в Яндексе. Реальные пользователи, живой трафик, прозрачная статистика. Первые результаты — через 2–3 дня.
                 </p>
 
                 <div class="hero-actions">
-                    <a href="#cta" class="btn btn-primary btn-primary--large">Начать тест</a>
-                    <a href="#pricing" class="btn btn-outline" style="padding:16px 48px;min-height:56px;border-radius:16px;font-size:18px;">Выбрать тариф</a>
+                    <a href="#cta" class="btn btn--primary btn--lg">Начать тест →</a>
+                    <a href="#pricing" class="btn btn--outline btn--lg">Выбрать тариф</a>
                 </div>
 
                 <div class="hero-stats">
                     <div class="hero-stats-item">
-                        <h3>4.8</h3>
-                        <p>Средний рост позиций</p>
+                        <div class="number">2 ₽</div>
+                        <div class="label">от 2 ₽ за клик</div>
                     </div>
                     <div class="hero-stats-item">
-                        <h3>2 400+</h3>
-                        <p>Активных проектов</p>
+                        <div class="number">0 ₽</div>
+                        <div class="label">абонентская плата</div>
                     </div>
                     <div class="hero-stats-item">
-                        <h3>98%</h3>
-                        <p>Удовлетворённых клиентов</p>
+                        <div class="number">+500 ₽</div>
+                        <div class="label">бонус новым клиентам</div>
+                    </div>
+                    <div class="hero-stats-item">
+                        <div class="number">2–3 дня</div>
+                        <div class="label">до первых сдвигов</div>
                     </div>
                 </div>
             </div>
@@ -1105,12 +1669,12 @@
     <!-- ============================================================
     HOW IT WORKS
     ============================================================ -->
-    <section class="section" id="how-it-works">
+    <section class="section section--gradient" id="how-it-works">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Как это работает</span>
-                <h2 class="section-title">Три простых шага к <span class="highlight">результату</span></h2>
-                <p class="section-subtitle">Мы создаём естественный поведенческий портрет вашего сайта, который ценится поисковыми алгоритмами.</p>
+                <h2 class="section-title">Три шага к <span class="highlight">результату</span></h2>
+                <p class="section-subtitle">Создаём естественный поведенческий портрет вашего сайта, который ценится поисковыми алгоритмами Яндекса.</p>
             </div>
 
             <div class="steps-grid">
@@ -1131,72 +1695,6 @@
                     <span class="step-icon">📈</span>
                     <h3>Естественное распределение</h3>
                     <p>Трафик распределяется в течение суток с учётом пиковых часов и географий, имитируя живых пользователей.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    CASES
-    ============================================================ -->
-    <section class="section section--dark" id="cases">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Кейсы</span>
-                <h2 class="section-title">Реальные <span class="highlight">результаты</span></h2>
-                <p class="section-subtitle">Посмотрите, как наш сервис помог другим компаниям вырасти в выдаче.</p>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:32px;transition:all 0.4s ease;" 
-                     onmouseover="this.style.borderColor='rgba(0,240,255,0.2)';this.style.transform='translateY(-4px)';" 
-                     onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.transform='translateY(0)';">
-                    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-                        <div style="width:52px;height:52px;border-radius:12px;background:rgba(0,240,255,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;">🛒</div>
-                        <div>
-                            <div style="font-weight:700;color:#ffffff;">Интернет-магазин</div>
-                            <div style="font-size:13px;color:#6a7a8e;">Товары для дома</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;gap:20px;margin-bottom:12px;">
-                        <div><span style="color:#00F0FF;font-weight:700;font-size:24px;">+47%</span><span style="color:#6a7a8e;font-size:13px;display:block;">Органический трафик</span></div>
-                        <div><span style="color:#00F0FF;font-weight:700;font-size:24px;">32 дня</span><span style="color:#6a7a8e;font-size:13px;display:block;">До результата</span></div>
-                    </div>
-                    <p style="color:#8a94a6;font-size:14px;line-height:1.7;">Вышли в ТОП-5 по 18 коммерческим запросам. Рост конверсий на 23%.</p>
-                </div>
-
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:32px;transition:all 0.4s ease;" 
-                     onmouseover="this.style.borderColor='rgba(0,240,255,0.2)';this.style.transform='translateY(-4px)';" 
-                     onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.transform='translateY(0)';">
-                    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-                        <div style="width:52px;height:52px;border-radius:12px;background:rgba(0,240,255,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;">🏥</div>
-                        <div>
-                            <div style="font-weight:700;color:#ffffff;">Медицинский центр</div>
-                            <div style="font-size:13px;color:#6a7a8e;">Услуги и консультации</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;gap:20px;margin-bottom:12px;">
-                        <div><span style="color:#00F0FF;font-weight:700;font-size:24px;">+62%</span><span style="color:#6a7a8e;font-size:13px;display:block;">Заявок с сайта</span></div>
-                        <div><span style="color:#00F0FF;font-weight:700;font-size:24px;">45 дней</span><span style="color:#6a7a8e;font-size:13px;display:block;">До результата</span></div>
-                    </div>
-                    <p style="color:#8a94a6;font-size:14px;line-height:1.7;">Рост позиций по 27 запросам. Увеличение доверия к бренду.</p>
-                </div>
-
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:32px;transition:all 0.4s ease;" 
-                     onmouseover="this.style.borderColor='rgba(0,240,255,0.2)';this.style.transform='translateY(-4px)';" 
-                     onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.transform='translateY(0)';">
-                    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-                        <div style="width:52px;height:52px;border-radius:12px;background:rgba(0,240,255,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;">💻</div>
-                        <div>
-                            <div style="font-weight:700;color:#ffffff;">IT-компания</div>
-                            <div style="font-size:13px;color:#6a7a8e;">Разработка ПО</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;gap:20px;margin-bottom:12px;">
-                        <div><span style="color:#00F0FF;font-weight:700;font-size:24px;">+85%</span><span style="color:#6a7a8e;font-size:13px;display:block;">Видимость в поиске</span></div>
-                        <div><span style="color:#00F0FF;font-weight:700;font-size:24px;">28 дней</span><span style="color:#6a7a8e;font-size:13px;display:block;">До результата</span></div>
-                    </div>
-                    <p style="color:#8a94a6;font-size:14px;line-height:1.7;">Выход в ТОП-3 по высокочастотным запросам. Рост лидов в 2 раза.</p>
                 </div>
             </div>
         </div>
@@ -1225,7 +1723,7 @@
                         <li>Отчётность 1 раз в неделю</li>
                         <li>Поддержка в чате</li>
                     </ul>
-                    <a href="#cta" class="btn btn-outline">Выбрать</a>
+                    <a href="#cta" class="btn btn--outline">Выбрать</a>
                 </div>
 
                 <!-- Бизнес (популярный) -->
@@ -1240,7 +1738,7 @@
                         <li>Отчётность 2 раза в неделю</li>
                         <li>Приоритетная поддержка</li>
                     </ul>
-                    <a href="#cta" class="btn btn-primary">Выбрать</a>
+                    <a href="#cta" class="btn btn--primary">Выбрать</a>
                 </div>
 
                 <!-- ВИП -->
@@ -1256,7 +1754,168 @@
                         <li>Персональный менеджер</li>
                         <li>А/Б тестирование сценариев</li>
                     </ul>
-                    <a href="#cta" class="btn btn-outline">Выбрать</a>
+                    <a href="#cta" class="btn btn--outline">Выбрать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PRICE PER CLICK — TABLE
+    ============================================================ -->
+    <section class="section section--dark" id="price-per-click">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Цена за клик</span>
+                <h2 class="section-title">Чем больше объём — <span class="highlight">тем ниже цена</span></h2>
+                <p class="section-subtitle">Прозрачная система скидок. Платите только за фактические переходы на ваш сайт.</p>
+            </div>
+
+            <div class="table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Объём пополнения</th>
+                            <th>Цена за клик</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="total">
+                            <td>Базовый (от 1 000 ₽)</td>
+                            <td>0,40 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>от 50 000 ₽</td>
+                            <td>0,35 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>от 100 000 ₽</td>
+                            <td>0,20 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>от 150 000 ₽</td>
+                            <td>0,17 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>от 200 000 ₽</td>
+                            <td>0,15 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>от 250 000 ₽</td>
+                            <td>Индивидуально</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-note">
+                💡 <b>Стартовые 1 000 ₽</b> по базовой цене — это <b>2 500 переходов</b> на ваш сайт. 
+                При первом пополнении мы добавляем бонус <b>+500 ₽</b> — это ещё примерно <b>1 250 переходов</b> сверху.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CALCULATOR
+    ============================================================ -->
+    <section class="section" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Калькулятор</span>
+                <h2 class="section-title">Рассчитайте свой <span class="highlight">бюджет</span></h2>
+                <p class="section-subtitle">Выберите сумму пополнения — сразу увидите цену клика и количество переходов</p>
+            </div>
+
+            <div class="calc">
+                <span class="calc-label">Сумма пополнения</span>
+                <div class="calc-options">
+                    <button class="calc-option active" data-amount="1000" onclick="setCalcAmount(1000)">
+                        <span class="rec">Для теста</span>1 000 ₽
+                    </button>
+                    <button class="calc-option" data-amount="50000" onclick="setCalcAmount(50000)">50 000 ₽</button>
+                    <button class="calc-option" data-amount="100000" onclick="setCalcAmount(100000)">100 000 ₽</button>
+                    <button class="calc-option" data-amount="200000" onclick="setCalcAmount(200000)">200 000 ₽</button>
+                </div>
+
+                <div class="calc-slider-wrap">
+                    <input type="range" id="calcSlider" min="1000" max="250000" step="1000" value="1000" oninput="setCalcAmount(+this.value, true)">
+                    <span class="calc-value" id="calcDisplay">1 000 ₽</span>
+                </div>
+
+                <div class="calc-results">
+                    <div class="calc-result-item">
+                        <div class="label">Пополнение</div>
+                        <div class="value" id="calcDeposit">1 000 ₽</div>
+                    </div>
+                    <div class="calc-result-item highlight">
+                        <div class="label">Цена за клик</div>
+                        <div class="value accent" id="calcCpc">0,40 ₽</div>
+                    </div>
+                    <div class="calc-result-item highlight">
+                        <div class="label">Переходов на сайт</div>
+                        <div class="value accent" id="calcClicks">2 500</div>
+                    </div>
+                </div>
+
+                <div class="calc-bonus">
+                    <span>🎁</span>
+                    <span><b>Новым клиентам:</b> при первом запуске добавляем бонус <b>500 ₽</b> к вашему балансу — на базовой цене это ещё примерно <b>1 250 переходов</b> сверху.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FEATURES
+    ============================================================ -->
+    <section class="section section--dark" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Преимущества</span>
+                <h2 class="section-title">Почему выбирают <span class="highlight">MetricHit</span></h2>
+                <p class="section-subtitle">Технологии, которые делают продвижение эффективным и безопасным</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="icon">🌐</span>
+                    <h3>Собственная сеть прокси</h3>
+                    <p>150+ регионов России. Наши IP-адреса не попадают в стоп-листы Яндекса.</p>
+                    <span class="badge">Безопасно</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="icon">🤖</span>
+                    <h3>0% роботности в Метрике</h3>
+                    <p>Наши боты не загружают счётчик Метрики — их там просто нет.</p>
+                    <span class="badge">Невидимо</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="icon">🛡️</span>
+                    <h3>99% прохождение антифрода</h3>
+                    <p>Технология обходит защиту Яндекса, визиты засчитываются как живые.</p>
+                    <span class="badge">Эффективно</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="icon">🧠</span>
+                    <h3>ИИ-подбор поведения</h3>
+                    <p>Анализируем нишу вашего бизнеса и подбираем ботов, прогретых по интересам именно вашей аудитории.</p>
+                    <span class="badge">Интеллект</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="icon">🕒</span>
+                    <h3>Естественное расписание</h3>
+                    <p>Клики распределяются по часам и дням — как живой трафик, без резких всплесков.</p>
+                    <span class="badge">Натурально</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="icon">📊</span>
+                    <h3>Прозрачная статистика</h3>
+                    <p>Динамика кликов, расход, позиции — всё видно в личном кабинете в реальном времени.</p>
+                    <span class="badge">Честно</span>
                 </div>
             </div>
         </div>
@@ -1265,76 +1924,56 @@
     <!-- ============================================================
     FAQ
     ============================================================ -->
-    <section class="section section--dark" id="faq">
+    <section class="section" id="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">FAQ</span>
+                <span class="section-label">Вопросы и ответы</span>
                 <h2 class="section-title">Часто задаваемые <span class="highlight">вопросы</span></h2>
                 <p class="section-subtitle">Ответы на самые популярные вопросы о нашем сервисе</p>
             </div>
 
-            <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:8px;">
-                <!-- Вопрос 1 -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;">
-                    <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:transparent;border:none;color:#ffffff;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left;transition:all 0.3s ease;">
-                        <span>Какие типы кампаний я могу запустить?</span>
-                        <span style="font-size:24px;color:#00F0FF;transition:transform 0.3s ease;flex-shrink:0;">+</span>
-                    </button>
-                    <div style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding:0 24px;color:#8a94a6;font-size:15px;line-height:1.7;">
-                        <div style="padding-bottom:24px;">
-                            Существует множество типов кампаний, среди которых:
-                            <ul style="padding-left:20px;margin:12px 0;">
-                                <li>Поисковые объявления</li>
-                                <li>Кампании с максимальной эффективностью</li>
-                                <li>Медийные объявления</li>
-                                <li>Кампании для создания спроса</li>
-                                <li>Торговые объявления</li>
-                                <li>Видеообъявления</li>
-                                <li>Объявления для приложений</li>
-                            </ul>
-                            Тип кампании, который вы выбираете, зависит от ваших маркетинговых целей, стратегии бренда и времени, которое вы готовы инвестировать.
-                        </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Что такое поведенческие факторы и зачем они нужны?</summary>
+                    <div class="faq-answer">
+                        Поведенческие факторы — это показатели, отражающие взаимодействие пользователей с сайтом: время на сайте, глубина просмотра, показатель отказов и кликабельность (CTR). Яндекс использует эти данные для оценки качества ресурса. Улучшая ПФ, вы показываете поисковику, что сайт полезен и интересен пользователям — это положительно влияет на позиции в выдаче.
                     </div>
-                </div>
+                </details>
 
-                <!-- Вопрос 2 -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;">
-                    <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:transparent;border:none;color:#ffffff;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left;transition:all 0.3s ease;">
-                        <span>Какой тип кампании подойдёт моему бизнесу?</span>
-                        <span style="font-size:24px;color:#00F0FF;transition:transform 0.3s ease;flex-shrink:0;">+</span>
-                    </button>
-                    <div style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding:0 24px;color:#8a94a6;font-size:15px;line-height:1.7;">
-                        <div style="padding-bottom:24px;">
-                            Лучшая рекламная кампания для вашего бизнеса зависит от ваших целей. Тип кампании, который вы выбираете, основывается на ваших маркетинговых задачах, стратегии бренда и времени, которое вы готовы вложить. Мы поможем вам выбрать оптимальный вариант.
-                        </div>
+                <details class="faq-item">
+                    <summary>Это безопасно для моего сайта?</summary>
+                    <div class="faq-answer">
+                        Да. Мы работаем с качественным трафиком: посетители приходят из поиска Яндекса по вашим запросам и ведут себя как обычные заинтересованные пользователи. Объём наращивается постепенно, без резких всплесков. Мы начинаем с небольшого теста на одном проекте — вы проверяете реакцию своей ниши до того, как вкладывать заметный бюджет.
                     </div>
-                </div>
+                </details>
 
-                <!-- Вопрос 3 -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;">
-                    <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:transparent;border:none;color:#ffffff;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left;transition:all 0.3s ease;">
-                        <span>Использует ли сервис технологии ИИ?</span>
-                        <span style="font-size:24px;color:#00F0FF;transition:transform 0.3s ease;flex-shrink:0;">+</span>
-                    </button>
-                    <div style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding:0 24px;color:#8a94a6;font-size:15px;line-height:1.7;">
-                        <div style="padding-bottom:24px;">
-                            Да, наши решения на основе ИИ помогают вывести ваш маркетинг на новый уровень, позволяя находить новых клиентов, создавать рекламу, находить возможности для повышения эффективности и преумножать результаты.
-                        </div>
+                <details class="faq-item">
+                    <summary>Как быстро я увижу результаты?</summary>
+                    <div class="faq-answer">
+                        Честный ответ: зависит от ниши, конкуренции и состояния сайта. Первые сдвиги позиций обычно заметны через 2–3 дня. Мы рекомендуем начинать с теста от 1 000 ₽, чтобы увидеть динамику и принять решение о масштабировании. Статистика кликов доступна в личном кабинете в реальном времени.
                     </div>
-                </div>
+                </details>
 
-                <!-- Вопрос 4 -->
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;">
-                    <button onclick="toggleFaq(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:transparent;border:none;color:#ffffff;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left;transition:all 0.3s ease;">
-                        <span>Как использовать сервис для охвата потенциальных клиентов?</span>
-                        <span style="font-size:24px;color:#00F0FF;transition:transform 0.3s ease;flex-shrink:0;">+</span>
-                    </button>
-                    <div style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding:0 24px;color:#8a94a6;font-size:15px;line-height:1.7;">
-                        <div style="padding-bottom:24px;">
-                            Наш сервис помогает находить потенциальных клиентов, заинтересованных в ваших продуктах или бренде. Вы можете привлекать людей на основе их интересов или тем, которые они активно изучают. Формируя пользовательские аудитории по ключевым словам и сайтам, вы сможете показывать более релевантные предложения и эффективнее достигать своих целей.
-                        </div>
+                <details class="faq-item">
+                    <summary>Что нужно от меня для старта?</summary>
+                    <div class="faq-answer">
+                        Четыре вещи: домен сайта, ключевые запросы, регион продвижения и цель. Всё остальное мы сделаем сами — подготовим кабинет, настроим проект, активируем бонус 500 ₽ и передадим доступ. Инструкции по каждому шагу есть в кабинете, поддержка всегда готова помочь.
                     </div>
-                </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Могу ли я остановиться в любой момент?</summary>
+                    <div class="faq-answer">
+                        Да. Абонентской платы нет, деньги списываются только за фактические клики. Вы пополняете баланс тогда, когда это нужно, и управляете проектами сами — без обязательств и договоров на месяцы вперёд. Остановить продвижение можно в любой момент через личный кабинет.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Чем вы отличаетесь от других сервисов?</summary>
+                    <div class="faq-answer">
+                        Мы разработчики, а не посредники. Вы покупаете технологию напрямую, без чужих наценок. Собственная сеть прокси по всей России, уникальные фингерпринты реальных пользователей, ИИ-подбор поведения под вашу нишу — это то, что обеспечивает результат и безопасность. И да, у нас нет абонентской платы и минимального депозита.
+                    </div>
+                </details>
             </div>
         </div>
     </section>
@@ -1347,13 +1986,26 @@
             <h2>Готовы <span class="highlight">улучшить</span> позиции?</h2>
             <p>Оставьте заявку, и мы подберем оптимальную стратегию для вашего сайта. Бесплатный анализ в подарок.</p>
 
-            <form class="cta-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.');">
-                <input type="text" placeholder="Ваше имя" required />
-                <input type="tel" placeholder="+7 (___) ___-__-__" required />
-                <input type="email" placeholder="E-mail (необязательно)" />
-                <button type="submit" class="btn btn-primary">Отправить заявку</button>
-            </form>
-            <p class="cta-disclaimer">Нажимая на кнопку, вы соглашаетесь с политикой обработки данных</p>
+            <div style="max-width: 520px; margin: 0 auto;">
+                <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.');" style="display:flex;flex-direction:column;gap:12px;">
+                    <input type="text" placeholder="Ваше имя" required style="padding:16px 20px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#ffffff;font-size:16px;font-family:'Inter',sans-serif;outline:none;transition:all var(--transition);min-height:52px;" onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px rgba(0,240,255,0.08)';" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
+                    <input type="tel" placeholder="+7 (___) ___-__-__" required style="padding:16px 20px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#ffffff;font-size:16px;font-family:'Inter',sans-serif;outline:none;transition:all var(--transition);min-height:52px;" onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px rgba(0,240,255,0.08)';" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
+                    <input type="email" placeholder="E-mail (необязательно)" style="padding:16px 20px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:#ffffff;font-size:16px;font-family:'Inter',sans-serif;outline:none;transition:all var(--transition);min-height:52px;" onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px rgba(0,240,255,0.08)';" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
+                    <button type="submit" class="btn btn--primary btn--lg" style="width:100%;">Отправить заявку</button>
+                </form>
+            </div>
+
+            <div class="cta-guarantees">
+                <div class="cta-guarantee">🎁 <span><b>+500 ₽</b> бонус новым клиентам</span></div>
+                <div class="cta-guarantee">⚙️ <span>Настройка проекта <b>под ключ</b></span></div>
+                <div class="cta-guarantee">🛡️ <span>Безопасность <b>гарантируем</b></span></div>
+            </div>
+
+            <div class="cta-contacts">
+                <div><b>Telegram:</b> <a href="#">@metrichit</a></div>
+                <div><b>Email:</b> <a href="mailto:info@metrichit.ru">info@metrichit.ru</a></div>
+                <div><b>Телефон:</b> <a href="tel:+78005553535">+7 (800) 555-35-35</a></div>
+            </div>
         </div>
     </section>
 
@@ -1386,7 +2038,6 @@
             headerNav.classList.toggle('mobile-open');
         });
 
-        // Закрываем меню при клике на ссылку
         headerNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
@@ -1396,33 +2047,52 @@
 
         // ===== HEADER SCROLL =====
         const header = document.getElementById('header');
-        let lastScroll = 0;
-
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            lastScroll = currentScroll;
+            header.classList.toggle('scrolled', window.pageYOffset > 20);
         });
 
-        // ===== FAQ =====
-        function toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('span:last-child');
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+        // ===== CALCULATOR =====
+        function getTier(amount) {
+            if (amount >= 250000) return { cpc: null, label: 'Индивидуально' };
+            if (amount >= 200000) return { cpc: 0.15, label: '0,15 ₽' };
+            if (amount >= 150000) return { cpc: 0.17, label: '0,17 ₽' };
+            if (amount >= 100000) return { cpc: 0.20, label: '0,20 ₽' };
+            if (amount >= 50000) return { cpc: 0.35, label: '0,35 ₽' };
+            return { cpc: 0.40, label: '0,40 ₽' };
+        }
 
-            if (isOpen) {
-                content.style.maxHeight = '0';
-                content.style.padding = '0 24px';
-                icon.textContent = '+';
+        function formatNumber(num) {
+            return Math.round(num).toLocaleString('ru-RU');
+        }
+
+        function setCalcAmount(amount, fromSlider) {
+            const slider = document.getElementById('calcSlider');
+            const display = document.getElementById('calcDisplay');
+            const deposit = document.getElementById('calcDeposit');
+            const cpc = document.getElementById('calcCpc');
+            const clicks = document.getElementById('calcClicks');
+
+            if (!fromSlider) slider.value = amount;
+
+            const tier = getTier(amount);
+
+            display.textContent = formatNumber(amount) + ' ₽';
+            deposit.textContent = formatNumber(amount) + ' ₽';
+
+            if (tier.cpc === null) {
+                cpc.textContent = 'Обсудим';
+                clicks.textContent = 'Ещё выгоднее';
             } else {
-                content.style.maxHeight = content.scrollHeight + 'px';
-                content.style.padding = '0 24px 24px';
-                icon.textContent = '−';
+                const clickCount = amount / tier.cpc;
+                cpc.textContent = tier.label;
+                clicks.textContent = formatNumber(clickCount);
             }
+
+            // Highlight active preset
+            document.querySelectorAll('.calc-option').forEach(btn => {
+                const val = parseInt(btn.dataset.amount);
+                btn.classList.toggle('active', val === amount);
+            });
         }
 
         // ===== SMOOTH SCROLL =====
@@ -1433,15 +2103,48 @@
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    const offset = 90;
+                    const offset = 80;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                 }
             });
         });
+
+        // ===== SUB NAV ACTIVE LINK =====
+        const sections = ['how-it-works', 'pricing', 'features', 'faq'];
+        const subNavLinks = document.querySelectorAll('.sub-nav-links a');
+        const headerNavLinks = document.querySelectorAll('.header-nav a');
+
+        function updateActiveLink() {
+            const scrollY = window.pageYOffset + 120;
+            let current = 'how-it-works';
+
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const top = el.offsetTop;
+                    const height = el.offsetHeight;
+                    if (scrollY >= top && scrollY < top + height) {
+                        current = id;
+                    }
+                }
+            });
+
+            [subNavLinks, headerNavLinks].forEach(links => {
+                links.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === '#' + current) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('load', updateActiveLink);
     </script>
+
 </body>
 </html>
