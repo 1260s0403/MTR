@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Загрузка</title>
     <style>
-        /* ===== СБРОС ===== */
         * {
             margin: 0;
             padding: 0;
@@ -26,12 +25,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 32px;
+            width: 100%;
+            max-width: 600px;
             padding: 30px;
         }
 
         /* ===== ЛОГОТИП ===== */
         .logo-wrap {
+            width: 100%;
             opacity: 0;
             transform: scale(0.92);
             animation: fadeLogo 1.2s ease 0.1s forwards;
@@ -39,12 +40,21 @@
 
         .logo-wrap svg {
             display: block;
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: auto;
+        }
+
+        /* ===== РАССТОЯНИЕ = ШИРИНА НОЖКИ БУКВЫ M ===== */
+        .divider {
+            width: 16.66%; /* 1/6 от ширины контейнера */
+            height: 0;
+            padding-top: 16.66%; /* квадрат */
+            flex-shrink: 0;
         }
 
         /* ===== НАЗВАНИЕ ===== */
         .name-wrap {
+            width: 100%;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeName 1s ease 1s forwards;
@@ -52,7 +62,7 @@
 
         .name-wrap svg {
             display: block;
-            width: 420px;
+            width: 100%;
             height: auto;
         }
 
@@ -81,42 +91,22 @@
 
         /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
-            .logo-wrap svg {
-                width: 140px;
-                height: 140px;
-            }
-            .name-wrap svg {
-                width: 300px;
-            }
             .container {
-                gap: 24px;
+                max-width: 420px;
+                padding: 24px;
             }
         }
 
         @media (max-width: 480px) {
-            .logo-wrap svg {
-                width: 100px;
-                height: 100px;
-            }
-            .name-wrap svg {
-                width: 220px;
-            }
             .container {
-                gap: 18px;
+                max-width: 300px;
                 padding: 20px;
             }
         }
 
         @media (max-width: 360px) {
-            .logo-wrap svg {
-                width: 74px;
-                height: 74px;
-            }
-            .name-wrap svg {
-                width: 170px;
-            }
             .container {
-                gap: 14px;
+                max-width: 220px;
                 padding: 16px;
             }
         }
@@ -124,7 +114,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- ЛОГОТИП — 200px -->
+        <!-- ЛОГОТИП (100% ширины контейнера) -->
         <div class="logo-wrap">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
                 <polygon fill="white" points="478.946,246.745 480.006,465.48 366.43,662.443 279.237,662.443 158.753,462.444 160.931,753.253 39.009,753.253 39.009,246.745 167.084,246.745 327.676,515.018 "/>
@@ -132,7 +122,10 @@
             </svg>
         </div>
 
-        <!-- НАЗВАНИЕ — 420px -->
+        <!-- РАССТОЯНИЕ = ШИРИНА НОЖКИ M (1/6) -->
+        <div class="divider"></div>
+
+        <!-- НАЗВАНИЕ (100% ширины контейнера) -->
         <div class="name-wrap">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
                 <polygon fill="white" fill-rule="nonzero" points="40.719,573.395 40.719,439.689 74.528,439.689 124.094,522.491 110.055,522.682 156.852,439.689 190.565,439.689 190.565,573.395 156.661,573.395 157.33,484.194 163.442,486.486 127.151,549.423 104.134,549.423 66.219,486.486 72.236,484.194 72.904,573.395 "/>
