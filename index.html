@@ -17,6 +17,7 @@
             justify-content: center;
             background: #0B0F1A;
         }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -26,6 +27,8 @@
             max-width: 400px;
             padding: 20px;
         }
+
+        /* Логотип */
         .logo-wrap {
             width: 100%;
             opacity: 0;
@@ -37,11 +40,14 @@
             height: auto;
         }
 
-        /* РАССТОЯНИЕ 25px — ЭТО РАБОТАЕТ */
+        /* ===== ЭТОТ БЛОК — РАССТОЯНИЕ 25px ===== */
         .gap {
             height: 25px;
+            width: 100%;
+            background: transparent;
         }
 
+        /* Название */
         .name-wrap {
             width: 100%;
             opacity: 0;
@@ -52,6 +58,7 @@
             width: 100%;
             height: auto;
         }
+
         @keyframes fadeLogo {
             0% {
                 opacity: 0;
@@ -60,6 +67,7 @@
                 opacity: 1;
             }
         }
+
         @keyframes fadeName {
             0% {
                 opacity: 0;
@@ -75,6 +83,7 @@
 <body>
     <div class="container">
 
+        <!-- ЛОГОТИП -->
         <div class="logo-wrap">
             <svg viewBox="0 0 1000 1000">
                 <polygon fill="white" points="478.946,246.745 480.006,465.48 366.43,662.443 279.237,662.443 158.753,462.444 160.931,753.253 39.009,753.253 39.009,246.745 167.084,246.745 327.676,515.018 "/>
@@ -82,9 +91,10 @@
             </svg>
         </div>
 
-        <!-- ЭТОТ БЛОК ДАЁТ 25px -->
+        <!-- РАССТОЯНИЕ 25px -->
         <div class="gap"></div>
 
+        <!-- НАЗВАНИЕ -->
         <div class="name-wrap">
             <svg viewBox="0 0 1000 1000">
                 <polygon fill="white" points="40.719,573.395 40.719,439.689 74.528,439.689 124.094,522.491 110.055,522.682 156.852,439.689 190.565,439.689 190.565,573.395 156.661,573.395 157.33,484.194 163.442,486.486 127.151,549.423 104.134,549.423 66.219,486.486 72.236,484.194 72.904,573.395 "/>
