@@ -833,8 +833,27 @@
         .delay-2 { animation-delay: .2s; }
         .delay-3 { animation-delay: .3s; }
         .delay-4 { animation-delay: .4s; }
-        .delay-5 { animation-delay: .5s; }
+                .delay-5 { animation-delay: .5s; }
         .delay-6 { animation-delay: .6s; }
+
+        /* ===== РАСТЯГИВАЕМ КАРТОЧКИ СТАТИСТИКИ ===== */
+        @media (min-width: 769px) {
+            .hero-stats {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            .hero-stat {
+                padding: 22px 20px;
+                border-radius: 16px;
+            }
+            .hero-stat .num {
+                font-size: 28px;
+            }
+            .hero-stat .label {
+                font-size: 14px;
+            }
+        }
+    </style>   ← ЭТО ЗАКРЫВАЮЩИЙ ТЕГ (остаётся на месте)
     </style>
 </head>
 <body>
