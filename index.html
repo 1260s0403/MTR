@@ -880,312 +880,199 @@
             }
         }
 
-        /* ===== НОВЫЙ БЛОК: ПОЧЕМУ СЕЙЧАС СЛОЖНО ВЫЙТИ В ТОП ===== */
-        .why-section {
-            padding: 70px 0 50px;
-            background: var(--bg);
-        }
+        /* ===== БЛОК: ПОЧЕМУ СЕЙЧАС СЛОЖНО ВЫЙТИ В ТОП ===== */
+.why-section {
+    padding: 60px 0 40px;
+    background: var(--bg);
+}
 
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
+/* ===== ЗАГОЛОВОК ===== */
+.why-head {
+    text-align: center;
+    margin-bottom: 36px;
+}
+.why-head h2 {
+    font-size: 34px;
+}
 
-        .why-tag {
-            display: inline-block;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            padding: 4px 14px;
-            border-radius: 20px;
-            margin-bottom: 14px;
-        }
-        .why-tag--red {
-            background: rgba(232, 96, 96, 0.12);
-            color: #E86060;
-        }
-        .why-tag--green {
-            background: rgba(45, 155, 78, 0.12);
-            color: #2D9B4E;
-        }
-        .why-tag--gold {
-            background: rgba(245, 184, 74, 0.12);
-            color: #F5B84A;
-        }
+/* ===== 2 КОЛОНКИ ===== */
+.why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 32px;
+}
 
-        .why-problem p {
-            color: #8892A6;
-            font-size: 16px;
-            margin-bottom: 14px;
-            line-height: 1.8;
-        }
-        .why-problem p strong {
-            color: #E8EDF5;
-        }
-        .why-formula {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-top: 24px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: #E8EDF5;
-        }
-        .why-formula-eq {
-            color: var(--accent);
-        }
+.why-tag {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.why-tag--red { background: rgba(232,96,96,0.12); color: #E86060; }
+.why-tag--green { background: rgba(45,155,78,0.12); color: #2D9B4E; }
 
-        .why-solution h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-        .why-solution p {
-            color: #8892A6;
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 14px;
-        }
-        .why-solution p strong {
-            color: #E8EDF5;
-        }
+.why-problem p {
+    color: #8892A6;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+.why-problem p strong {
+    color: #E8EDF5;
+}
 
-        .why-formula-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 24px 20px;
-            margin: 20px 0;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            flex-wrap: wrap;
-        }
-        .why-formula-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 8px 20px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            min-width: 80px;
-        }
-        .why-formula-item span {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            color: #E8EDF5;
-        }
-        .why-formula-item small {
-            font-size: 11px;
-            color: #8892A6;
-        }
-        .why-formula-item--accent {
-            border-color: rgba(61,142,184,0.3);
-            background: rgba(61,142,184,0.06);
-        }
-        .why-formula-item--result {
-            border-color: rgba(45,155,78,0.3);
-            background: rgba(45,155,78,0.06);
-        }
-        .why-formula-icon {
-            font-size: 22px;
-        }
-        .why-formula-arrow {
-            color: #8892A6;
-            font-size: 20px;
-        }
+.why-solution p {
+    color: #8892A6;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+.why-solution p strong {
+    color: #E8EDF5;
+}
 
-        .why-steps {
-            margin: 60px 0;
-        }
-        .why-steps-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .why-steps-title h2 {
-            font-size: 32px;
-        }
-        .why-steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .why-step {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 30px 24px;
-            text-align: center;
-            transition: all .3s;
-        }
-        .why-step:hover {
-            transform: translateY(-4px);
-            border-color: rgba(61,142,184,0.2);
-        }
-        .why-step-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .why-step-num {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 12px;
-            color: #8892A6;
-            letter-spacing: 0.06em;
-            margin-bottom: 6px;
-        }
-        .why-step h4 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-        .why-step p {
-            color: #8892A6;
-            font-size: 14px;
-            line-height: 1.7;
-        }
+/* формула "Поведение = Позиции" */
+.why-formula-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #E8EDF5;
+}
+.why-formula-eq {
+    color: var(--accent);
+}
 
-        .why-compare {
-            margin: 60px 0;
-        }
-        .why-compare-title {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        .why-compare-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-        .why-compare-col {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 28px 24px;
-        }
-        .why-compare-col h4 {
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-        .why-compare-col ul {
-            list-style: none;
-            padding: 0;
-        }
-        .why-compare-col ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 15px;
-            color: #8892A6;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .why-compare-col ul li:last-child {
-            border-bottom: none;
-        }
-        .why-compare-col ul li .cross {
-            color: #E86060;
-            font-weight: 700;
-        }
-        .why-compare-col ul li .check {
-            color: #2D9B4E;
-            font-weight: 700;
-        }
-        .why-compare-col--good {
-            border-color: rgba(45,155,78,0.15);
-            background: rgba(45,155,78,0.04);
-        }
+/* формула "SEO → ПФ → ТОП" */
+.why-formula-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-top: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    flex-wrap: wrap;
+}
+.why-formula-item {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #E8EDF5;
+    text-align: center;
+}
+.why-formula-item small {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: #8892A6;
+}
+.why-formula-item--accent { color: var(--accent); }
+.why-formula-item--result { color: #2D9B4E; }
+.why-formula-arrow {
+    color: #8892A6;
+    font-size: 18px;
+}
 
-        .why-result {
-            margin-top: 60px;
-        }
-        .why-result-inner {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 48px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .why-result-inner::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            right: -120px;
-            bottom: -160px;
-            border-radius: 50%;
-            filter: blur(80px);
-            background: radial-gradient(circle, rgba(61,142,184,0.06), transparent 65%);
-            pointer-events: none;
-        }
-        .why-result-inner > * {
-            position: relative;
-            z-index: 2;
-        }
-        .why-result-inner h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-        .why-result-inner p {
-            color: #8892A6;
-            font-size: 17px;
-            max-width: 600px;
-            margin: 0 auto 12px;
-        }
-        .why-result-inner p strong {
-            color: #E8EDF5;
-        }
-        .why-result-action {
-            font-size: 19px !important;
-            font-weight: 700;
-            color: #E8EDF5 !important;
-            margin: 16px 0 24px !important;
-        }
-        .why-result-inner .btn {
-            margin-top: 4px;
-        }
+/* ===== 3 ШАГА В СТРОКУ ===== */
+.why-steps-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.why-step-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+.why-step-row-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+}
+.why-step-row-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+.why-step-row-text strong {
+    display: block;
+    font-size: 14px;
+    color: #E8EDF5;
+}
+.why-step-row-text span {
+    font-size: 12px;
+    color: #8892A6;
+}
 
-        @media (max-width: 1024px) {
-            .why-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .why-steps-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .why-section {
-                padding: 40px 0 30px;
-            }
-            .why-steps-grid {
-                grid-template-columns: 1fr;
-            }
-            .why-compare-grid {
-                grid-template-columns: 1fr;
-            }
-            .why-formula-box {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .why-formula-arrow {
-                transform: rotate(90deg);
-            }
-            .why-result-inner {
-                padding: 30px 20px;
-            }
-            .why-result-inner h2 {
-                font-size: 26px;
-            }
-        }
+/* ===== ИТОГ ===== */
+.why-result-line {
+    text-align: center;
+    padding: 14px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+.why-result-line p {
+    font-size: 15px;
+    color: #8892A6;
+}
+.why-result-line p strong {
+    color: #E8EDF5;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    .why-section {
+        padding: 40px 0 30px;
+    }
+    .why-head h2 {
+        font-size: 26px;
+    }
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 24px;
+    }
+    .why-steps-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .why-step-row {
+        padding: 10px 14px;
+    }
+    .why-formula-box {
+        padding: 10px 12px;
+        gap: 6px;
+    }
+    .why-formula-item {
+        font-size: 14px;
+    }
+    .why-formula-arrow {
+        font-size: 14px;
+    }
+    .why-result-line p {
+        font-size: 14px;
+    }
+}
                 /* ===== КОМПАКТНЫЙ БЛОК: ПОЧЕМУ МЫ ===== */
         .why-section {
             padding: 50px 0 40px;
@@ -1407,68 +1294,80 @@ function toggleMenu() {
     </div>
 </section>
 
-<!-- ===== КОМПАКТНЫЙ БЛОК: ПОЧЕМУ МЫ ===== -->
+<!-- ===== БЛОК: ПОЧЕМУ СЕЙЧАС СЛОЖНО ВЫЙТИ В ТОП (КОМПАКТНАЯ ВЕРСИЯ) ===== -->
 <section class="why-section">
     <div class="container">
-        <div class="why-grid">
 
-            <!-- ЛЕВАЯ КОЛОНКА: проблема -->
+        <!-- ЗАГОЛОВОК -->
+        <div class="why-head">
+            <span class="tag">ПОЧЕМУ МЫ</span>
+            <h2>Почему сейчас сложно <span class="text-gradient">выйти в ТОП</span></h2>
+        </div>
+
+        <!-- 2 КОЛОНКИ: ПРОБЛЕМА + РЕШЕНИЕ -->
+        <div class="why-grid">
+            <!-- Левая колонка: проблема -->
             <div class="why-problem">
                 <span class="why-tag why-tag--red">ПРОБЛЕМА</span>
-                <h2>Почему сейчас сложно<br>выйти в <span class="text-gradient">ТОП</span></h2>
-                <p>Раньше SEO работало: тексты + ссылки = ТОП. Сейчас — нет. Конкуренты уже используют поведенческие факторы. Яндекс смотрит не на текст, а на то, <strong>как пользователи ведут себя на сайте</strong>.</p>
+                <p>Раньше SEO работало просто: написал тексты, купил ссылки, подождал — и сайт в ТОП. <strong>Сейчас — нет.</strong> Конкуренты уже используют поведенческие факторы. Яндекс смотрит не на то, что написано на сайте, а на то, <strong>как пользователи с ним взаимодействуют</strong>.</p>
+                <p>Если люди заходят и уходят — сайт падает. Если люди заходят и остаются — сайт растёт.</p>
+                <div class="why-formula-inline">
+                    <span>Поведение</span>
+                    <span class="why-formula-eq">=</span>
+                    <span>Позиции</span>
+                </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА: решение -->
+            <!-- Правая колонка: решение -->
             <div class="why-solution">
                 <span class="why-tag why-tag--green">РЕШЕНИЕ</span>
-                <h3>Что мы делаем <span class="text-gradient">по-другому</span></h3>
-                <p>Мы не "накручиваем" ботов — мы <strong>создаём поведение</strong>. У каждого AI-бота своя история поиска и интересы. Они ищут твой сайт, заходят, изучают — ведут себя как люди. Яндекс фиксирует интерес и поднимает сайт в ТОП.</p>
-            </div>
+                <p>Мы не "накручиваем" ботов — мы <strong>создаём поведение</strong>. Наши AI-боты — это не безликие скрипты. У каждого своя история поиска, свои интересы, свой "почерк" в интернете.</p>
+                <p>Они ищут твой сайт в Яндексе. Заходят на него. Изучают страницы. Сравнивают с конкурентами. Ведут себя как обычные пользователи. А Яндекс фиксирует: <strong>сайт интересен, люди остаются</strong>. Значит, сайт должен быть в ТОП.</p>
 
-        </div>
-
-        <!-- ФОРМУЛА + 3 ШАГА (компактно) -->
-        <div class="why-compact">
-            <!-- Формула -->
-            <div class="why-formula-inline">
-                <span class="why-formula-text">SEO</span>
-                <span class="why-arrow">→</span>
-                <span class="why-formula-text why-accent">ПФ</span>
-                <span class="why-arrow">→</span>
-                <span class="why-formula-text why-result">ТОП</span>
-            </div>
-
-            <!-- 3 шага в одну строку -->
-            <div class="why-steps-inline">
-                <div class="why-step-inline">
-                    <span class="why-step-icon">👤</span>
-                    <div>
-                        <strong>Живые боты</strong>
-                        <span>У каждого своя история и интересы</span>
-                    </div>
-                </div>
-                <div class="why-step-inline">
-                    <span class="why-step-icon">🔍</span>
-                    <div>
-                        <strong>Естественное поведение</strong>
-                        <span>Ищут, скроллят, сравнивают как люди</span>
-                    </div>
-                </div>
-                <div class="why-step-inline">
-                    <span class="why-step-icon">🚀</span>
-                    <div>
-                        <strong>Рост в ТОП</strong>
-                        <span>Яндекс видит интерес — позиции растут</span>
-                    </div>
+                <!-- ФОРМУЛА ВСТРОЕНА В ПРАВУЮ КОЛОНКУ -->
+                <div class="why-formula-box">
+                    <span class="why-formula-item">SEO <small>фундамент</small></span>
+                    <span class="why-formula-arrow">→</span>
+                    <span class="why-formula-item why-formula-item--accent">ПФ <small>ускоритель</small></span>
+                    <span class="why-formula-arrow">→</span>
+                    <span class="why-formula-item why-formula-item--result">ТОП <small>результат</small></span>
                 </div>
             </div>
         </div>
 
-        <!-- ИТОГ (одна строка) -->
-        <div class="why-result-compact">
-            <p><strong>✅ Итог:</strong> система, которая заставляет Яндекс считать твой сайт лучшим. Первые результаты — через <strong>2-3 дня</strong>.</p>
+        <!-- 3 ШАГА В СТРОКУ -->
+        <div class="why-steps-row">
+            <div class="why-step-row">
+                <span class="why-step-row-num">01</span>
+                <span class="why-step-row-icon">👤</span>
+                <div class="why-step-row-text">
+                    <strong>Создаём «живых» пользователей</strong>
+                    <span>У каждого своя история и интересы</span>
+                </div>
+            </div>
+            <div class="why-step-row">
+                <span class="why-step-row-num">02</span>
+                <span class="why-step-row-icon">🔄</span>
+                <div class="why-step-row-text">
+                    <strong>Формируем поведение</strong>
+                    <span>Ищут, скроллят, сравнивают как люди</span>
+                </div>
+            </div>
+            <div class="why-step-row">
+                <span class="why-step-row-num">03</span>
+                <span class="why-step-row-icon">📈</span>
+                <div class="why-step-row-text">
+                    <strong>Приводим на твой сайт</strong>
+                    <span>Рост позиций уже через 2-3 дня</span>
+                </div>
+            </div>
         </div>
+
+        <!-- ИТОГ ОДНОЙ СТРОКОЙ -->
+        <div class="why-result-line">
+            <p><strong>✅ Итог:</strong> система, которая заставляет Яндекс считать твой сайт лучшим в нише. Первые результаты — через <strong>2-3 дня</strong>.</p>
+        </div>
+
     </div>
 </section>
 
