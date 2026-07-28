@@ -833,51 +833,44 @@
         .delay-2 { animation-delay: .2s; }
         .delay-3 { animation-delay: .3s; }
         .delay-4 { animation-delay: .4s; }
-                .delay-5 { animation-delay: .5s; }
+        .delay-5 { animation-delay: .5s; }
         .delay-6 { animation-delay: .6s; }
 
-        /* ===== СТАТИСТИКА НА ВСЮ ШИРИНУ ОТ КНОПОК ДО ПРАВОЙ КАРТОЧКИ ===== */
-@media (min-width: 769px) {
-    /* Поднимаем правую карточку вверх */
-    .hero-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-        align-items: start;
-        position: relative;
-    }
+        /* ===== ФИКС ДЛЯ СТАТИСТИКИ (ВЕБ-ВЕРСИЯ) ===== */
+        @media (min-width: 769px) {
+            /* Поднимаем правую карточку вверх */
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+                align-items: start;
+                position: relative;
+            }
 
-    /* Статистика — на всю ширину сетки */
-    .hero-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 16px;
-        grid-column: 1 / -1; /* Растягиваем на всю ширину .hero-grid */
-        width: 100%;
-        margin-top: 32px;
-    }
+            /* Статистика — на всю ширину от левого края до правой карточки */
+            .hero-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 16px;
+                grid-column: 1 / -1;
+                width: 100%;
+                margin-top: 32px;
+            }
 
-    .hero-stat {
-        padding: 18px 16px;
-        text-align: center;
-    }
+            .hero-stat {
+                padding: 18px 16px;
+                text-align: center;
+            }
 
-    .hero-stat .num {
-        font-size: 24px;
-    }
+            .hero-stat .num {
+                font-size: 24px;
+            }
 
-    /* Убираем лишний отступ у левой колонки */
-    .hero-grid > div:first-child {
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Убираем margin-bottom у кнопок, чтобы статистика прижалась */
-    .hero-grid > div:first-child > div {
-        margin-bottom: 0;
-    }
-}
-    </style>   ← ЭТО ЗАКРЫВАЮЩИЙ ТЕГ (остаётся на месте)
+            .hero-grid > div:first-child {
+                display: flex;
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -965,7 +958,7 @@ function toggleMenu() {
                     <div class="title">🚀 Запустите сайт в ТОП</div>
                     <div class="row"><span>Цена клика</span><span class="val">от 0,15 ₽</span></div>
                     <div class="row"><span>Минимальный запуск</span><span class="val">1 000 ₽</span></div>
-                    <div class="row"><span>Бонус для теста</span><span class="val accent">+500 ₽</span></div>
+                    <div class="row"><span>Бонус новичкам</span><span class="val accent">+500 ₽</span></div>
                     <div class="row"><span>Абонентская плата</span><span class="val green">0 ₽</span></div>
                     <div class="note">🎯 Индивидуально обученный AI-бот — неотличим от живого пользователя</div>
                 </div>
