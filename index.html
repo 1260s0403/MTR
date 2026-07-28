@@ -838,26 +838,15 @@
 
         /* ===== СТАТИСТИКА НА ВСЮ ШИРИНУ ===== */
 @media (min-width: 769px) {
-    /* Заставляем статистику выйти за пределы левой колонки */
-    .hero-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-        align-items: start;
-        position: relative;
-    }
-
-    /* Статистика — на всю ширину сетки */
-    .hero-stats {
+    .hero-stats-full {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 16px;
-        grid-column: 1 / -1;
         width: 100%;
         margin-top: 32px;
     }
 
-    .hero-stat {
+    .hero-stats-full .hero-stat {
         padding: 18px 16px;
         text-align: center;
         background: var(--bg-card);
@@ -865,7 +854,7 @@
         border-radius: 14px;
     }
 
-    .hero-stat .num {
+    .hero-stats-full .hero-stat .num {
         font-size: 24px;
         font-family: 'Space Grotesk', sans-serif;
         font-weight: 700;
@@ -875,10 +864,20 @@
         color: transparent;
     }
 
-    .hero-stat .label {
+    .hero-stats-full .hero-stat .label {
         font-size: 13px;
         color: #8892A6;
         margin-top: 4px;
+    }
+}
+
+/* Для мобильной версии — две колонки */
+@media (max-width: 768px) {
+    .hero-stats-full {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 24px;
     }
 }
     </style>
@@ -945,6 +944,7 @@ function toggleMenu() {
 <section class="hero">
     <div class="container">
         <div class="hero-grid">
+            <!-- ЛЕВАЯ КОЛОНКА (без статистики) -->
             <div>
                 <div class="hero-badge">
                     <span class="dot"></span>
@@ -956,25 +956,9 @@ function toggleMenu() {
                     <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-green btn-lg">Получить бонус</a>
                     <a href="#calc" class="btn btn-primary btn-lg">Рассчитать стоимость</a>
                 </div>
-                <div class="hero-stats" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; width: 100%;">
-    <div class="hero-stat" style="padding: 18px 16px; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px;">
-        <div class="num" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; background: linear-gradient(100deg, #3D8EB8, #5BA3E6); -webkit-background-clip: text; background-clip: text; color: transparent;">2-3 дня</div>
-        <div class="label" style="font-size: 13px; color: #8892A6; margin-top: 4px;">среднее время вывода в топ-10</div>
-    </div>
-    <div class="hero-stat" style="padding: 18px 16px; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px;">
-        <div class="num" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; background: linear-gradient(100deg, #3D8EB8, #5BA3E6); -webkit-background-clip: text; background-clip: text; color: transparent;">0,35 ₽</div>
-        <div class="label" style="font-size: 13px; color: #8892A6; margin-top: 4px;">цена клика на старте</div>
-    </div>
-    <div class="hero-stat" style="padding: 18px 16px; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px;">
-        <div class="num" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; background: linear-gradient(100deg, #3D8EB8, #5BA3E6); -webkit-background-clip: text; background-clip: text; color: transparent;">от 1000 ₽</div>
-        <div class="label" style="font-size: 13px; color: #8892A6; margin-top: 4px;">достаточно для старта</div>
-    </div>
-    <div class="hero-stat" style="padding: 18px 16px; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px;">
-        <div class="num" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; background: linear-gradient(100deg, #3D8EB8, #5BA3E6); -webkit-background-clip: text; background-clip: text; color: transparent;">0 ₽</div>
-        <div class="label" style="font-size: 13px; color: #8892A6; margin-top: 4px;">абонентская плата</div>
-    </div>
-</div>
             </div>
+
+            <!-- ПРАВАЯ КОЛОНКА -->
             <div style="display:flex;justify-content:center;align-items:center;">
                 <div class="hero-card">
                     <div class="title">🚀 Запустите сайт в ТОП</div>
@@ -985,6 +969,14 @@ function toggleMenu() {
                     <div class="note">🎯 Индивидуально обученный AI-бот — неотличим от живого пользователя</div>
                 </div>
             </div>
+        </div>
+
+        <!-- СТАТИСТИКА — отдельно, на всю ширину -->
+        <div class="hero-stats-full">
+            <div class="hero-stat"><div class="num">2-3 дня</div><div class="label">среднее время вывода в топ-10</div></div>
+            <div class="hero-stat"><div class="num">0,35 ₽</div><div class="label">цена клика на старте</div></div>
+            <div class="hero-stat"><div class="num">от 1000 ₽</div><div class="label">достаточно для старта</div></div>
+            <div class="hero-stat"><div class="num">0 ₽</div><div class="label">абонентская плата</div></div>
         </div>
     </div>
 </section>
