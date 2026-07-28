@@ -1,47 +1,42 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html class="Page" dir="ltr" platform="bsp" lang="ru" locale="ru_all" site-id="agc" is-bgc="true" bgc-locale="ru-all">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
     <title>MetricHit — управление поведенческими факторами</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Display:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+    
+    <!-- Google Fonts (оригинальные) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Google+Sans+Text:400,500,700,400i,500i,700i|Google+Sans+Display:400,500,700|Product+Sans:400&amp;lang=en&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Symbols:opsz,wght,FILL,GRAD,ROND@24,400,0..1,0,100&amp;display=block">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..500,0..1,0" rel="stylesheet">
+    <link href="https://www.gstatic.com/glue/v27_0/glue-material.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <style>
-        /* ============================================================
-                   RESET & BASE
-                   ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Google Sans', 'Google Sans Display', Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #202124;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        a {
-            text-decoration: none;
-            color: #1a73e8;
-        }
-
-        .glue-page {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ============================================================
-                   КНОПКИ (как у Google)
-                   ============================================================ */
-        .glue-button {
+        /* ===== ОРИГИНАЛЬНЫЕ СТИЛИ GOOGLE ===== */
+        .hidden { display: none !important; }
+        @media (max-width: 1023px) { .hidden--non-desktop { display: none !important; } }
+        .ion-blue-text:not(.a):not(.b) { color: #1a73e8; }
+        .ion-body-copy { color: #3c4043; }
+        .ion-circle-border { border: 2px solid #dadce0; border-radius: 100%; box-sizing: content-box; }
+        .ion-error { color: #d93025; }
+        .ion-icon--fill-green-500 { fill: #34a853; }
+        .ion-icon--fill-grey-300 { fill: #dadce0; }
+        .ion-icon--fill-blue-600 { fill: #1a73e8; }
+        .ion-lazy:not(.a):not(.b) { visibility: hidden; }
+        @media (max-width: 1023px) { .ion-media-display-only--desktop:not(.a):not(.b) { display: none; } }
+        @media (min-width: 600px) { .ion-media-display-only--mobile:{ display: none !important; } }
+        @media (min-width: 1024px) { .ion-media-display-only--non-desktop { display: none !important; } }
+        .ion-module--fill-white { background-color: #fff; }
+        .ion-module--fill-gray { background-color: #f8f9fa; }
+        .ion-module--fill-blue { background-color: #e8f0fe; }
+        .ion-rounded-corners { border-radius: 20px; overflow: hidden; }
+        .grecaptcha-badge { visibility: hidden; }
+        
+        /* ===== КНОПКИ (оригинальные Google) ===== */
+        .ion-button.glue-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -57,80 +52,61 @@
             letter-spacing: 0.3px;
             text-decoration: none;
         }
-
-        .glue-button--high-emphasis {
+        .ion-button.glue-button--high-emphasis {
             background: #1a73e8;
             color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
         }
-
-        .glue-button--high-emphasis:hover {
+        .ion-button.glue-button--high-emphasis:hover {
             background: #1557b0;
-            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+            box-shadow: 0 2px 6px rgba(26,115,232,0.3);
         }
-
-        .glue-button--medium-emphasis {
+        .ion-button.glue-button--medium-emphasis {
             background: transparent;
             color: #1a73e8;
             border: 1px solid #dadce0;
         }
-
-        .glue-button--medium-emphasis:hover {
+        .ion-button.glue-button--medium-emphasis:hover {
             background: #f1f3f4;
             border-color: #bdc1c6;
         }
-
+        .ion-button.glue-button--tonal {
+            background: #e8f0fe;
+            color: #1a73e8;
+        }
+        .ion-button.glue-button--tonal:hover {
+            background: #d2e3fc;
+        }
         .glue-button--large {
             font-size: 18px;
             min-height: 56px;
             padding: 0 40px;
             border-radius: 28px;
         }
-
-        /* ============================================================
-                   HEADER (как у Google)
-                   ============================================================ */
+        
+        /* ===== HEADER (оригинальный Google) ===== */
         .glue-header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid #e8eaed;
         }
-
-        .glue-header__bar {
-            padding: 12px 0;
-        }
-
+        .glue-header__bar { padding: 12px 0; }
         .glue-header__tier {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-
-        .glue-header__logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .glue-header__logo svg {
-            height: 36px;
-            width: auto;
-            display: block;
-        }
-
-        .glue-header__nav {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-
+        .glue-header__logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .glue-header__logo svg { height: 36px; width: auto; display: block; }
+        .glue-header__nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
         .glue-header__nav a {
             color: #5f6368;
             font-size: 15px;
@@ -138,54 +114,40 @@
             padding: 8px 16px;
             border-radius: 20px;
             transition: background 0.2s;
+            text-decoration: none;
         }
-
-        .glue-header__nav a:hover {
-            background: #f1f3f4;
-        }
-
-        .glue-header__nav a.active {
-            color: #1a73e8;
-        }
-
-        .glue-header__cta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .glue-header__nav a:hover { background: #f1f3f4; }
+        .glue-header__nav a.active { color: #1a73e8; }
+        .glue-header__cta { display: flex; align-items: center; gap: 12px; }
         .glue-header__cta .glue-button {
             font-size: 15px;
             min-height: 40px;
             padding: 0 24px;
             border-radius: 20px;
         }
-
-        /* ============================================================
-                   HERO (как у Google)
-                   ============================================================ */
+        
+        /* ===== HERO (оригинальный Google) ===== */
         .ion-overview-hero {
             padding: 48px 0 80px;
             background: #f8f9fa;
             position: relative;
             overflow: hidden;
         }
-
         .ion-overview-hero__static-background {
             position: absolute;
             inset: 0;
             z-index: 0;
         }
-
         .ion-overview-hero__animated-items {
             position: relative;
             z-index: 1;
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
+            padding: 0 24px;
         }
-
-        /* ---- Анимированные заголовки ---- */
+        
+        /* Анимированные заголовки */
         .ion-overview-hero__headlines-container {
             position: relative;
             min-height: 100px;
@@ -194,7 +156,6 @@
             align-items: center;
             flex-wrap: wrap;
         }
-
         .ion-overview-hero__animating-headlines-wrapper {
             position: relative;
             height: 72px;
@@ -202,7 +163,6 @@
             display: inline-block;
             vertical-align: bottom;
         }
-
         .ion-overview-hero__animating-headline {
             position: absolute;
             left: 0;
@@ -215,44 +175,20 @@
             opacity: 0;
             transform: translateY(100%);
             white-space: nowrap;
+            margin: 0;
         }
-
-        .ion-overview-hero__animating-headline:nth-child(1) {
-            animation-delay: 0s;
-            color: #1a73e8;
-        }
-        .ion-overview-hero__animating-headline:nth-child(2) {
-            animation-delay: 3s;
-            color: #c5221f;
-        }
-        .ion-overview-hero__animating-headline:nth-child(3) {
-            animation-delay: 6s;
-            color: #1e8e3e;
-        }
-
+        .ion-overview-hero__animating-headline:nth-child(1) { animation-delay: 0s; color: #1a73e8; }
+        .ion-overview-hero__animating-headline:nth-child(2) { animation-delay: 3s; color: #c5221f; }
+        .ion-overview-hero__animating-headline:nth-child(3) { animation-delay: 6s; color: #1e8e3e; }
+        
         @keyframes slideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(100%);
-            }
-            10% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            30% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            40% {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
+            0% { opacity: 0; transform: translateY(100%); }
+            10% { opacity: 1; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(0); }
+            40% { opacity: 0; transform: translateY(-100%); }
+            100% { opacity: 0; transform: translateY(-100%); }
         }
-
+        
         .ion-overview-hero__static-headline {
             font-size: 52px;
             font-weight: 700;
@@ -263,21 +199,19 @@
             vertical-align: bottom;
             padding-left: 8px;
         }
-
         .ion-overview-hero__static-headline .highlight {
             color: #00F0FF;
             background: #0b0e14;
             padding: 0 12px;
             border-radius: 8px;
         }
-
-        /* ---- Анимированные карточки ---- */
+        
+        /* Анимированные карточки */
         .ion-overview-hero__animating-images-spacer {
             margin-top: 40px;
             position: relative;
             min-height: 380px;
         }
-
         .ion-overview-hero__animating-images-wrapper {
             position: relative;
             display: flex;
@@ -286,8 +220,7 @@
             gap: 24px;
             flex-wrap: wrap;
         }
-
-        /* Слайдер карточек */
+        
         .hero-card-slider {
             position: relative;
             width: 100%;
@@ -295,7 +228,6 @@
             height: 340px;
             margin: 0 auto;
         }
-
         .hero-card-slide {
             position: absolute;
             inset: 0;
@@ -309,30 +241,27 @@
             flex-wrap: wrap;
             pointer-events: none;
         }
-
         .hero-card-slide.active {
             opacity: 1;
             transform: scale(1);
             pointer-events: auto;
         }
-
         .hero-card-slide .ion-overview-hero-item__media-item {
             width: 220px;
             height: 280px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
             border: 1px solid #e8eaed;
             background: #ffffff;
             position: relative;
             flex-shrink: 0;
             transition: transform 0.3s ease;
         }
-
         .hero-card-slide .ion-overview-hero-item__media-item:hover {
             transform: translateY(-4px);
         }
-
+        
         .ion-overview-hero-item__media-item[data-image-background-color="BLUE"] {
             background: linear-gradient(145deg, #e8f0fe, #d2e3fc);
         }
@@ -348,7 +277,7 @@
         .ion-overview-hero-item__media-item[data-image-background-color="PURPLE"] {
             background: linear-gradient(145deg, #f3e8fd, #e6d0fa);
         }
-
+        
         .ion-overview-hero-item__media-item .card-content {
             padding: 24px;
             height: 100%;
@@ -356,7 +285,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
         .ion-overview-hero-item__media-item .card-label {
             font-size: 13px;
             font-weight: 500;
@@ -364,38 +292,27 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
-
         .ion-overview-hero-item__media-item .card-title {
             font-size: 22px;
             font-weight: 700;
             color: #1a73e8;
             line-height: 1.2;
         }
-
         .ion-overview-hero-item__media-item .card-subtitle {
             font-size: 14px;
             color: #5f6368;
         }
-
-        .ion-overview-hero-item__media-item .card-price {
-            font-size: 26px;
-            font-weight: 700;
-            color: #202124;
-        }
-
         .ion-overview-hero-item__media-item .card-domain {
             font-size: 13px;
             color: #5f6368;
         }
-
-        /* Индикаторы слайдера */
+        
         .hero-slider-dots {
             display: flex;
             justify-content: center;
             gap: 12px;
             margin-top: 20px;
         }
-
         .hero-slider-dots button {
             width: 12px;
             height: 12px;
@@ -406,21 +323,11 @@
             transition: background 0.3s, transform 0.3s;
             padding: 0;
         }
-
         .hero-slider-dots button.active {
             background: #1a73e8;
             transform: scale(1.2);
         }
-
-        .hero-slider-dots button:hover {
-            background: #bdc1c6;
-        }
-
-        .hero-slider-dots button.active:hover {
-            background: #1a73e8;
-        }
-
-        /* ---- Описание ---- */
+        
         .ion-overview-hero__description {
             max-width: 720px;
             margin: 40px auto 0;
@@ -429,7 +336,6 @@
             line-height: 1.7;
             text-align: center;
         }
-
         .ion-overview-hero__cta-container {
             margin-top: 32px;
             display: flex;
@@ -437,337 +343,212 @@
             gap: 16px;
             flex-wrap: wrap;
         }
-
-        /* ============================================================
-                   RESPONSIVE
-                   ============================================================ */
+        
+        /* Responsive */
         @media (max-width: 1200px) {
-            .ion-overview-hero__animating-headline {
-                font-size: 40px;
-            }
-            .ion-overview-hero__static-headline {
-                font-size: 40px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item {
-                width: 190px;
-                height: 250px;
-            }
-            .hero-card-slider {
-                height: 300px;
-            }
+            .ion-overview-hero__animating-headline,
+            .ion-overview-hero__static-headline { font-size: 40px; }
+            .hero-card-slide .ion-overview-hero-item__media-item { width: 190px; height: 250px; }
+            .hero-card-slider { height: 300px; }
         }
-
         @media (max-width: 992px) {
-            .glue-header__nav {
-                display: none;
-            }
-            .glue-header__tier {
-                justify-content: space-between;
-            }
-            .ion-overview-hero__animating-headline {
-                font-size: 32px;
-                white-space: normal;
-            }
-            .ion-overview-hero__static-headline {
-                font-size: 32px;
-            }
-            .ion-overview-hero__headlines-container {
-                min-height: 80px;
-            }
-            .ion-overview-hero__animating-headlines-wrapper {
-                height: 56px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item {
-                width: 160px;
-                height: 220px;
-            }
-            .hero-card-slider {
-                height: 260px;
-            }
-            .hero-card-slide {
-                gap: 16px;
-            }
+            .glue-header__nav { display: none; }
+            .ion-overview-hero__animating-headline,
+            .ion-overview-hero__static-headline { font-size: 32px; white-space: normal; }
+            .ion-overview-hero__headlines-container { min-height: 80px; }
+            .ion-overview-hero__animating-headlines-wrapper { height: 56px; }
+            .hero-card-slide .ion-overview-hero-item__media-item { width: 160px; height: 220px; }
+            .hero-card-slider { height: 260px; }
         }
-
         @media (max-width: 768px) {
-            .glue-header__cta .glue-button--medium-emphasis {
-                display: none;
-            }
-            .glue-header__logo svg {
-                height: 28px;
-            }
-            .ion-overview-hero {
-                padding: 32px 0 60px;
-            }
-            .ion-overview-hero__animating-headline {
-                font-size: 26px;
-            }
-            .ion-overview-hero__static-headline {
-                font-size: 26px;
-            }
-            .ion-overview-hero__headlines-container {
-                min-height: 70px;
-            }
-            .ion-overview-hero__animating-headlines-wrapper {
-                height: 48px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item {
-                width: 130px;
-                height: 190px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-title {
-                font-size: 16px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-price {
-                font-size: 20px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-label {
-                font-size: 11px;
-            }
-            .hero-card-slider {
-                height: 220px;
-            }
-            .hero-card-slide {
-                gap: 12px;
-            }
-            .ion-overview-hero__description {
-                font-size: 16px;
-                padding: 0 16px;
-            }
-            .glue-button--large {
-                font-size: 16px;
-                min-height: 48px;
-                padding: 0 24px;
-            }
+            .glue-header__cta .glue-button--medium-emphasis { display: none; }
+            .glue-header__logo svg { height: 28px; }
+            .ion-overview-hero__animating-headline,
+            .ion-overview-hero__static-headline { font-size: 26px; }
+            .ion-overview-hero__headlines-container { min-height: 70px; }
+            .ion-overview-hero__animating-headlines-wrapper { height: 48px; }
+            .hero-card-slide .ion-overview-hero-item__media-item { width: 130px; height: 190px; }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-title { font-size: 16px; }
+            .hero-card-slider { height: 220px; }
+            .ion-overview-hero__description { font-size: 16px; }
         }
-
         @media (max-width: 480px) {
-            .glue-header__cta .glue-button {
-                font-size: 13px;
-                min-height: 36px;
-                padding: 0 16px;
-            }
-            .glue-header__logo svg {
-                height: 24px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item {
-                width: 100px;
-                height: 150px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-content {
-                padding: 12px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-title {
-                font-size: 13px;
-            }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-domain {
-                font-size: 10px;
-            }
-            .hero-card-slider {
-                height: 180px;
-            }
-            .hero-card-slide {
-                gap: 8px;
-            }
-            .ion-overview-hero__animating-headline {
-                font-size: 20px;
-            }
-            .ion-overview-hero__static-headline {
-                font-size: 20px;
-            }
-            .ion-overview-hero__headlines-container {
-                min-height: 56px;
-            }
-            .ion-overview-hero__animating-headlines-wrapper {
-                height: 38px;
-            }
-            .hero-slider-dots button {
-                width: 10px;
-                height: 10px;
-            }
+            .glue-header__cta .glue-button { font-size: 13px; min-height: 36px; padding: 0 16px; }
+            .glue-header__logo svg { height: 24px; }
+            .hero-card-slide .ion-overview-hero-item__media-item { width: 100px; height: 150px; }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-content { padding: 12px; }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-title { font-size: 13px; }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-domain { font-size: 10px; }
+            .hero-card-slider { height: 180px; }
+            .ion-overview-hero__animating-headline,
+            .ion-overview-hero__static-headline { font-size: 20px; }
+            .ion-overview-hero__headlines-container { min-height: 56px; }
+            .ion-overview-hero__animating-headlines-wrapper { height: 38px; }
+            .hero-slider-dots button { width: 10px; height: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ============================================================
-    HEADER (как у Google)
-    ============================================================ -->
+    <!-- ===== HEADER (точная копия Google) ===== -->
     <header class="glue-header">
-        <div class="glue-page">
-            <div class="glue-header__bar">
-                <div class="glue-header__tier">
-                    <div class="glue-header__logo">
-                        <!-- Ваш логотип MetricHit -->
-                        <svg width="auto" height="36" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
-                            <g>
-                                <polygon fill="#202124" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
-                                <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
-                                <polygon fill="#202124" fill-rule="nonzero" points="221.869,114.48 221.869,15.232 246.965,15.232 283.757,76.695 273.336,76.837 308.073,15.232 333.098,15.232 333.098,114.48 307.931,114.48 308.428,48.268 312.965,49.969 286.026,96.686 268.941,96.686 240.797,49.969 245.263,48.268 245.759,114.48 "/>
-                                <path fill="#202124" fill-rule="nonzero" d="M388.606 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.774,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.744,4.56 -3.615,1.347 -7.491,2.434 -11.602,3.237 -4.112,0.804 -8.011,1.206 -11.697,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M470.769 116.607c-8.413,0 -14.982,-2.363 -19.731,-7.066 -4.75,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.308,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.737 0 0 20.275 -15.737 0z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M502.812 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.372,0.308 1.252,0.212 2.481,0.449 3.71,0.684l-2.978 26.443c-1.654,-0.661 -3.426,-1.181 -5.34,-1.536 -1.914,-0.354 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.356 -2.623,2.245 -3.947,5.647 -3.947,10.185l0 36.367 -25.804 0z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M567.181 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.61,3.733z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M646.509 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.964 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.79,-12.288 3.758,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.857,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                                <polygon fill="#00F0FF" fill-rule="nonzero" points="699.112,114.48 699.112,15.232 725.2,15.232 725.2,51.103 761.355,51.103 761.355,15.232 787.443,15.232 787.443,114.48 761.355,114.48 761.355,74.923 725.2,74.923 725.2,114.48 "/>
-                                <path fill="#00F0FF" fill-rule="nonzero" d="M808.001 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
-                                <path fill="#00F0FF" fill-rule="nonzero" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                            </g>
-                        </svg>
-                    </div>
+        <div class="glue-header__tier">
+            <div class="glue-header__logo">
+                <!-- Логотип MetricHit -->
+                <svg width="auto" height="36" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <polygon fill="#202124" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
+                        <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
+                        <polygon fill="#202124" fill-rule="nonzero" points="221.869,114.48 221.869,15.232 246.965,15.232 283.757,76.695 273.336,76.837 308.073,15.232 333.098,15.232 333.098,114.48 307.931,114.48 308.428,48.268 312.965,49.969 286.026,96.686 268.941,96.686 240.797,49.969 245.263,48.268 245.759,114.48 "/>
+                        <path fill="#202124" fill-rule="nonzero" d="M388.606 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.774,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.744,4.56 -3.615,1.347 -7.491,2.434 -11.602,3.237 -4.112,0.804 -8.011,1.206 -11.697,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
+                        <path fill="#202124" fill-rule="nonzero" d="M470.769 116.607c-8.413,0 -14.982,-2.363 -19.731,-7.066 -4.75,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.308,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.737 0 0 20.275 -15.737 0z"/>
+                        <path fill="#202124" fill-rule="nonzero" d="M502.812 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.372,0.308 1.252,0.212 2.481,0.449 3.71,0.684l-2.978 26.443c-1.654,-0.661 -3.426,-1.181 -5.34,-1.536 -1.914,-0.354 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.356 -2.623,2.245 -3.947,5.647 -3.947,10.185l0 36.367 -25.804 0z"/>
+                        <path fill="#202124" fill-rule="nonzero" d="M567.181 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.61,3.733z"/>
+                        <path fill="#202124" fill-rule="nonzero" d="M646.509 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.964 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.79,-12.288 3.758,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.857,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
+                        <polygon fill="#00F0FF" fill-rule="nonzero" points="699.112,114.48 699.112,15.232 725.2,15.232 725.2,51.103 761.355,51.103 761.355,15.232 787.443,15.232 787.443,114.48 761.355,114.48 761.355,74.923 725.2,74.923 725.2,114.48 "/>
+                        <path fill="#00F0FF" fill-rule="nonzero" d="M808.001 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
+                        <path fill="#00F0FF" fill-rule="nonzero" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
+                    </g>
+                </svg>
+            </div>
 
-                    <nav class="glue-header__nav">
-                        <a href="#" class="active">Цели</a>
-                        <a href="#">Как это работает</a>
-                        <a href="#">Стоимость</a>
-                    </nav>
+            <nav class="glue-header__nav">
+                <a href="#" class="active">Цели</a>
+                <a href="#">Как это работает</a>
+                <a href="#">Стоимость</a>
+            </nav>
 
-                    <div class="glue-header__cta">
-                        <a href="#" class="glue-button glue-button--medium-emphasis">Связаться с нами</a>
-                        <a href="#" class="glue-button glue-button--high-emphasis">Начать</a>
-                    </div>
-                </div>
+            <div class="glue-header__cta">
+                <a href="#" class="ion-button glue-button glue-button--medium-emphasis">Связаться с нами</a>
+                <a href="#" class="ion-button glue-button glue-button--high-emphasis">Начать</a>
             </div>
         </div>
     </header>
 
-    <!-- ============================================================
-    HERO (как у Google)
-    ============================================================ -->
-    <section class="ion-overview-hero" data-tracking-module="overviewhero">
+    <!-- ===== HERO (точная копия Google) ===== -->
+    <section class="ion-overview-hero">
         <div class="ion-overview-hero__static-background">
             <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%); width: 100%; height: 100%;"></div>
         </div>
 
-        <div class="glue-page">
-            <div class="ion-overview-hero__animated-items">
-
-                <!-- Анимированные заголовки -->
-                <div class="ion-overview-hero__headlines-container">
-                    <div class="ion-overview-hero__animating-headlines-wrapper" aria-hidden="true">
-                        <h2 class="ion-overview-hero__animating-headline">Продажи</h2>
-                        <h2 class="ion-overview-hero__animating-headline">Продвижение</h2>
-                        <h2 class="ion-overview-hero__animating-headline">Привлечение</h2>
-                    </div>
-                    <div class="ion-overview-hero__static-headline">
-                        с <span class="highlight">MetricHit</span>
-                    </div>
+        <div class="ion-overview-hero__animated-items">
+            <!-- Анимированные заголовки -->
+            <div class="ion-overview-hero__headlines-container">
+                <div class="ion-overview-hero__animating-headlines-wrapper" aria-hidden="true">
+                    <h2 class="ion-overview-hero__animating-headline">Продажи</h2>
+                    <h2 class="ion-overview-hero__animating-headline">Продвижение</h2>
+                    <h2 class="ion-overview-hero__animating-headline">Привлечение</h2>
                 </div>
+                <div class="ion-overview-hero__static-headline">
+                    с <span class="highlight">MetricHit</span>
+                </div>
+            </div>
 
-                <!-- Анимированные карточки (слайдер) -->
-                <div class="ion-overview-hero__animating-images-spacer">
-                    <div class="hero-card-slider">
-
-                        <!-- Слайд 1: Продажи -->
-                        <div class="hero-card-slide active" data-slide="0">
-                            <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
-                                <div class="card-content">
-                                    <div class="card-label">Торговые кампании</div>
-                                    <div>
-                                        <div class="card-title">Распродажа обуви</div>
-                                        <div class="card-subtitle">Обзор подборок</div>
-                                        <div class="card-domain">example-business.com</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ion-overview-hero-item__media-item" data-image-background-color="YELLOW">
-                                <div class="card-content">
-                                    <div class="card-label">Поиск</div>
-                                    <div>
-                                        <div style="font-size:13px;color:#5f6368;">Реклама</div>
-                                        <div style="font-size:13px;color:#5f6368;">example-business.com</div>
-                                        <div class="card-title" style="color:#e37400;font-size:20px;">ООО "Современный дизайн"</div>
-                                    </div>
+            <!-- Анимированные карточки -->
+            <div class="ion-overview-hero__animating-images-spacer">
+                <div class="hero-card-slider">
+                    <!-- Слайд 1: Продажи -->
+                    <div class="hero-card-slide active" data-slide="0">
+                        <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
+                            <div class="card-content">
+                                <div class="card-label">Торговые кампании</div>
+                                <div>
+                                    <div class="card-title">Распродажа обуви</div>
+                                    <div class="card-subtitle">Обзор подборок</div>
+                                    <div class="card-domain">example-business.com</div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Слайд 2: Продвижение -->
-                        <div class="hero-card-slide" data-slide="1">
-                            <div class="ion-overview-hero-item__media-item" data-image-background-color="RED">
-                                <div class="card-content">
-                                    <div class="card-label">Видео</div>
-                                    <div>
-                                        <div class="card-title" style="color:#c5221f;">Банк "Гарантия"</div>
-                                        <div class="card-domain">example-business.com</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ion-overview-hero-item__media-item" data-image-background-color="PURPLE">
-                                <div class="card-content">
-                                    <div class="card-label">Кампании</div>
-                                    <div>
-                                        <div class="card-title" style="color:#7c3aed;">Максимальная эффективность</div>
-                                        <div class="card-subtitle">Увеличивайте конверсии</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Слайд 3: Привлечение -->
-                        <div class="hero-card-slide" data-slide="2">
-                            <div class="ion-overview-hero-item__media-item" data-image-background-color="GREEN">
-                                <div class="card-content">
-                                    <div class="card-label">КМС</div>
-                                    <div>
-                                        <div class="card-title" style="color:#1e8e3e;font-size:20px;">Современные диваны на заказ</div>
-                                        <div class="card-subtitle">Лучшая современная мебель</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
-                                <div class="card-content">
-                                    <div class="card-label">Поиск</div>
-                                    <div>
-                                        <div class="card-title" style="font-size:18px;">Привлечение клиентов</div>
-                                        <div class="card-subtitle">Рост трафика</div>
-                                        <div class="card-domain">example-business.com</div>
-                                    </div>
+                        <div class="ion-overview-hero-item__media-item" data-image-background-color="YELLOW">
+                            <div class="card-content">
+                                <div class="card-label">Поиск</div>
+                                <div>
+                                    <div style="font-size:13px;color:#5f6368;">Реклама</div>
+                                    <div style="font-size:13px;color:#5f6368;">example-business.com</div>
+                                    <div class="card-title" style="color:#e37400;font-size:20px;">ООО "Современный дизайн"</div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Индикаторы -->
-                    <div class="hero-slider-dots">
-                        <button class="active" data-slide="0" aria-label="Слайд 1"></button>
-                        <button data-slide="1" aria-label="Слайд 2"></button>
-                        <button data-slide="2" aria-label="Слайд 3"></button>
+                    <!-- Слайд 2: Продвижение -->
+                    <div class="hero-card-slide" data-slide="1">
+                        <div class="ion-overview-hero-item__media-item" data-image-background-color="RED">
+                            <div class="card-content">
+                                <div class="card-label">Видео</div>
+                                <div>
+                                    <div class="card-title" style="color:#c5221f;">Банк "Гарантия"</div>
+                                    <div class="card-domain">example-business.com</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ion-overview-hero-item__media-item" data-image-background-color="PURPLE">
+                            <div class="card-content">
+                                <div class="card-label">Кампании</div>
+                                <div>
+                                    <div class="card-title" style="color:#7c3aed;">Максимальная эффективность</div>
+                                    <div class="card-subtitle">Увеличивайте конверсии</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Слайд 3: Привлечение -->
+                    <div class="hero-card-slide" data-slide="2">
+                        <div class="ion-overview-hero-item__media-item" data-image-background-color="GREEN">
+                            <div class="card-content">
+                                <div class="card-label">КМС</div>
+                                <div>
+                                    <div class="card-title" style="color:#1e8e3e;font-size:20px;">Современные диваны на заказ</div>
+                                    <div class="card-subtitle">Лучшая современная мебель</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
+                            <div class="card-content">
+                                <div class="card-label">Поиск</div>
+                                <div>
+                                    <div class="card-title" style="font-size:18px;">Привлечение клиентов</div>
+                                    <div class="card-subtitle">Рост трафика</div>
+                                    <div class="card-domain">example-business.com</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Описание -->
-                <div class="ion-overview-hero__description">
-                    Сделайте так, чтобы потенциальным клиентам было легко найти вашу компанию. В этом вам поможет MetricHit.
+                <div class="hero-slider-dots">
+                    <button class="active" data-slide="0"></button>
+                    <button data-slide="1"></button>
+                    <button data-slide="2"></button>
                 </div>
+            </div>
 
-                <!-- CTA -->
-                <div class="ion-overview-hero__cta-container">
-                    <a href="#" class="glue-button glue-button--high-emphasis glue-button--large">Начать</a>
-                    <a href="#" class="glue-button glue-button--medium-emphasis glue-button--large">Выбрать тариф</a>
-                </div>
+            <!-- Описание -->
+            <div class="ion-overview-hero__description">
+                Сделайте так, чтобы потенциальным клиентам было легко найти вашу компанию. В этом вам поможет MetricHit.
+            </div>
+
+            <!-- CTA -->
+            <div class="ion-overview-hero__cta-container">
+                <a href="#" class="ion-button glue-button glue-button--high-emphasis glue-button--large">Начать</a>
+                <a href="#" class="ion-button glue-button glue-button--medium-emphasis glue-button--large">Выбрать тариф</a>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    БЛОК "MetricHit предлагает..."
-    ============================================================ -->
+    <!-- ===== БЛОК "MetricHit предлагает..." (как в оригинале) ===== -->
     <section style="padding: 48px 0 64px; background: #ffffff;">
-        <div class="glue-page">
-            <div style="text-align:center; max-width: 800px; margin: 0 auto;">
-                <h2 style="font-size: 36px; font-weight: 700; color: #202124; letter-spacing: -0.3px; line-height: 1.2;">
-                    MetricHit предлагает самый эффективный и безопасный способ продвижения
-                </h2>
-            </div>
+        <div style="max-width: 1440px; margin: 0 auto; padding: 0 24px; text-align:center;">
+            <h2 style="font-size: 36px; font-weight: 700; color: #202124; letter-spacing: -0.3px; line-height: 1.2; max-width: 800px; margin: 0 auto;">
+                MetricHit предлагает самый эффективный и безопасный способ продвижения
+            </h2>
         </div>
     </section>
 
-    <!-- ============================================================
-    SCRIPTS
-    ============================================================ -->
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // ===== СЛАЙДЕР КАРТОЧЕК =====
+        // ===== СЛАЙДЕР =====
         (function() {
             const slides = document.querySelectorAll('.hero-card-slide');
             const dots = document.querySelectorAll('.hero-slider-dots button');
@@ -775,19 +556,15 @@
             let intervalId = null;
 
             function goToSlide(index) {
-                // Убираем активный класс у всех слайдов
                 slides.forEach(s => s.classList.remove('active'));
                 dots.forEach(d => d.classList.remove('active'));
-
-                // Показываем нужный слайд
                 slides[index].classList.add('active');
                 dots[index].classList.add('active');
                 currentSlide = index;
             }
 
             function nextSlide() {
-                const next = (currentSlide + 1) % slides.length;
-                goToSlide(next);
+                goToSlide((currentSlide + 1) % slides.length);
             }
 
             function startAutoplay() {
@@ -796,13 +573,9 @@
             }
 
             function stopAutoplay() {
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    intervalId = null;
-                }
+                if (intervalId) { clearInterval(intervalId); intervalId = null; }
             }
 
-            // Клик по точкам
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', function() {
                     stopAutoplay();
@@ -811,30 +584,14 @@
                 });
             });
 
-            // Пауза при наведении на слайдер
             const slider = document.querySelector('.hero-card-slider');
             if (slider) {
                 slider.addEventListener('mouseenter', stopAutoplay);
                 slider.addEventListener('mouseleave', startAutoplay);
             }
 
-            // Запускаем автоплей
             startAutoplay();
-
-            // ===== SMOOTH SCROLL =====
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
         })();
     </script>
-
 </body>
 </html>
