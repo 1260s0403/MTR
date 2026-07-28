@@ -1,6 +1,6 @@
 <!doctype html>
-<html class="Page" dir="ltr" platform="bsp" lang="ru" locale="ru_all" site-id="agc" is-bgc="true" bgc-locale="ru-all">
-<head>
+<html class="Page" dir="ltr" platform="bsp" lang="ru" locale="ru_all" site-id="agc" is-bgc="true" bgc-locale="ru-all" suf-subid="?subid={locale}-{lang}-awhp-g-aw-{device}-home-{position}-bgc!o2" data-last-seen-affiliate-id="" data-gar-is-eligible="false" data-dcs-effective-country-code="ru" data-dcs-ip-country-code="ru" data-dcs-supported-country-codes="ru" data-is-logged-in="true">
+  <head>
     <meta charset="UTF-8">
     <title>MetricHit — управление поведенческими факторами</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
@@ -13,585 +13,466 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..500,0..1,0" rel="stylesheet">
     <link href="https://www.gstatic.com/glue/v27_0/glue-material.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link id="webpack-css" rel="stylesheet" href="https://www.gstatic.com/marketing-cms/ads/resource/00000188-911b-d8f4-a3ae-bb7b1ef50000/styles/default/All.min.aa237c9554671c5ec5dbe3e051dd396c.gz.css">
     
     <style>
-        /* ===== ОРИГИНАЛЬНЫЕ СТИЛИ GOOGLE ===== */
-        .hidden { display: none !important; }
-        @media (max-width: 1023px) { .hidden--non-desktop { display: none !important; } }
-        .ion-blue-text:not(.a):not(.b) { color: #1a73e8; }
-        .ion-body-copy { color: #3c4043; }
-        .ion-circle-border { border: 2px solid #dadce0; border-radius: 100%; box-sizing: content-box; }
-        .ion-error { color: #d93025; }
-        .ion-icon--fill-green-500 { fill: #34a853; }
-        .ion-icon--fill-grey-300 { fill: #dadce0; }
-        .ion-icon--fill-blue-600 { fill: #1a73e8; }
-        .ion-lazy:not(.a):not(.b) { visibility: hidden; }
-        @media (max-width: 1023px) { .ion-media-display-only--desktop:not(.a):not(.b) { display: none; } }
-        @media (min-width: 600px) { .ion-media-display-only--mobile:{ display: none !important; } }
-        @media (min-width: 1024px) { .ion-media-display-only--non-desktop { display: none !important; } }
-        .ion-module--fill-white { background-color: #fff; }
-        .ion-module--fill-gray { background-color: #f8f9fa; }
-        .ion-module--fill-blue { background-color: #e8f0fe; }
-        .ion-rounded-corners { border-radius: 20px; overflow: hidden; }
-        .grecaptcha-badge { visibility: hidden; }
-        
-        /* ===== КНОПКИ (оригинальные Google) ===== */
-        .ion-button.glue-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            border-radius: 24px;
-            font-family: 'Google Sans', Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            min-height: 48px;
-            padding: 0 32px;
-            letter-spacing: 0.3px;
-            text-decoration: none;
-        }
-        .ion-button.glue-button--high-emphasis {
-            background: #1a73e8;
-            color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
-        }
-        .ion-button.glue-button--high-emphasis:hover {
-            background: #1557b0;
-            box-shadow: 0 2px 6px rgba(26,115,232,0.3);
-        }
-        .ion-button.glue-button--medium-emphasis {
-            background: transparent;
-            color: #1a73e8;
-            border: 1px solid #dadce0;
-        }
-        .ion-button.glue-button--medium-emphasis:hover {
-            background: #f1f3f4;
-            border-color: #bdc1c6;
-        }
-        .ion-button.glue-button--tonal {
-            background: #e8f0fe;
-            color: #1a73e8;
-        }
-        .ion-button.glue-button--tonal:hover {
-            background: #d2e3fc;
-        }
-        .glue-button--large {
-            font-size: 18px;
-            min-height: 56px;
-            padding: 0 40px;
-            border-radius: 28px;
-        }
-        
-        /* ===== HEADER (оригинальный Google) ===== */
-        .glue-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid #e8eaed;
-        }
-        .glue-header__bar { padding: 12px 0; }
-        .glue-header__tier {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .glue-header__logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-        .glue-header__logo svg { height: 36px; width: auto; display: block; }
-        .glue-header__nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
-        .glue-header__nav a {
-            color: #5f6368;
-            font-size: 15px;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: background 0.2s;
-            text-decoration: none;
-        }
-        .glue-header__nav a:hover { background: #f1f3f4; }
-        .glue-header__nav a.active { color: #1a73e8; }
-        .glue-header__cta { display: flex; align-items: center; gap: 12px; }
-        .glue-header__cta .glue-button {
-            font-size: 15px;
-            min-height: 40px;
-            padding: 0 24px;
-            border-radius: 20px;
-        }
-        
-        /* ===== HERO (оригинальный Google) ===== */
-        .ion-overview-hero {
-            padding: 48px 0 80px;
-            background: #f8f9fa;
-            position: relative;
-            overflow: hidden;
-        }
-        .ion-overview-hero__static-background {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-        .ion-overview-hero__animated-items {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        /* Анимированные заголовки */
-        .ion-overview-hero__headlines-container {
-            position: relative;
-            min-height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .ion-overview-hero__animating-headlines-wrapper {
-            position: relative;
-            height: 72px;
-            overflow: hidden;
-            display: inline-block;
-            vertical-align: bottom;
-        }
-        .ion-overview-hero__animating-headline {
-            position: absolute;
-            left: 0;
-            right: 0;
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            animation: slideUp 9s infinite;
-            opacity: 0;
-            transform: translateY(100%);
-            white-space: nowrap;
-            margin: 0;
-        }
-        .ion-overview-hero__animating-headline:nth-child(1) { animation-delay: 0s; color: #1a73e8; }
-        .ion-overview-hero__animating-headline:nth-child(2) { animation-delay: 3s; color: #c5221f; }
-        .ion-overview-hero__animating-headline:nth-child(3) { animation-delay: 6s; color: #1e8e3e; }
-        
-        @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(100%); }
-            10% { opacity: 1; transform: translateY(0); }
-            30% { opacity: 1; transform: translateY(0); }
-            40% { opacity: 0; transform: translateY(-100%); }
-            100% { opacity: 0; transform: translateY(-100%); }
-        }
-        
-        .ion-overview-hero__static-headline {
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            color: #202124;
-            display: inline-block;
-            vertical-align: bottom;
-            padding-left: 8px;
-        }
-        .ion-overview-hero__static-headline .highlight {
-            color: #00F0FF;
-            background: #0b0e14;
-            padding: 0 12px;
-            border-radius: 8px;
-        }
-        
-        /* Анимированные карточки */
-        .ion-overview-hero__animating-images-spacer {
-            margin-top: 40px;
-            position: relative;
-            min-height: 380px;
-        }
-        .ion-overview-hero__animating-images-wrapper {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        
-        .hero-card-slider {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 340px;
-            margin: 0 auto;
-        }
-        .hero-card-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transform: scale(0.92);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            pointer-events: none;
-        }
-        .hero-card-slide.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-        }
-        .hero-card-slide .ion-overview-hero-item__media-item {
-            width: 220px;
-            height: 280px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            border: 1px solid #e8eaed;
-            background: #ffffff;
-            position: relative;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-        .hero-card-slide .ion-overview-hero-item__media-item:hover {
-            transform: translateY(-4px);
-        }
-        
-        .ion-overview-hero-item__media-item[data-image-background-color="BLUE"] {
-            background: linear-gradient(145deg, #e8f0fe, #d2e3fc);
-        }
-        .ion-overview-hero-item__media-item[data-image-background-color="RED"] {
-            background: linear-gradient(145deg, #fce8e6, #fad2cf);
-        }
-        .ion-overview-hero-item__media-item[data-image-background-color="YELLOW"] {
-            background: linear-gradient(145deg, #fef7e0, #fce8b2);
-        }
-        .ion-overview-hero-item__media-item[data-image-background-color="GREEN"] {
-            background: linear-gradient(145deg, #e6f4ea, #cce8d6);
-        }
-        .ion-overview-hero-item__media-item[data-image-background-color="PURPLE"] {
-            background: linear-gradient(145deg, #f3e8fd, #e6d0fa);
-        }
-        
-        .ion-overview-hero-item__media-item .card-content {
-            padding: 24px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .ion-overview-hero-item__media-item .card-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: #5f6368;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .ion-overview-hero-item__media-item .card-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1a73e8;
-            line-height: 1.2;
-        }
-        .ion-overview-hero-item__media-item .card-subtitle {
-            font-size: 14px;
-            color: #5f6368;
-        }
-        .ion-overview-hero-item__media-item .card-domain {
-            font-size: 13px;
-            color: #5f6368;
-        }
-        
-        .hero-slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-        }
-        .hero-slider-dots button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: none;
-            background: #dadce0;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-            padding: 0;
-        }
-        .hero-slider-dots button.active {
-            background: #1a73e8;
-            transform: scale(1.2);
-        }
-        
-        .ion-overview-hero__description {
-            max-width: 720px;
-            margin: 40px auto 0;
-            font-size: 18px;
-            color: #5f6368;
-            line-height: 1.7;
-            text-align: center;
-        }
-        .ion-overview-hero__cta-container {
-            margin-top: 32px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .ion-overview-hero__animating-headline,
-            .ion-overview-hero__static-headline { font-size: 40px; }
-            .hero-card-slide .ion-overview-hero-item__media-item { width: 190px; height: 250px; }
-            .hero-card-slider { height: 300px; }
-        }
-        @media (max-width: 992px) {
-            .glue-header__nav { display: none; }
-            .ion-overview-hero__animating-headline,
-            .ion-overview-hero__static-headline { font-size: 32px; white-space: normal; }
-            .ion-overview-hero__headlines-container { min-height: 80px; }
-            .ion-overview-hero__animating-headlines-wrapper { height: 56px; }
-            .hero-card-slide .ion-overview-hero-item__media-item { width: 160px; height: 220px; }
-            .hero-card-slider { height: 260px; }
-        }
-        @media (max-width: 768px) {
-            .glue-header__cta .glue-button--medium-emphasis { display: none; }
-            .glue-header__logo svg { height: 28px; }
-            .ion-overview-hero__animating-headline,
-            .ion-overview-hero__static-headline { font-size: 26px; }
-            .ion-overview-hero__headlines-container { min-height: 70px; }
-            .ion-overview-hero__animating-headlines-wrapper { height: 48px; }
-            .hero-card-slide .ion-overview-hero-item__media-item { width: 130px; height: 190px; }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-title { font-size: 16px; }
-            .hero-card-slider { height: 220px; }
-            .ion-overview-hero__description { font-size: 16px; }
-        }
-        @media (max-width: 480px) {
-            .glue-header__cta .glue-button { font-size: 13px; min-height: 36px; padding: 0 16px; }
-            .glue-header__logo svg { height: 24px; }
-            .hero-card-slide .ion-overview-hero-item__media-item { width: 100px; height: 150px; }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-content { padding: 12px; }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-title { font-size: 13px; }
-            .hero-card-slide .ion-overview-hero-item__media-item .card-domain { font-size: 10px; }
-            .hero-card-slider { height: 180px; }
-            .ion-overview-hero__animating-headline,
-            .ion-overview-hero__static-headline { font-size: 20px; }
-            .ion-overview-hero__headlines-container { min-height: 56px; }
-            .ion-overview-hero__animating-headlines-wrapper { height: 38px; }
-            .hero-slider-dots button { width: 10px; height: 10px; }
-        }
+      /* ===== ОРИГИНАЛЬНЫЕ СТИЛИ GOOGLE ===== */
+      .hidden{display:none !important;}@media(max-width:1023px){.hidden--non-desktop{display:none !important;}}.ion-blue-text:not(.a):not(.b){color:#1a73e8}.ion-body-copy{color:#3c4043}.ion-circle-border{border:2px solid #dadce0;border-radius:100%;box-sizing:content-box}.ion-error{color:#d93025}.ion-icon--fill-green-500{fill:#34a853}.ion-icon--fill-grey-300{fill:#dadce0}.ion-icon--fill-blue-600{fill:#1a73e8}.ion-lazy:not(.a):not(.b){visibility:hidden}@media(max-width:1023px){.ion-media-display-only--desktop:not(.a):not(.b){display:none}}@media(min-width:600px){.ion-media-display-only--mobile:{display:none !important}}@media(min-width:1024px){.ion-media-display-only--non-desktop{display:none !important}}.ion-module--fill-white{background-color:#fff}.ion-module--fill-gray{background-color:#f8f9fa}.ion-module--fill-blue{background-color:#e8f0fe}.ion-rounded-corners{border-radius:20px;overflow:hidden}.grecaptcha-badge{visibility:hidden;}
     </style>
-</head>
-<body>
+  </head>
+  <body class="glue-body">
+    
+    <!-- ===== SVG-СПРАЙТ (оригинальный) ===== -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" id="iconsMap">
+      <symbol id="chevron-left" viewbox="0 0 24 24"><path d="M16.41 5.41L15 4l-8 8 8 8 1.41-1.41L9.83 12"/></symbol>
+      <symbol id="chevron-right" viewbox="0 0 24 24"><path d="M7.59 18.59L9 20l8-8-8-8-1.41 1.41L14.17 12"/></symbol>
+      <symbol id="expand-less" viewbox="0 0 24 24"><path d="M18.59 16.41L20 15l-8-8-8 8 1.41 1.41L12 9.83"/></symbol>
+      <symbol id="expand-more" viewbox="0 0 24 24"><path d="M5.41 7.59L4 9l8 8 8-8-1.41-1.41L12 14.17"/></symbol>
+      <symbol id="arrow-back" viewbox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></symbol>
+      <symbol id="arrow-forward" viewbox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></symbol>
+      <symbol id="close" viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></symbol>
+      <symbol id="search" viewbox="0 0 24 24"><path d="M20.49 19l-5.73-5.73C15.53 12.2 16 10.91 16 9.5A6.5 6.5 0 1 0 9.5 16c1.41 0 2.7-.47 3.77-1.24L19 20.49 20.49 19zM5 9.5C5 7.01 7.01 5 9.5 5S14 7.01 14 9.5 11.99 14 9.5 14 5 11.99 5 9.5z"/></symbol>
+      <symbol id="image" viewbox="0 0 24 24"><path d="M19.5 3h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2Zm0 16h-14V5h14v14Zm-8-3.28 3-3.72 4 5h-12l3-4 2 2.72Z"/></symbol>
+      <symbol id="shopping" viewbox="0 0 24 24"><path d="M18.997 2h-5.87c-.8 0-1.56.32-2.12.88l-8.13 8.13a3 3 0 0 0 0 4.24l5.87 5.87c.59.59 1.36.88 2.12.88s1.54-.29 2.12-.88l8.13-8.12c.56-.56.88-1.33.88-2.12V5c0-1.66-1.34-3-3-3Zm1 8.88c0 .27-.1.52-.29.71l-8.13 8.12a.96.96 0 0 1-.71.29c-.16 0-.45-.04-.71-.29l-5.87-5.87a1.017 1.017 0 0 1 0-1.42l8.13-8.13c.19-.19.45-.29.71-.29h5.87c.55 0 1 .45 1 1v5.88Z"/><path d="M16.497 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></symbol>
+      <symbol id="video-youtube" viewbox="0 0 24 24"><path d="M23.74 7.1s-.23-1.65-.95-2.37c-.91-.96-1.93-.96-2.4-1.02C17.04 3.47 12 3.5 12 3.5s-5.02-.03-8.37.21c-.46.06-1.48.06-2.39 1.02C.52 5.45.28 7.1.28 7.1S.04 9.05 0 10.98V13c.04 1.94.28 3.87.28 3.87s.24 1.65.96 2.38c.91.95 2.1.92 2.64 1.02 1.88.18 7.91.22 8.12.22 0 0 5.05.01 8.4-.23.46-.06 1.48-.06 2.39-1.02.72-.72.96-2.37.96-2.37s.24-1.94.25-3.87v-2.02c-.02-1.93-.26-3.88-.26-3.88zM9.57 15.5V8.49L16 12.13 9.57 15.5z"/></symbol>
+      <symbol id="play-prism" viewbox="0 0 24 24"><path d="M20.18 10.88l-3.06-1.74L14.26 12l2.86 2.86 3.06-1.74c.55-.31.82-.71.82-1.12 0-.41-.27-.81-.82-1.12zM4.71 2.45l8.42 8.42 2.55-2.55-10.7-6.06c-.07-.04-.14-.07-.21-.1-.17-.07-.3.05-.15.21.03.02.06.05.09.08zm0 19.1l-.08.08c-.15.15-.02.28.15.21.07-.03.14-.06.21-.1l10.69-6.06-2.55-2.55s-7.2 7.21-8.42 8.42zM12 12L3.38 3.38c-.19-.19-.38-.07-.38.19v16.86c0 .26.19.38.38.19L12 12z"/></symbol>
+      <symbol id="menu" viewbox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>
+      <symbol id="help-icon" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
+    </svg>
 
-    <!-- ===== HEADER (точная копия Google) ===== -->
-    <header class="glue-header">
+    <!-- ============================================================
+    HEADER (точная копия Google, изменены ссылки)
+    ============================================================ -->
+    <header class="glue-header ion-global-mega-nav ion-global-mega-nav--stacked" data-glue-header-hide-on-scroll="true" data-tracking-module="header" data-glue-header-drawer="true" data-glue-header-stepped-nav="true">
+      <a href="#page-content" class="glue-header__link glue-header__skip-content ion-skip-content">Перейти к контенту</a>
+      
+      <!-- Mobile -->
+      <div class="glue-header__bar glue-header__bar--mobile">
         <div class="glue-header__tier">
-            <div class="glue-header__logo">
-                <!-- Логотип MetricHit -->
-                <svg width="auto" height="36" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
+          <div class="glue-header__container">
+            <div class="glue-header__lock-up">
+              <div class="glue-header__hamburger">
+                <button class="glue-header__drawer-toggle-btn" aria-label="Открыть панель">
+                  <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px"><use xlink:href="#menu"/></svg>
+                </button>
+              </div>
+              <div class="glue-header__logo">
+                <a class="glue-header__logo-link" href="#" title="MetricHit">
+                  <!-- Логотип MetricHit -->
+                  <svg width="auto" height="36" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
                     <g>
-                        <polygon fill="#202124" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
-                        <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
-                        <polygon fill="#202124" fill-rule="nonzero" points="221.869,114.48 221.869,15.232 246.965,15.232 283.757,76.695 273.336,76.837 308.073,15.232 333.098,15.232 333.098,114.48 307.931,114.48 308.428,48.268 312.965,49.969 286.026,96.686 268.941,96.686 240.797,49.969 245.263,48.268 245.759,114.48 "/>
-                        <path fill="#202124" fill-rule="nonzero" d="M388.606 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.774,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.744,4.56 -3.615,1.347 -7.491,2.434 -11.602,3.237 -4.112,0.804 -8.011,1.206 -11.697,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M470.769 116.607c-8.413,0 -14.982,-2.363 -19.731,-7.066 -4.75,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.308,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.737 0 0 20.275 -15.737 0z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M502.812 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.372,0.308 1.252,0.212 2.481,0.449 3.71,0.684l-2.978 26.443c-1.654,-0.661 -3.426,-1.181 -5.34,-1.536 -1.914,-0.354 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.356 -2.623,2.245 -3.947,5.647 -3.947,10.185l0 36.367 -25.804 0z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M567.181 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.61,3.733z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M646.509 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.964 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.79,-12.288 3.758,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.857,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                        <polygon fill="#00F0FF" fill-rule="nonzero" points="699.112,114.48 699.112,15.232 725.2,15.232 725.2,51.103 761.355,51.103 761.355,15.232 787.443,15.232 787.443,114.48 761.355,114.48 761.355,74.923 725.2,74.923 725.2,114.48 "/>
-                        <path fill="#00F0FF" fill-rule="nonzero" d="M808.001 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
-                        <path fill="#00F0FF" fill-rule="nonzero" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
+                      <polygon fill="#202124" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
+                      <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
+                      <polygon fill="#202124" fill-rule="nonzero" points="221.869,114.48 221.869,15.232 246.965,15.232 283.757,76.695 273.336,76.837 308.073,15.232 333.098,15.232 333.098,114.48 307.931,114.48 308.428,48.268 312.965,49.969 286.026,96.686 268.941,96.686 240.797,49.969 245.263,48.268 245.759,114.48 "/>
+                      <path fill="#202124" fill-rule="nonzero" d="M388.606 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.774,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.744,4.56 -3.615,1.347 -7.491,2.434 -11.602,3.237 -4.112,0.804 -8.011,1.206 -11.697,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M470.769 116.607c-8.413,0 -14.982,-2.363 -19.731,-7.066 -4.75,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.308,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.737 0 0 20.275 -15.737 0z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M502.812 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.372,0.308 1.252,0.212 2.481,0.449 3.71,0.684l-2.978 26.443c-1.654,-0.661 -3.426,-1.181 -5.34,-1.536 -1.914,-0.354 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.356 -2.623,2.245 -3.947,5.647 -3.947,10.185l0 36.367 -25.804 0z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M567.181 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.61,3.733z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M646.509 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.964 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.79,-12.288 3.758,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.857,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
+                      <polygon fill="#00F0FF" fill-rule="nonzero" points="699.112,114.48 699.112,15.232 725.2,15.232 725.2,51.103 761.355,51.103 761.355,15.232 787.443,15.232 787.443,114.48 761.355,114.48 761.355,74.923 725.2,74.923 725.2,114.48 "/>
+                      <path fill="#00F0FF" fill-rule="nonzero" d="M808.001 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
+                      <path fill="#00F0FF" fill-rule="nonzero" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
                     </g>
-                </svg>
+                  </svg>
+                </a>
+              </div>
             </div>
-
-            <nav class="glue-header__nav">
-                <a href="#" class="active">Цели</a>
-                <a href="#">Как это работает</a>
-                <a href="#">Стоимость</a>
-            </nav>
-
+          </div>
+          <div class="glue-header__container">
             <div class="glue-header__cta">
-                <a href="#" class="ion-button glue-button glue-button--medium-emphasis">Связаться с нами</a>
-                <a href="#" class="ion-button glue-button glue-button--high-emphasis">Начать</a>
+              <div class="ion-profile-avatar__container hidden">
+                <button class="ion-profile-avatar ion-profile-avatar--hidden ion-profile-avatar--mobile glue-text-center" aria-expanded="false">
+                  <img src="https://www.gstatic.com/awmp/images/sso-placeholder.png" alt="Selected Google account:" class="ion-profile-avatar__image" width="40" height="40" loading="lazy">
+                </button>
+              </div>
             </div>
+          </div>
         </div>
+        <section class="dcs-global-mega-nav__sub-nav-root dcs-global-mega-nav__sub-nav-root--mobile ion-global-mega-nav__sub-nav-background" data-tracking-module="subnav">
+          <div class="ion-global-mega-nav__sub-nav">
+            <div class="ion-global-mega-nav__sub-nav--flex-column">
+              <div class="ion-global-mega-nav__sub-nav-expandable">
+                <div class="ion-global-mega-nav__sub-nav-expandable-controls">
+                  <button class="ion-global-mega-nav__sub-nav-product-container ion-global-mega-nav__sub-nav-product-dropdown" aria-expanded="false" aria-controls="mobile-sub-nav-list-container" data-tracking-target="dropdown_interaction" data-tracking-extra-context="{&quot;component_interaction&quot;: &quot;dropdown_open&quot;}" data-tracking-target-content="MetricHit">
+                    <span class="ion-global-mega-nav__sub-nav-header-text">MetricHit</span>
+                    <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px expand-icon"><use xlink:href="#expand-more"/></svg>
+                  </button>
+                </div>
+                <nav id="mobile-sub-nav-list-container" class="ion-global-mega-nav__sub-nav-expandable-list-container ion-thin-scrollbar ion-thin-scrollbar--medium-margins hidden" aria-label="Навигация в разделе &quot;MetricHit&quot;">
+                  <ul class="ion-global-mega-nav__sub-nav-expandable-list glue-header__list" data-tracking-extra-context="{&quot;nav_tier&quot;: &quot;tier_3&quot;}">
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link active" href="#">Обзор</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Цели</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Как это работает</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Стоимость</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Desktop -->
+      <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+        <div class="glue-header__tier">
+          <div class="glue-header__container">
+            <div class="glue-header__lock-up">
+              <button class="glue-header__drawer-close-btn" aria-label="Скрыть панель">
+                <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px"><use xlink:href="#close"/></svg>
+              </button>
+              <div class="glue-header__logo">
+                <a class="glue-header__logo-link" href="#" title="MetricHit">
+                  <!-- Логотип MetricHit -->
+                  <svg width="auto" height="36" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                      <polygon fill="#202124" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
+                      <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
+                      <polygon fill="#202124" fill-rule="nonzero" points="221.869,114.48 221.869,15.232 246.965,15.232 283.757,76.695 273.336,76.837 308.073,15.232 333.098,15.232 333.098,114.48 307.931,114.48 308.428,48.268 312.965,49.969 286.026,96.686 268.941,96.686 240.797,49.969 245.263,48.268 245.759,114.48 "/>
+                      <path fill="#202124" fill-rule="nonzero" d="M388.606 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.774,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.744,4.56 -3.615,1.347 -7.491,2.434 -11.602,3.237 -4.112,0.804 -8.011,1.206 -11.697,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M470.769 116.607c-8.413,0 -14.982,-2.363 -19.731,-7.066 -4.75,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.308,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.737 0 0 20.275 -15.737 0z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M502.812 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.372,0.308 1.252,0.212 2.481,0.449 3.71,0.684l-2.978 26.443c-1.654,-0.661 -3.426,-1.181 -5.34,-1.536 -1.914,-0.354 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.356 -2.623,2.245 -3.947,5.647 -3.947,10.185l0 36.367 -25.804 0z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M567.181 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.61,3.733z"/>
+                      <path fill="#202124" fill-rule="nonzero" d="M646.509 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.964 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.79,-12.288 3.758,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.857,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
+                      <polygon fill="#00F0FF" fill-rule="nonzero" points="699.112,114.48 699.112,15.232 725.2,15.232 725.2,51.103 761.355,51.103 761.355,15.232 787.443,15.232 787.443,114.48 761.355,114.48 761.355,74.923 725.2,74.923 725.2,114.48 "/>
+                      <path fill="#00F0FF" fill-rule="nonzero" d="M808.001 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
+                      <path fill="#00F0FF" fill-rule="nonzero" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="glue-header__container glue-header__stepped-nav">
+            <div class="glue-header__stepped-nav-controls-container">
+              <div class="glue-header__stepped-nav-controls" data-glue-steppednav-label="$glue_steppednav_label$, Вернуться в родительское меню, открыто: $glue_steppednav_label$">
+                <div class="glue-header__stepped-nav-controls-arrow">
+                  <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px"><use href="#chevron-left"/></svg>
+                  <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px glue-header__stepped-nav-subnav-icon"><use href="#chevron-right"/></svg>
+                </div>
+                <div class="glue-header__stepped-nav-controls-title glue-header__link"></div>
+              </div>
+            </div>
+            <div class="glue-header__stepped-nav-menus"></div>
+          </div>
+          <div class="glue-header__container glue-header__container--linkbar">
+            <nav class="glue-header__link-bar" aria-label="Глобальная навигация">
+              <ul class="glue-header__deep-nav glue-header__list">
+                <li class="ion-global-mega-nav__l1-link-container glue-header__item glue-header__item--active">
+                  <a class="ion-global-mega-nav__l1-link glue-header__link" href="#" aria-current="page" data-global-mega-nav-flyout-menu-id="global-mega-nav-l1-0">MetricHit</a>
+                  <ul class="ion-global-mega-nav__l2-drawer-list glue-header__list glue-header__deep-nav glue-header__list--nested" data-tracking-module-headline="MetricHit">
+                    <li class="ion-global-mega-nav__l2-link-container glue-header__item"><a class="ion-global-mega-nav__l2-link glue-header__link active" href="#">Обзор</a></li>
+                    <li class="ion-global-mega-nav__l2-link-container glue-header__item"><a class="ion-global-mega-nav__l2-link glue-header__link" href="#">Цели</a></li>
+                    <li class="ion-global-mega-nav__l2-link-container glue-header__item"><a class="ion-global-mega-nav__l2-link glue-header__link" href="#">Как это работает</a></li>
+                    <li class="ion-global-mega-nav__l2-link-container glue-header__item"><a class="ion-global-mega-nav__l2-link glue-header__link" href="#">Стоимость</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="glue-header__container glue-header__container--cta">
+            <div class="glue-header__cta glue-header__cta--drawer ion-media-display-only--desktop ion-global-mega-nav__global-nav__cta-container">
+              <a class="ion-button glue-button glue-button--medium-emphasis" href="#">Связаться с нами</a>
+              <a class="ion-button glue-button glue-button--high-emphasis" href="#">Начать</a>
+            </div>
+            <div class="glue-header__cta glue-header__cta--drawer ion-media-display-only--non-desktop">
+              <a class="ion-button glue-button glue-button--high-emphasis" href="#">Начать</a>
+              <a class="ion-button glue-button glue-button--medium-emphasis" href="#">Связаться с нами</a>
+            </div>
+          </div>
+        </div>
+        <section class="dcs-global-mega-nav__sub-nav-root dcs-global-mega-nav__sub-nav-root--desktop ion-global-mega-nav__sub-nav-background" data-tracking-module="subnav">
+          <div class="ion-global-mega-nav__sub-nav">
+            <div class="ion-global-mega-nav__sub-nav--flex-row">
+              <button class="ion-global-mega-nav__sub-nav__close-btn hidden" aria-label="Закрыть меню">
+                <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px"><use xlink:href="#close"/></svg>
+              </button>
+              <div class="ion-global-mega-nav__sub-nav-expandable-controls hidden">
+                <button class="ion-global-mega-nav__sub-nav-product-container ion-global-mega-nav__sub-nav-product-dropdown" aria-expanded="false" aria-controls="desktop-sub-nav-flyout-container">
+                  <span class="ion-global-mega-nav__sub-nav-header-text">MetricHit</span>
+                  <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--24px expand-icon"><use xlink:href="#expand-more"/></svg>
+                </button>
+              </div>
+              <a class="ion-global-mega-nav__sub-nav-product-container glue-header__item" href="#"><span class="ion-global-mega-nav__sub-nav-header-text">MetricHit</span></a>
+              <div class="glue-header__container glue-header__container--linkbar">
+                <nav class="glue-header__link-bar" aria-label="Навигация в разделе &quot;MetricHit&quot;">
+                  <ul class="glue-header__list">
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Цели</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Как это работает</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Стоимость</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="ion-global-mega-nav__sub-nav__cta-container">
+                <a class="ion-button glue-button glue-button--medium-emphasis" href="#">Связаться с нами</a>
+                <a class="ion-button glue-button glue-button--high-emphasis" href="#">Начать</a>
+              </div>
+            </div>
+            <div class="ion-global-mega-nav__sub-nav--flex-row">
+              <div id="desktop-sub-nav-flyout-container" class="ion-global-mega-nav__sub-nav-flyout hidden">
+                <nav class="glue-header__link-bar" aria-label="Навигация в разделе &quot;MetricHit&quot;">
+                  <ul class="glue-header__list">
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link active" href="#">Обзор</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Цели</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Как это работает</a></li>
+                    <li class="ion-global-mega-nav__l3-link-container glue-header__item"><a class="ion-global-mega-nav__l3-link glue-header__link" href="#">Стоимость</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <div class="glue-header__drawer-backdrop" aria-label="Скрыть панель"></div>
     </header>
 
-    <!-- ===== HERO (точная копия Google) ===== -->
-    <section class="ion-overview-hero">
-        <div class="ion-overview-hero__static-background">
-            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%); width: 100%; height: 100%;"></div>
-        </div>
-
-        <div class="ion-overview-hero__animated-items">
-            <!-- Анимированные заголовки -->
+    <!-- ============================================================
+    MAIN CONTENT (точная копия Google, изменены тексты)
+    ============================================================ -->
+    <main id="page-content" tabindex="-1">
+      <div class="modules-lib__page">
+        
+        <!-- ===== HERO ===== -->
+        <section class="ion-overview-hero glue-spacer-6-bottom glue-spacer-6-top" data-tracking-module="overviewhero">
+          <div class="ion-overview-fallback-backgrounds">
+            <div class="ion-overview-hero__static-background mq-sm">
+              <picture data-crop="overviewHero-fallback-sm">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w375-h743-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w750-h1486-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="375" height="743">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w375-h743-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w750-h1486-fcrop64=1,00000000ffffffff 2x" width="375" height="743">
+                <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w375-h743-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w750-h1486-fcrop64=1,00000000ffffffff 2x" width="375" height="743" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/8e/61/8090957848e9a6e6119d7247e364/reduce-motion-bg-img-sm.png=n-w375-h743-fcrop64=1,00000000ffffffff">
+              </picture>
+            </div>
+            <div class="ion-overview-hero__static-background mq-md">
+              <picture data-crop="overviewHero-fallback-md">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w768-h654-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w1536-h1308-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="768" height="654">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w768-h654-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w1536-h1308-fcrop64=1,00000000ffffffff 2x" width="768" height="654">
+                <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w768-h654-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w1536-h1308-fcrop64=1,00000000ffffffff 2x" width="768" height="654" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/1b/47/f215ee76483cac83fba7f075c7d0/reduce-motion-bg-img-md.png=n-w768-h654-fcrop64=1,00000000ffffffff">
+              </picture>
+            </div>
+            <div class="ion-overview-hero__static-background mq-lg">
+              <picture data-crop="overviewHero-fallback-lg">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w1024-h689-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w2048-h1378-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="1024" height="689">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w1024-h689-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w2048-h1378-fcrop64=1,00000000ffffffff 2x" width="1024" height="689">
+                <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w1024-h689-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w2048-h1378-fcrop64=1,00000000ffffffff 2x" width="1024" height="689" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/48/2b/6a63751b481ba6a9bdfb4e0ad9e3/reduce-motion-bg-img-lg.png=n-w1024-h689-fcrop64=1,00000000ffffffff">
+              </picture>
+            </div>
+            <div class="ion-overview-hero__static-background mq-xl">
+              <picture data-crop="overviewHero-fallback-xl">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w1440-h689-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w2560-h1225-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="1440" height="689">
+                <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w1440-h689-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w2560-h1225-fcrop64=1,00000000ffffffff 2x" width="1440" height="689">
+                <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w1440-h689-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w2560-h1225-fcrop64=1,00000000ffffffff 2x" width="1440" height="689" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/50/c7/4206c47f4edd89d276071c49f97d/reduce-motion-bg-img-xl.png=n-w1440-h689-fcrop64=1,00000000ffffffff">
+              </picture>
+            </div>
+          </div>
+          
+          <div class="ion-overview-hero__animated-items ion-overview-hero__animated-items--center" data-overview-hero-animation="standard">
+            <h1 class="glue-visually-hidden aria-headline">Продажи, Продвижение, Привлечение с MetricHit</h1>
+            
             <div class="ion-overview-hero__headlines-container">
-                <div class="ion-overview-hero__animating-headlines-wrapper" aria-hidden="true">
-                    <h2 class="ion-overview-hero__animating-headline">Продажи</h2>
-                    <h2 class="ion-overview-hero__animating-headline">Продвижение</h2>
-                    <h2 class="ion-overview-hero__animating-headline">Привлечение</h2>
+              <div class="ion-overview-hero__animating-headlines-wrapper" aria-hidden="true">
+                <h2 class="ion-overview-hero__animating-headline glue-headline glue-font-weight-bold"><span style="color: #1A73E8;">Продажи</span></h2>
+                <h2 class="ion-overview-hero__animating-headline glue-headline glue-font-weight-bold"><span style="color: #C5221F;">Продвижение</span></h2>
+                <h2 class="ion-overview-hero__animating-headline glue-headline glue-font-weight-bold"><span style="color: #1E8E3E;">Привлечение</span></h2>
+              </div>
+              <div class="ion-overview-hero__static-text">
+                <div class="ion-overview-hero__static-headline-wrapper">
+                  <p class="glue-headline" aria-hidden="true"><span class="ion-overview-hero__headline glue-font-weight-bold"> с MetricHit </span></p>
+                  <span class="ion-overview-hero__headline ion-overview-hero__static-headline glue-headline glue-font-weight-bold">
+                    <p>Do more for your business with <span style="color: #1A73E8;">MetricHit</span></p>
+                  </span>
+                  <div class="ion-animation-control">
+                    <button class="play hidden" aria-label="Воспроизвести анимацию">
+                      <svg role="presentation" width="28" height="28" viewbox="0 0 28 28">
+                        <path fill="#5f6368" d="M.666 14C.666 6.64 6.639.667 13.999.667S27.333 6.64 27.333 14s-5.974 13.333-13.334 13.333C6.64 27.333.666 21.36.666 14Zm18.667 0-8-6v12l8-6Z"/>
+                      </svg>
+                    </button>
+                    <div class="tooltip"><p class="tooltip-content">Воспроизвести анимацию</p></div>
+                    <button class="pause" aria-label="Приостановить анимацию">
+                      <svg role="presentation" width="28" height="28" viewbox="0 0 28 28">
+                        <path fill="#5f6368" fill-rule="evenodd" clip-rule="evenodd" d="M14 .667C6.64.667.665 6.64.665 14s5.973 13.333 13.333 13.333S27.333 21.36 27.333 14 21.359.667 13.999.667Zm-1.334 18.666H9.999V8.667h2.667v10.666Zm2.667 0h2.666V8.667h-2.666v10.666Z"/>
+                      </svg>
+                    </button>
+                    <div class="tooltip"><p class="tooltip-content">Приостановить анимацию</p></div>
+                  </div>
                 </div>
-                <div class="ion-overview-hero__static-headline">
-                    с <span class="highlight">MetricHit</span>
-                </div>
+              </div>
             </div>
 
-            <!-- Анимированные карточки -->
             <div class="ion-overview-hero__animating-images-spacer">
-                <div class="hero-card-slider">
-                    <!-- Слайд 1: Продажи -->
-                    <div class="hero-card-slide active" data-slide="0">
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
-                            <div class="card-content">
-                                <div class="card-label">Торговые кампании</div>
-                                <div>
-                                    <div class="card-title">Распродажа обуви</div>
-                                    <div class="card-subtitle">Обзор подборок</div>
-                                    <div class="card-domain">example-business.com</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="YELLOW">
-                            <div class="card-content">
-                                <div class="card-label">Поиск</div>
-                                <div>
-                                    <div style="font-size:13px;color:#5f6368;">Реклама</div>
-                                    <div style="font-size:13px;color:#5f6368;">example-business.com</div>
-                                    <div class="card-title" style="color:#e37400;font-size:20px;">ООО "Современный дизайн"</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Слайд 2: Продвижение -->
-                    <div class="hero-card-slide" data-slide="1">
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="RED">
-                            <div class="card-content">
-                                <div class="card-label">Видео</div>
-                                <div>
-                                    <div class="card-title" style="color:#c5221f;">Банк "Гарантия"</div>
-                                    <div class="card-domain">example-business.com</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="PURPLE">
-                            <div class="card-content">
-                                <div class="card-label">Кампании</div>
-                                <div>
-                                    <div class="card-title" style="color:#7c3aed;">Максимальная эффективность</div>
-                                    <div class="card-subtitle">Увеличивайте конверсии</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Слайд 3: Привлечение -->
-                    <div class="hero-card-slide" data-slide="2">
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="GREEN">
-                            <div class="card-content">
-                                <div class="card-label">КМС</div>
-                                <div>
-                                    <div class="card-title" style="color:#1e8e3e;font-size:20px;">Современные диваны на заказ</div>
-                                    <div class="card-subtitle">Лучшая современная мебель</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
-                            <div class="card-content">
-                                <div class="card-label">Поиск</div>
-                                <div>
-                                    <div class="card-title" style="font-size:18px;">Привлечение клиентов</div>
-                                    <div class="card-subtitle">Рост трафика</div>
-                                    <div class="card-domain">example-business.com</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="ion-overview-hero__animating-images-wrapper" role="img" aria-label="Do more for your business with MetricHit">
+                <!-- Карточка 1: Синяя (Продажи) -->
+                <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE" aria-hidden="true">
+                  <div class="text-image-wrapper">
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="xl,lg">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/1f/03/a80539c845e9b0bdc7c11322b071/unnamed-1.png=n-w452-h548-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/1f/03/a80539c845e9b0bdc7c11322b071/unnamed-1.png=n-w904-h1096-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="452" height="548">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/1f/03/a80539c845e9b0bdc7c11322b071/unnamed-1.png=n-w452-h548-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/1f/03/a80539c845e9b0bdc7c11322b071/unnamed-1.png=n-w904-h1096-fcrop64=1,00000000ffffffff 2x" width="452" height="548" fetchpriority="high" src="https://www.gstatic.com/marketing-cms/assets/images/ads/1f/03/a80539c845e9b0bdc7c11322b071/unnamed-1.png=n-w452-h548-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="top:27px;left:78px;color:white;font-size:33px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:-0.7px;">Торговые кампании</div>
+                        <div class="text-image--text" style="top:377px;left:106px;font-size:41px;letter-spacing:0.28px;color:#1a73e8;font-weight:500;font-family:Google Sans Display,Arial,Helvetica,sans-serif;">Распродажа обуви</div>
+                        <div class="text-image--text" style="top:454px;left:105px;font-size:26.8px;color:#5f6368;">Обзор подборок</div>
+                        <div class="text-image--text" style="top:545px;left:106px;font-size:21.4px;color:#5f6368;">example-business.com</div>
+                      </div>
+                    </ion-text-image>
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="md,sm">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/53/de/ead5280840bd9e514fa1983dacec/unnamed-2.png=n-w453-h528-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/53/de/ead5280840bd9e514fa1983dacec/unnamed-2.png=n-w906-h1056-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="453" height="528">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/53/de/ead5280840bd9e514fa1983dacec/unnamed-2.png=n-w453-h528-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/53/de/ead5280840bd9e514fa1983dacec/unnamed-2.png=n-w906-h1056-fcrop64=1,00000000ffffffff 2x" width="453" height="528" fetchpriority="high" src="https://www.gstatic.com/marketing-cms/assets/images/ads/53/de/ead5280840bd9e514fa1983dacec/unnamed-2.png=n-w453-h528-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="top:361px;left:103px;font-size:43px;letter-spacing:0.28px;color:#1a73e8;font-family:Google Sans Display,Arial,Helvetica,sans-serif;font-weight:500;font-size:41px;">Распродажа обуви</div>
+                        <div class="text-image--text" style="top:439px;left:103px;font-size:27px;color:#5f6368;">Посмотреть коллекции</div>
+                        <div class="text-image--text" style="top:530px;left:105px;font-size:21px;color:#5f6368;">example-business.com</div>
+                        <div class="text-image--text" style="top:627px;left:102px;color:white;font-size:36px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:0.3px;font-weight:500;">Торговая</div>
+                      </div>
+                    </ion-text-image>
+                  </div>
                 </div>
 
-                <div class="hero-slider-dots">
-                    <button class="active" data-slide="0"></button>
-                    <button data-slide="1"></button>
-                    <button data-slide="2"></button>
+                <!-- Карточка 2: Красная (Продвижение) -->
+                <div class="ion-overview-hero-item__media-item" data-image-background-color="RED" aria-hidden="true">
+                  <div class="text-image-wrapper">
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="xl,lg">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/ae/6a/4d1e708c41adb4f6f8914a43ad2e/unnamed-3.png=n-w580-h483-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/ae/6a/4d1e708c41adb4f6f8914a43ad2e/unnamed-3.png=n-w1161-h966-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="580" height="483">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/ae/6a/4d1e708c41adb4f6f8914a43ad2e/unnamed-3.png=n-w580-h483-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/ae/6a/4d1e708c41adb4f6f8914a43ad2e/unnamed-3.png=n-w1161-h966-fcrop64=1,00000000ffffffff 2x" width="580" height="483" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/ae/6a/4d1e708c41adb4f6f8914a43ad2e/unnamed-3.png=n-w580-h483-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="left:417px;top:13px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;font-size:34px;letter-spacing:2.5px;color:#fff;">Видео</div>
+                        <div class="text-image--text" style="top:293px;left:147px;font-size:26px;letter-spacing:0.3px;color:#c5221f;font-family:Google Sans Display,Arial,Helvetica,sans-serif;font-weight:500;">Банк "Гарантия"</div>
+                        <div class="text-image--text" style="top:328px;left:160px;color:#5f6368;">example-business.com</div>
+                      </div>
+                    </ion-text-image>
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="md,sm">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/23/7a/9450be354b33825e0c1194830305/unnamed-4.png=n-w580-h463-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/23/7a/9450be354b33825e0c1194830305/unnamed-4.png=n-w1160-h926-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="580" height="463">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/23/7a/9450be354b33825e0c1194830305/unnamed-4.png=n-w580-h463-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/23/7a/9450be354b33825e0c1194830305/unnamed-4.png=n-w1160-h926-fcrop64=1,00000000ffffffff 2x" width="580" height="463" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/23/7a/9450be354b33825e0c1194830305/unnamed-4.png=n-w580-h463-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="left:436px;top:423px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;font-size:31px;letter-spacing:1px;color:#fff;">Видео</div>
+                        <div class="text-image--text" style="top:283px;left:148px;font-size:26px;letter-spacing:0.3px;color:#c5221f;font-family:Google Sans Display,Arial,Helvetica,sans-serif;font-weight:500;">Банк "Гарантия"</div>
+                        <div class="text-image--text" style="top:318px;left:160px;color:#5f6368;">example-business.com</div>
+                      </div>
+                    </ion-text-image>
+                  </div>
                 </div>
+
+                <!-- Карточка 3: Жёлтая (Привлечение) -->
+                <div class="ion-overview-hero-item__media-item" data-image-background-color="YELLOW" aria-hidden="true">
+                  <div class="text-image-wrapper">
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="xl,lg">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/2a/18/5318f4284f9b84b7c6266b425f63/unnamed-5.png=n-w580-h373-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/2a/18/5318f4284f9b84b7c6266b425f63/unnamed-5.png=n-w1160-h746-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="580" height="373">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/2a/18/5318f4284f9b84b7c6266b425f63/unnamed-5.png=n-w580-h373-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/2a/18/5318f4284f9b84b7c6266b425f63/unnamed-5.png=n-w1160-h746-fcrop64=1,00000000ffffffff 2x" width="580" height="373" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/2a/18/5318f4284f9b84b7c6266b425f63/unnamed-5.png=n-w580-h373-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="top:13px;left:110px;font-size:35px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:0.7px;color:white;font-weight:500;">Поиск</div>
+                        <div class="text-image--text" style="top:131px;left:68px;font-size:19px;font-weight:700;font-family:'Google Sans Text',Arial,Helvetica,sans-serif;color:#5f6368;">Реклама</div>
+                        <div class="text-image--text" style="top:128px;left:172px;font-size:24px;color:#5f6368;">example-business.com</div>
+                        <div class="text-image--text" style="top:163px;left:68px;font-size:28px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:0.4px;color:#e37400;font-weight:500;max-width:282px;line-height:30px;">ООО "Современный дизайн"</div>
+                      </div>
+                    </ion-text-image>
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="md,sm">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/93/a0/eb85c8d04d3290c041a40f5ef51a/unnamed-6.png=n-w580-h373-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/93/a0/eb85c8d04d3290c041a40f5ef51a/unnamed-6.png=n-w1160-h746-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="580" height="373">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/93/a0/eb85c8d04d3290c041a40f5ef51a/unnamed-6.png=n-w580-h373-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/93/a0/eb85c8d04d3290c041a40f5ef51a/unnamed-6.png=n-w1160-h746-fcrop64=1,00000000ffffffff 2x" width="580" height="373" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/93/a0/eb85c8d04d3290c041a40f5ef51a/unnamed-6.png=n-w580-h373-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="top:13px;left:100px;font-size:35px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:0.7px;color:white;font-weight:500;">Поиск</div>
+                        <div class="text-image--text" style="top:131px;left:57px;font-size:22px;font-weight:700;font-family:'Google Sans Text',Arial,Helvetica,sans-serif;color:#5f6368;">Реклама</div>
+                        <div class="text-image--text" style="top:130px;left:170px;font-size:24px;color:#5f6368;">example-business.com</div>
+                        <div class="text-image--text" style="top:163px;left:68px;font-size:28px;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:0.4px;color:#e37400;font-weight:500;max-width:282px;line-height:30px;">ООО "Современный дизайн"</div>
+                      </div>
+                    </ion-text-image>
+                  </div>
+                </div>
+
+                <!-- Карточка 4: Зелёная -->
+                <div class="ion-overview-hero-item__media-item" data-image-background-color="GREEN" aria-hidden="true">
+                  <div class="text-image-wrapper">
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="xl,lg">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/22/ea/7bd75a4348759ede61656686c5c3/unnamed-7.png=n-w568-h536-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/22/ea/7bd75a4348759ede61656686c5c3/unnamed-7.png=n-w1136-h1072-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="568" height="536">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/22/ea/7bd75a4348759ede61656686c5c3/unnamed-7.png=n-w568-h536-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/22/ea/7bd75a4348759ede61656686c5c3/unnamed-7.png=n-w1136-h1072-fcrop64=1,00000000ffffffff 2x" width="568" height="536" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/22/ea/7bd75a4348759ede61656686c5c3/unnamed-7.png=n-w568-h536-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="top:11px;left:348px;font-size:21px;color:white;font-family:Google Sans Display,Arial,Helvetica,sans-serif;max-width:150px;">В контекстно-медийной сети</div>
+                        <div class="text-image--text" style="top:336px;left:90px;font-size:26px;color:#1e8e3e;font-family:Google Sans Display,Arial,Helvetica,sans-serif;letter-spacing:-0.1px;">Современные диваны на заказ</div>
+                        <div class="text-image--text" style="top:420px;left:91px;font-size:24px;color:#5f6368;">Лучшая современная мебель</div>
+                      </div>
+                    </ion-text-image>
+                    <ion-text-image role="img" class="image-wrapper image-wrapper--responsive" breakpoint="md,sm">
+                      <picture data-crop="overviewHero">
+                        <source srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/b3/fb/43bc40334aa59431a2278d6e9d86/unnamed-8.png=n-w580-h497-fcrop64=1,00000000ffffffff-rw 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/b3/fb/43bc40334aa59431a2278d6e9d86/unnamed-8.png=n-w1160-h994-fcrop64=1,00000000ffffffff-rw 2x" type="image/webp" width="580" height="497">
+                        <img class="Image" alt="" srcset="https://www.gstatic.com/marketing-cms/assets/images/ads/b3/fb/43bc40334aa59431a2278d6e9d86/unnamed-8.png=n-w580-h497-fcrop64=1,00000000ffffffff 1x,https://www.gstatic.com/marketing-cms/assets/images/ads/b3/fb/43bc40334aa59431a2278d6e9d86/unnamed-8.png=n-w1160-h994-fcrop64=1,00000000ffffffff 2x" width="580" height="497" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/ads/b3/fb/43bc40334aa59431a2278d6e9d86/unnamed-8.png=n-w580-h497-fcrop64=1,00000000ffffffff">
+                      </picture>
+                      <div class="text-image--text-wrapper">
+                        <div class="text-image--text" style="top:460px;left:427px;font-size:25px;color:white;font-family:Google Sans Display,Arial,Helvetica,sans-serif;">КМС</div>
+                        <div class="text-image--text" style="top:310px;left:89px;font-size:26px;letter-spacing:-0.8px;color:#1e8e3e;font-family:Google Sans Display,Arial,Helvetica,sans-serif;">Современные диваны на заказ</div>
+                        <div class="text-image--text" style="top:365px;left:90px;font-size:22px;color:#5f6368;letter-spacing:-0.25px;font-family:'Google Sans Text',Arial,Helvetica,sans-serif;">Лучшая современная мебель</div>
+                      </div>
+                    </ion-text-image>
+                  </div>
+                </div>
+              </div>
+              <div class="ion-animation-control">
+                <button class="play hidden" aria-label="Воспроизвести анимацию">
+                  <svg role="presentation" width="28" height="28" viewbox="0 0 28 28">
+                    <path fill="#5f6368" d="M.666 14C.666 6.64 6.639.667 13.999.667S27.333 6.64 27.333 14s-5.974 13.333-13.334 13.333C6.64 27.333.666 21.36.666 14Zm18.667 0-8-6v12l8-6Z"/>
+                  </svg>
+                </button>
+                <div class="tooltip"><p class="tooltip-content">Воспроизвести анимацию</p></div>
+                <button class="pause" aria-label="Приостановить анимацию">
+                  <svg role="presentation" width="28" height="28" viewbox="0 0 28 28">
+                    <path fill="#5f6368" fill-rule="evenodd" clip-rule="evenodd" d="M14 .667C6.64.667.665 6.64.665 14s5.973 13.333 13.333 13.333S27.333 21.36 27.333 14 21.359.667 13.999.667Zm-1.334 18.666H9.999V8.667h2.667v10.666Zm2.667 0h2.666V8.667h-2.666v10.666Z"/>
+                  </svg>
+                </button>
+                <div class="tooltip"><p class="tooltip-content">Приостановить анимацию</p></div>
+              </div>
             </div>
 
-            <!-- Описание -->
-            <div class="ion-overview-hero__description">
+            <div class="glue-page ion-overview-hero__description-container">
+              <div class="ion-overview-hero__description glue-body--large glue-text-center glue-spacer-4-bottom">
                 Сделайте так, чтобы потенциальным клиентам было легко найти вашу компанию. В этом вам поможет MetricHit.
+              </div>
+              <div class="ion-overview-hero__cta-container">
+                <div class="ion-button__container glue-spacer-4-top ion-button__container--centered">
+                  <a class="ion-button glue-button glue-button--high-emphasis" href="#">Начать</a>
+                </div>
+              </div>
             </div>
+          </div>
+        </section>
 
-            <!-- CTA -->
-            <div class="ion-overview-hero__cta-container">
-                <a href="#" class="ion-button glue-button glue-button--high-emphasis glue-button--large">Начать</a>
-                <a href="#" class="ion-button glue-button glue-button--medium-emphasis glue-button--large">Выбрать тариф</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== БЛОК "MetricHit предлагает..." (как в оригинале) ===== -->
-    <section style="padding: 48px 0 64px; background: #ffffff;">
-        <div style="max-width: 1440px; margin: 0 auto; padding: 0 24px; text-align:center;">
-            <h2 style="font-size: 36px; font-weight: 700; color: #202124; letter-spacing: -0.3px; line-height: 1.2; max-width: 800px; margin: 0 auto;">
+        <!-- ===== БЛОК "MetricHit предлагает..." ===== -->
+        <section style="padding: 48px 0 64px; background: #ffffff;">
+          <div class="glue-page">
+            <div style="text-align:center; max-width: 800px; margin: 0 auto;">
+              <h2 style="font-size: 36px; font-weight: 700; color: #202124; letter-spacing: -0.3px; line-height: 1.2;">
                 MetricHit предлагает самый эффективный и безопасный способ продвижения
-            </h2>
-        </div>
-    </section>
+              </h2>
+            </div>
+          </div>
+        </section>
 
-    <!-- ===== SCRIPTS ===== -->
+      </div>
+    </main>
+
+    <!-- ===== SCRIPTS (оригинальные) ===== -->
     <script>
-        // ===== СЛАЙДЕР =====
-        (function() {
-            const slides = document.querySelectorAll('.hero-card-slide');
-            const dots = document.querySelectorAll('.hero-slider-dots button');
-            let currentSlide = 0;
-            let intervalId = null;
-
-            function goToSlide(index) {
-                slides.forEach(s => s.classList.remove('active'));
-                dots.forEach(d => d.classList.remove('active'));
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentSlide = index;
-            }
-
-            function nextSlide() {
-                goToSlide((currentSlide + 1) % slides.length);
-            }
-
-            function startAutoplay() {
-                if (intervalId) clearInterval(intervalId);
-                intervalId = setInterval(nextSlide, 4000);
-            }
-
-            function stopAutoplay() {
-                if (intervalId) { clearInterval(intervalId); intervalId = null; }
-            }
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    stopAutoplay();
-                    goToSlide(index);
-                    startAutoplay();
-                });
-            });
-
-            const slider = document.querySelector('.hero-card-slider');
-            if (slider) {
-                slider.addEventListener('mouseenter', stopAutoplay);
-                slider.addEventListener('mouseleave', startAutoplay);
-            }
-
-            startAutoplay();
-        })();
+      // Анимация управления
+      document.querySelectorAll('.ion-animation-control .play, .ion-animation-control .pause').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var wrapper = this.closest('.ion-animation-control');
+          var playBtn = wrapper.querySelector('.play');
+          var pauseBtn = wrapper.querySelector('.pause');
+          if (playBtn && pauseBtn) {
+            playBtn.classList.toggle('hidden');
+            pauseBtn.classList.toggle('hidden');
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
