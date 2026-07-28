@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Управление поведенческими факторами — Повысьте ранжирование сайта</title>
-    
-    <!-- Google Fonts -->
+    <title>MetricHit — управление поведенческими факторами</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Display:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Display:wght@400;500;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    
     <style>
         /* ============================================================
-                   RESET & BASE (как у Google)
+                   RESET & BASE
                    ============================================================ */
         * {
             margin: 0;
@@ -22,7 +19,7 @@
         }
 
         body {
-            font-family: 'Google Sans', 'Google Sans Text', Arial, Helvetica, sans-serif;
+            font-family: 'Google Sans', 'Google Sans Display', Arial, Helvetica, sans-serif;
             background: #ffffff;
             color: #202124;
             line-height: 1.6;
@@ -39,12 +36,6 @@
             max-width: 1440px;
             margin: 0 auto;
             padding: 0 24px;
-        }
-
-        .glue-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
         }
 
         /* ============================================================
@@ -89,15 +80,6 @@
             border-color: #bdc1c6;
         }
 
-        .glue-button--tonal {
-            background: #e8f0fe;
-            color: #1a73e8;
-        }
-
-        .glue-button--tonal:hover {
-            background: #d2e3fc;
-        }
-
         .glue-button--large {
             font-size: 18px;
             min-height: 56px;
@@ -105,26 +87,8 @@
             border-radius: 28px;
         }
 
-        .glue-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #1a73e8;
-            font-weight: 500;
-            font-size: 16px;
-            transition: opacity 0.2s;
-        }
-
-        .glue-cta:hover {
-            opacity: 0.8;
-        }
-
-        .glue-cta .material-symbols-outlined {
-            font-size: 20px;
-        }
-
         /* ============================================================
-                   HEADER (точная копия Google)
+                   HEADER (как у Google)
                    ============================================================ */
         .glue-header {
             position: sticky;
@@ -151,17 +115,19 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
         }
 
         .glue-header__logo svg {
-            height: 40px;
+            height: 36px;
             width: auto;
+            display: block;
         }
 
         .glue-header__nav {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
             flex-wrap: wrap;
         }
 
@@ -180,7 +146,6 @@
 
         .glue-header__nav a.active {
             color: #1a73e8;
-            background: #e8f0fe;
         }
 
         .glue-header__cta {
@@ -200,7 +165,7 @@
                    HERO (как у Google)
                    ============================================================ */
         .ion-overview-hero {
-            padding: 64px 0 80px;
+            padding: 48px 0 80px;
             background: #f8f9fa;
             position: relative;
             overflow: hidden;
@@ -212,12 +177,6 @@
             z-index: 0;
         }
 
-        .ion-overview-hero__static-background img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .ion-overview-hero__animated-items {
             position: relative;
             z-index: 1;
@@ -226,17 +185,19 @@
             margin: 0 auto;
         }
 
+        /* ---- Анимированные заголовки ---- */
         .ion-overview-hero__headlines-container {
             position: relative;
-            min-height: 120px;
+            min-height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .ion-overview-hero__animating-headlines-wrapper {
             position: relative;
-            height: 80px;
+            height: 72px;
             overflow: hidden;
             display: inline-block;
             vertical-align: bottom;
@@ -246,11 +207,11 @@
             position: absolute;
             left: 0;
             right: 0;
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -1px;
-            animation: slideUp 12s infinite;
+            animation: slideUp 9s infinite;
             opacity: 0;
             transform: translateY(100%);
             white-space: nowrap;
@@ -258,15 +219,15 @@
 
         .ion-overview-hero__animating-headline:nth-child(1) {
             animation-delay: 0s;
+            color: #1a73e8;
         }
         .ion-overview-hero__animating-headline:nth-child(2) {
             animation-delay: 3s;
+            color: #c5221f;
         }
         .ion-overview-hero__animating-headline:nth-child(3) {
             animation-delay: 6s;
-        }
-        .ion-overview-hero__animating-headline:nth-child(4) {
-            animation-delay: 9s;
+            color: #1e8e3e;
         }
 
         @keyframes slideUp {
@@ -274,15 +235,15 @@
                 opacity: 0;
                 transform: translateY(100%);
             }
-            8% {
+            10% {
                 opacity: 1;
                 transform: translateY(0);
             }
-            25% {
+            30% {
                 opacity: 1;
                 transform: translateY(0);
             }
-            33% {
+            40% {
                 opacity: 0;
                 transform: translateY(-100%);
             }
@@ -293,24 +254,28 @@
         }
 
         .ion-overview-hero__static-headline {
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -1px;
             color: #202124;
             display: inline-block;
             vertical-align: bottom;
-            padding-left: 12px;
+            padding-left: 8px;
         }
 
-        .ion-overview-hero__static-headline p {
-            display: inline;
+        .ion-overview-hero__static-headline .highlight {
+            color: #00F0FF;
+            background: #0b0e14;
+            padding: 0 12px;
+            border-radius: 8px;
         }
 
+        /* ---- Анимированные карточки ---- */
         .ion-overview-hero__animating-images-spacer {
             margin-top: 40px;
             position: relative;
-            min-height: 400px;
+            min-height: 380px;
         }
 
         .ion-overview-hero__animating-images-wrapper {
@@ -322,9 +287,38 @@
             flex-wrap: wrap;
         }
 
-        .ion-overview-hero-item__media-item {
-            width: 280px;
+        /* Слайдер карточек */
+        .hero-card-slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
             height: 340px;
+            margin: 0 auto;
+        }
+
+        .hero-card-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: scale(0.92);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            pointer-events: none;
+        }
+
+        .hero-card-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .hero-card-slide .ion-overview-hero-item__media-item {
+            width: 220px;
+            height: 280px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
@@ -332,30 +326,11 @@
             background: #ffffff;
             position: relative;
             flex-shrink: 0;
-            animation: float 6s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
 
-        .ion-overview-hero-item__media-item:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .ion-overview-hero-item__media-item:nth-child(2) {
-            animation-delay: 1.5s;
-        }
-        .ion-overview-hero-item__media-item:nth-child(3) {
-            animation-delay: 3s;
-        }
-        .ion-overview-hero-item__media-item:nth-child(4) {
-            animation-delay: 4.5s;
-        }
-
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-12px);
-            }
+        .hero-card-slide .ion-overview-hero-item__media-item:hover {
+            transform: translateY(-4px);
         }
 
         .ion-overview-hero-item__media-item[data-image-background-color="BLUE"] {
@@ -369,6 +344,9 @@
         }
         .ion-overview-hero-item__media-item[data-image-background-color="GREEN"] {
             background: linear-gradient(145deg, #e6f4ea, #cce8d6);
+        }
+        .ion-overview-hero-item__media-item[data-image-background-color="PURPLE"] {
+            background: linear-gradient(145deg, #f3e8fd, #e6d0fa);
         }
 
         .ion-overview-hero-item__media-item .card-content {
@@ -388,7 +366,7 @@
         }
 
         .ion-overview-hero-item__media-item .card-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #1a73e8;
             line-height: 1.2;
@@ -400,7 +378,7 @@
         }
 
         .ion-overview-hero-item__media-item .card-price {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             color: #202124;
         }
@@ -410,6 +388,39 @@
             color: #5f6368;
         }
 
+        /* Индикаторы слайдера */
+        .hero-slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .hero-slider-dots button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: #dadce0;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            padding: 0;
+        }
+
+        .hero-slider-dots button.active {
+            background: #1a73e8;
+            transform: scale(1.2);
+        }
+
+        .hero-slider-dots button:hover {
+            background: #bdc1c6;
+        }
+
+        .hero-slider-dots button.active:hover {
+            background: #1a73e8;
+        }
+
+        /* ---- Описание ---- */
         .ion-overview-hero__description {
             max-width: 720px;
             margin: 40px auto 0;
@@ -428,696 +439,96 @@
         }
 
         /* ============================================================
-                   TRUST (как у Google)
-                   ============================================================ */
-        .ion-trust {
-            padding: 40px 0;
-            border-bottom: 1px solid #e8eaed;
-        }
-
-        .ion-trust p {
-            text-align: center;
-            color: #5f6368;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .ion-trust__logos {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-
-        .ion-trust__logos span {
-            color: #9aa0a6;
-            font-weight: 500;
-            font-size: 18px;
-            letter-spacing: 1px;
-        }
-
-        /* ============================================================
-                   FEATURE TABS (как у Google)
-                   ============================================================ */
-        .ion-featuretabs {
-            padding: 72px 0 80px;
-        }
-
-        .ion-featuretabs__headline {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .ion-featuretabs__headline h2 {
-            font-size: 36px;
-            font-weight: 700;
-            color: #202124;
-            letter-spacing: -0.3px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .ion-featuretabs__tabs {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .ion-featuretabs__tabs__tablist {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .ion-featuretabs__tabs__tabitem {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px 20px;
-            border-radius: 16px;
-            border: 1px solid transparent;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Google Sans', Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            color: #5f6368;
-            text-align: left;
-            width: 100%;
-        }
-
-        .ion-featuretabs__tabs__tabitem:hover {
-            background: #f1f3f4;
-        }
-
-        .ion-featuretabs__tabs__tabitem.glue-tab--active {
-            background: #e8f0fe;
-            color: #1a73e8;
-            border-color: #1a73e8;
-        }
-
-        .ion-featuretabs__tabs__tabitem .material-symbols-outlined {
-            font-size: 24px;
-        }
-
-        .ion-featuretabs__tabs__tabitem__text {
-            flex: 1;
-        }
-
-        .ion-featuretabs__tabs__tabitem__border {
-            display: none;
-        }
-
-        .glue-tabs__panelgroup {
-            position: relative;
-        }
-
-        .glue-tabs__panel {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .glue-tabs__panel.glue-tabs__panel--active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .ion-featuretabs-item__inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .ion-featuretabs-item__inner__image-container {
-            border-radius: 20px;
-            overflow: hidden;
-            background: #f8f9fa;
-            border: 1px solid #e8eaed;
-            position: relative;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ion-featuretabs-item__inner__image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .ion-featuretabs-item__inner__copy-container h3 {
-            font-size: 28px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 12px;
-        }
-
-        .ion-featuretabs-item__inner__copy-container p {
-            font-size: 16px;
-            color: #5f6368;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .ion-arrow-button__inline {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 500;
-            color: #1a73e8;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .ion-arrow-button__inline:hover {
-            opacity: 0.8;
-        }
-
-        .ion-arrow-button__circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #e8f0fe;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-
-        .ion-arrow-button__inline:hover .ion-arrow-button__circle {
-            background: #d2e3fc;
-        }
-
-        .ion-arrow-button__circle .material-symbols-outlined {
-            font-size: 20px;
-            color: #1a73e8;
-        }
-
-        /* ============================================================
-                   CARDS GRID (как у Google)
-                   ============================================================ */
-        .plexi-centered-card-list {
-            padding: 72px 0 80px;
-            background: #ffffff;
-        }
-
-        .plexi-centered-card-list__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            list-style: none;
-        }
-
-        .plexi-content-block {
-            background: #f8f9fa;
-            border-radius: 16px;
-            padding: 32px 24px;
-            border: 1px solid #e8eaed;
-            text-align: center;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            height: 100%;
-        }
-
-        .plexi-content-block:hover {
-            border-color: #1a73e8;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-        }
-
-        .plexi-content-block__asset--logo img {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 16px;
-        }
-
-        .plexi-content-block__content--title {
-            font-size: 18px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 8px;
-        }
-
-        .plexi-content-block__content--description {
-            font-size: 15px;
-            color: #5f6368;
-            line-height: 1.6;
-        }
-
-        .plexi-section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .plexi-section-header__headline {
-            font-size: 36px;
-            font-weight: 700;
-            color: #202124;
-            letter-spacing: -0.3px;
-        }
-
-        /* ============================================================
-                   LIST MODULE (как у Google)
-                   ============================================================ */
-        .ion-list-stacked5up {
-            padding: 72px 0 80px;
-            background: #ffffff;
-        }
-
-        .ion-list-stacked5up .glue-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-            margin-bottom: 48px;
-        }
-
-        .ion-list-stacked5up .glue-grid:last-child {
-            margin-bottom: 0;
-        }
-
-        .ion-list-stacked5up .glue-grid.reverse {
-            direction: rtl;
-        }
-
-        .ion-list-stacked5up .glue-grid.reverse>* {
-            direction: ltr;
-        }
-
-        .ion-list-stacked5up__image-container {
-            border-radius: 20px;
-            overflow: hidden;
-            background: #f8f9fa;
-            border: 1px solid #e8eaed;
-            position: relative;
-            min-height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ion-list-stacked5up__image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .ion-list-stacked5up__copy-container h3 {
-            font-size: 24px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 12px;
-        }
-
-        .ion-list-stacked5up__copy-container p {
-            font-size: 16px;
-            color: #5f6368;
-            line-height: 1.7;
-        }
-
-        /* ============================================================
-                   ACCORDION (как у Google)
-                   ============================================================ */
-        .ion-accordion-module {
-            padding: 72px 0 80px;
-            background: #f8f9fa;
-        }
-
-        .ion-accordion-module .plexi-accordion-items {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .plexi-accordion-item {
-            background: #ffffff;
-            border-radius: 16px;
-            margin-bottom: 8px;
-            border: 1px solid #e8eaed;
-            overflow: hidden;
-            transition: border-color 0.2s;
-        }
-
-        .plexi-accordion-item:hover {
-            border-color: #bdc1c6;
-        }
-
-        .plexi-accordion-item__toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px;
-            cursor: pointer;
-            font-family: 'Google Sans', Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            color: #202124;
-            background: transparent;
-            border: none;
-            width: 100%;
-            text-align: left;
-            transition: background 0.2s;
-        }
-
-        .plexi-accordion-item__toggle:hover {
-            background: #f8f9fa;
-        }
-
-        .plexi-accordion-item__expand-collapse-icon-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .plexi-accordion-item__expand-collapse-icon-wrapper .material-symbols-outlined {
-            font-size: 24px;
-            color: #5f6368;
-            transition: transform 0.3s;
-        }
-
-        .plexi-accordion-item--expanded .plexi-accordion-item__expand-collapse-icon-wrapper .material-symbols-outlined {
-            transform: rotate(45deg);
-        }
-
-        .plexi-accordion-item__content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            padding: 0 24px;
-        }
-
-        .plexi-accordion-item--expanded .plexi-accordion-item__content {
-            max-height: 800px;
-            padding: 0 24px 24px;
-        }
-
-        .plexi-accordion-item__inner {
-            font-size: 15px;
-            color: #5f6368;
-            line-height: 1.7;
-        }
-
-        .plexi-accordion-item__inner ul {
-            padding-left: 24px;
-            margin: 12px 0;
-        }
-
-        .plexi-accordion-item__inner li {
-            margin-bottom: 4px;
-        }
-
-        /* ============================================================
-                   FOOTER (как у Google)
-                   ============================================================ */
-        .glue-footer {
-            background: #ffffff;
-            border-top: 1px solid #e8eaed;
-            padding: 40px 0 32px;
-        }
-
-        .glue-footer__upper {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .glue-social__group {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .glue-social__title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #5f6368;
-        }
-
-        .glue-social__list {
-            display: flex;
-            gap: 16px;
-            list-style: none;
-        }
-
-        .glue-social__link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #f1f3f4;
-            transition: background 0.2s;
-        }
-
-        .glue-social__link:hover {
-            background: #e8eaed;
-        }
-
-        .glue-social__link svg {
-            width: 20px;
-            height: 20px;
-            fill: #5f6368;
-        }
-
-        .glue-footer__site-links {
-            padding: 32px 0;
-            border-top: 1px solid #e8eaed;
-            border-bottom: 1px solid #e8eaed;
-            margin-bottom: 32px;
-        }
-
-        .glue-footer__site-links-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .glue-footer__site-links-header {
-            font-size: 14px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 16px;
-        }
-
-        .glue-footer__site-links-list {
-            list-style: none;
-        }
-
-        .glue-footer__site-links-list li {
-            margin-bottom: 8px;
-        }
-
-        .glue-footer__site-links-list a {
-            color: #5f6368;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .glue-footer__site-links-list a:hover {
-            color: #1a73e8;
-        }
-
-        .glue-footer__global {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .glue-footer__logo svg {
-            height: 24px;
-            width: auto;
-        }
-
-        .glue-footer__global-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            list-style: none;
-        }
-
-        .glue-footer__global-links a {
-            color: #5f6368;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .glue-footer__global-links a:hover {
-            color: #1a73e8;
-        }
-
-        /* ============================================================
-                   STICKY FOOTER (как у Google)
-                   ============================================================ */
-        .ion-sticky-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 99;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-top: 1px solid #e8eaed;
-            padding: 12px 24px;
-            display: none;
-        }
-
-        .ion-sticky-footer__cta-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .ion-sticky-footer .glue-button {
-            min-height: 48px;
-            padding: 0 32px;
-            flex: 1;
-            max-width: 400px;
-        }
-
-        /* ============================================================
                    RESPONSIVE
                    ============================================================ */
         @media (max-width: 1200px) {
             .ion-overview-hero__animating-headline {
-                font-size: 42px;
+                font-size: 40px;
             }
             .ion-overview-hero__static-headline {
-                font-size: 42px;
+                font-size: 40px;
             }
-            .ion-overview-hero-item__media-item {
-                width: 220px;
-                height: 280px;
+            .hero-card-slide .ion-overview-hero-item__media-item {
+                width: 190px;
+                height: 250px;
+            }
+            .hero-card-slider {
+                height: 300px;
             }
         }
 
         @media (max-width: 992px) {
-            .ion-featuretabs__tabs {
-                grid-template-columns: 1fr;
-            }
-            .ion-featuretabs__tabs__tablist {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .ion-featuretabs__tabs__tabitem {
-                flex: 1;
-                min-width: 140px;
-                justify-content: center;
-            }
-            .ion-featuretabs-item__inner {
-                grid-template-columns: 1fr;
-            }
-            .ion-list-stacked5up .glue-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            .ion-list-stacked5up .glue-grid.reverse {
-                direction: ltr;
-            }
-            .plexi-centered-card-list__grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .glue-footer__site-links-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .ion-overview-hero__animating-headline {
-                font-size: 32px;
-            }
-            .ion-overview-hero__static-headline {
-                font-size: 32px;
-            }
-            .ion-overview-hero-item__media-item {
-                width: 180px;
-                height: 240px;
-            }
-            .ion-overview-hero__animating-images-wrapper {
-                gap: 16px;
-            }
-        }
-
-        @media (max-width: 768px) {
             .glue-header__nav {
                 display: none;
             }
             .glue-header__tier {
                 justify-content: space-between;
             }
-            .ion-overview-hero-item__media-item {
-                width: 150px;
-                height: 200px;
-            }
             .ion-overview-hero__animating-headline {
-                font-size: 28px;
+                font-size: 32px;
                 white-space: normal;
             }
             .ion-overview-hero__static-headline {
-                font-size: 28px;
+                font-size: 32px;
             }
             .ion-overview-hero__headlines-container {
                 min-height: 80px;
             }
             .ion-overview-hero__animating-headlines-wrapper {
-                height: 60px;
+                height: 56px;
             }
-            .plexi-centered-card-list__grid {
-                grid-template-columns: 1fr;
+            .hero-card-slide .ion-overview-hero-item__media-item {
+                width: 160px;
+                height: 220px;
             }
-            .glue-footer__site-links-grid {
-                grid-template-columns: 1fr;
+            .hero-card-slider {
+                height: 260px;
             }
-            .glue-footer__global {
-                flex-direction: column;
-                text-align: center;
-            }
-            .glue-footer__global-links {
-                justify-content: center;
-            }
-            .ion-sticky-footer {
-                display: block;
-            }
-            .ion-overview-hero {
-                padding-bottom: 100px;
-            }
-            .glue-header__cta .glue-button--medium-emphasis {
-                display: none;
+            .hero-card-slide {
+                gap: 16px;
             }
         }
 
-        @media (max-width: 600px) {
-            .ion-overview-hero-item__media-item {
-                width: 130px;
-                height: 180px;
+        @media (max-width: 768px) {
+            .glue-header__cta .glue-button--medium-emphasis {
+                display: none;
             }
-            .ion-overview-hero-item__media-item .card-title {
+            .glue-header__logo svg {
+                height: 28px;
+            }
+            .ion-overview-hero {
+                padding: 32px 0 60px;
+            }
+            .ion-overview-hero__animating-headline {
+                font-size: 26px;
+            }
+            .ion-overview-hero__static-headline {
+                font-size: 26px;
+            }
+            .ion-overview-hero__headlines-container {
+                min-height: 70px;
+            }
+            .ion-overview-hero__animating-headlines-wrapper {
+                height: 48px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item {
+                width: 130px;
+                height: 190px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-title {
                 font-size: 16px;
             }
-            .ion-overview-hero-item__media-item .card-price {
+            .hero-card-slide .ion-overview-hero-item__media-item .card-price {
                 font-size: 20px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-label {
+                font-size: 11px;
+            }
+            .hero-card-slider {
+                height: 220px;
+            }
+            .hero-card-slide {
+                gap: 12px;
             }
             .ion-overview-hero__description {
                 font-size: 16px;
@@ -1127,6 +538,52 @@
                 font-size: 16px;
                 min-height: 48px;
                 padding: 0 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glue-header__cta .glue-button {
+                font-size: 13px;
+                min-height: 36px;
+                padding: 0 16px;
+            }
+            .glue-header__logo svg {
+                height: 24px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item {
+                width: 100px;
+                height: 150px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-content {
+                padding: 12px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-title {
+                font-size: 13px;
+            }
+            .hero-card-slide .ion-overview-hero-item__media-item .card-domain {
+                font-size: 10px;
+            }
+            .hero-card-slider {
+                height: 180px;
+            }
+            .hero-card-slide {
+                gap: 8px;
+            }
+            .ion-overview-hero__animating-headline {
+                font-size: 20px;
+            }
+            .ion-overview-hero__static-headline {
+                font-size: 20px;
+            }
+            .ion-overview-hero__headlines-container {
+                min-height: 56px;
+            }
+            .ion-overview-hero__animating-headlines-wrapper {
+                height: 38px;
+            }
+            .hero-slider-dots button {
+                width: 10px;
+                height: 10px;
             }
         }
     </style>
@@ -1141,31 +598,33 @@
             <div class="glue-header__bar">
                 <div class="glue-header__tier">
                     <div class="glue-header__logo">
-                        <!-- Ваш логотип -->
-                        <svg width="auto" height="40" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="scale(1.0)">
-                                <polygon fill="#202124" fill-rule="nonzero" points="40.719,573.395 40.719,439.689 74.528,439.689 124.094,522.491 110.055,522.682 156.852,439.689 190.565,439.689 190.565,573.395 156.661,573.395 157.33,484.194 163.442,486.486 127.151,549.423 104.134,549.423 66.219,486.486 72.236,484.194 72.904,573.395 "/>
-                                <path fill="#202124" fill-rule="nonzero" d="M265.345 576.26c-10.951,0 -20.534,-2.197 -28.746,-6.558 -8.214,-4.361 -14.581,-10.442 -19.134,-18.241 -4.552,-7.799 -6.844,-16.904 -6.844,-27.346 0,-7.641 1.337,-14.644 4.011,-20.98 2.675,-6.334 6.431,-11.81 11.27,-16.426 4.839,-4.616 10.569,-8.182 17.158,-10.729 6.591,-2.546 13.817,-3.819 21.712,-3.819 8.85,0 16.713,1.527 23.557,4.615 6.845,3.088 12.48,7.418 16.936,12.989 4.457,5.571 7.545,12.097 9.233,19.546 1.687,7.45 1.655,15.568 -0.064,24.354l-72.392 0c0.191,3.247 1.337,6.081 3.406,8.5 2.069,2.419 4.871,4.298 8.437,5.667 3.565,1.368 7.672,2.069 12.319,2.069 5.922,0 11.461,-0.732 16.618,-2.165 5.158,-1.432 10.219,-3.693 15.185,-6.813l10.506 23.208c-2.992,2.292 -6.908,4.329 -11.779,6.144 -4.87,1.815 -10.091,3.279 -15.631,4.361 -5.539,1.083 -10.792,1.624 -15.758,1.624zm-21.106 -65.516l37.342 0c-0.064,-4.202 -1.688,-7.576 -4.903,-10.123 -3.215,-2.547 -7.513,-3.82 -12.861,-3.82 -5.412,0 -9.901,1.273 -13.498,3.82 -3.597,2.547 -5.635,5.921 -6.08,10.123z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M376.034 576.26c-11.333,0 -20.183,-3.184 -26.582,-9.519 -6.398,-6.335 -9.614,-15.726 -9.614,-28.205l0 -91.493 34.764 0 0 27.983 21.775 0 0 27.314 -21.775 0 0 30.561c0,4.712 1.114,8.022 3.343,9.933 2.228,1.91 4.966,2.865 8.213,2.865 1.91,0 3.852,-0.255 5.794,-0.732 1.941,-0.478 3.724,-1.179 5.38,-2.133l4.106 27.123c-2.992,1.719 -6.717,3.183 -11.174,4.425 -4.456,1.241 -9.2,1.878 -14.23,1.878zm-54.437 -73.92l0 -27.314 21.202 0 0 27.314 -21.202 0z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M419.202 573.395l0 -98.369 34.764 0 0 10.887c2.674,-4.839 6.399,-8.372 11.142,-10.601 4.743,-2.228 9.932,-3.343 15.599,-3.343 2.228,0 4.202,0.127 5.889,0.414 1.687,0.287 3.343,0.605 4.998,0.923l-4.011 35.624c-2.228,-0.892 -4.616,-1.592 -7.195,-2.07 -2.578,-0.478 -5.125,-0.7 -7.608,-0.7 -5.475,0 -9.964,1.496 -13.498,4.521 -3.533,3.024 -5.316,7.608 -5.316,13.72l0 48.994 -34.764 0z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M505.92 573.395l0 -98.369 34.764 0 0 98.369 -34.764 0zm17.382 -112.026c-5.475,0 -10.219,-1.688 -14.262,-5.031 -4.043,-3.342 -6.081,-7.926 -6.081,-13.784 0,-5.794 2.038,-10.378 6.081,-13.752 4.043,-3.375 8.787,-5.062 14.262,-5.062 5.475,0 10.25,1.687 14.294,5.062 4.043,3.374 6.048,7.958 6.048,13.752 0,5.858 -2.005,10.442 -6.048,13.784 -4.044,3.343 -8.819,5.031 -14.294,5.031z"/>
-                                <path fill="#202124" fill-rule="nonzero" d="M612.789 576.26c-10.442,0 -19.801,-2.292 -28.078,-6.844 -8.277,-4.553 -14.803,-10.729 -19.578,-18.56 -4.775,-7.831 -7.163,-16.713 -7.163,-26.646 0,-7.385 1.432,-14.262 4.266,-20.597 2.833,-6.335 6.781,-11.843 11.842,-16.554 5.062,-4.711 10.984,-8.372 17.796,-10.983 6.813,-2.61 14.166,-3.915 22.061,-3.915 7.641,0 14.772,1.05 21.362,3.183 6.589,2.133 12.511,5.285 17.795,9.423l-15.09 25.691c-3.183,-2.993 -6.589,-5.189 -10.25,-6.559 -3.661,-1.368 -7.513,-2.037 -11.524,-2.037 -5.03,0 -9.296,0.86 -12.83,2.611 -3.534,1.751 -6.271,4.297 -8.181,7.608 -1.91,3.311 -2.866,7.354 -2.866,12.129 0,7.004 2.133,12.479 6.399,16.427 4.266,3.947 10.124,5.921 17.573,5.921 4.457,0 8.723,-0.859 12.766,-2.547 4.043,-1.687 7.799,-4.17 11.301,-7.481l13.562 26.264c-5.54,4.202 -11.971,7.481 -19.292,9.869 -7.322,2.387 -14.612,3.597 -21.871,3.597z"/>
-                                <polygon fill="#1A73E8" fill-rule="nonzero" points="683.656,573.395 683.656,439.689 718.801,439.689 718.801,488.014 767.508,488.014 767.508,439.689 802.654,439.689 802.654,573.395 767.508,573.395 767.508,520.104 718.801,520.104 718.801,573.395 "/>
-                                <path fill="#1A73E8" fill-rule="nonzero" d="M830.35 573.395l0 -98.369 34.763 0 0 98.369 -34.763 0zm17.382 -112.026c-5.476,0 -10.219,-1.688 -14.262,-5.031 -4.044,-3.342 -6.081,-7.926 -6.081,-13.784 0,-5.794 2.037,-10.378 6.081,-13.752 4.043,-3.375 8.786,-5.062 14.262,-5.062 5.475,0 10.25,1.687 14.294,5.062 4.043,3.374 6.048,7.958 6.048,13.752 0,5.858 -2.005,10.442 -6.048,13.784 -4.044,3.343 -8.819,5.031 -14.294,5.031z"/>
-                                <path fill="#1A73E8" fill-rule="nonzero" d="M933.876 576.26c-11.333,0 -20.183,-3.184 -26.581,-9.519 -6.399,-6.335 -9.615,-15.726 -9.615,-28.205l0 -91.493 34.764 0 0 27.983 21.775 0 0 27.314 -21.775 0 0 30.561c0,4.712 1.115,8.022 3.343,9.933 2.228,1.91 4.966,2.865 8.213,2.865 1.91,0 3.852,-0.255 5.794,-0.732 1.942,-0.478 3.725,-1.179 5.38,-2.133l4.106 27.123c-2.992,1.719 -6.716,3.183 -11.173,4.425 -4.457,1.241 -9.2,1.878 -14.231,1.878zm-54.437 -73.92l0 -27.314 21.202 0 0 27.314 -21.202 0z"/>
+                        <!-- Ваш логотип MetricHit -->
+                        <svg width="auto" height="36" viewBox="0 0 910 120" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <polygon fill="#202124" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
+                                <polygon fill="#00F0FF" fill-rule="nonzero" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
+                                <polygon fill="#202124" fill-rule="nonzero" points="221.869,114.48 221.869,15.232 246.965,15.232 283.757,76.695 273.336,76.837 308.073,15.232 333.098,15.232 333.098,114.48 307.931,114.48 308.428,48.268 312.965,49.969 286.026,96.686 268.941,96.686 240.797,49.969 245.263,48.268 245.759,114.48 "/>
+                                <path fill="#202124" fill-rule="nonzero" d="M388.606 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.573 1.985,-4.702 4.774,-8.766 8.365,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.292 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.744,4.56 -3.615,1.347 -7.491,2.434 -11.602,3.237 -4.112,0.804 -8.011,1.206 -11.697,1.206zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
+                                <path fill="#202124" fill-rule="nonzero" d="M470.769 116.607c-8.413,0 -14.982,-2.363 -19.731,-7.066 -4.75,-4.703 -7.137,-11.674 -7.137,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.308,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.737 0 0 20.275 -15.737 0z"/>
+                                <path fill="#202124" fill-rule="nonzero" d="M502.812 114.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.655 7.373,-2.482 11.579,-2.482 1.654,0 3.119,0.095 4.372,0.308 1.252,0.212 2.481,0.449 3.71,0.684l-2.978 26.443c-1.654,-0.661 -3.426,-1.181 -5.34,-1.536 -1.914,-0.354 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.356 -2.623,2.245 -3.947,5.647 -3.947,10.185l0 36.367 -25.804 0z"/>
+                                <path fill="#202124" fill-rule="nonzero" d="M567.181 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.608,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.002,2.481 -6.546,3.733 -10.61,3.733z"/>
+                                <path fill="#202124" fill-rule="nonzero" d="M646.509 116.607c-7.751,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.964 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.79,-12.288 3.758,-3.497 8.153,-6.215 13.21,-8.152 5.057,-1.938 10.515,-2.907 16.375,-2.907 5.672,0 10.965,0.78 15.857,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.418,2.457 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.263 4.75,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.112,3.119 -8.885,5.553 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
+                                <polygon fill="#00F0FF" fill-rule="nonzero" points="699.112,114.48 699.112,15.232 725.2,15.232 725.2,51.103 761.355,51.103 761.355,15.232 787.443,15.232 787.443,114.48 761.355,114.48 761.355,74.923 725.2,74.923 725.2,114.48 "/>
+                                <path fill="#00F0FF" fill-rule="nonzero" d="M808.001 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.489,5.908 4.489,10.209 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
+                                <path fill="#00F0FF" fill-rule="nonzero" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
                             </g>
                         </svg>
                     </div>
 
                     <nav class="glue-header__nav">
-                        <a href="#" class="active">Начало работы</a>
-                        <a href="#">Решения</a>
-                        <a href="#">Поддержка</a>
+                        <a href="#" class="active">Цели</a>
+                        <a href="#">Как это работает</a>
+                        <a href="#">Стоимость</a>
                     </nav>
 
                     <div class="glue-header__cta">
-                        <a href="#" class="glue-button glue-button--medium-emphasis">Войти</a>
-                        <a href="#cta" class="glue-button glue-button--high-emphasis">Начать</a>
+                        <a href="#" class="glue-button glue-button--medium-emphasis">Связаться с нами</a>
+                        <a href="#" class="glue-button glue-button--high-emphasis">Начать</a>
                     </div>
                 </div>
             </div>
@@ -1177,653 +636,204 @@
     ============================================================ -->
     <section class="ion-overview-hero" data-tracking-module="overviewhero">
         <div class="ion-overview-hero__static-background">
-            <!-- Замените на свой фон -->
             <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%); width: 100%; height: 100%;"></div>
         </div>
 
         <div class="glue-page">
             <div class="ion-overview-hero__animated-items">
+
                 <!-- Анимированные заголовки -->
                 <div class="ion-overview-hero__headlines-container">
                     <div class="ion-overview-hero__animating-headlines-wrapper" aria-hidden="true">
-                        <h2 class="ion-overview-hero__animating-headline" style="color: #1a73e8;">Продажи</h2>
-                        <h2 class="ion-overview-hero__animating-headline" style="color: #c5221f;">Продвижение</h2>
-                        <h2 class="ion-overview-hero__animating-headline" style="color: #f29900;">Популярность</h2>
-                        <h2 class="ion-overview-hero__animating-headline" style="color: #1e8e3e;">Привлечение</h2>
+                        <h2 class="ion-overview-hero__animating-headline">Продажи</h2>
+                        <h2 class="ion-overview-hero__animating-headline">Продвижение</h2>
+                        <h2 class="ion-overview-hero__animating-headline">Привлечение</h2>
                     </div>
                     <div class="ion-overview-hero__static-headline">
-                        <p>с нашим сервисом</p>
+                        с <span class="highlight">MetricHit</span>
                     </div>
                 </div>
 
-                <!-- Анимированные карточки -->
+                <!-- Анимированные карточки (слайдер) -->
                 <div class="ion-overview-hero__animating-images-spacer">
-                    <div class="ion-overview-hero__animating-images-wrapper" role="img" aria-label="Примеры наших решений">
-                        <!-- Карточка 1 -->
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
-                            <div class="card-content">
-                                <div class="card-label">Торговые кампании</div>
-                                <div>
-                                    <div class="card-title">Распродажа обуви</div>
-                                    <div class="card-subtitle">Обзор подборок</div>
-                                    <div class="card-domain">example-business.com</div>
+                    <div class="hero-card-slider">
+
+                        <!-- Слайд 1: Продажи -->
+                        <div class="hero-card-slide active" data-slide="0">
+                            <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
+                                <div class="card-content">
+                                    <div class="card-label">Торговые кампании</div>
+                                    <div>
+                                        <div class="card-title">Распродажа обуви</div>
+                                        <div class="card-subtitle">Обзор подборок</div>
+                                        <div class="card-domain">example-business.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ion-overview-hero-item__media-item" data-image-background-color="YELLOW">
+                                <div class="card-content">
+                                    <div class="card-label">Поиск</div>
+                                    <div>
+                                        <div style="font-size:13px;color:#5f6368;">Реклама</div>
+                                        <div style="font-size:13px;color:#5f6368;">example-business.com</div>
+                                        <div class="card-title" style="color:#e37400;font-size:20px;">ООО "Современный дизайн"</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Карточка 2 -->
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="RED">
-                            <div class="card-content">
-                                <div class="card-label">Видео</div>
-                                <div>
-                                    <div class="card-title" style="color: #c5221f;">Банк "Гарантия"</div>
-                                    <div class="card-domain">example-business.com</div>
+
+                        <!-- Слайд 2: Продвижение -->
+                        <div class="hero-card-slide" data-slide="1">
+                            <div class="ion-overview-hero-item__media-item" data-image-background-color="RED">
+                                <div class="card-content">
+                                    <div class="card-label">Видео</div>
+                                    <div>
+                                        <div class="card-title" style="color:#c5221f;">Банк "Гарантия"</div>
+                                        <div class="card-domain">example-business.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ion-overview-hero-item__media-item" data-image-background-color="PURPLE">
+                                <div class="card-content">
+                                    <div class="card-label">Кампании</div>
+                                    <div>
+                                        <div class="card-title" style="color:#7c3aed;">Максимальная эффективность</div>
+                                        <div class="card-subtitle">Увеличивайте конверсии</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Карточка 3 -->
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="YELLOW">
-                            <div class="card-content">
-                                <div class="card-label">Поиск</div>
-                                <div>
-                                    <div style="font-size:13px;color:#5f6368;">Реклама</div>
-                                    <div style="font-size:13px;color:#5f6368;">example-business.com</div>
-                                    <div class="card-title" style="color:#e37400;font-size:20px;">ООО "Современный дизайн"</div>
+
+                        <!-- Слайд 3: Привлечение -->
+                        <div class="hero-card-slide" data-slide="2">
+                            <div class="ion-overview-hero-item__media-item" data-image-background-color="GREEN">
+                                <div class="card-content">
+                                    <div class="card-label">КМС</div>
+                                    <div>
+                                        <div class="card-title" style="color:#1e8e3e;font-size:20px;">Современные диваны на заказ</div>
+                                        <div class="card-subtitle">Лучшая современная мебель</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ion-overview-hero-item__media-item" data-image-background-color="BLUE">
+                                <div class="card-content">
+                                    <div class="card-label">Поиск</div>
+                                    <div>
+                                        <div class="card-title" style="font-size:18px;">Привлечение клиентов</div>
+                                        <div class="card-subtitle">Рост трафика</div>
+                                        <div class="card-domain">example-business.com</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Карточка 4 -->
-                        <div class="ion-overview-hero-item__media-item" data-image-background-color="GREEN">
-                            <div class="card-content">
-                                <div class="card-label">КМС</div>
-                                <div>
-                                    <div class="card-title" style="color:#1e8e3e;font-size:20px;">Современные диваны на заказ</div>
-                                    <div class="card-subtitle">Лучшая современная мебель</div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+
+                    <!-- Индикаторы -->
+                    <div class="hero-slider-dots">
+                        <button class="active" data-slide="0" aria-label="Слайд 1"></button>
+                        <button data-slide="1" aria-label="Слайд 2"></button>
+                        <button data-slide="2" aria-label="Слайд 3"></button>
                     </div>
                 </div>
 
                 <!-- Описание -->
                 <div class="ion-overview-hero__description">
-                    Сделайте так, чтобы потенциальным клиентам было легко найти вашу компанию. В этом вам поможет наш сервис.
+                    Сделайте так, чтобы потенциальным клиентам было легко найти вашу компанию. В этом вам поможет MetricHit.
                 </div>
 
                 <!-- CTA -->
                 <div class="ion-overview-hero__cta-container">
-                    <a href="#cta" class="glue-button glue-button--high-emphasis glue-button--large">Начать</a>
-                    <a href="#pricing" class="glue-button glue-button--medium-emphasis glue-button--large">Выбрать тариф</a>
+                    <a href="#" class="glue-button glue-button--high-emphasis glue-button--large">Начать</a>
+                    <a href="#" class="glue-button glue-button--medium-emphasis glue-button--large">Выбрать тариф</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-    TRUST (как у Google)
+    БЛОК "MetricHit предлагает..."
     ============================================================ -->
-    <section class="ion-trust">
+    <section style="padding: 48px 0 64px; background: #ffffff;">
         <div class="glue-page">
-            <p>Доверяют эксперты и агентства</p>
-            <div class="ion-trust__logos">
-                <span>SEMANTICA</span>
-                <span>INGATE</span>
-                <span>SEO PRO</span>
-                <span>WEB EFFECT</span>
+            <div style="text-align:center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 36px; font-weight: 700; color: #202124; letter-spacing: -0.3px; line-height: 1.2;">
+                    MetricHit предлагает самый эффективный и безопасный способ продвижения
+                </h2>
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-    FEATURE TABS (как у Google)
-    ============================================================ -->
-    <section class="ion-featuretabs">
-        <div class="glue-page">
-            <div class="ion-featuretabs__headline">
-                <h2>Наш сервис предлагает самые разные способы продвижения</h2>
-            </div>
-
-            <div class="ion-featuretabs__tabs">
-                <!-- Табы -->
-                <div class="ion-featuretabs__tabs__tablist" role="tablist">
-                    <button class="ion-featuretabs__tabs__tabitem glue-tab--active" role="tab" data-tab="tab1">
-                        <span class="material-symbols-outlined">search</span>
-                        <span class="ion-featuretabs__tabs__tabitem__text">Поисковая реклама</span>
-                    </button>
-                    <button class="ion-featuretabs__tabs__tabitem" role="tab" data-tab="tab2">
-                        <span class="material-symbols-outlined">image</span>
-                        <span class="ion-featuretabs__tabs__tabitem__text">Медийная реклама</span>
-                    </button>
-                    <button class="ion-featuretabs__tabs__tabitem" role="tab" data-tab="tab3">
-                        <span class="material-symbols-outlined">shopping_cart</span>
-                        <span class="ion-featuretabs__tabs__tabitem__text">Товарная реклама</span>
-                    </button>
-                    <button class="ion-featuretabs__tabs__tabitem" role="tab" data-tab="tab4">
-                        <span class="material-symbols-outlined">play_circle</span>
-                        <span class="ion-featuretabs__tabs__tabitem__text">Видеореклама</span>
-                    </button>
-                    <button class="ion-featuretabs__tabs__tabitem" role="tab" data-tab="tab5">
-                        <span class="material-symbols-outlined">apps</span>
-                        <span class="ion-featuretabs__tabs__tabitem__text">Реклама приложений</span>
-                    </button>
-                </div>
-
-                <!-- Панели -->
-                <div class="glue-tabs__panelgroup">
-                    <!-- Панель 1 -->
-                    <div class="glue-tabs__panel glue-tabs__panel--active" id="tab1" role="tabpanel">
-                        <div class="ion-featuretabs-item__inner">
-                            <div class="ion-featuretabs-item__inner__image-container">
-                                <!-- Замените на свою картинку -->
-                                <div style="padding:40px;text-align:center;color:#5f6368;">
-                                    <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">search</span>
-                                    <p style="margin-top:16px;font-weight:500;">Поисковая реклама</p>
-                                    <p style="font-size:14px;">Показывайте рекламу тем, кто ищет ваши товары</p>
-                                </div>
-                            </div>
-                            <div class="ion-featuretabs-item__inner__copy-container">
-                                <h3>Показывайте рекламу в Поиске</h3>
-                                <p>Рекламируйте свою компанию тем, кто активно ищет в Google товары и услуги, которые вы предлагаете. Это поможет вам привлечь потенциальных клиентов, покупателей и посетителей сайта.</p>
-                                <a href="#" class="ion-arrow-button__inline">
-                                    <span class="ion-arrow-button__circle">
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </span>
-                                    Подробнее о поисковой рекламе
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Панель 2 -->
-                    <div class="glue-tabs__panel" id="tab2" role="tabpanel">
-                        <div class="ion-featuretabs-item__inner">
-                            <div class="ion-featuretabs-item__inner__image-container">
-                                <div style="padding:40px;text-align:center;color:#5f6368;">
-                                    <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">image</span>
-                                    <p style="margin-top:16px;font-weight:500;">Медийная реклама</p>
-                                    <p style="font-size:14px;">Привлекайте внимание на сайтах и в приложениях</p>
-                                </div>
-                            </div>
-                            <div class="ion-featuretabs-item__inner__copy-container">
-                                <h3>Привлекайте внимание</h3>
-                                <p>Повышайте узнаваемость своего бренда и готовность пользователей к покупке, показывая им яркие и запоминающиеся объявления, когда они посещают сайты, проверяют почту в Gmail или пользуются мобильными приложениями.</p>
-                                <a href="#" class="ion-arrow-button__inline">
-                                    <span class="ion-arrow-button__circle">
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </span>
-                                    Подробнее о медийной рекламе
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Панель 3 -->
-                    <div class="glue-tabs__panel" id="tab3" role="tabpanel">
-                        <div class="ion-featuretabs-item__inner">
-                            <div class="ion-featuretabs-item__inner__image-container">
-                                <div style="padding:40px;text-align:center;color:#5f6368;">
-                                    <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">shopping_cart</span>
-                                    <p style="margin-top:16px;font-weight:500;">Товарная реклама</p>
-                                    <p style="font-size:14px;">Продвигайте свои товары</p>
-                                </div>
-                            </div>
-                            <div class="ion-featuretabs-item__inner__copy-container">
-                                <h3>Продвигайте свои товарные предложения</h3>
-                                <p>Показывайте рекламу пользователям, которые уже готовы к покупке. Предлагайте им подходящие товары, которые есть в наличии.</p>
-                                <a href="#" class="ion-arrow-button__inline">
-                                    <span class="ion-arrow-button__circle">
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </span>
-                                    Подробнее о товарной рекламе
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Панель 4 -->
-                    <div class="glue-tabs__panel" id="tab4" role="tabpanel">
-                        <div class="ion-featuretabs-item__inner">
-                            <div class="ion-featuretabs-item__inner__image-container">
-                                <div style="padding:40px;text-align:center;color:#5f6368;">
-                                    <span class="material-symbols-outlined" style="font-size:80px;color:#c5221f;">play_circle</span>
-                                    <p style="margin-top:16px;font-weight:500;">Видеореклама</p>
-                                    <p style="font-size:14px;">Расскажите о бренде в видео</p>
-                                </div>
-                            </div>
-                            <div class="ion-featuretabs-item__inner__copy-container">
-                                <h3>Расскажите о своем бренде в видео</h3>
-                                <p>Повышайте узнаваемость бренда, обращайтесь к тем, кто уже смотрел вашу рекламу, и привлекайте потенциальных клиентов, которые смотрят или ищут видео на YouTube.</p>
-                                <a href="#" class="ion-arrow-button__inline">
-                                    <span class="ion-arrow-button__circle">
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </span>
-                                    Подробнее о видеорекламе
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Панель 5 -->
-                    <div class="glue-tabs__panel" id="tab5" role="tabpanel">
-                        <div class="ion-featuretabs-item__inner">
-                            <div class="ion-featuretabs-item__inner__image-container">
-                                <div style="padding:40px;text-align:center;color:#5f6368;">
-                                    <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">apps</span>
-                                    <p style="margin-top:16px;font-weight:500;">Реклама приложений</p>
-                                    <p style="font-size:14px;">Продвигайте свое приложение</p>
-                                </div>
-                            </div>
-                            <div class="ion-featuretabs-item__inner__copy-container">
-                                <h3>Продвигайте свое приложение</h3>
-                                <p>Обращайтесь к тем, кто любит приложения, похожие на ваше. Таким образом вы получите больше установок, поддержите интерес своих пользователей и простимулируете действия в приложении.</p>
-                                <a href="#" class="ion-arrow-button__inline">
-                                    <span class="ion-arrow-button__circle">
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </span>
-                                    Подробнее о рекламе приложений
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    CARDS GRID (как у Google)
-    ============================================================ -->
-    <section class="plexi-centered-card-list">
-        <div class="glue-page">
-            <div class="plexi-section-header">
-                <h2 class="plexi-section-header__headline">Мы поможем вам достичь всех поставленных целей</h2>
-                <div style="margin-top:24px;">
-                    <a href="#" class="glue-button glue-button--medium-emphasis">Подробнее</a>
-                </div>
-            </div>
-
-            <ul class="plexi-centered-card-list__grid">
-                <li>
-                    <div class="plexi-content-block">
-                        <div class="plexi-content-block__asset--logo">
-                            <!-- Замените на свою иконку -->
-                            <div style="width:64px;height:64px;border-radius:50%;background:#e8f0fe;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
-                                <span class="material-symbols-outlined" style="font-size:32px;color:#1a73e8;">trending_up</span>
-                            </div>
-                        </div>
-                        <h3 class="plexi-content-block__content--title">Привлекайте максимум клиентов</h3>
-                        <div class="plexi-content-block__content--description">
-                            <p>Обращайтесь к более перспективным клиентам и получайте конверсии.</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="plexi-content-block">
-                        <div class="plexi-content-block__asset--logo">
-                            <div style="width:64px;height:64px;border-radius:50%;background:#e6f4ea;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
-                                <span class="material-symbols-outlined" style="font-size:32px;color:#1e8e3e;">shopping_bag</span>
-                            </div>
-                        </div>
-                        <h3 class="plexi-content-block__content--title">Увеличивайте объем онлайн-продаж</h3>
-                        <div class="plexi-content-block__content--description">
-                            <p>Показывайте рекламу потенциальным покупателям, чтобы привлекать их на сайт.</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="plexi-content-block">
-                        <div class="plexi-content-block__asset--logo">
-                            <div style="width:64px;height:64px;border-radius:50%;background:#fef7e0;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
-                                <span class="material-symbols-outlined" style="font-size:32px;color:#e37400;">storefront</span>
-                            </div>
-                        </div>
-                        <h3 class="plexi-content-block__content--title">Привлекайте посетителей в магазин</h3>
-                        <div class="plexi-content-block__content--description">
-                            <p>Привлекайте клиентов в магазин и повышайте объем офлайн-продаж.</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="plexi-content-block">
-                        <div class="plexi-content-block__asset--logo">
-                            <div style="width:64px;height:64px;border-radius:50%;background:#fce8e6;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
-                                <span class="material-symbols-outlined" style="font-size:32px;color:#c5221f;">campaign</span>
-                            </div>
-                        </div>
-                        <h3 class="plexi-content-block__content--title">Рекламируйте бренд широкой аудитории</h3>
-                        <div class="plexi-content-block__content--description">
-                            <p>Привлекайте внимание к своему бренду, чтобы расширить охват и повысить вовлеченность.</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="plexi-content-block">
-                        <div class="plexi-content-block__asset--logo">
-                            <div style="width:64px;height:64px;border-radius:50%;background:#e8f0fe;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
-                                <span class="material-symbols-outlined" style="font-size:32px;color:#1a73e8;">phone_android</span>
-                            </div>
-                        </div>
-                        <h3 class="plexi-content-block__content--title">Рекламируйте приложение новым пользователям</h3>
-                        <div class="plexi-content-block__content--description">
-                            <p>Привлекайте тех, кто готов скачать ваше приложение и взаимодействовать с ним.</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    LIST MODULE (как у Google)
-    ============================================================ -->
-    <section class="ion-list-stacked5up">
-        <div class="glue-page">
-            <div style="text-align:center;margin-bottom:48px;">
-                <h2 style="font-size:36px;font-weight:700;color:#202124;">Технологии <span style="color:#1a73e8;">для вашего бизнеса</span></h2>
-            </div>
-
-            <!-- Блок 1 -->
-            <div class="glue-grid">
-                <div class="ion-list-stacked5up__image-container">
-                    <div style="padding:40px;text-align:center;color:#5f6368;width:100%;">
-                        <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">devices</span>
-                        <p style="margin-top:16px;font-weight:500;">Мультиплатформенность</p>
-                    </div>
-                </div>
-                <div class="ion-list-stacked5up__copy-container">
-                    <h3>Показывайте объявления клиентам в подходящий момент</h3>
-                    <p>Показывайте объявления в подходящий момент в масштабной экосистеме наших решений. Искусственный интеллект подбирает наиболее эффективные форматы объявлений, чтобы получать максимум конверсий.</p>
-                </div>
-            </div>
-
-            <!-- Блок 2 -->
-            <div class="glue-grid reverse">
-                <div class="ion-list-stacked5up__image-container">
-                    <div style="padding:40px;text-align:center;color:#5f6368;width:100%;">
-                        <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">analytics</span>
-                        <p style="margin-top:16px;font-weight:500;">Аналитика и оптимизация</p>
-                    </div>
-                </div>
-                <div class="ion-list-stacked5up__copy-container">
-                    <h3>Отслеживание, обучение и оптимизация для наибольшей рентабельности</h3>
-                    <p>Отслеживайте конверсии, чтобы получать полезную статистику аудитории. Функции автоматической оптимизации бюджета помогают привлекать новых клиентов при наибольшей рентабельности инвестиций.</p>
-                </div>
-            </div>
-
-            <!-- Блок 3 -->
-            <div class="glue-grid">
-                <div class="ion-list-stacked5up__image-container">
-                    <div style="padding:40px;text-align:center;color:#5f6368;width:100%;">
-                        <span class="material-symbols-outlined" style="font-size:80px;color:#1a73e8;">payments</span>
-                        <p style="margin-top:16px;font-weight:500;">Контроль бюджета</p>
-                    </div>
-                </div>
-                <div class="ion-list-stacked5up__copy-container">
-                    <h3>Контролируйте бюджет</h3>
-                    <p>Получайте рекомендации, составляйте месячный бюджет и меняйте его в любое время. Наши технологии помогут вам оценивать результаты и использовать средства на рекламу максимально эффективно.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    ACCORDION (как у Google)
-    ============================================================ -->
-    <section class="ion-accordion-module">
-        <div class="glue-page">
-            <div style="text-align:center;margin-bottom:48px;">
-                <h2 style="font-size:28px;font-weight:500;color:#202124;">Часто задаваемые вопросы</h2>
-            </div>
-
-            <div class="plexi-accordion-items">
-                <!-- Вопрос 1 -->
-                <div class="plexi-accordion-item">
-                    <button class="plexi-accordion-item__toggle" onclick="toggleAccordion(this)">
-                        <span>Какие типы кампаний я могу запустить?</span>
-                        <span class="plexi-accordion-item__expand-collapse-icon-wrapper">
-                            <span class="material-symbols-outlined">add</span>
-                        </span>
-                    </button>
-                    <div class="plexi-accordion-item__content">
-                        <div class="plexi-accordion-item__inner">
-                            Существует множество типов кампаний, среди которых:
-                            <ul>
-                                <li>Поисковые объявления</li>
-                                <li>Кампании с максимальной эффективностью</li>
-                                <li>Медийные объявления</li>
-                                <li>Кампании для создания спроса</li>
-                                <li>Торговые объявления</li>
-                                <li>Видеообъявления</li>
-                                <li>Объявления для приложений</li>
-                            </ul>
-                            Тип кампании, который вы выбираете, зависит от ваших маркетинговых целей, стратегии бренда и времени, которое вы готовы инвестировать.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Вопрос 2 -->
-                <div class="plexi-accordion-item">
-                    <button class="plexi-accordion-item__toggle" onclick="toggleAccordion(this)">
-                        <span>Какой тип кампании подойдет моему бизнесу?</span>
-                        <span class="plexi-accordion-item__expand-collapse-icon-wrapper">
-                            <span class="material-symbols-outlined">add</span>
-                        </span>
-                    </button>
-                    <div class="plexi-accordion-item__content">
-                        <div class="plexi-accordion-item__inner">
-                            Лучшая рекламная кампания для вашего бизнеса зависит от ваших целей. Тип кампании, который вы выбираете, основывается на ваших маркетинговых задачах, стратегии бренда и времени, которое вы готовы вложить.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Вопрос 3 -->
-                <div class="plexi-accordion-item">
-                    <button class="plexi-accordion-item__toggle" onclick="toggleAccordion(this)">
-                        <span>Использует ли сервис технологии ИИ?</span>
-                        <span class="plexi-accordion-item__expand-collapse-icon-wrapper">
-                            <span class="material-symbols-outlined">add</span>
-                        </span>
-                    </button>
-                    <div class="plexi-accordion-item__content">
-                        <div class="plexi-accordion-item__inner">
-                            Да, наши решения на основе ИИ помогают вывести ваш маркетинг на новый уровень, позволяя находить новых клиентов, создавать рекламу, находить возможности для повышения эффективности и преумножать результаты.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Вопрос 4 -->
-                <div class="plexi-accordion-item">
-                    <button class="plexi-accordion-item__toggle" onclick="toggleAccordion(this)">
-                        <span>Как использовать сервис для охвата потенциальных клиентов?</span>
-                        <span class="plexi-accordion-item__expand-collapse-icon-wrapper">
-                            <span class="material-symbols-outlined">add</span>
-                        </span>
-                    </button>
-                    <div class="plexi-accordion-item__content">
-                        <div class="plexi-accordion-item__inner">
-                            Наш сервис помогает находить потенциальных клиентов, заинтересованных в ваших продуктах или бренде. Вы можете привлекать людей на основе их интересов или тем, которые они активно изучают. Формируя пользовательские аудитории по ключевым словам и сайтам, вы сможете показывать более релевантные объявления и эффективнее достигать своих целей.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    CTA SECTION (дополнительный блок)
-    ============================================================ -->
-    <section id="cta" style="padding:72px 0 80px;background:#f8f9fa;">
-        <div class="glue-page" style="max-width:600px;margin:0 auto;text-align:center;">
-            <h2 style="font-size:36px;font-weight:700;color:#202124;margin-bottom:12px;">Готовы <span style="color:#1a73e8;">улучшить</span> позиции?</h2>
-            <p style="color:#5f6368;font-size:18px;line-height:1.7;margin-bottom:32px;">Оставьте заявку, и мы подберем оптимальную стратегию для вашего сайта. Бесплатный анализ в подарок.</p>
-            
-            <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.');" style="display:flex;flex-direction:column;gap:12px;">
-                <input type="text" placeholder="Ваше имя" required style="padding:14px 20px;border-radius:24px;border:1px solid #dadce0;font-size:16px;font-family:'Google Sans',Arial,sans-serif;outline:none;min-height:48px;transition:border-color 0.2s,box-shadow 0.2s;" onfocus="this.style.borderColor='#1a73e8';this.style.boxShadow='0 0 0 4px rgba(26,115,232,0.12)';" onblur="this.style.borderColor='#dadce0';this.style.boxShadow='none';" />
-                <input type="tel" placeholder="+7 (___) ___-__-__" required style="padding:14px 20px;border-radius:24px;border:1px solid #dadce0;font-size:16px;font-family:'Google Sans',Arial,sans-serif;outline:none;min-height:48px;transition:border-color 0.2s,box-shadow 0.2s;" onfocus="this.style.borderColor='#1a73e8';this.style.boxShadow='0 0 0 4px rgba(26,115,232,0.12)';" onblur="this.style.borderColor='#dadce0';this.style.boxShadow='none';" />
-                <input type="email" placeholder="E-mail (необязательно)" style="padding:14px 20px;border-radius:24px;border:1px solid #dadce0;font-size:16px;font-family:'Google Sans',Arial,sans-serif;outline:none;min-height:48px;transition:border-color 0.2s,box-shadow 0.2s;" onfocus="this.style.borderColor='#1a73e8';this.style.boxShadow='0 0 0 4px rgba(26,115,232,0.12)';" onblur="this.style.borderColor='#dadce0';this.style.boxShadow='none';" />
-                <button type="submit" class="glue-button glue-button--high-emphasis glue-button--large" style="width:100%;">Отправить заявку</button>
-            </form>
-            <p style="margin-top:20px;font-size:13px;color:#80868b;">Нажимая на кнопку, вы соглашаетесь с политикой обработки данных</p>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    FOOTER (как у Google)
-    ============================================================ -->
-    <footer class="glue-footer">
-        <!-- Social -->
-        <div class="glue-footer__upper">
-            <div class="glue-social__group">
-                <span class="glue-social__title">Мы в социальных сетях</span>
-                <ul class="glue-social__list">
-                    <li><a href="#" class="glue-social__link" aria-label="X">
-                            <svg viewBox="0 0 24 24"><path d="M2.50983 21.673C2.52393 21.6515 2.53598 21.6282 2.55262 21.6088C3.97579 19.9535 5.39928 18.2986 6.82293 16.6436C7.835 15.4669 8.84723 14.2902 9.8593 13.1135C9.87641 13.0937 9.89274 13.0732 9.91461 13.0469C7.44497 9.45217 4.97597 5.85805 2.5 2.25395C2.52916 2.24983 2.54596 2.24634 2.56276 2.24539C2.58384 2.24412 2.60492 2.24507 2.62615 2.24507C4.43174 2.24507 6.23734 2.24507 8.04293 2.24507C8.05878 2.24507 8.07494 2.24713 8.09031 2.24475C8.14198 2.23699 8.17082 2.26203 8.19919 2.30355C8.53264 2.79166 8.86799 3.27851 9.2027 3.76567C10.4758 5.61891 11.7489 7.47215 13.0221 9.32523C13.034 9.3425 13.0469 9.35898 13.0633 9.38149C13.083 9.36136 13.1014 9.34424 13.1177 9.32539C13.9337 8.3769 14.7493 7.42809 15.5653 6.4796C16.7271 5.12873 17.8891 3.77803 19.0511 2.42732C19.0855 2.38723 19.1231 2.34951 19.1537 2.30672C19.1879 2.25902 19.2288 2.24317 19.2877 2.2438C19.5966 2.24681 19.9053 2.24523 20.2142 2.24523C20.4069 2.24523 20.5997 2.24523 20.7924 2.24539C20.8174 2.24539 20.8426 2.24777 20.8854 2.24983C18.5223 4.9972 16.1702 7.73189 13.8126 10.4728C13.8298 10.4988 13.8462 10.5247 13.8637 10.5501C14.7123 11.7856 15.5612 13.0211 16.4099 14.2566C18.0864 16.6971 19.763 19.1375 21.4398 21.5779C21.4586 21.6054 21.4799 21.6309 21.5 21.6573C21.4973 21.6626 21.4949 21.6722 21.4921 21.6726C21.471 21.6738 21.4499 21.6732 21.4288 21.6732H15.83C15.8181 21.6504 15.8083 21.626 15.7938 21.6049C14.1 19.1385 12.4058 16.6723 10.7115 14.2062C10.6969 14.185 10.6802 14.165 10.6609 14.1395C10.6341 14.1697 10.6111 14.1948 10.5891 14.2205C9.69764 15.2569 8.80602 16.2933 7.91456 17.3298C6.69266 18.7504 5.47076 20.171 4.24901 21.5919C4.22698 21.6174 4.20876 21.6461 4.18863 21.6732H2.50983V21.673ZM4.78833 3.51305C4.81179 3.54998 4.82589 3.57438 4.84206 3.59736C5.02479 3.85917 5.20799 4.12066 5.39088 4.38246C8.48842 8.81414 11.5861 13.2458 14.6837 17.6775C15.3185 18.5859 15.9537 19.4941 16.588 20.403C16.6164 20.4437 16.6424 20.4707 16.7005 20.4705C17.5108 20.468 18.3212 20.4688 19.1315 20.4686C19.1508 20.4686 19.17 20.465 19.1993 20.4619C19.1724 20.4228 19.1521 20.3925 19.1312 20.3627C17.1189 17.484 15.1067 14.6052 13.0946 11.7265C11.1972 9.01208 9.29985 6.29783 7.40393 3.58247C7.36811 3.53128 7.33134 3.51163 7.2689 3.51178C6.47443 3.51384 5.67995 3.51321 4.88548 3.51321H4.78833V3.51305Z"/></svg>
-                        </a></li>
-                    <li><a href="#" class="glue-social__link" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24"><path d="M23.74 7.1s-.23-1.65-.95-2.37c-.91-.96-1.93-.96-2.4-1.02C17.04 3.47 12 3.5 12 3.5s-5.02-.03-8.37.21c-.46.06-1.48.06-2.39 1.02C.52 5.45.28 7.1.28 7.1S.04 9.05 0 10.98V13c.04 1.94.28 3.87.28 3.87s.24 1.65.96 2.38c.91.95 2.1.92 2.64 1.02 1.88.18 7.91.22 8.12.22 0 0 5.05.01 8.4-.23.46-.06 1.48-.06 2.39-1.02.72-.72.96-2.37.96-2.37s.24-1.94.25-3.87v-2.02c-.02-1.93-.26-3.88-.26-3.88zM9.57 15.5V8.49L16 12.13 9.57 15.5z"/></svg>
-                        </a></li>
-                    <li><a href="#" class="glue-social__link" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24"><path d="M22 12C22 6.47715 17.5229 2 12 2C6.47715 2 2 6.47715 2 12C2 16.9912 5.65684 21.1283 10.4375 21.8785V14.8906H7.89844V12H10.4375V9.79688C10.4375 7.29063 11.9305 5.90625 14.2146 5.90625C15.3088 5.90625 16.4531 6.10156 16.4531 6.10156V8.5625H15.1922C13.95 8.5625 13.5625 9.3334 13.5625 10.1242V12H16.3359L15.8926 14.8906H13.5625V21.8785C18.3432 21.1283 22 16.9914 22 12Z"/></svg>
-                        </a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Site Links -->
-        <div class="glue-footer__site-links">
-            <div class="glue-footer__site-links-grid">
-                <div>
-                    <h3 class="glue-footer__site-links-header">Продукты</h3>
-                    <ul class="glue-footer__site-links-list">
-                        <li><a href="#">Основной сервис</a></li>
-                        <li><a href="#">Видеореклама</a></li>
-                        <li><a href="#">Торговая платформа</a></li>
-                        <li><a href="#">Профиль компании</a></li>
-                        <li><a href="#">Аналитика</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="glue-footer__site-links-header">Обучение и поддержка</h3>
-                    <ul class="glue-footer__site-links-list">
-                        <li><a href="#">Справочный центр</a></li>
-                        <li><a href="#">Руководство</a></li>
-                        <li><a href="#">Сообщество</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="glue-footer__site-links-header">Партнеры и разработчики</h3>
-                    <ul class="glue-footer__site-links-list">
-                        <li><a href="#">Партнеры</a></li>
-                        <li><a href="#">Для разработчиков</a></li>
-                        <li><a href="#">API</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="glue-footer__site-links-header">Другие решения</h3>
-                    <ul class="glue-footer__site-links-list">
-                        <li><a href="#">Рабочая область</a></li>
-                        <li><a href="#">Облачные решения</a></li>
-                        <li><a href="#">Монетизация</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Global Footer -->
-        <div class="glue-footer__global">
-            <div class="glue-footer__logo">
-                <svg width="auto" height="24" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="scale(0.6)">
-                        <polygon fill="#202124" fill-rule="nonzero" points="40.719,573.395 40.719,439.689 74.528,439.689 124.094,522.491 110.055,522.682 156.852,439.689 190.565,439.689 190.565,573.395 156.661,573.395 157.33,484.194 163.442,486.486 127.151,549.423 104.134,549.423 66.219,486.486 72.236,484.194 72.904,573.395 "/>
-                        <path fill="#202124" fill-rule="nonzero" d="M265.345 576.26c-10.951,0 -20.534,-2.197 -28.746,-6.558 -8.214,-4.361 -14.581,-10.442 -19.134,-18.241 -4.552,-7.799 -6.844,-16.904 -6.844,-27.346 0,-7.641 1.337,-14.644 4.011,-20.98 2.675,-6.334 6.431,-11.81 11.27,-16.426 4.839,-4.616 10.569,-8.182 17.158,-10.729 6.591,-2.546 13.817,-3.819 21.712,-3.819 8.85,0 16.713,1.527 23.557,4.615 6.845,3.088 12.48,7.418 16.936,12.989 4.457,5.571 7.545,12.097 9.233,19.546 1.687,7.45 1.655,15.568 -0.064,24.354l-72.392 0c0.191,3.247 1.337,6.081 3.406,8.5 2.069,2.419 4.871,4.298 8.437,5.667 3.565,1.368 7.672,2.069 12.319,2.069 5.922,0 11.461,-0.732 16.618,-2.165 5.158,-1.432 10.219,-3.693 15.185,-6.813l10.506 23.208c-2.992,2.292 -6.908,4.329 -11.779,6.144 -4.87,1.815 -10.091,3.279 -15.631,4.361 -5.539,1.083 -10.792,1.624 -15.758,1.624zm-21.106 -65.516l37.342 0c-0.064,-4.202 -1.688,-7.576 -4.903,-10.123 -3.215,-2.547 -7.513,-3.82 -12.861,-3.82 -5.412,0 -9.901,1.273 -13.498,3.82 -3.597,2.547 -5.635,5.921 -6.08,10.123z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M376.034 576.26c-11.333,0 -20.183,-3.184 -26.582,-9.519 -6.398,-6.335 -9.614,-15.726 -9.614,-28.205l0 -91.493 34.764 0 0 27.983 21.775 0 0 27.314 -21.775 0 0 30.561c0,4.712 1.114,8.022 3.343,9.933 2.228,1.91 4.966,2.865 8.213,2.865 1.91,0 3.852,-0.255 5.794,-0.732 1.941,-0.478 3.724,-1.179 5.38,-2.133l4.106 27.123c-2.992,1.719 -6.717,3.183 -11.174,4.425 -4.456,1.241 -9.2,1.878 -14.23,1.878zm-54.437 -73.92l0 -27.314 21.202 0 0 27.314 -21.202 0z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M419.202 573.395l0 -98.369 34.764 0 0 10.887c2.674,-4.839 6.399,-8.372 11.142,-10.601 4.743,-2.228 9.932,-3.343 15.599,-3.343 2.228,0 4.202,0.127 5.889,0.414 1.687,0.287 3.343,0.605 4.998,0.923l-4.011 35.624c-2.228,-0.892 -4.616,-1.592 -7.195,-2.07 -2.578,-0.478 -5.125,-0.7 -7.608,-0.7 -5.475,0 -9.964,1.496 -13.498,4.521 -3.533,3.024 -5.316,7.608 -5.316,13.72l0 48.994 -34.764 0z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M505.92 573.395l0 -98.369 34.764 0 0 98.369 -34.764 0zm17.382 -112.026c-5.475,0 -10.219,-1.688 -14.262,-5.031 -4.043,-3.342 -6.081,-7.926 -6.081,-13.784 0,-5.794 2.038,-10.378 6.081,-13.752 4.043,-3.375 8.787,-5.062 14.262,-5.062 5.475,0 10.25,1.687 14.294,5.062 4.043,3.374 6.048,7.958 6.048,13.752 0,5.858 -2.005,10.442 -6.048,13.784 -4.044,3.343 -8.819,5.031 -14.294,5.031z"/>
-                        <path fill="#202124" fill-rule="nonzero" d="M612.789 576.26c-10.442,0 -19.801,-2.292 -28.078,-6.844 -8.277,-4.553 -14.803,-10.729 -19.578,-18.56 -4.775,-7.831 -7.163,-16.713 -7.163,-26.646 0,-7.385 1.432,-14.262 4.266,-20.597 2.833,-6.335 6.781,-11.843 11.842,-16.554 5.062,-4.711 10.984,-8.372 17.796,-10.983 6.813,-2.61 14.166,-3.915 22.061,-3.915 7.641,0 14.772,1.05 21.362,3.183 6.589,2.133 12.511,5.285 17.795,9.423l-15.09 25.691c-3.183,-2.993 -6.589,-5.189 -10.25,-6.559 -3.661,-1.368 -7.513,-2.037 -11.524,-2.037 -5.03,0 -9.296,0.86 -12.83,2.611 -3.534,1.751 -6.271,4.297 -8.181,7.608 -1.91,3.311 -2.866,7.354 -2.866,12.129 0,7.004 2.133,12.479 6.399,16.427 4.266,3.947 10.124,5.921 17.573,5.921 4.457,0 8.723,-0.859 12.766,-2.547 4.043,-1.687 7.799,-4.17 11.301,-7.481l13.562 26.264c-5.54,4.202 -11.971,7.481 -19.292,9.869 -7.322,2.387 -14.612,3.597 -21.871,3.597z"/>
-                        <polygon fill="#1A73E8" fill-rule="nonzero" points="683.656,573.395 683.656,439.689 718.801,439.689 718.801,488.014 767.508,488.014 767.508,439.689 802.654,439.689 802.654,573.395 767.508,573.395 767.508,520.104 718.801,520.104 718.801,573.395 "/>
-                        <path fill="#1A73E8" fill-rule="nonzero" d="M830.35 573.395l0 -98.369 34.763 0 0 98.369 -34.763 0zm17.382 -112.026c-5.476,0 -10.219,-1.688 -14.262,-5.031 -4.044,-3.342 -6.081,-7.926 -6.081,-13.784 0,-5.794 2.037,-10.378 6.081,-13.752 4.043,-3.375 8.786,-5.062 14.262,-5.062 5.475,0 10.25,1.687 14.294,5.062 4.043,3.374 6.048,7.958 6.048,13.752 0,5.858 -2.005,10.442 -6.048,13.784 -4.044,3.343 -8.819,5.031 -14.294,5.031z"/>
-                        <path fill="#1A73E8" fill-rule="nonzero" d="M933.876 576.26c-11.333,0 -20.183,-3.184 -26.581,-9.519 -6.399,-6.335 -9.615,-15.726 -9.615,-28.205l0 -91.493 34.764 0 0 27.983 21.775 0 0 27.314 -21.775 0 0 30.561c0,4.712 1.115,8.022 3.343,9.933 2.228,1.91 4.966,2.865 8.213,2.865 1.91,0 3.852,-0.255 5.794,-0.732 1.942,-0.478 3.725,-1.179 5.38,-2.133l4.106 27.123c-2.992,1.719 -6.716,3.183 -11.173,4.425 -4.457,1.241 -9.2,1.878 -14.231,1.878zm-54.437 -73.92l0 -27.314 21.202 0 0 27.314 -21.202 0z"/>
-                    </g>
-                </svg>
-            </div>
-
-            <ul class="glue-footer__global-links">
-                <li><a href="#">Компания</a></li>
-                <li><a href="#">О продуктах</a></li>
-                <li><a href="#">Конфиденциальность</a></li>
-                <li><a href="#">Условия использования</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- ============================================================
-    STICKY FOOTER (как у Google, для мобильных)
-    ============================================================ -->
-    <div class="ion-sticky-footer">
-        <div class="ion-sticky-footer__cta-row">
-            <a href="#cta" class="glue-button glue-button--high-emphasis">Начать</a>
-        </div>
-    </div>
 
     <!-- ============================================================
     SCRIPTS
     ============================================================ -->
     <script>
-        // ===== TABS =====
-        document.querySelectorAll('.ion-featuretabs__tabs__tabitem').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Убираем активный класс у всех табов
-                document.querySelectorAll('.ion-featuretabs__tabs__tabitem').forEach(t => {
-                    t.classList.remove('glue-tab--active');
-                });
-                this.classList.add('glue-tab--active');
+        // ===== СЛАЙДЕР КАРТОЧЕК =====
+        (function() {
+            const slides = document.querySelectorAll('.hero-card-slide');
+            const dots = document.querySelectorAll('.hero-slider-dots button');
+            let currentSlide = 0;
+            let intervalId = null;
 
-                // Скрываем все панели
-                document.querySelectorAll('.glue-tabs__panel').forEach(p => {
-                    p.classList.remove('glue-tabs__panel--active');
-                });
+            function goToSlide(index) {
+                // Убираем активный класс у всех слайдов
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
 
-                // Показываем нужную панель
-                const target = this.getAttribute('data-tab');
-                document.getElementById(target).classList.add('glue-tabs__panel--active');
-            });
-        });
-
-        // ===== ACCORDION =====
-        function toggleAccordion(button) {
-            const item = button.closest('.plexi-accordion-item');
-            const isExpanded = item.classList.contains('plexi-accordion-item--expanded');
-
-            // Закрываем все
-            document.querySelectorAll('.plexi-accordion-item').forEach(el => {
-                el.classList.remove('plexi-accordion-item--expanded');
-                const btn = el.querySelector('.plexi-accordion-item__toggle');
-                if (btn) {
-                    btn.setAttribute('aria-expanded', 'false');
-                    const icon = btn.querySelector('.material-symbols-outlined');
-                    if (icon) icon.textContent = 'add';
-                }
-            });
-
-            if (!isExpanded) {
-                item.classList.add('plexi-accordion-item--expanded');
-                button.setAttribute('aria-expanded', 'true');
-                const icon = button.querySelector('.material-symbols-outlined');
-                if (icon) icon.textContent = 'remove';
+                // Показываем нужный слайд
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
             }
-        }
 
-        // ===== SMOOTH SCROLL =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                goToSlide(next);
+            }
+
+            function startAutoplay() {
+                if (intervalId) clearInterval(intervalId);
+                intervalId = setInterval(nextSlide, 4000);
+            }
+
+            function stopAutoplay() {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
                 }
+            }
+
+            // Клик по точкам
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    stopAutoplay();
+                    goToSlide(index);
+                    startAutoplay();
+                });
             });
-        });
+
+            // Пауза при наведении на слайдер
+            const slider = document.querySelector('.hero-card-slider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stopAutoplay);
+                slider.addEventListener('mouseleave', startAutoplay);
+            }
+
+            // Запускаем автоплей
+            startAutoplay();
+
+            // ===== SMOOTH SCROLL =====
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
     </script>
 
 </body>
