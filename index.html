@@ -2,1484 +2,1582 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MetricHit — вывод в ТОП через поведенческие факторы</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Продвижение сайта поведенческими факторами — Express + AI</title>
+    <meta name="description" content="Накрутка ПФ для Яндекса. Живые переходы, AI-боты, 0,40 ₽ за клик, бонус 500 ₽, промокод БЕРТ-74. Тест от 1 000 ₽." />
+    <link rel="canonical" href="https://express-geo.ru" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Продвижение сайта поведенческими факторами" />
+    <meta property="og:description" content="Накрутка ПФ для Яндекса. Живые переходы, AI-боты, 0,40 ₽ за клик, бонус 500 ₽." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://express-geo.ru" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Express",
+            "alternateName": "Продвижение сайтов ПФ",
+            "url": "https://express-geo.ru",
+            "logo": "https://express-geo.ru/logo.png",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+7-922-926-66-84",
+                "contactType": "sales",
+                "areaServed": "RU",
+                "availableLanguage": "Russian"
+            },
+            "telephone": "+7-922-926-66-84",
+            "email": "profexpress.pf@gmail.com"
+        }
+    </script>
+
     <style>
-        /* ─── reset ─── */
+        /* ===== RESET & BASE ===== */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
         html {
             scroll-behavior: smooth;
         }
         body {
-            font-family: 'Geologica', 'Segoe UI', Arial, sans-serif;
-            background: #080B14;
-            color: #F1F5F9;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            font: 16px/1.7 'Golos Text', 'Segoe UI', Arial, sans-serif;
+            color: #131720;
+            background: #fff;
         }
-        a {
-            color: #3B82F6;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        a:hover {
-            color: #60A5FA;
-        }
-        .container {
-            max-width: 1196px;
+        .wrap {
+            max-width: 860px;
             margin: 0 auto;
             padding: 0 24px;
         }
-
-        /* ─── логотип ─── */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-        .logo svg {
-            width: 40px;
-            height: 40px;
-            display: block;
-        }
-        .logo-text {
-            font-family: 'Geologica', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #F1F5F9;
-        }
-        .logo-text span {
-            color: #3B82F6;
-        }
-
-        /* ─── кнопки ─── */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-family: 'Geologica', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: 0.25s;
+        a {
+            color: #4F7CFF;
             text-decoration: none;
         }
-        .btn-primary {
-            background: #3B82F6;
-            color: #fff;
-            box-shadow: 0 4px 24px rgba(59, 130, 246, 0.3);
+        a:hover {
+            text-decoration: underline;
         }
-        .btn-primary:hover {
-            background: #2563EB;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
-            color: #fff;
+        strong {
+            font-weight: 700;
         }
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #F1F5F9;
-        }
-        .btn-secondary:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            color: #3B82F6;
-        }
-        .btn-ghost {
-            background: transparent;
-            color: #94A3B8;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .btn-ghost:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            color: #F1F5F9;
-        }
-        .btn-sm {
-            padding: 8px 18px;
-            font-size: 13px;
-        }
-        .btn-lg {
-            padding: 16px 36px;
-            font-size: 16px;
+        .disp {
+            font-family: 'Unbounded', 'Segoe UI', sans-serif;
         }
 
-        /* ─── хедер ─── */
-        header {
-            position: fixed;
+        /* ===== STICKY BONUS BAR ===== */
+        .sticky-bar {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(8, 11, 20, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 12px 0;
-            transition: 0.3s;
-        }
-        header.scrolled {
-            background: rgba(8, 11, 20, 0.96);
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: #94A3B8;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-        .nav a:hover {
-            color: #F1F5F9;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: #F1F5F9;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        .hamburger.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 99;
-            background: rgba(8, 11, 20, 0.98);
-            backdrop-filter: blur(20px);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            padding: 40px;
-        }
-        .mobile-menu.open {
-            display: flex;
-        }
-        .mobile-menu a {
-            color: #F1F5F9;
-            font-size: 20px;
+            z-index: 50;
+            background: #0B0F1A;
+            color: #fff;
+            text-align: center;
+            font-size: 13.5px;
             font-weight: 600;
-        }
-        .mobile-menu a:hover {
-            color: #3B82F6;
-        }
-
-        /* ─── герой ─── */
-        #hero {
-            padding: 140px 0 60px;
-            position: relative;
+            padding: 10px 12px;
+            line-height: 1.35;
             overflow: hidden;
         }
-        #hero::before {
+        .sticky-bar::before {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
-            right: -150px;
-            top: -100px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.06), transparent 70%);
-            pointer-events: none;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(79, 124, 255, 0.28), rgba(139, 92, 246, 0.4));
         }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+        .sticky-bar span {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            color: #60A5FA;
-            border-radius: 50px;
-            padding: 4px 16px;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            font-family: 'Geologica', sans-serif;
-            font-size: clamp(32px, 4.5vw, 52px);
+        .sticky-bar b {
+            font-family: 'Unbounded', sans-serif;
             font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-        }
-        .hero h1 .highlight {
-            color: #3B82F6;
-        }
-        .hero p {
-            color: #94A3B8;
-            font-size: 18px;
-            font-weight: 300;
-            max-width: 520px;
-            line-height: 1.8;
-            margin-bottom: 28px;
-        }
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        .hero-stat .value {
-            font-family: 'Geologica', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #F1F5F9;
-            line-height: 1.2;
-        }
-        .hero-stat .value span {
-            color: #3B82F6;
-        }
-        .hero-stat .label {
             font-size: 13px;
-            color: #64748B;
-            margin-top: 2px;
+            background: linear-gradient(95deg, #9DB8FF, #CBB2FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-mascot {
-            width: 100%;
-            max-width: 420px;
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 28px 20px 20px;
-            text-align: center;
-        }
-        .hero-mascot .mascot-icon {
-            font-size: 80px;
-            display: block;
-            margin-bottom: 12px;
-        }
-        .hero-mascot .mascot-label {
-            color: #64748B;
-            font-size: 13px;
-            font-weight: 300;
-        }
-
-        /* ─── секции ─── */
-        section {
-            padding: 60px 0;
-        }
-        .section-dark {
+        /* ===== COVER / HERO ===== */
+        .cover {
+            position: relative;
+            overflow: hidden;
             background: #0B0F1A;
+            color: #F1F5F9;
         }
-        .section-tag {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #3B82F6;
-            margin-bottom: 10px;
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(79, 124, 255, 0.3), transparent 60%),
+                radial-gradient(ellipse at 90% 20%, rgba(139, 92, 246, 0.25), transparent 55%),
+                #0B0F1A;
+        }
+        .cover .shade {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(180deg, rgba(7, 10, 18, 0.82), rgba(7, 10, 18, 0.25) 55%, rgba(7, 10, 18, 0.94));
+        }
+        .cover .cwrap {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 48px 24px 40px;
+        }
+        .cover .kick {
             display: inline-block;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #A9C2FF;
+            background: rgba(10, 16, 30, 0.55);
+            border: 1px solid rgba(125, 145, 255, 0.45);
+            padding: 8px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+        .cover h1 {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 38px;
+            line-height: 1.14;
+            font-weight: 800;
+            max-width: 780px;
+            text-wrap: balance;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.65);
+        }
+        .cover .sub {
+            margin-top: 16px;
+            font-size: 18px;
+            color: #C4CFE0;
+            max-width: 680px;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+        }
+        .cover .meta {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 32px;
+            font-size: 14px;
+            color: #94A3B8;
+        }
+        .cover .meta b {
+            color: #F1F5F9;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .stat-card {
+            background: rgba(10, 16, 30, 0.62);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 16px;
+            padding: 18px 16px 14px;
+        }
+        .stat-card .v {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(95deg, #9DB8FF, #CBB2FF 85%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .stat-card .l {
+            font-size: 13px;
+            color: #AAB6C9;
+            margin-top: 6px;
+            line-height: 1.45;
+        }
+
+        .free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding: 10px 18px;
+            border-radius: 100px;
+            background: linear-gradient(90deg, rgba(79, 124, 255, 0.2), rgba(139, 92, 246, 0.26));
+            border: 1px solid rgba(155, 120, 255, 0.6);
+            font-weight: 800;
+            font-size: 14px;
+            color: #EDE6FF;
+            animation: glow 2.4s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+            }
+            50% {
+                box-shadow: 0 0 26px 2px rgba(139, 92, 246, 0.45);
+            }
+        }
+        .free-badge .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #7CFFB2;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .free-badge .dot::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(124, 255, 178, 0.65);
+            animation: ping 1.6s ease-out infinite;
+        }
+        @keyframes ping {
+            0% {
+                transform: scale(0.55);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* ===== ROCKET SVG ===== */
+        .rocket-wrap {
+            position: absolute;
+            z-index: 2;
+            right: 4%;
+            top: 6%;
+            width: 180px;
+            pointer-events: none;
+            animation: float 1.5s ease-in-out infinite alternate;
+            filter: drop-shadow(0 10px 34px rgba(139, 92, 246, 0.35));
+        }
+        @keyframes float {
+            0% {
+                transform: translate(10px, 26px) rotate(-1.5deg);
+            }
+            100% {
+                transform: translate(-6px, -20px) rotate(1.5deg);
+            }
+        }
+        .rocket-wrap .fl {
+            transform-origin: 120px 358px;
+            animation: flick 0.16s ease-in-out infinite alternate;
+        }
+        @keyframes flick {
+            0% {
+                transform: scaleY(0.72) scaleX(0.9);
+                opacity: 0.85;
+            }
+            100% {
+                transform: scaleY(1.22) scaleX(1.06);
+                opacity: 1;
+            }
+        }
+        .rocket-wrap .st {
+            stroke-dasharray: 30 44;
+            animation: race 0.5s linear infinite;
+        }
+        @keyframes race {
+            to {
+                stroke-dashoffset: -74;
+            }
+        }
+        .rocket-wrap .star {
+            animation: tw 1.6s ease-in-out infinite;
+        }
+        .rocket-wrap .star:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .rocket-wrap .star:nth-child(3) {
+            animation-delay: 1s;
+        }
+        @keyframes tw {
+            0%,
+            100% {
+                opacity: 0.25;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 1020px) {
+            .rocket-wrap {
+                display: none;
+            }
+            .cover h1 {
+                font-size: 30px;
+            }
+            .cover .sub {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 600px) {
+            .cover h1 {
+                font-size: 24px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 48px 0 0;
+        }
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #4F7CFF;
+            margin-bottom: 10px;
+        }
+        .eyebrow::before {
+            content: '';
+            width: 24px;
+            height: 3px;
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            border-radius: 3px;
         }
         h2 {
-            font-family: 'Geologica', sans-serif;
-            font-size: clamp(26px, 3.5vw, 40px);
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1.15;
-            margin-bottom: 14px;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 1.25;
+            margin-bottom: 16px;
         }
-        h2 .highlight {
-            color: #3B82F6;
-        }
-        .subtitle {
-            color: #94A3B8;
-            font-size: 17px;
-            font-weight: 300;
-            max-width: 600px;
-            line-height: 1.8;
-            margin-bottom: 32px;
-        }
-
-        /* ─── статистика ─── */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .stat-block {
-            text-align: center;
-            padding: 20px 12px;
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 12px;
-        }
-        .stat-block .num {
-            font-family: 'Geologica', sans-serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: #F1F5F9;
-            line-height: 1.2;
-        }
-        .stat-block .num span {
-            color: #3B82F6;
-        }
-        .stat-block .lbl {
-            font-size: 13px;
-            color: #64748B;
-            margin-top: 4px;
-        }
-
-        /* ─── преимущества ─── */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        .card {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 28px 24px;
-            transition: 0.3s;
-        }
-        .card:hover {
-            border-color: rgba(59, 130, 246, 0.15);
-            transform: translateY(-4px);
-        }
-        .card .icon {
-            font-size: 28px;
+        p {
             margin-bottom: 12px;
-            display: block;
-        }
-        .card h3 {
-            font-family: 'Geologica', sans-serif;
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: -0.2px;
-        }
-        .card p {
-            color: #94A3B8;
-            font-size: 15px;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-        .card .tag {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.06);
-            color: #60A5FA;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 12px;
-            border-radius: 50px;
-            margin-top: 10px;
         }
 
-        /* ─── технологическое сравнение ─── */
-        .tech-compare {
+        /* ===== PROF CARD ===== */
+        .prof-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
+            grid-template-columns: 280px 1fr;
+            gap: 28px;
+            align-items: start;
+            margin-top: 6px;
+        }
+        @media (max-width: 760px) {
+            .prof-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+        .pcard {
+            border: 1px solid #E5E9EF;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 18px 44px rgba(16, 27, 45, 0.1);
             overflow: hidden;
-            background: #111827;
         }
-        .tech-col {
-            padding: 24px 20px;
+        .pcard .head {
+            background: #0B0F1A;
+            color: #fff;
+            padding: 14px 18px;
         }
-        .tech-col:first-child {
-            border-right: 1px solid rgba(255, 255, 255, 0.04);
+        .pcard .head .nm {
+            font-weight: 800;
+            font-size: 17px;
         }
-        .tech-col .head {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .tech-col .head.ours {
-            color: #3B82F6;
-        }
-        .tech-col .head.theirs {
-            color: #64748B;
-        }
-        .tech-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .tech-col li {
-            font-size: 14px;
+        .pcard .head .yr {
+            font-size: 12.5px;
             color: #94A3B8;
-            font-weight: 300;
-            line-height: 1.6;
-            padding-left: 20px;
-            position: relative;
+            margin-top: 2px;
         }
-        .tech-col.ours li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #3B82F6;
-            font-weight: 700;
+        .pcard .body {
+            padding: 14px 18px;
         }
-        .tech-col.theirs li::before {
-            content: '✕';
-            position: absolute;
-            left: 0;
-            color: #64748B;
-            font-weight: 700;
-        }
-        .tech-col.ours li strong {
-            color: #F1F5F9;
-            font-weight: 500;
-        }
-
-        /* ─── шаги ─── */
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-        .step {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 28px 22px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .step:hover {
-            border-color: rgba(59, 130, 246, 0.15);
-        }
-        .step .num {
-            font-family: 'Geologica', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: #3B82F6;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .step h4 {
-            font-family: 'Geologica', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .step p {
-            color: #94A3B8;
-            font-size: 14px;
-            font-weight: 300;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* ─── калькулятор ─── */
-        .calc-block {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 32px 28px;
-        }
-        .calc-row {
+        .pcard .row {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-        .calc-row label {
-            font-weight: 500;
+            gap: 10px;
+            padding: 8px 0;
+            border-top: 1px dashed #E5E9EF;
             font-size: 14px;
-            color: #94A3B8;
-            min-width: 140px;
         }
-        .calc-row input[type="range"] {
-            flex: 1;
-            accent-color: #3B82F6;
-            height: 4px;
-            min-width: 100px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
+        .pcard .row:first-child {
+            border-top: none;
         }
-        .calc-row input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #3B82F6;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        .pcard .row .k {
+            color: #5B6470;
+            font-weight: 500;
+            flex-shrink: 0;
         }
-        .calc-value {
-            font-family: 'Geologica', sans-serif;
-            font-size: 18px;
+        .pcard .row .v {
             font-weight: 700;
-            color: #F1F5F9;
-            min-width: 100px;
             text-align: right;
         }
-        .calc-results {
+        .pcard .badge-wrap {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .pcard .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(79, 124, 255, 0.12), rgba(139, 92, 246, 0.12));
+            color: #3E5EDB;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            padding: 3px 10px;
+        }
+
+        /* ===== FEATURE CARDS ===== */
+        .ncard {
+            position: relative;
+            display: flex;
+            gap: 16px;
+            border: 1px solid #E5E9EF;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #FCFDFF, #F7F9FE);
+            box-shadow: 0 6px 22px rgba(19, 32, 74, 0.06);
+        }
+        .ncard.hot {
+            border: 1.5px solid rgba(79, 124, 255, 0.55);
+            box-shadow: 0 10px 30px rgba(79, 124, 255, 0.16);
+        }
+        .ncard .n {
+            flex: 0 0 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            color: #fff;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(79, 124, 255, 0.35);
+        }
+        .ncard h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .ncard .b {
+            font-size: 15px;
+            color: #333A44;
+        }
+        .ncard .tag {
+            position: absolute;
+            top: -11px;
+            right: 16px;
+            background: #F5B84A;
+            color: #3A2A05;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== CALCULATOR (dark) ===== */
+        .calc {
+            background: #0B0F1A;
+            color: #F1F5F9;
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .calc::before {
+            content: '';
+            position: absolute;
+            width: 460px;
+            height: 460px;
+            right: -160px;
+            top: -200px;
+            border-radius: 50%;
+            filter: blur(70px);
+            background: radial-gradient(circle, rgba(79, 124, 255, 0.4), transparent 65%);
+        }
+        .calc>* {
+            position: relative;
+        }
+        .calc h2 {
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .calc .csub {
+            color: #94A3B8;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .calc .blabel {
+            font-size: 13px;
+            font-weight: 700;
+            color: #9DB0CC;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 16px 0 8px;
+        }
+        .calc .bopts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .calc .bopt {
+            position: relative;
+            border: 1.5px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #DBE4F2;
+            transition: 0.14s;
+        }
+        .calc .bopt:hover {
+            border-color: #4F7CFF;
+        }
+        .calc .bopt.on {
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 8px 22px rgba(79, 124, 255, 0.4);
+        }
+        .calc .bopt .rec {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #F5B84A;
+            color: #3A2A05;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 1px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .calc .srow {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 6px;
+        }
+        .calc .srow input[type="range"] {
+            flex: 1;
+            accent-color: #4F7CFF;
+            height: 6px;
+        }
+        .calc .sval {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            min-width: 100px;
+            text-align: right;
+            background: linear-gradient(95deg, #9DB8FF, #CBB2FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .calc .eflow {
             display: grid;
             grid-template-columns: 1fr auto 1fr auto 1fr;
             gap: 12px;
             align-items: stretch;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: 22px;
         }
-        .calc-result {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
-            padding: 12px 14px;
+        @media (max-width: 760px) {
+            .calc .eflow {
+                grid-template-columns: 1fr;
+            }
+            .calc .arr {
+                display: none;
+            }
+        }
+        .calc .ebox {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 16px;
+            padding: 16px;
             text-align: center;
         }
-        .calc-result .k {
-            font-size: 11px;
-            color: #475569;
-            font-weight: 500;
+        .calc .ebox .k {
+            font-size: 12px;
+            color: #9DB0CC;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            line-height: 1.4;
         }
-        .calc-result .v {
-            font-family: 'Geologica', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            margin-top: 4px;
-            color: #F1F5F9;
+        .calc .ebox .v {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            margin-top: 6px;
+            white-space: nowrap;
         }
-        .calc-result.highlight .v {
-            color: #3B82F6;
+        .calc .ebox.hl {
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            border-color: transparent;
         }
-        .calc-arrow {
+        .calc .ebox.hl .k {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .calc .arr {
+            align-self: center;
+            color: #5B6B8C;
+            font-size: 20px;
+            text-align: center;
+        }
+        .calc .spend {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #94A3B8;
+        }
+        .calc .spend b {
+            color: #fff;
+        }
+        .calc .honest {
+            margin-top: 16px;
             display: flex;
-            align-items: center;
-            color: #475569;
-            font-size: 18px;
-            justify-content: center;
+            gap: 10px;
+            align-items: flex-start;
+            background: rgba(245, 184, 74, 0.12);
+            border: 1px solid rgba(245, 184, 74, 0.35);
+            border-radius: 13px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #F3D8A8;
+            line-height: 1.55;
         }
-        @media (max-width: 700px) {
-            .calc-results {
-                grid-template-columns: 1fr;
-                gap: 6px;
-            }
-            .calc-arrow {
-                transform: rotate(90deg);
-                padding: 2px 0;
-            }
+        .calc .honest b {
+            color: #FFC670;
         }
 
-        /* ─── тарифы ─── */
-        .table-wrap {
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            overflow: hidden;
-            background: #111827;
-        }
+        /* ===== PRICE TABLE ===== */
         table {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 6px 0 0;
+            font-size: 15px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #E5E9EF;
         }
         th {
             text-align: left;
-            padding: 12px 18px;
-            background: rgba(59, 130, 246, 0.04);
-            color: #64748B;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11.5px;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: #C7D4F5;
+            background: #0B0F1A;
+            padding: 12px 16px;
         }
         td {
-            padding: 12px 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: #94A3B8;
+            padding: 12px 16px;
+            border-top: 1px solid #E5E9EF;
+            vertical-align: top;
+            background: #fff;
         }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        tr.highlight td {
-            background: rgba(59, 130, 246, 0.04);
-        }
-        tr.highlight td:first-child {
-            font-weight: 600;
-            color: #F1F5F9;
-        }
-        tr.highlight td:last-child {
-            color: #3B82F6;
-            font-weight: 700;
-        }
-        td:last-child {
+        td:last-child,
+        th:last-child {
             text-align: right;
-            font-weight: 600;
-            color: #F1F5F9;
+            white-space: nowrap;
         }
-        .table-note {
-            padding: 12px 18px;
-            color: #64748B;
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            background: #111827;
-        }
-        .table-note strong {
-            color: #3B82F6;
-        }
-
-        /* ─── кейсы ─── */
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .case-item {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 12px;
-            padding: 20px 18px;
-            transition: 0.3s;
-            text-align: center;
-        }
-        .case-item:hover {
-            border-color: rgba(59, 130, 246, 0.15);
-            transform: translateY(-4px);
-        }
-        .case-item .growth {
-            font-family: 'Geologica', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: #3B82F6;
-        }
-        .case-item .name {
-            font-weight: 600;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-        .case-item .meta {
-            color: #64748B;
-            font-size: 13px;
-            font-weight: 300;
-            margin-top: 2px;
-        }
-
-        /* ─── рефералка ─── */
-        .referral-block {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 36px 32px;
-            text-align: center;
-        }
-        .referral-block .percent {
-            font-family: 'Geologica', sans-serif;
-            font-size: 48px;
+        tr.total td {
+            background: linear-gradient(90deg, rgba(79, 124, 255, 0.1), rgba(139, 92, 246, 0.1));
             font-weight: 800;
-            color: #3B82F6;
+        }
+        tr.total td:last-child {
+            font-size: 16px;
+            color: #4F7CFF;
+        }
+        .tnote {
+            font-size: 14px;
+            color: #5B6470;
+            margin-top: 10px;
         }
 
-        /* ─── FAQ ─── */
-        details.faq {
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
-            margin-bottom: 8px;
-            background: #111827;
+        /* ===== STEPS ===== */
+        .steps {
+            margin: 6px 0 0;
+        }
+        .step {
+            position: relative;
+            padding: 0 0 18px 34px;
+        }
+        .step:last-child {
+            padding-bottom: 0;
+        }
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 20px;
+            bottom: -2px;
+            width: 2.5px;
+            background: linear-gradient(180deg, #4F7CFF, #8B5CF6);
+            opacity: 0.35;
+        }
+        .step:last-child::before {
+            display: none;
+        }
+        .step::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            box-shadow: 0 0 0 4px rgba(79, 124, 255, 0.15);
+        }
+        .step b {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .step span {
+            color: #333A44;
+            font-size: 15px;
+        }
+
+        /* ===== CALLOUT ===== */
+        .callout {
+            background: linear-gradient(180deg, #FFFAF0, #FFF6E4);
+            border: 1px solid #F0DFBB;
+            border-radius: 18px;
+            padding: 22px 24px;
+        }
+        .callout .eyebrow {
+            color: #C77F16;
+        }
+        .callout .eyebrow::before {
+            background: linear-gradient(90deg, #F5B84A, #E8892B);
+        }
+        ul.plain {
+            list-style: none;
+            margin: 4px 0 0;
+        }
+        ul.plain li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+        }
+        ul.plain li::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            transform: rotate(45deg);
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            position: relative;
             overflow: hidden;
+            background: #0B0F1A;
+            color: #F1F5F9;
+            border-radius: 22px;
+            padding: 28px 30px;
+        }
+        .team::before {
+            content: '';
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            left: -120px;
+            bottom: -200px;
+            border-radius: 50%;
+            filter: blur(60px);
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent 65%);
+        }
+        .team>* {
+            position: relative;
+        }
+        .team h2 {
+            color: #fff;
+        }
+        .team p {
+            color: #C3CEE0;
+            font-size: 15px;
+            max-width: 640px;
+        }
+        .team .tbadge {
+            display: inline-block;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #CBB2FF;
+            border: 1px solid rgba(155, 120, 255, 0.55);
+            border-radius: 100px;
+            padding: 6px 14px;
+            margin-bottom: 14px;
+        }
+
+        /* ===== SERVICE GRID ===== */
+        .svc {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 6px;
+        }
+        .svc .s {
+            border: 1px solid #E5E9EF;
+            border-radius: 16px;
+            padding: 18px 18px;
+            background: linear-gradient(180deg, #FCFDFF, #F7F9FE);
+            box-shadow: 0 6px 22px rgba(19, 32, 74, 0.05);
+        }
+        .svc .s h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .svc .s p {
+            font-size: 14px;
+            color: #333A44;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .svc .ic {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== FAQ ===== */
+        details.faq {
+            border: 1px solid #E5E9EF;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(19, 32, 74, 0.05);
         }
         .faq summary {
             cursor: pointer;
-            padding: 14px 18px;
-            font-weight: 600;
+            padding: 16px 18px;
+            font-weight: 700;
             font-size: 15px;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 14px;
-            color: #F1F5F9;
         }
         .faq summary::-webkit-details-marker {
             display: none;
         }
         .faq summary::after {
             content: '+';
-            font-family: 'Geologica', sans-serif;
-            font-size: 18px;
-            color: #3B82F6;
-            transition: transform 0.3s;
             flex-shrink: 0;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 17px;
+            color: #4F7CFF;
+            transition: transform 0.25s;
         }
         .faq[open] summary::after {
             transform: rotate(45deg);
         }
-        .faq .answer {
+        .faq .fa {
             padding: 0 18px 16px;
-            color: #94A3B8;
+            color: #333A44;
             font-size: 15px;
-            line-height: 1.7;
-            font-weight: 300;
+            line-height: 1.65;
+        }
+        .faq[open] .fa {
+            animation: fadein 0.3s ease;
+        }
+        @keyframes fadein {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
         }
 
-        /* ─── CTA ─── */
-        .cta-block {
-            background: #111827;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 48px 44px;
-            text-align: center;
+        /* ===== CAROUSEL ===== */
+        .carousel {
+            position: relative;
+            margin: 6px 0 16px;
         }
-        .cta-block h2 {
-            color: #F1F5F9;
-        }
-        .cta-block p {
-            color: #94A3B8;
-            font-size: 17px;
-            max-width: 560px;
-            margin: 0 auto 20px;
-            font-weight: 300;
-        }
-        .cta-block .guarantee {
-            display: inline-flex;
-            align-items: center;
+        .crs {
+            display: flex;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
-            padding: 10px 16px;
-            margin: 4px 6px;
-            font-size: 14px;
-            color: #94A3B8;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 4px 2px 12px;
+            scrollbar-width: thin;
+            scrollbar-color: #C9D2EC transparent;
         }
-        .cta-block .guarantee strong {
-            color: #F1F5F9;
+        .crs img {
+            height: 280px;
+            width: auto;
+            max-width: 76vw;
+            flex-shrink: 0;
+            border: 1px solid #E5E9EF;
+            border-radius: 14px;
+            scroll-snap-align: start;
+            cursor: zoom-in;
+            background: #0E1524;
+            box-shadow: 0 6px 20px rgba(19, 32, 74, 0.08);
+            transition: transform 0.18s;
         }
-        .cta-block .promo {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px dashed rgba(59, 130, 246, 0.2);
-            border-radius: 10px;
-            padding: 10px 16px;
-            margin-top: 16px;
-            font-size: 14px;
-            color: #94A3B8;
+        .crs img:hover {
+            transform: translateY(-3px);
         }
-        .cta-block .promo .code {
-            font-family: 'Geologica', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            background: #3B82F6;
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 6px;
+        .cbtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
             cursor: pointer;
-            transition: 0.2s;
+            background: #0B0F1A;
+            color: #fff;
+            font-size: 18px;
+            line-height: 1;
+            box-shadow: 0 6px 18px rgba(11, 15, 26, 0.4);
+            opacity: 0.92;
         }
-        .cta-block .promo .code:hover {
-            background: #2563EB;
+        .cbtn:hover {
+            background: #1B2742;
         }
-        .cta-contacts {
+        .cbtn.prev {
+            left: -6px;
+        }
+        .cbtn.next {
+            right: -6px;
+        }
+        .chint {
+            font-size: 13px;
+            color: #5B6470;
+            margin-bottom: 12px;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        #lb {
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(7, 10, 18, 0.9);
+            cursor: zoom-out;
+            padding: 24px;
+        }
+        #lb.on {
+            display: flex;
+        }
+        #lb img {
+            max-width: 94vw;
+            max-height: 92vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            position: relative;
+            overflow: hidden;
+            margin: 48px 0 0;
+            border-radius: 22px;
+            background: #0B0F1A;
+            color: #F1F5F9;
+            padding: 32px 34px;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: -140px;
+            top: -180px;
+            border-radius: 50%;
+            filter: blur(60px);
+            background: radial-gradient(circle, rgba(79, 124, 255, 0.5), transparent 65%);
+        }
+        .cta>* {
+            position: relative;
+        }
+        .cta h2 {
+            color: #fff;
+        }
+        .cta p {
+            color: #B9C6DB;
+            font-size: 16px;
+            max-width: 560px;
+        }
+        .cta .guar {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            max-width: 560px;
+        }
+        .cta .btns {
+            margin-top: 20px;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px 28px;
+            gap: 10px;
+        }
+        .cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 12px;
+            padding: 13px 22px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+        .cta .btn.p {
+            background: linear-gradient(100deg, #4F7CFF, #8B5CF6);
+            color: #fff;
+            box-shadow: 0 10px 26px rgba(79, 124, 255, 0.4);
+        }
+        .cta .btn.s {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+        .cta .promo {
             margin-top: 20px;
-            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            max-width: 560px;
+            border: 1.5px dashed rgba(245, 184, 74, 0.55);
+            border-radius: 14px;
+            padding: 12px 16px;
             font-size: 14px;
-            color: #64748B;
+            color: #F3D8A8;
         }
-        .cta-contacts b {
-            color: #F1F5F9;
-            font-weight: 600;
+        .cta .pcode {
+            display: inline-block;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #3A2A05;
+            background: #F5B84A;
+            border-radius: 8px;
+            padding: 4px 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.15s;
         }
-        .cta-contacts a {
-            color: #3B82F6;
+        .cta .pcode:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(245, 184, 74, 0.4);
+        }
+        .cta .ctc {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+            font-size: 14px;
+            color: #B9C6DB;
+        }
+        .cta .ctc b {
+            color: #fff;
+            font-weight: 700;
+        }
+        .cta .ctc a {
+            color: #9DB8FF;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
-        /* ─── футер ─── */
+        /* ===== FOOTER ===== */
         footer {
             padding: 32px 0 40px;
-            text-align: center;
-            color: #475569;
+            color: #5B6470;
             font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            margin-top: 20px;
-            line-height: 2;
+            text-align: center;
+            line-height: 1.9;
         }
         footer a {
-            color: #475569;
-        }
-        footer a:hover {
-            color: #F1F5F9;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
+            color: #4F7CFF;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
-        /* ─── адаптив ─── */
-        @media (max-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .nav a:not(.btn) {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .stats-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .steps {
-                grid-template-columns: 1fr 1fr;
-            }
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .tech-compare {
-                grid-template-columns: 1fr;
-            }
-            .tech-col:first-child {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            }
-            .cases-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .cta-block {
-                padding: 28px 20px;
-            }
-        }
-        @media (max-width: 600px) {
-            .stats-row {
-                grid-template-columns: 1fr 1fr;
-            }
-            .steps {
-                grid-template-columns: 1fr;
-            }
-            .hero-stats {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .calc-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .calc-row label {
-                min-width: auto;
-            }
-            .calc-value {
-                text-align: left;
-            }
-            .container {
-                padding: 0 16px;
-            }
-            .hero h1 {
-                font-size: 26px;
-            }
-            h2 {
-                font-size: 22px;
-            }
-            .btn {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-            .cases-grid {
-                grid-template-columns: 1fr;
-            }
-            .cta-block .guarantee {
-                display: flex;
-                margin: 4px 0;
-            }
-            .cta-block .promo {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        .mt-16 {
-            margin-top: 16px;
-        }
-        .mt-24 {
-            margin-top: 24px;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .flex-center {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
+        /* ===== RESPONSIVE ===== */
         @media print {
-            .btn,
-            .hamburger,
-            .mobile-menu {
+            .sticky-bar,
+            .btns,
+            input[type="range"] {
                 display: none !important;
             }
-            body {
-                background: #fff;
-                color: #000;
+            section {
+                padding: 26px 0 0;
             }
-            .card,
-            .step,
-            .cta-block,
-            .table-wrap,
-            .calc-block {
-                background: #f5f5f5 !important;
-                border-color: #ddd !important;
+            .calc,
+            .cta,
+            .prof-grid,
+            .ncard {
+                break-inside: avoid;
             }
-            header {
-                position: static;
-                background: #fff !important;
-                border-color: #ddd !important;
-            }
-            .nav a {
-                color: #333 !important;
-            }
-            .hero h1 .highlight {
-                color: #3B82F6;
-            }
-            .stat-block .num {
-                color: #333;
-            }
-            .stat-block .num span {
-                color: #3B82F6;
-            }
-            .logo-text span {
-                color: #3B82F6;
+            .cover h1 {
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── ХЕДЕР ─── -->
-    <header id="header">
-        <div class="container header-inner">
-            <a href="#" class="logo">
-                <svg viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                        <polygon fill="#1A2342" points="137.796,455.339 138.005,498.347 115.673,537.074 98.529,537.074 74.84,497.75 75.268,554.929 51.295,554.929 51.295,455.339 76.477,455.339 108.053,508.087 "/>
-                        <polygon fill="#3B82F6" fill-rule="nonzero" points="143.942,554.93 143.942,455.339 170.12,455.339 170.12,491.334 206.399,491.334 206.399,455.339 232.578,455.339 232.578,554.93 206.399,554.93 206.399,515.236 170.12,515.236 170.12,554.93 "/>
-                        <polygon fill="#ffffff" fill-rule="nonzero" points="266.869,554.48 266.869,455.232 291.964,455.232 328.757,516.695 318.336,516.837 353.073,455.232 378.098,455.232 378.098,554.48 352.931,554.48 353.428,488.268 357.965,489.969 331.026,536.687 313.941,536.687 285.797,489.969 290.263,488.268 290.759,554.48 "/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M433.606 556.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.572 1.985,-4.703 4.774,-8.767 8.365,-12.193 3.592,-3.427 7.846,-6.074 12.737,-7.964 4.892,-1.89 10.256,-2.836 16.116,-2.836 6.569,0 12.406,1.135 17.487,3.427 5.08,2.292 9.263,5.506 12.571,9.641 3.308,4.135 5.601,8.98 6.853,14.509 1.253,5.529 1.229,11.556 -0.047,18.077l-53.736 0c0.142,2.411 0.992,4.514 2.528,6.31 1.536,1.796 3.616,3.19 6.263,4.206 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.543 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.214 -8.744,4.561 -3.615,1.347 -7.491,2.433 -11.602,3.237 -4.112,0.803 -8.011,1.205 -11.697,1.205zm-15.667 -48.631l27.718 0c-0.047,-3.12 -1.252,-5.624 -3.639,-7.515 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.891 -4.183,4.395 -4.513,7.515z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M515.769 556.607c-8.413,0 -14.982,-2.363 -19.731,-7.065 -4.75,-4.703 -7.137,-11.674 -7.137,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.189 4.301,-0.543 1.442,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.83,1.394 -10.563,1.394zm-40.409 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M547.812 554.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.654 7.373,-2.481 11.579,-2.481 1.654,0 3.119,0.094 4.372,0.307 1.252,0.213 2.481,0.449 3.71,0.685l-2.978 26.443c-1.654,-0.662 -3.426,-1.182 -5.34,-1.536 -1.914,-0.355 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.355 -2.623,2.245 -3.947,5.648 -3.947,10.185l0 36.367 -25.804 0z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M612.181 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.608,1.253 10.61,3.758 3.001,2.505 4.49,5.907 4.49,10.208 0,4.348 -1.489,7.751 -4.49,10.232 -3.002,2.481 -6.546,3.734 -10.61,3.734z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M691.509 556.607c-7.751,0 -14.698,-1.701 -20.842,-5.08 -6.144,-3.38 -10.988,-7.964 -14.533,-13.777 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.586 3.167,-15.289 2.103,-4.702 5.033,-8.79 8.791,-12.287 3.757,-3.498 8.152,-6.215 13.209,-8.153 5.057,-1.938 10.515,-2.907 16.376,-2.907 5.671,0 10.964,0.78 15.856,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.07c-2.362,-2.221 -4.891,-3.852 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.937 -2.623,1.3 -4.655,3.191 -6.073,5.648 -1.417,2.458 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.264 4.75,12.193 3.167,2.931 7.515,4.396 13.044,4.396 3.308,0 6.475,-0.638 9.476,-1.891 3.001,-1.252 5.789,-3.095 8.389,-5.553l10.066 19.495c-4.112,3.12 -8.885,5.554 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                        <polygon fill="#3B82F6" fill-rule="nonzero" points="744.112,554.48 744.112,455.232 770.2,455.232 770.2,491.103 806.355,491.103 806.355,455.232 832.443,455.232 832.443,554.48 806.355,554.48 806.355,514.923 770.2,514.923 770.2,554.48 "/>
-                        <path fill="#3B82F6" fill-rule="nonzero" d="M853.001 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.609,1.253 10.61,3.758 3.001,2.505 4.489,5.907 4.489,10.208 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.734 -10.61,3.734z"/>
-                        <path fill="#3B82F6" fill-rule="nonzero" d="M929.848 556.607c-8.412,0 -14.982,-2.363 -19.732,-7.065 -4.749,-4.703 -7.136,-11.674 -7.136,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.189 4.301,-0.543 1.441,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                    </g>
-                </svg>
-                <span class="logo-text">Metric<span>Hit</span></span>
-            </a>
+    <!-- ===== STICKY BAR ===== -->
+    <div class="sticky-bar"><span>🎁 Новым пользователям — <b>+500 ₽ бонуса</b> на тестовый запуск · Промокод <b>БЕРТ-74</b> — ещё +3000 кликов</span></div>
 
-            <nav class="nav">
-                <a href="#features">Преимущества</a>
-                <a href="#prices">Цены</a>
-                <a href="#how">Как начать</a>
-                <a href="#cases">Кейсы</a>
-                <a href="#faq">FAQ</a>
-                <a href="https://t.me/express75" target="_blank" class="btn btn-secondary btn-sm" style="padding:8px 16px;">Telegram</a>
-                <a href="https://lk.express-geo.ru" target="_blank" class="btn btn-primary btn-sm">ЛК</a>
-            </nav>
+    <!-- ===== COVER ===== -->
+    <header class="cover">
+        <div class="shade"></div>
 
-            <button class="hamburger" id="hamburger" aria-label="Меню">
-                <span></span><span></span><span></span>
-            </button>
+        <!-- ROCKET SVG -->
+        <div class="rocket-wrap">
+            <svg viewBox="0 0 240 470" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="rkBody" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#FFFFFF"/>
+                        <stop offset="55%" stop-color="#EDF1FB"/>
+                        <stop offset="100%" stop-color="#C3CDEA"/>
+                    </linearGradient>
+                    <linearGradient id="rkNose" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#C4ADFF"/>
+                        <stop offset="100%" stop-color="#7C5CFC"/>
+                    </linearGradient>
+                    <linearGradient id="rkFin" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#6D8CFF"/>
+                        <stop offset="100%" stop-color="#8B5CF6"/>
+                    </linearGradient>
+                    <linearGradient id="rkFlame" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#FFC24B"/>
+                        <stop offset="100%" stop-color="#FF6A3D"/>
+                    </linearGradient>
+                    <linearGradient id="rkStreak" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0"/>
+                        <stop offset="45%" stop-color="#8B5CF6" stop-opacity=".75"/>
+                        <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <circle class="star" cx="26" cy="60" r="2.6" fill="#CBB2FF"/>
+                <circle class="star" cx="212" cy="36" r="2" fill="#9DB8FF"/>
+                <circle class="star" cx="204" cy="180" r="2.3" fill="#FFD98E"/>
+                <g transform="rotate(12 120 230)">
+                    <line class="st" x1="58" y1="200" x2="58" y2="330" stroke="url(#rkStreak)" stroke-width="5" stroke-linecap="round"/>
+                    <line class="st" x1="184" y1="170" x2="184" y2="290" stroke="url(#rkStreak)" stroke-width="4" stroke-linecap="round"/>
+                    <line class="st" x1="38" y1="130" x2="38" y2="220" stroke="url(#rkStreak)" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M88 240 C62 268 52 302 54 338 L88 306 Z" fill="url(#rkFin)"/>
+                    <path d="M152 240 C178 268 188 302 186 338 L152 306 Z" fill="url(#rkFin)"/>
+                    <path d="M120 20 C140 52 152 100 152 160 L152 310 C152 330 138 342 120 342 C102 342 88 330 88 310 L88 160 C88 100 100 52 120 20 Z" fill="url(#rkBody)" stroke="#B6C1E4" stroke-width="1.5"/>
+                    <path d="M120 20 C132 40 141 62 146 90 L94 90 C99 62 108 40 120 20 Z" fill="url(#rkNose)"/>
+                    <circle cx="120" cy="118" r="16" fill="#10192E" stroke="#4F7CFF" stroke-width="4.5"/>
+                    <circle cx="115" cy="113" r="5" fill="#9DB8FF" opacity=".85"/>
+                    <text transform="translate(120 332) rotate(-90)" dominant-baseline="central" font-family="'Golos Text','Segoe UI',Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#39456B" textLength="168" lengthAdjust="spacingAndGlyphs">ЗАПУСТИ СВОЙ САЙТ В КОСМОС</text>
+                    <path d="M104 342 L136 342 L130 358 L110 358 Z" fill="#26324E"/>
+                    <path class="fl" d="M120 360 C136 384 133 412 120 444 C107 412 104 384 120 360 Z" fill="url(#rkFlame)"/>
+                    <path class="fl" d="M120 360 C128 378 127 396 120 416 C113 396 112 378 120 360 Z" fill="#FFE9B8"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="cwrap">
+            <div class="kick">Express — сервис продвижения сайтов</div>
+            <h1>Продвижение сайта поведенческими факторами</h1>
+            <div class="sub">Живые переходы из поиска Яндекса по вашим запросам. AI-боты с реальной историей. Тест от 1 000 ₽, без абонплаты.</div>
+            <div class="free-badge"><span class="dot"></span>Бесплатный тест: бонус +500 ₽ каждому новому пользователю</div>
+            <div class="meta">
+                <div><b>Кому:</b> владельцам сайтов и SEO-специалистам</div>
+                <div><b>Дата:</b> <span id="kpDate">22.07.2026</span></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="v">0,40 ₽</div><div class="l">цена клика на старте — от объёма дешевле</div></div>
+                <div class="stat-card"><div class="v">+500 ₽</div><div class="l">бонус на тестовый запуск</div></div>
+                <div class="stat-card"><div class="v">0 ₽</div><div class="l">абонентская плата</div></div>
+                <div class="stat-card"><div class="v">от 1 000 ₽</div><div class="l">хватит, чтобы начать</div></div>
+            </div>
         </div>
     </header>
 
-    <!-- ─── МОБИЛЬНОЕ МЕНЮ ─── -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#features">Преимущества</a>
-        <a href="#prices">Цены</a>
-        <a href="#how">Как начать</a>
-        <a href="#cases">Кейсы</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://t.me/express75" target="_blank" class="btn btn-secondary">Telegram</a>
-        <a href="https://lk.express-geo.ru" target="_blank" class="btn btn-primary">Личный кабинет</a>
-    </div>
-
-    <!-- ─── ГЕРОЙ ─── -->
-    <section id="hero">
-        <div class="container hero-grid">
-            <div>
-                <div class="hero-badge">🎯 Управление поведенческими факторами</div>
-                <h1>Вывод в <span class="highlight">ТОП</span> через поведенческие сигналы</h1>
-                <p>Алгоритмы Яндекса учитывают поведение пользователей. Мы даём сайту именно те сигналы, которые поднимают позиции. Без абонплаты — только за результат.</p>
-                <div class="hero-actions">
-                    <a href="https://t.me/express75" target="_blank" class="btn btn-primary btn-lg">Начать продвижение →</a>
-                    <a href="#prices" class="btn btn-secondary btn-lg">Смотреть цены</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="value">0,15 <span>₽</span></div>
-                        <div class="label">цена клика при объёме</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="value">+500 <span>₽</span></div>
-                        <div class="label">бонус новым</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="value">0 <span>₽</span></div>
-                        <div class="label">абонентская плата</div>
+    <!-- ===== SECTION: Суть сервиса ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Суть сервиса</div>
+            <h2>Что это за сервис и как он работает</h2>
+            <div class="prof-grid">
+                <div class="pcard">
+                    <div class="head"><div class="nm">Условия коротко</div><div class="yr">кликовая модель, всё в кабинете</div></div>
+                    <div class="body">
+                        <div class="row"><span class="k">Старт</span><span class="v">от 1 000 ₽</span></div>
+                        <div class="row"><span class="k">Абонплата</span><span class="v">0 ₽</span></div>
+                        <div class="row"><span class="k">Депозит</span><span class="v">не обязателен</span></div>
+                        <div class="row"><span class="k">Цена клика</span><span class="v">0,40 ₽ и ниже</span></div>
+                        <div class="row"><span class="k">Бонус новичку</span><span class="v">+500 ₽</span></div>
+                        <div class="badge-wrap">
+                            <span class="badge">Яндекс</span>
+                            <span class="badge">Поведенческие факторы</span>
+                            <span class="badge">Личный кабинет</span>
+                            <span class="badge">AI-боты</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="hero-mascot">
-                    <span class="mascot-icon">🤖</span>
-                    <div style="font-size:18px;font-weight:600;color:#F1F5F9;">MetricBot</div>
-                    <div class="mascot-label">AI-бот с уникальной поведенческой историей</div>
+                <div>
+                    <p><strong>Express</strong> — личный кабинет, в котором вы управляете поведенческими факторами своего сайта. Пользователи (AI-боты с уникальной историей) находят сайт в поиске Яндекса по вашим запросам, переходят и взаимодействуют с ним. Поисковик видит живой интерес — это и есть сигнал для роста позиций.</p>
+                    <p>Технология полностью наша: мы создаём и развиваем её сами. AI-бот имеет реальную поведенческую историю — читает новости, смотрит погоду, ищет товары. Отличить его от человека невозможно.</p>
+                    <p><strong>Логика простая:</strong> пополнили баланс → запустили проект → сервис работает сам. Платите только за клики.</p>
                 </div>
             </div>
-        </div>
-    </section>
+    </div></section>
 
-    <!-- ─── СТАТИСТИКА ─── -->
-    <section style="padding-top:0;">
-        <div class="container">
-            <div class="stats-row">
-                <div class="stat-block"><div class="num">20 <span>лет</span></div><div class="lbl">опыта в SEO</div></div>
-                <div class="stat-block"><div class="num">3000<span>+</span></div><div class="lbl">сайтов в работе</div></div>
-                <div class="stat-block"><div class="num">14 <span>млн+</span></div><div class="lbl">переходов за 30 дней</div></div>
-                <div class="stat-block"><div class="num">2–3 <span>дня</span></div><div class="lbl">до первых изменений</div></div>
+    <!-- ===== SECTION: Почему начать просто ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Условия старта</div>
+            <h2>Почему начать просто</h2>
+            <div class="ncard hot"><span class="tag">без риска для бюджета</span><div class="n">1</div><div><h3>Старт от 1 000 ₽</h3><div class="b">Не нужно замораживать большой бюджет ради пробы. Пополняете баланс на любую сумму от тысячи рублей, тестируете продвижение на одном сайте и увеличиваете объём, когда увидите первые результаты.</div></div></div>
+            <div class="ncard"><div class="n">2</div><div><h3>Бонус +500 ₽ на запуск</h3><div class="b">Каждому новому пользователю начисляем тестовый баланс: зарегистрируйтесь и напишите нам — активируем бонус при настройке первого запуска.</div></div></div>
+            <div class="ncard"><div class="n">3</div><div><h3>Ноль абонплаты и депозитов</h3><div class="b">Платите только за фактические клики. Никаких ежемесячных списаний «за кабинет» и обязательных крупных взносов.</div></div></div>
+            <div class="ncard"><div class="n">4</div><div><h3>AI-бот с реальной историей</h3><div class="b">Каждый переход — это не просто клик, а поведение живого пользователя. Бот имеет уникальную историю поисков и действий в интернете.</div></div></div>
+            <div class="ncard"><div class="n">5</div><div><h3>Поддержка поможет</h3><div class="b">В кабинете есть инструкции. Если что-то непонятно — пишите, разберём вместе: от подбора запросов до чтения статистики.</div></div></div>
+    </div></section>
+
+    <!-- ===== SECTION: Калькулятор ===== -->
+    <section><div class="wrap">
+            <div class="calc">
+                <div class="eyebrow" style="color:#9DB8FF">Калькулятор</div>
+                <h2>Посчитайте свой объём</h2>
+                <div class="csub">Подвиньте сумму пополнения — увидите цену клика на вашем объёме и сколько переходов получит сайт.</div>
+
+                <div class="blabel">Сумма пополнения</div>
+                <div class="bopts">
+                    <button class="bopt on" data-s="1000" onclick="setS(1000)"><span class="rec">для теста</span>1 000 ₽</button>
+                    <button class="bopt" data-s="50000" onclick="setS(50000)">50 000 ₽</button>
+                    <button class="bopt" data-s="100000" onclick="setS(100000)">100 000 ₽</button>
+                    <button class="bopt" data-s="150000" onclick="setS(150000)">150 000 ₽</button>
+                    <button class="bopt" data-s="200000" onclick="setS(200000)">200 000 ₽</button>
+                </div>
+
+                <div class="blabel">Или точная сумма</div>
+                <div class="srow"><input type="range" id="dep" min="1000" max="250000" step="1000" value="1000" oninput="setS(+this.value,true)"><div class="sval" id="depV">1 000 ₽</div></div>
+
+                <div class="eflow">
+                    <div class="ebox"><div class="k">Пополнение</div><div class="v" id="oDep">—</div></div>
+                    <div class="arr">→</div>
+                    <div class="ebox"><div class="k">Цена клика</div><div class="v" id="oCpc">—</div></div>
+                    <div class="arr">→</div>
+                    <div class="ebox hl"><div class="k">Переходов на сайт</div><div class="v" id="oClicks">—</div></div>
+                </div>
+                <div class="spend" id="oSave">&nbsp;</div>
+                <div class="honest"><span>🎁</span><span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽ — на базовой цене это ещё примерно 1 250 переходов сверху.</span></div>
             </div>
-        </div>
-    </section>
+    </div></section>
 
-    <!-- ─── ПРЕИМУЩЕСТВА ─── -->
-    <section id="features" class="section-dark">
-        <div class="container">
-            <div class="section-tag">Что мы делаем</div>
-            <h2>Управляем <span class="highlight">поведенческими сигналами</span></h2>
-            <p class="subtitle">Яндекс учитывает поведение пользователей при ранжировании. Мы создаём именно те сигналы, которые поднимают позиции.</p>
-            <div class="grid-3">
-                <div class="card">
-                    <span class="icon">🎯</span>
-                    <h3>Точное попадание в запрос</h3>
-                    <p>Пользователи приходят по вашим ключевым словам. Яндекс видит — запрос релевантен странице.</p>
-                    <span class="tag">релевантность</span>
-                </div>
-                <div class="card">
-                    <span class="icon">📖</span>
-                    <h3>Глубина просмотра</h3>
-                    <p>Посетители изучают сайт: читают, листают, переходят по страницам. Это сигнал качества для Яндекса.</p>
-                    <span class="tag">вовлечённость</span>
-                </div>
-                <div class="card">
-                    <span class="icon">🔄</span>
-                    <h3>Возвраты и удержание</h3>
-                    <p>Снижаем отказы, увеличиваем повторные визиты. Яндекс видит — сайт интересен пользователям.</p>
-                    <span class="tag">лояльность</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ===== SECTION: Тарифы ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Тарифы</div>
+            <h2>Тарифная сетка: чем больше пополнение, тем ниже цена клика</h2>
+            <table>
+                <thead><tr><th>Объём пополнения</th><th>Цена за клик</th></tr></thead>
+                <tbody>
+                    <tr id="t0" class="total"><td>Базовый (от 1 000 ₽)</td><td>0,40 ₽</td></tr>
+                    <tr id="t50"><td>от 50 000 ₽</td><td>0,35 ₽</td></tr>
+                    <tr id="t100"><td>от 100 000 ₽</td><td>0,20 ₽</td></tr>
+                    <tr id="t150"><td>от 150 000 ₽</td><td>0,17 ₽</td></tr>
+                    <tr id="t200"><td>от 200 000 ₽</td><td>0,15 ₽</td></tr>
+                    <tr id="t250"><td>от 250 000 ₽</td><td>по договорённости</td></tr>
+                </tbody>
+            </table>
+            <div class="tnote">Стартовая 1 000 ₽ — это 2 500 переходов. С бонусом +500 ₽ — 3 750. Для крупных объёмов — индивидуальные условия. <a href="https://t.me/express75" target="_blank" rel="noopener">@express75</a></div>
+    </div></section>
 
-    <!-- ─── ТЕХНОЛОГИИ ─── -->
-    <section>
-        <div class="container">
-            <div class="section-tag">Технология</div>
-            <h2>Чем <span class="highlight">MetricHit</span> отличается</h2>
-            <p class="subtitle">Собственная инфраструктура, реальные фингерпринты и AI-поведение.</p>
-            <div class="tech-compare">
-                <div class="tech-col theirs">
-                    <div class="head theirs">Как у других</div>
-                    <ul>
-                        <li>Публичные прокси, часто в стоп-листах</li>
-                        <li>Синтетические фингерпринты «из методички»</li>
-                        <li>Один шаблонный сценарий для всех</li>
-                        <li>Ровные паттерны — легко вычисляются</li>
-                    </ul>
-                </div>
-                <div class="tech-col ours">
-                    <div class="head ours">MetricHit</div>
-                    <ul>
-                        <li><strong>Собственная прокси-сеть</strong> — 150+ регионов по всей России</li>
-                        <li><strong>Реальные фингерпринты</strong> пользователей, а не синтетика</li>
-                        <li><strong>AI подбирает сценарий</strong> под вашу нишу и тип сайта</li>
-                        <li><strong>Естественное распределение</strong> по часам и дням</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ─── КАК НАЧАТЬ ─── -->
-    <section id="how" class="section-dark">
-        <div class="container">
-            <div class="section-tag">Как начать</div>
-            <h2>3 шага до <span class="highlight">роста позиций</span></h2>
-            <p class="subtitle">Регистрация, настройка, запуск — всё просто.</p>
+    <!-- ===== SECTION: Как начать ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Запуск</div>
+            <h2>Как начать</h2>
             <div class="steps">
-                <div class="step">
-                    <div class="num">01</div>
-                    <h4>Регистрация</h4>
-                    <p>Заполните форму за минуту — <a href="https://lk.express-geo.ru" target="_blank" style="color:#3B82F6;">lk.express-geo.ru</a></p>
-                </div>
-                <div class="step">
-                    <div class="num">02</div>
-                    <h4>Настройка проекта</h4>
-                    <p>Добавьте домен, запросы и регион. Остальное сделаем мы.</p>
-                </div>
-                <div class="step">
-                    <div class="num">03</div>
-                    <h4>Запуск и рост</h4>
-                    <p>Система начинает работать — вы видите динамику в кабинете.</p>
-                </div>
+                <div class="step"><b>Шаг 1. Регистрация</b><span>кабинет — <a href="https://lk.express-geo.ru" target="_blank" rel="noopener">lk.express-geo.ru</a>, ссылка закреплена в описании нашего Telegram-профиля.</span></div>
+                <div class="step"><b>Шаг 2. Данные проекта</b><span>пришлите домен, ключевые запросы, регион и цель — что хотите получить.</span></div>
+                <div class="step"><b>Шаг 3. Настройка</b><span>подготовим кабинет и настройки, активируем бонус 500 ₽ и настроим тестовый запуск.</span></div>
+                <div class="step"><b>Шаг 4. Контроль</b><span>передадим доступ — динамика кликов и расход видны в кабинете в реальном времени.</span></div>
             </div>
-        </div>
-    </section>
+    </div></section>
 
-    <!-- ─── КАЛЬКУЛЯТОР ─── -->
-    <section>
-        <div class="container">
-            <div class="section-tag">Калькулятор</div>
-            <h2>Рассчитайте <span class="highlight">бюджет</span></h2>
-            <p class="subtitle">Подвиньте ползунок — увидите цену клика и количество переходов.</p>
-            <div class="calc-block">
-                <div class="calc-row">
-                    <label>Сумма пополнения</label>
-                    <input type="range" id="depositRange" min="1000" max="250000" step="1000" value="1000" />
-                    <span class="calc-value" id="depositDisplay">1 000 ₽</span>
-                </div>
-                <div class="calc-results">
-                    <div class="calc-result"><div class="k">Пополнение</div><div class="v" id="calcDeposit">1 000 ₽</div></div>
-                    <div class="calc-arrow">→</div>
-                    <div class="calc-result"><div class="k">Цена клика</div><div class="v" id="calcCpc">0,40 ₽</div></div>
-                    <div class="calc-arrow">→</div>
-                    <div class="calc-result highlight"><div class="k">Переходов</div><div class="v" id="calcClicks">2 500</div></div>
-                </div>
-                <div class="text-center mt-16">
-                    <a href="https://lk.express-geo.ru" target="_blank" class="btn btn-primary btn-lg">Зарегистрироваться →</a>
-                </div>
+    <!-- ===== SECTION: Важно знать ===== -->
+    <section><div class="wrap">
+            <div class="callout">
+                <div class="eyebrow">Что важно знать заранее</div>
+                <ul class="plain">
+                    <li><strong>Безопасность:</strong> продвижение строится на качественном AI-трафике. Объём наращиваем постепенно, без резких всплесков.</li>
+                    <li><strong>Начинаем с теста</strong> на одном проекте. Смотрим, как ниша откликается, и только потом масштабируем.</li>
+                    <li><strong>Скорость результата</strong> зависит от ниши, конкуренции и состояния сайта. Именно поэтому первый шаг — тест от 1 000 ₽.</li>
+                    <li><strong>Актуальная ссылка</strong> на кабинет всегда закреплена в описании нашего Telegram-профила <a href="https://t.me/express75" target="_blank" rel="noopener">@express75</a>.</li>
+                </ul>
             </div>
-        </div>
-    </section>
+    </div></section>
 
-    <!-- ─── ТАРИФЫ ─── -->
-    <section id="prices" class="section-dark">
-        <div class="container">
-            <div class="section-tag">Цены</div>
-            <h2>Стоимость — от <span class="highlight">объёма</span></h2>
-            <p class="subtitle">Чем больше пополнение, тем ниже цена клика. Без скрытых комиссий.</p>
-            <div class="table-wrap">
-                <table>
-                    <thead><tr><th>Объём пополнения</th><th>Цена за клик</th></tr></thead>
-                    <tbody>
-                        <tr><td>от 1 000 ₽</td><td>0,40 ₽</td></tr>
-                        <tr><td>от 50 000 ₽</td><td>0,35 ₽</td></tr>
-                        <tr class="highlight"><td>от 100 000 ₽</td><td>0,20 ₽</td></tr>
-                        <tr><td>от 150 000 ₽</td><td>0,17 ₽</td></tr>
-                        <tr><td>от 200 000 ₽</td><td>0,15 ₽</td></tr>
-                        <tr><td>от 250 000 ₽</td><td>индивидуально</td></tr>
-                    </tbody>
-                </table>
-                <div class="table-note">🎁 <strong>Бонус +500 ₽</strong> новым пользователям на тестовый запуск.</div>
+    <!-- ===== SECTION: Команда ===== -->
+    <section><div class="wrap">
+            <div class="team">
+                <div class="tbadge">20+ лет в разработке</div>
+                <h2>Кто делает сервис</h2>
+                <p>Express создала команда специалистов, которые больше двадцати лет занимаются разработкой. Мы привыкли оставаться за кадром — имена команды никогда не были публичными.</p>
+                <p>Технология полностью наша: мы развиваем её сами и продаём напрямую, без посредников. Отсюда и цены — вы платите разработчику, без чужих наценок.</p>
             </div>
-        </div>
-    </section>
+    </div></section>
 
-    <!-- ─── КЕЙСЫ ─── -->
-    <section id="cases">
-        <div class="container">
-            <div class="section-tag">Результаты</div>
-            <h2>Реальные <span class="highlight">кейсы</span></h2>
-            <p class="subtitle">Рост позиций в ТОП-10 по основным запросам.</p>
-            <div class="cases-grid">
-                <div class="case-item">
-                    <div class="growth">85%</div>
-                    <div class="name">Стоматологическая клиника</div>
-                    <div class="meta">запросов в ТОП-10</div>
-                </div>
-                <div class="case-item">
-                    <div class="growth">78%</div>
-                    <div class="name">Производитель окон</div>
-                    <div class="meta">запросов в ТОП-10</div>
-                </div>
-                <div class="case-item">
-                    <div class="growth">92%</div>
-                    <div class="name">Автосалон</div>
-                    <div class="meta">запросов в ТОП-10</div>
-                </div>
-                <div class="case-item">
-                    <div class="growth">77%</div>
-                    <div class="name">Магазин мебели</div>
-                    <div class="meta">запросов в ТОП-10</div>
-                </div>
+    <!-- ===== SECTION: Дополнительные услуги ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Ещё направления</div>
+            <h2>Чем ещё можем быть полезны</h2>
+            <p>Помимо поведенческих факторов берём смежные задачи по сайтам и трафику. Напишите — обсудим вашу задачу.</p>
+            <div class="svc">
+                <div class="s"><div class="ic">🛠</div><h3>Разработка сайтов</h3><p>Лендинги, корпоративные сайты и магазины: структура, дизайн, вёрстка, запуск.</p></div>
+                <div class="s"><div class="ic">📈</div><h3>SEO-оптимизация</h3><p>Техническая база, структура, тексты и работа с факторами ранжирования.</p></div>
+                <div class="s"><div class="ic">🎯</div><h3>Настройка Яндекс Директа</h3><p>Сбор семантики, объявления, стратегии ставок и ведение кампаний.</p></div>
+                <div class="s"><div class="ic">🌍</div><h3>Настройка Google Ads</h3><p>Запуск и оптимизация рекламы в Google: поиск, медийная сеть, ремаркетинг.</p></div>
+                <div class="s"><div class="ic">📣</div><h3>Таргет ВКонтакте</h3><p>Подбор аудиторий, креативы, тесты связок и ведение кампаний в ВК.</p></div>
+                <div class="s"><div class="ic">✍️</div><h3>Ведение Telegram-каналов</h3><p>Контент-план, посты, оформление, рост и вовлечение аудитории.</p></div>
+                <div class="s"><div class="ic">🤖</div><h3>GEO-оптимизация</h3><p>Продвижение в ответах нейросетей: чтобы ваш сайт упоминался в нейровыдаче Яндекса и ChatGPT.</p></div>
+                <div class="s"><div class="ic">🧲</div><h3>Настройка лидгена</h3><p>Нестандартные методы привлечения заявок. Подберём связку под вашу нишу.</p></div>
+                <div class="s"><div class="ic">⚙️</div><h3>Разработка автоматизаций</h3><p>Боты, интеграции и внутренние инструменты под ваш бизнес.</p></div>
             </div>
-            <div class="text-center mt-24">
-                <a href="https://t.me/express75" target="_blank" class="btn btn-secondary">Все кейсы в Telegram →</a>
+    </div></section>
+
+    <!-- ===== SECTION: Отзывы ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Мы на связи</div>
+            <h2>Что о нас говорят пользователи</h2>
+            <div class="chint">Скрины из нашего канала: благодарности и рост позиций по реальным проектам. Листайте стрелками, клик — увеличить.</div>
+            <div class="carousel">
+                <button class="cbtn prev" onclick="crsScroll(-1)" aria-label="Назад">‹</button>
+                <div class="crs" id="crs">
+                    <img src="reviews/r01.jpg" alt="Благодарность пользователя" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r02.jpg" alt="Отзывы пользователей" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r03.jpg" alt="Рост позиций: автотематика" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r04.jpg" alt="Рост позиций: мебель" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r05.jpg" alt="Рост позиций: выкуп авто" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r06.jpg" alt="Рост позиций: меховые изделия" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r07.jpg" alt="Рост позиций: испытания бетона" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r08.jpg" alt="Рост позиций: ультразвуковой контроль" loading="lazy" onclick="lbOpen(this.src)">
+                    <img src="reviews/r09.jpg" alt="Рост позиций: контроль сварных швов" loading="lazy" onclick="lbOpen(this.src)">
+                </div>
+                <button class="cbtn next" onclick="crsScroll(1)" aria-label="Вперёд">›</button>
             </div>
-        </div>
-    </section>
+            <ul class="plain">
+                <li><strong>Отзывы пользователей:</strong> подборка в Telegram — <a href="https://t.me/donk1993/152" target="_blank" rel="noopener">t.me/donk1993/152</a></li>
+                <li><strong>Наш канал в Telegram:</strong> <a href="https://t.me/expresspf" target="_blank" rel="noopener">t.me/expresspf</a></li>
+                <li><strong>Наш второй сервис продвижения:</strong> <a href="https://pf-agressor.ru" target="_blank" rel="noopener">pf-agressor.ru</a></li>
+            </ul>
+    </div></section>
 
-    <!-- ─── РЕФЕРАЛКА ─── -->
-    <section class="section-dark">
-        <div class="container">
-            <div class="referral-block">
-                <div class="section-tag">Партнёрам</div>
-                <div class="percent">до 10%</div>
-                <h2 style="margin:12px 0 8px;">Приводите клиентов — <span class="highlight">зарабатывайте</span></h2>
-                <p style="color:#94A3B8;max-width:540px;margin:0 auto 18px;font-weight:300;">С каждой оплаты приглашённого вам начисляется до 10% — постоянно. Выводите на реквизиты или пополняйте баланс.</p>
-                <a href="https://lk.express-geo.ru" target="_blank" class="btn btn-primary btn-lg">Начать приглашать →</a>
-            </div>
-        </div>
-    </section>
+    <!-- ===== SECTION: FAQ ===== -->
+    <section><div class="wrap">
+            <div class="eyebrow">Вопросы и ответы</div>
+            <h2>Частые вопросы</h2>
+            <details class="faq"><summary>Почему у вас цена ниже, чем у конкурентов?</summary><div class="fa">Потому что вы покупаете напрямую у разработчиков. Мы создаём и развиваем технологию сами, под нами работает ряд сервисов-перекупщиков. Убирая посредника, вы получаете ту же технологию по базовой цене. Скидки за объём — чем больше пополнение, тем ниже цена клика.</div></details>
+            <details class="faq"><summary>Это безопасно для сайта?</summary><div class="fa">Мы работаем на качественном AI-трафике: боты имеют уникальную поведенческую историю и не отличаются от живых пользователей. Объём наращиваем постепенно, старт всегда с небольшого теста. Если с вашим сайтом что-то случится по нашей вине — вернём всё бесплатно.</div></details>
+            <details class="faq"><summary>Как быстро будет результат?</summary><div class="fa">Зависит от ниши, конкуренции и состояния сайта. Первый шаг — тест от 1 000 ₽: динамику кликов вы видите в кабинете сразу, а по движению запросов в выдаче сами решаете, масштабировать ли объём.</div></details>
+            <details class="faq"><summary>Что нужно от меня для старта?</summary><div class="fa">Домен, ключевые запросы, регион и цель. Всё остальное сделаем сами: подготовим кабинет, настроим проект, активируем бонус 500 ₽ и передадим доступ.</div></details>
+            <details class="faq"><summary>Могу ли я остановиться в любой момент?</summary><div class="fa">Да. Абонентской платы нет, деньги списываются только за клики. Пополняете баланс когда нужно, управляете проектами сами — без обязательств.</div></details>
+            <details class="faq"><summary>Есть ли партнёрская программа?</summary><div class="fa">Да. Приглашайте клиентов по своей ссылке — получайте <strong>до 20%</strong> с каждой оплаты приглашённого постоянно. Вознаграждение выводите на реквизиты или пополняйте баланс кабинета.</div></details>
+    </div></section>
 
-    <!-- ─── FAQ ─── -->
-    <section id="faq">
-        <div class="container">
-            <div class="section-tag">Вопросы и ответы</div>
-            <h2>Часто <span class="highlight">спрашивают</span></h2>
-            <details class="faq">
-                <summary>Это безопасно для сайта?</summary>
-                <div class="answer">Мы работаем с качественным трафиком: пользователи приходят из поиска по вашим запросам. Объём наращиваем постепенно — без резких скачков, которые могли бы вызвать подозрения.</div>
-            </details>
-            <details class="faq">
-                <summary>Как быстро появится результат?</summary>
-                <div class="answer">Всё зависит от ниши, конкуренции и состояния сайта. Первый шаг — тест от 1 000 ₽: вы видите динамику в кабинете и сами решаете, увеличивать ли бюджет.</div>
-            </details>
-            <details class="faq">
-                <summary>Можно ли остановиться в любой момент?</summary>
-                <div class="answer">Да. Абонентской платы нет. Деньги списываются только за фактические клики. Управляете проектами сами — без обязательств на месяцы вперёд.</div>
-            </details>
-            <details class="faq">
-                <summary>Что нужно от меня для старта?</summary>
-                <div class="answer">Четыре вещи: домен сайта, ключевые запросы, регион продвижения и цель. Дальше всё сделаем сами — подготовим кабинет, настроим проект, активируем бонус 500 ₽.</div>
-            </details>
-        </div>
-    </section>
-
-    <!-- ─── ФИНАЛЬНЫЙ CTA ─── -->
-    <section class="section-dark">
-        <div class="container">
-            <div class="cta-block">
-                <h2>Выведем ваш сайт в <span class="highlight">ТОП</span></h2>
-                <p>Зарегистрируйтесь или напишите в Telegram — обсудим проект и запустим тест.</p>
-                <div class="flex-center">
-                    <a href="https://t.me/express75" target="_blank" class="btn btn-primary btn-lg">Написать в Telegram →</a>
-                    <a href="https://lk.express-geo.ru" target="_blank" class="btn btn-secondary btn-lg">Личный кабинет</a>
-                    <button class="btn btn-ghost btn-lg" onclick="window.print()">PDF</button>
+    <!-- ===== SECTION: CTA ===== -->
+    <section style="padding-bottom:0"><div class="wrap">
+            <div class="cta">
+                <h2>Начнём с теста</h2>
+                <p>Зарегистрируйтесь на <a href="https://lk.express-geo.ru" target="_blank" rel="noopener" style="color:#9DB8FF">lk.express-geo.ru</a> (ссылка закреплена в описании нашего профиля) — начислим тестовый баланс и поможем с первым запуском. Или просто пришлите в Telegram домен, запросы и регион: подготовим кабинет, запустим тест, а дальше решите по цифрам.</p>
+                <div class="guar">🎁 <span>Новым пользователям — бонус +500 ₽ на тестовый запуск.</span></div>
+                <div class="guar">⚙️ <span>Кабинет и настройки проекта подготовим за вас — от вас только домен, запросы и регион.</span></div>
+                <div class="btns">
+                    <a class="btn p" href="https://t.me/express75" target="_blank" rel="noopener">Написать в Telegram</a>
+                    <a class="btn s" href="https://t.me/expresspf" target="_blank" rel="noopener">Наш канал</a>
+                    <button class="btn s" onclick="window.print()">↓ Скачать PDF</button>
                 </div>
-                <div style="margin:16px 0 8px;">
-                    <span class="guarantee">🎁 <span><strong>Бонус +500 ₽</strong> на тестовый запуск</span></span>
-                    <span class="guarantee">⚙️ <span>Подготовим кабинет за вас</span></span>
-                </div>
-                <div class="promo">
-                    🔎 <span>По промокоду</span>
-                    <span class="code" onclick="copyPromo()">БЕРТ-74</span>
-                    <span>— дополнительно 3 000 кликов на тест</span>
-                </div>
-                <div class="cta-contacts">
-                    <div><b>Telegram:</b> <a href="https://t.me/express75" target="_blank">@express75</a></div>
+                <div class="promo">🔎 <span>Для особо внимательных: по промокоду</span> <span class="pcode" id="pcode" onclick="copyPromo()" title="Нажмите, чтобы скопировать">БЕРТ-74</span> <span>— дополнительно 3 000 кликов на тест.</span></div>
+                <div class="ctc">
+                    <div><b>Telegram:</b> <a href="https://t.me/express75" target="_blank" rel="noopener">@express75</a></div>
                     <div><b>Телефон:</b> <a href="tel:+79229266684">+7 922 926-66-84</a></div>
                     <div><b>Почта:</b> <a href="mailto:profexpress.pf@gmail.com">profexpress.pf@gmail.com</a></div>
-                    <div><b>Кабинет:</b> <a href="https://lk.express-geo.ru" target="_blank">lk.express-geo.ru</a></div>
+                    <div><b>Кабинет:</b> <a href="https://lk.express-geo.ru" target="_blank" rel="noopener">lk.express-geo.ru</a></div>
                 </div>
             </div>
-        </div>
-    </section>
+    </div></section>
 
-    <!-- ─── ФУТЕР ─── -->
+    <!-- ===== LIGHTBOX ===== -->
+    <div id="lb" onclick="this.classList.remove('on')"><img id="lbimg" src="" alt=""></div>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="container">
-            <div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:10px;">
-                <svg viewBox="0 0 1000 1000" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                        <polygon fill="#1A2342" points="137.796,455.339 138.005,498.347 115.673,537.074 98.529,537.074 74.84,497.75 75.268,554.929 51.295,554.929 51.295,455.339 76.477,455.339 108.053,508.087 "/>
-                        <polygon fill="#3B82F6" fill-rule="nonzero" points="143.942,554.93 143.942,455.339 170.12,455.339 170.12,491.334 206.399,491.334 206.399,455.339 232.578,455.339 232.578,554.93 206.399,554.93 206.399,515.236 170.12,515.236 170.12,554.93 "/>
-                        <polygon fill="#ffffff" fill-rule="nonzero" points="266.869,554.48 266.869,455.232 291.964,455.232 328.757,516.695 318.336,516.837 353.073,455.232 378.098,455.232 378.098,554.48 352.931,554.48 353.428,488.268 357.965,489.969 331.026,536.687 313.941,536.687 285.797,489.969 290.263,488.268 290.759,554.48 "/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M433.606 556.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.379,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.977,-15.572 1.985,-4.703 4.774,-8.767 8.365,-12.193 3.592,-3.427 7.846,-6.074 12.737,-7.964 4.892,-1.89 10.256,-2.836 16.116,-2.836 6.569,0 12.406,1.135 17.487,3.427 5.08,2.292 9.263,5.506 12.571,9.641 3.308,4.135 5.601,8.98 6.853,14.509 1.253,5.529 1.229,11.556 -0.047,18.077l-53.736 0c0.142,2.411 0.992,4.514 2.528,6.31 1.536,1.796 3.616,3.19 6.263,4.206 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.543 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.214 -8.744,4.561 -3.615,1.347 -7.491,2.433 -11.602,3.237 -4.112,0.803 -8.011,1.205 -11.697,1.205zm-15.667 -48.631l27.718 0c-0.047,-3.12 -1.252,-5.624 -3.639,-7.515 -2.387,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.891 -4.183,4.395 -4.513,7.515z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M515.769 556.607c-8.413,0 -14.982,-2.363 -19.731,-7.065 -4.75,-4.703 -7.137,-11.674 -7.137,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.189 4.301,-0.543 1.442,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.83,1.394 -10.563,1.394zm-40.409 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M547.812 554.48l0 -73.018 25.804 0 0 8.082c1.985,-3.592 4.75,-6.215 8.271,-7.869 3.521,-1.654 7.373,-2.481 11.579,-2.481 1.654,0 3.119,0.094 4.372,0.307 1.252,0.213 2.481,0.449 3.71,0.685l-2.978 26.443c-1.654,-0.662 -3.426,-1.182 -5.34,-1.536 -1.914,-0.355 -3.805,-0.52 -5.648,-0.52 -4.064,0 -7.396,1.111 -10.019,3.355 -2.623,2.245 -3.947,5.648 -3.947,10.185l0 36.367 -25.804 0z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M612.181 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.608,1.253 10.61,3.758 3.001,2.505 4.49,5.907 4.49,10.208 0,4.348 -1.489,7.751 -4.49,10.232 -3.002,2.481 -6.546,3.734 -10.61,3.734z"/>
-                        <path fill="#ffffff" fill-rule="nonzero" d="M691.509 556.607c-7.751,0 -14.698,-1.701 -20.842,-5.08 -6.144,-3.38 -10.988,-7.964 -14.533,-13.777 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.586 3.167,-15.289 2.103,-4.702 5.033,-8.79 8.791,-12.287 3.757,-3.498 8.152,-6.215 13.209,-8.153 5.057,-1.938 10.515,-2.907 16.376,-2.907 5.671,0 10.964,0.78 15.856,2.363 4.891,1.584 9.286,3.923 13.209,6.995l-11.201 19.07c-2.362,-2.221 -4.891,-3.852 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.937 -2.623,1.3 -4.655,3.191 -6.073,5.648 -1.417,2.458 -2.127,5.458 -2.127,9.003 0,5.199 1.583,9.264 4.75,12.193 3.167,2.931 7.515,4.396 13.044,4.396 3.308,0 6.475,-0.638 9.476,-1.891 3.001,-1.252 5.789,-3.095 8.389,-5.553l10.066 19.495c-4.112,3.12 -8.885,5.554 -14.32,7.326 -5.435,1.772 -10.846,2.67 -16.234,2.67z"/>
-                        <polygon fill="#3B82F6" fill-rule="nonzero" points="744.112,554.48 744.112,455.232 770.2,455.232 770.2,491.103 806.355,491.103 806.355,455.232 832.443,455.232 832.443,554.48 806.355,554.48 806.355,514.923 770.2,514.923 770.2,554.48 "/>
-                        <path fill="#3B82F6" fill-rule="nonzero" d="M853.001 554.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.155c-4.065,0 -7.586,-1.253 -10.587,-3.734 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.703 4.513,-10.208 3.001,-2.505 6.522,-3.758 10.587,-3.758 4.064,0 7.609,1.253 10.61,3.758 3.001,2.505 4.489,5.907 4.489,10.208 0,4.348 -1.488,7.751 -4.489,10.232 -3.001,2.481 -6.546,3.734 -10.61,3.734z"/>
-                        <path fill="#3B82F6" fill-rule="nonzero" d="M929.848 556.607c-8.412,0 -14.982,-2.363 -19.732,-7.065 -4.749,-4.703 -7.136,-11.674 -7.136,-20.937l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.498 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.189 4.301,-0.543 1.441,-0.355 2.765,-0.875 3.994,-1.584l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
-                    </g>
-                </svg>
-                <span style="font-weight:600;color:#F1F5F9;">Metric<span style="color:#3B82F6;">Hit</span></span>
-            </div>
-            <div style="margin-bottom:10px;color:#475569;">Управление поведенческими факторами</div>
-            <div class="footer-links">
-                <a href="#features">Преимущества</a>
-                <a href="#prices">Цены</a>
-                <a href="#how">Как начать</a>
-                <a href="#cases">Кейсы</a>
-                <a href="#faq">FAQ</a>
-                <a href="https://t.me/express75" target="_blank">Telegram</a>
-                <a href="https://lk.express-geo.ru" target="_blank">ЛК</a>
-            </div>
-            <div style="margin-top:12px;">
-                <a href="#" style="color:#475569;text-decoration:underline;text-underline-offset:3px;">Оферта</a>
-                <span style="color:#1E293B;margin:0 8px;">·</span>
-                <a href="#" style="color:#475569;text-decoration:underline;text-underline-offset:3px;">Политика конфиденциальности</a>
-            </div>
-            <div style="margin-top:12px;color:#1E293B;">© 2026 MetricHit</div>
-        </div>
+        Express — сервис продвижения сайтов · <span id="ftDate">22.07.2026</span><br>
+        <a href="https://t.me/express75" target="_blank" rel="noopener">Telegram @express75</a> ·
+        <a href="tel:+79229266684">+7 922 926-66-84</a> ·
+        <a href="mailto:profexpress.pf@gmail.com">profexpress.pf@gmail.com</a> ·
+        <a href="https://lk.express-geo.ru" target="_blank" rel="noopener">lk.express-geo.ru</a>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // ─── гамбургер ───
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
+        // ---- Carousel ----
+        function crsScroll(dir) {
+            const el = document.getElementById('crs');
+            el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.8), behavior: 'smooth' });
+        }
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        });
+        function lbOpen(src) {
+            document.getElementById('lbimg').src = src;
+            document.getElementById('lb').classList.add('on');
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('on'); });
 
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('open');
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // ─── хедер при скролле ───
-        window.addEventListener('scroll', () => {
-            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 30);
-        });
-
-        // ─── промокод ───
+        // ---- Promo copy ----
         function copyPromo() {
-            const el = document.querySelector('.code');
-            const text = 'БЕРТ-74';
-            const done = () => {
-                el.textContent = '✓ СКОПИРОВАНО';
-                setTimeout(() => { el.textContent = text; }, 1500);
-            };
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(done, done);
-            } else {
-                const ta = document.createElement('textarea');
-                ta.value = text;
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                ta.remove();
-                done();
-            }
+            const el = document.getElementById('pcode');
+            const done = () => { el.textContent = 'СКОПИРОВАНО ✓';
+                setTimeout(() => { el.textContent = 'БЕРТ-74'; }, 1400); };
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('БЕРТ-74').then(done, done);
+            else done();
         }
 
-        // ─── калькулятор ───
-        const depositRange = document.getElementById('depositRange');
-        const depositDisplay = document.getElementById('depositDisplay');
-        const calcDeposit = document.getElementById('calcDeposit');
-        const calcCpc = document.getElementById('calcCpc');
-        const calcClicks = document.getElementById('calcClicks');
+        // ---- Date ----
+        document.getElementById('kpDate').textContent = new Date().toLocaleDateString('ru-RU');
+        document.getElementById('ftDate').textContent = new Date().toLocaleDateString('ru-RU');
 
-        function getTier(amount) {
-            if (amount >= 250000) return { cpc: null };
-            if (amount >= 200000) return { cpc: 0.15 };
-            if (amount >= 150000) return { cpc: 0.17 };
-            if (amount >= 100000) return { cpc: 0.20 };
-            if (amount >= 50000) return { cpc: 0.35 };
-            return { cpc: 0.40 };
+        // ---- Calculator ----
+        const R0 = n => Math.round(n).toLocaleString('ru-RU');
+
+        function tier(s) {
+            if (s >= 250000) return { id: 't250', cpc: null };
+            if (s >= 200000) return { id: 't200', cpc: 0.15 };
+            if (s >= 150000) return { id: 't150', cpc: 0.17 };
+            if (s >= 100000) return { id: 't100', cpc: 0.20 };
+            if (s >= 50000) return { id: 't50', cpc: 0.35 };
+            return { id: 't0', cpc: 0.40 };
         }
 
-        function updateCalc() {
-            const val = parseInt(depositRange.value);
-            const formatted = val.toLocaleString('ru-RU');
-            depositDisplay.textContent = formatted + ' ₽';
-            calcDeposit.textContent = formatted + ' ₽';
+        let S = 1000;
 
-            const tier = getTier(val);
-            if (tier.cpc === null) {
-                calcCpc.textContent = 'обсудим';
-                calcClicks.textContent = 'индивидуально';
-            } else {
-                const cpc = tier.cpc;
-                const clicks = Math.round(val / cpc);
-                calcCpc.textContent = cpc.toFixed(2).replace('.', ',') + ' ₽';
-                calcClicks.textContent = clicks.toLocaleString('ru-RU');
-            }
-        }
-
-        depositRange.addEventListener('input', updateCalc);
-        updateCalc();
-
-        // ─── плавное появление ───
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.style.opacity = '1';
-                    e.target.style.transform = 'translateY(0)';
-                }
+        function setS(v, fromSlider) {
+            S = v;
+            if (!fromSlider) document.getElementById('dep').value = v;
+            document.getElementById('depV').textContent = R0(v) + ' ₽';
+            document.querySelectorAll('.bopt[data-s]').forEach(b => b.classList.toggle('on', +b.dataset.s === v));
+            const t = tier(v);
+            ['t0', 't50', 't100', 't150', 't200', 't250'].forEach(id => {
+                const r = document.getElementById(id);
+                if (r) r.classList.toggle('total', id === t.id);
             });
-        }, { threshold: 0.1 });
+            document.getElementById('oDep').textContent = R0(v) + ' ₽';
+            if (t.cpc === null) {
+                document.getElementById('oCpc').textContent = 'обсудим';
+                document.getElementById('oClicks').textContent = 'ещё выгоднее';
+                document.getElementById('oSave').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/express75" target="_blank" rel="noopener"><b>@express75</b></a>.';
+            } else {
+                const clicks = v / t.cpc;
+                document.getElementById('oCpc').textContent = t.cpc.toFixed(2).replace('.', ',') + ' ₽';
+                document.getElementById('oClicks').textContent = '≈ ' + R0(clicks);
+                if (t.cpc < 0.40) {
+                    const extra = clicks - v / 0.40;
+                    document.getElementById('oSave').innerHTML = 'Скидка от объёма: на базовой цене 0,40 ₽ этих денег хватило бы на <b>' + R0(v / 0.40) + '</b> переходов, на вашем объёме — на <b>' + R0(extra) + '</b> больше.';
+                } else {
+                    document.getElementById('oSave').innerHTML = 'Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.';
+                }
+            }
+        }
+        setS(1000);
+    </script>
 
-        document.querySelectorAll('.card, .step, .case-item, .stat-block, .tech-col').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(16px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
-        });
+    <!-- ===== COUNTERS ===== -->
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript">
+        (function(m, e, t, r, i, k, a) {
+            m[i] = m[i] || function() { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+        ym(99234272, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/99234272" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <!-- Top.Mail.Ru -->
+    <script type="text/javascript">
+        var _tmr = window._tmr || (window._tmr = []);
+        _tmr.push({ id: "3767189", type: "pageView", start: (new Date()).getTime() });
+        (function(d, w, id) {
+            if (d.getElementById(id)) return;
+            var ts = d.createElement("script");
+            ts.type = "text/javascript";
+            ts.async = true;
+            ts.id = id;
+            ts.src = "https://top-fwz1.mail.ru/js/code.js";
+            var f = function() { var s = d.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(ts, s); };
+            if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+        })(document, window, "tmr-code");
+    </script>
+    <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3767189;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+
+    <!-- Clarity -->
+    <script type="text/javascript">
+        (function(c, l, a, r, i, t, y) {
+            c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "oxbjq9q7ew");
     </script>
 </body>
 </html>
