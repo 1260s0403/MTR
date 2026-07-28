@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MetricHit — управление поведенческими факторами</title>
+    <title>MetricHit — вывод в ТОП через поведенческие факторы</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -292,59 +292,24 @@
             justify-content: center;
             align-items: center;
         }
-        .hero-chart {
+        .hero-mascot {
             width: 100%;
-            max-width: 480px;
+            max-width: 420px;
             background: #111827;
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 14px;
-            padding: 24px 20px 16px;
-        }
-        .hero-chart .label {
-            font-size: 13px;
-            color: #64748B;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        .hero-chart .bars {
-            display: flex;
-            align-items: flex-end;
-            gap: 10px;
-            height: 140px;
-            padding-top: 8px;
-        }
-        .hero-chart .bar {
-            flex: 1;
-            border-radius: 4px 4px 0 0;
-            min-height: 6px;
-            background: rgba(255, 255, 255, 0.04);
-            transition: 0.6s;
-            position: relative;
-        }
-        .hero-chart .bar.fill {
-            background: linear-gradient(180deg, #3B82F6, #1D4ED8);
-        }
-        .hero-chart .bar .val {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 11px;
-            font-weight: 600;
-            color: #60A5FA;
-        }
-        .hero-chart .labels {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .hero-chart .labels span {
-            flex: 1;
-            font-size: 10px;
-            color: #475569;
+            padding: 28px 20px 20px;
             text-align: center;
+        }
+        .hero-mascot .mascot-icon {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .hero-mascot .mascot-label {
+            color: #64748B;
+            font-size: 13px;
+            font-weight: 300;
         }
 
         /* ─── секции ─── */
@@ -412,12 +377,7 @@
             margin-top: 4px;
         }
 
-        /* ─── карточки ─── */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+        /* ─── преимущества ─── */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -462,12 +422,8 @@
             border-radius: 50px;
             margin-top: 10px;
         }
-        .card-highlight {
-            border-color: rgba(59, 130, 246, 0.12);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), rgba(29, 78, 216, 0.03));
-        }
 
-        /* ─── технологии ─── */
+        /* ─── технологическое сравнение ─── */
         .tech-compare {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -568,64 +524,6 @@
             margin: 0;
         }
 
-        /* ─── таблица тарифов ─── */
-        .table-wrap {
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            overflow: hidden;
-            background: #111827;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-        th {
-            text-align: left;
-            padding: 12px 18px;
-            background: rgba(59, 130, 246, 0.04);
-            color: #64748B;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        td {
-            padding: 12px 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: #94A3B8;
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        tr.highlight td {
-            background: rgba(59, 130, 246, 0.04);
-        }
-        tr.highlight td:first-child {
-            font-weight: 600;
-            color: #F1F5F9;
-        }
-        tr.highlight td:last-child {
-            color: #3B82F6;
-            font-weight: 700;
-        }
-        td:last-child {
-            text-align: right;
-            font-weight: 600;
-            color: #F1F5F9;
-        }
-        .table-note {
-            padding: 12px 18px;
-            color: #64748B;
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            background: #111827;
-        }
-        .table-note strong {
-            color: #3B82F6;
-        }
-
         /* ─── калькулятор ─── */
         .calc-block {
             background: #111827;
@@ -722,37 +620,98 @@
             }
         }
 
-        /* ─── кейсы ─── */
-        .cases-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        .case-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 18px;
-            background: #111827;
+        /* ─── тарифы ─── */
+        .table-wrap {
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
-            transition: 0.3s;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #111827;
         }
-        .case-row:hover {
-            border-color: rgba(59, 130, 246, 0.15);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
         }
-        .case-row .name {
-            font-weight: 500;
+        th {
+            text-align: left;
+            padding: 12px 18px;
+            background: rgba(59, 130, 246, 0.04);
+            color: #64748B;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        td {
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: #94A3B8;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr.highlight td {
+            background: rgba(59, 130, 246, 0.04);
+        }
+        tr.highlight td:first-child {
+            font-weight: 600;
             color: #F1F5F9;
         }
-        .case-row .growth {
+        tr.highlight td:last-child {
             color: #3B82F6;
             font-weight: 700;
         }
-        .case-row .meta {
+        td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: #F1F5F9;
+        }
+        .table-note {
+            padding: 12px 18px;
+            color: #64748B;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            background: #111827;
+        }
+        .table-note strong {
+            color: #3B82F6;
+        }
+
+        /* ─── кейсы ─── */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .case-item {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 20px 18px;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .case-item:hover {
+            border-color: rgba(59, 130, 246, 0.15);
+            transform: translateY(-4px);
+        }
+        .case-item .growth {
+            font-family: 'Geologica', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #3B82F6;
+        }
+        .case-item .name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+        .case-item .meta {
             color: #64748B;
             font-size: 13px;
             font-weight: 300;
+            margin-top: 2px;
         }
 
         /* ─── рефералка ─── */
@@ -928,9 +887,6 @@
             .steps {
                 grid-template-columns: 1fr 1fr;
             }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
             .grid-3 {
                 grid-template-columns: 1fr;
             }
@@ -941,8 +897,8 @@
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             }
-            .cases-list {
-                grid-template-columns: 1fr;
+            .cases-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .cta-block {
                 padding: 28px 20px;
@@ -981,6 +937,9 @@
             .btn {
                 padding: 10px 20px;
                 font-size: 13px;
+            }
+            .cases-grid {
+                grid-template-columns: 1fr;
             }
             .cta-block .guarantee {
                 display: flex;
@@ -1128,28 +1087,10 @@
             </div>
 
             <div class="hero-visual">
-                <div class="hero-chart">
-                    <div class="label">Динамика позиций по запросу</div>
-                    <div class="bars">
-                        <div class="bar fill" style="height:18%;"><span class="val">28</span></div>
-                        <div class="bar fill" style="height:30%;"><span class="val">19</span></div>
-                        <div class="bar fill" style="height:48%;"><span class="val">11</span></div>
-                        <div class="bar fill" style="height:68%;"><span class="val">6</span></div>
-                        <div class="bar fill" style="height:88%;"><span class="val">3</span></div>
-                        <div class="bar" style="height:35%;"></div>
-                        <div class="bar" style="height:50%;"></div>
-                        <div class="bar" style="height:28%;"></div>
-                    </div>
-                    <div class="labels">
-                        <span>День 1</span>
-                        <span>День 2</span>
-                        <span>День 3</span>
-                        <span>День 4</span>
-                        <span>День 5</span>
-                        <span>День 6</span>
-                        <span>День 7</span>
-                        <span>День 8</span>
-                    </div>
+                <div class="hero-mascot">
+                    <span class="mascot-icon">🤖</span>
+                    <div style="font-size:18px;font-weight:600;color:#F1F5F9;">MetricBot</div>
+                    <div class="mascot-label">AI-бот с уникальной поведенческой историей</div>
                 </div>
             </div>
         </div>
@@ -1173,8 +1114,8 @@
             <div class="section-tag">Что мы делаем</div>
             <h2>Управляем <span class="highlight">поведенческими сигналами</span></h2>
             <p class="subtitle">Яндекс учитывает поведение пользователей при ранжировании. Мы создаём именно те сигналы, которые поднимают позиции.</p>
-            <div class="grid-2">
-                <div class="card card-highlight">
+            <div class="grid-3">
+                <div class="card">
                     <span class="icon">🎯</span>
                     <h3>Точное попадание в запрос</h3>
                     <p>Пользователи приходят по вашим ключевым словам. Яндекс видит — запрос релевантен странице.</p>
@@ -1191,12 +1132,6 @@
                     <h3>Возвраты и удержание</h3>
                     <p>Снижаем отказы, увеличиваем повторные визиты. Яндекс видит — сайт интересен пользователям.</p>
                     <span class="tag">лояльность</span>
-                </div>
-                <div class="card card-highlight">
-                    <span class="icon">🚀</span>
-                    <h3>Стабильный ТОП</h3>
-                    <p>Органический трафик из поиска без рекламного бюджета после выхода в топ-3.</p>
-                    <span class="tag">результат</span>
                 </div>
             </div>
         </div>
@@ -1257,31 +1192,8 @@
         </div>
     </section>
 
-    <!-- ─── ТАРИФЫ ─── -->
-    <section id="prices">
-        <div class="container">
-            <div class="section-tag">Цены</div>
-            <h2>Стоимость — от <span class="highlight">объёма</span></h2>
-            <p class="subtitle">Чем больше пополнение, тем ниже цена клика. Без скрытых комиссий.</p>
-            <div class="table-wrap">
-                <table>
-                    <thead><tr><th>Объём пополнения</th><th>Цена за клик</th></tr></thead>
-                    <tbody>
-                        <tr><td>от 1 000 ₽</td><td>0,40 ₽</td></tr>
-                        <tr><td>от 50 000 ₽</td><td>0,35 ₽</td></tr>
-                        <tr class="highlight"><td>от 100 000 ₽</td><td>0,20 ₽</td></tr>
-                        <tr><td>от 150 000 ₽</td><td>0,17 ₽</td></tr>
-                        <tr><td>от 200 000 ₽</td><td>0,15 ₽</td></tr>
-                        <tr><td>от 250 000 ₽</td><td>индивидуально</td></tr>
-                    </tbody>
-                </table>
-                <div class="table-note">🎁 <strong>Бонус +500 ₽</strong> новым пользователям на тестовый запуск.</div>
-            </div>
-        </div>
-    </section>
-
     <!-- ─── КАЛЬКУЛЯТОР ─── -->
-    <section class="section-dark">
+    <section>
         <div class="container">
             <div class="section-tag">Калькулятор</div>
             <h2>Рассчитайте <span class="highlight">бюджет</span></h2>
@@ -1306,32 +1218,55 @@
         </div>
     </section>
 
+    <!-- ─── ТАРИФЫ ─── -->
+    <section id="prices" class="section-dark">
+        <div class="container">
+            <div class="section-tag">Цены</div>
+            <h2>Стоимость — от <span class="highlight">объёма</span></h2>
+            <p class="subtitle">Чем больше пополнение, тем ниже цена клика. Без скрытых комиссий.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Объём пополнения</th><th>Цена за клик</th></tr></thead>
+                    <tbody>
+                        <tr><td>от 1 000 ₽</td><td>0,40 ₽</td></tr>
+                        <tr><td>от 50 000 ₽</td><td>0,35 ₽</td></tr>
+                        <tr class="highlight"><td>от 100 000 ₽</td><td>0,20 ₽</td></tr>
+                        <tr><td>от 150 000 ₽</td><td>0,17 ₽</td></tr>
+                        <tr><td>от 200 000 ₽</td><td>0,15 ₽</td></tr>
+                        <tr><td>от 250 000 ₽</td><td>индивидуально</td></tr>
+                    </tbody>
+                </table>
+                <div class="table-note">🎁 <strong>Бонус +500 ₽</strong> новым пользователям на тестовый запуск.</div>
+            </div>
+        </div>
+    </section>
+
     <!-- ─── КЕЙСЫ ─── -->
     <section id="cases">
         <div class="container">
             <div class="section-tag">Результаты</div>
             <h2>Реальные <span class="highlight">кейсы</span></h2>
             <p class="subtitle">Рост позиций в ТОП-10 по основным запросам.</p>
-            <div class="cases-list">
-                <div class="case-row">
-                    <span class="name">Стоматологическая клиника</span>
-                    <span class="growth">85%</span>
-                    <span class="meta">запросов в ТОП-10</span>
+            <div class="cases-grid">
+                <div class="case-item">
+                    <div class="growth">85%</div>
+                    <div class="name">Стоматологическая клиника</div>
+                    <div class="meta">запросов в ТОП-10</div>
                 </div>
-                <div class="case-row">
-                    <span class="name">Производитель окон</span>
-                    <span class="growth">78%</span>
-                    <span class="meta">запросов в ТОП-10</span>
+                <div class="case-item">
+                    <div class="growth">78%</div>
+                    <div class="name">Производитель окон</div>
+                    <div class="meta">запросов в ТОП-10</div>
                 </div>
-                <div class="case-row">
-                    <span class="name">Автосалон</span>
-                    <span class="growth">92%</span>
-                    <span class="meta">запросов в ТОП-10</span>
+                <div class="case-item">
+                    <div class="growth">92%</div>
+                    <div class="name">Автосалон</div>
+                    <div class="meta">запросов в ТОП-10</div>
                 </div>
-                <div class="case-row">
-                    <span class="name">Магазин мебели</span>
-                    <span class="growth">77%</span>
-                    <span class="meta">запросов в ТОП-10</span>
+                <div class="case-item">
+                    <div class="growth">77%</div>
+                    <div class="name">Магазин мебели</div>
+                    <div class="meta">запросов в ТОП-10</div>
                 </div>
             </div>
             <div class="text-center mt-24">
@@ -1539,7 +1474,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.card, .step, .case-row, .stat-block, .tech-col').forEach(el => {
+        document.querySelectorAll('.card, .step, .case-item, .stat-block, .tech-col').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(16px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
