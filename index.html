@@ -540,45 +540,129 @@
             font-variant-numeric: tabular-nums;
         }
 
+        /* ===== ФИКСИРОВАННЫЙ РАЗМЕР ДЛЯ КАРТОЧЕК КАЛЬКУЛЯТОРА ===== */
         .calc-results {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-top: 28px;
         }
+
         .calc-result {
+            min-height: 120px;
+            max-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 18px 16px;
             background: rgba(255,255,255,0.02);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 18px 16px;
-            text-align: center;
+            overflow: hidden;
         }
+
         .calc-result .k {
             font-size: 14px;
             color: #E8EDF5;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            margin-bottom: 4px;
         }
+
         .calc-result .v {
             font-family: 'Nunito Sans', sans-serif;
             font-weight: 800;
             font-size: 28px;
             margin-top: 4px;
             color: #E8EDF5;
+            line-height: 1.2;
+            text-align: center;
+            word-break: break-word;
         }
-        .calc-result.highlight {
-            background: var(--grad);
-            border-color: transparent;
-        }
-        .calc-result.highlight .k { color: rgba(18,22,30,0.6); }
-        .calc-result.highlight .v { color: #12161E; }
+
         .calc-result .sub {
             font-size: 12px;
             color: #8892A6;
             margin-top: 2px;
+            min-height: 18px;
+            max-height: 18px;
+            line-height: 1.2;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
-        .calc-result.highlight .sub { color: rgba(18,22,30,0.5); }
+
+        .calc-result.highlight {
+            background: var(--grad);
+            border-color: transparent;
+        }
+
+        .calc-result.highlight .k { 
+            color: rgba(18,22,30,0.6); 
+        }
+
+        .calc-result.highlight .v { 
+            color: #12161E; 
+        }
+
+        .calc-result.highlight .sub { 
+            color: rgba(18,22,30,0.5); 
+        }
+
+        #calcNoteContainer {
+            min-height: 100px;
+            max-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        .calc-note {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #E8EDF5;
+            text-align: center;
+            max-width: 100%;
+            padding: 0 10px;
+        }
+
+        .calc-note strong {
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 480px) {
+            .calc-results {
+                gap: 10px;
+            }
+            .calc-result {
+                min-height: 90px;
+                max-height: 90px;
+                padding: 12px 10px;
+            }
+            .calc-result .v {
+                font-size: 20px;
+            }
+            .calc-result .sub {
+                font-size: 10px;
+                min-height: 14px;
+                max-height: 14px;
+            }
+            .calc-result .k {
+                font-size: 11px;
+            }
+            #calcNoteContainer {
+                min-height: 90px;
+                max-height: 90px;
+            }
+            .calc-note {
+                font-size: 15px;
+            }
+        }
 
         .calc-bonus {
             margin-top: 20px;
@@ -593,7 +677,7 @@
             gap: 12px;
         }
         .calc-bonus img {
-            height: 28px;
+            height: 56px;
             width: auto;
             flex-shrink: 0;
             margin-top: 2px;
@@ -601,7 +685,7 @@
         .calc-bonus b { color: #FFFFFF; }
         .calc-note {
             margin-top: 16px;
-            font-size: 16px;
+            font-size: 18px;
             color: #E8EDF5;
         }
         .calc-note strong {
@@ -1223,75 +1307,7 @@
         /* ===== УБИРАЕМ ТЕГ В БЛОКЕ ПОЧЕМУ МЫ ===== */
         .why-head .tag {
             display: none;
-            }
         }
-
-        /* ===== ФИКСИРОВАННАЯ ВЫСОТА ДЛЯ КАЛЬКУЛЯТОРА ===== */
-#calcNoteContainer {
-    min-height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 16px;
-}
-
-.calc-note {
-    font-size: 17px;
-    line-height: 1.6;
-    color: #E8EDF5;
-    text-align: center;
-    max-width: 100%;
-}
-
-.calc-note strong {
-    color: #FFFFFF;
-}
-
-/* Для мобильных устройств */
-@media (max-width: 480px) {
-    #calcNoteContainer {
-        min-height: 130px;
-    }
-    .calc-note {
-        font-size: 15px;
-        }
-    }
-
-    /* ===== ФИКСИРОВАННАЯ ВЫСОТА ДЛЯ КАРТОЧЕК РЕЗУЛЬТАТОВ ===== */
-.calc-result {
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.calc-result .v {
-    font-size: 28px;
-    margin-top: 4px;
-    color: #E8EDF5;
-}
-
-.calc-result .sub {
-    font-size: 12px;
-    color: #8892A6;
-    margin-top: 2px;
-    min-height: 18px;
-}
-
-/* Для мобильных устройств */
-@media (max-width: 480px) {
-    .calc-result {
-        min-height: 100px;
-    }
-    .calc-result .v {
-        font-size: 22px;
-    }
-    .calc-result .sub {
-        font-size: 11px;
-        min-height: 16px;
-    }
-}
     </style>
 </head>
 <body>
@@ -1569,15 +1585,15 @@ function toggleMenu() {
                 </div>
 
                 <div class="calc-bonus" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
-                    <img src="gift-card.png" alt="Бонус" style="height: 56px; width: auto; flex-shrink: 0; margin-top: 2px;">
+                    <img src="gift-card.png" alt="Бонус">
                     <div style="display: flex; flex-direction: column; gap: 2px;">
                         <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽.</span>
                         <span>На базовой цене это ещё примерно 1 250 переходов сверху.</span>
                     </div>
                 </div>
 
-                <div id="calcNoteContainer" style="min-height: 100px; display: flex; align-items: center; justify-content: center; margin-top: 16px;">
-                    <div class="calc-note" id="calcNote" style="font-size: 17px; line-height: 1.6; color: #E8EDF5; text-align: center; max-width: 100%;">
+                <div id="calcNoteContainer">
+                    <div class="calc-note" id="calcNote">
                         Этого хватит на тестовый запуск одного проекта.
                     </div>
                 </div>
@@ -1630,9 +1646,7 @@ function setAmount(value, fromSlider) {
         const baseClicks = value / baseCpc;
         if (tier.cpc < baseCpc) {
             const extra = clicks - baseClicks;
-            // Устанавливаем подпись
             document.getElementById('resClicksSub').textContent = 'на ' + formatNumber(extra) + ' больше, чем по базовой цене';
-            // Основной текст
             document.getElementById('calcNote').innerHTML = 
                 'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на ' +
                 '<strong style="color:#E8EDF5; white-space: nowrap;">' + formatNumber(baseClicks) + '</strong>' +
