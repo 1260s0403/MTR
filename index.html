@@ -1227,17 +1227,34 @@
         }
 
         /* ===== ФИКСИРОВАННАЯ ВЫСОТА ДЛЯ КАЛЬКУЛЯТОРА ===== */
-.calc-note {
-    min-height: 80px;
+#calcNoteContainer {
+    min-height: 110px;
     display: flex;
     align-items: center;
-    font-size: 18px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.calc-note {
+    font-size: 17px;
     line-height: 1.6;
     color: #E8EDF5;
+    text-align: center;
+    max-width: 100%;
 }
+
 .calc-note strong {
     color: #FFFFFF;
 }
+
+/* Для мобильных устройств */
+@media (max-width: 480px) {
+    #calcNoteContainer {
+        min-height: 130px;
+    }
+    .calc-note {
+        font-size: 15px;
+    }
     </style>
 </head>
 <body>
@@ -1522,9 +1539,11 @@ function toggleMenu() {
                     </div>
                 </div>
 
-                <!-- 👇 ИСПРАВЛЕННЫЙ БЛОК С ФИКСИРОВАННОЙ ВЫСОТОЙ 👇 -->
-                <div class="calc-note" id="calcNote" style="min-height: 80px; display: flex; align-items: center; font-size: 18px; line-height: 1.6;">
-                    Этого хватит на тестовый запуск одного проекта.
+                <!-- 👇 ФИКСИРОВАННЫЙ БЛОК С РЕЗУЛЬТАТАМИ 👇 -->
+                <div id="calcNoteContainer" style="min-height: 110px; display: flex; align-items: center; justify-content: center; margin-top: 16px;">
+                    <div class="calc-note" id="calcNote" style="font-size: 17px; line-height: 1.6; color: #E8EDF5; text-align: center; max-width: 100%;">
+                        Этого хватит на тестовый запуск одного проекта.
+                    </div>
                 </div>
             </div>
         </div>
@@ -1571,15 +1590,18 @@ function setAmount(value, fromSlider) {
         document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
         document.getElementById('resClicks').textContent = '≈ ' + formatNumber(clicks);
 
-        const baseCpc = 0.35; // Исправлено с 0.40 на 0.35
+        const baseCpc = 0.35;
         const baseClicks = value / baseCpc;
         if (tier.cpc < baseCpc) {
             const extra = clicks - baseClicks;
             document.getElementById('resClicksSub').textContent = 'на ' + formatNumber(extra) + ' больше, чем по базовой цене';
-            document.getElementById('calcNote').innerHTML =
-                'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на <strong style="color:#E8EDF5;">' +
-                formatNumber(baseClicks) + '</strong> переходов, на вашем объёме — на <strong style="color:#2D9B4E;">' +
-                formatNumber(extra) + '</strong> больше.';
+            // Компактный текст без разрывов
+            document.getElementById('calcNote').innerHTML = 
+                'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на ' +
+                '<strong style="color:#E8EDF5; white-space: nowrap;">' + formatNumber(baseClicks) + '</strong>' +
+                ' переходов, на вашем объёме — на ' +
+                '<strong style="color:#2D9B4E; white-space: nowrap;">' + formatNumber(extra) + '</strong>' +
+                ' больше.';
         } else {
             document.getElementById('resClicksSub').textContent = 'хватит на тестовый запуск';
             document.getElementById('calcNote').innerHTML = 'Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.';
