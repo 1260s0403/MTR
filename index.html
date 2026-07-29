@@ -902,180 +902,186 @@
         }
 
         /* ===== БЛОК: ПОЧЕМУ СЕЙЧАС СЛОЖНО ВЫЙТИ В ТОП ===== */
-        .why-section {
-            padding: 60px 0 50px;
-            background: var(--bg);
-        }
+.why-section {
+    padding: 60px 0 50px;
+    background: var(--bg);
+}
 
-        .why-head {
-            text-align: center;
-            margin-bottom: 36px;
-        }
-        .why-head h2 {
-            font-size: 34px;
-        }
+.why-head {
+    text-align: center;
+    margin-bottom: 36px;
+}
+.why-head h2 {
+    font-size: 34px;
+}
 
-        .why-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 28px;
-            transition: all .3s;
-        }
+/* ===== ОБЩИЕ КАРТОЧКИ ===== */
+.why-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(108, 238, 247, 0.2); /* Полупрозрачная голубая рамка */
+    border-radius: 16px;
+    padding: 24px 28px;
+    transition: all .3s;
+}
 
-        .why-card--narrow {
-            max-width: 66.666%;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
+.why-card--narrow {
+    max-width: 66.666%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
-        .why-card--small {
-            padding: 20px 18px;
-            text-align: center;
-        }
+.why-card--small {
+    padding: 20px 18px;
+    text-align: center;
+}
 
-        .why-card--highlight {
-            border-color: rgba(108,238,247,0.2);
-            background: rgba(108,238,247,0.04);
-            text-align: center;
-        }
+.why-card--highlight {
+    border-color: rgba(108,238,247,0.3); /* Чуть ярче для выделения */
+    background: rgba(108,238,247,0.06);
+    text-align: center;
+}
 
-        .why-card p {
-            color: #B8C2D6;
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 0;
-        }
-        .why-card p:first-of-type {
-            margin-bottom: 12px;
-        }
-        .why-card p strong {
-            color: #E8EDF5;
-        }
-        .why-card h4 {
-            font-size: 17px;
-            margin-bottom: 4px;
-            color: #E8EDF5;
-        }
-        .why-card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #E8EDF5;
-        }
-        .why-card-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-        .why-card-icon-large {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
+/* ===== ТЕКСТЫ В КАРТОЧКАХ ===== */
+.why-card p {
+    color: #E8EDF5; /* Почти белый текст */
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+.why-card p:first-of-type {
+    margin-bottom: 12px;
+}
+.why-card p strong {
+    color: #FFFFFF; /* Белый для жирного */
+}
+.why-card h4 {
+    font-size: 17px;
+    margin-bottom: 4px;
+    color: #E8EDF5;
+}
+.why-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #E8EDF5;
+}
 
-        .why-divider {
-            text-align: center;
-            padding: 24px 0 20px;
-            position: relative;
-        }
-        .why-divider span {
-            display: inline-block;
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #E8EDF5;
-            background: var(--bg);
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
-        .why-divider::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 100%;
-            height: 1px;
-            background: var(--border);
-            z-index: 1;
-        }
+/* ===== PNG ИКОНКИ ===== */
+.why-card-icon-image {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(7%) saturate(0%) hue-rotate(354deg) brightness(105%) contrast(107%); /* Делает иконку белой, если она не подходит по цвету. Убери фильтр, если не нужен. */
+}
 
-        .why-grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 28px;
-            max-width: 100%;
-        }
+.why-card-icon-image--large {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+}
 
-        /* ===== БЛОК: О СЕРВИСЕ ===== */
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
-        }
+/* ===== РАЗДЕЛИТЕЛИ ===== */
+.why-divider {
+    text-align: center;
+    padding: 24px 0 20px;
+    position: relative;
+}
+.why-divider span {
+    display: inline-block;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #E8EDF5;
+    background: var(--bg);
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+.why-divider::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    z-index: 1;
+}
 
-        .about-logo {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 16px;
-        }
+/* ===== 3 КАРТОЧКИ В РЯД ===== */
+.why-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+    max-width: 100%;
+}
 
-        .about-logo svg {
-            max-width: 50%;
-            height: auto;
-        }
+/* ===== ТЕХНОЛОГИЧЕСКАЯ СТРОКА ===== */
+.why-tech-line {
+    text-align: center;
+    max-width: 66.666%;
+    margin: 20px auto 0;
+    padding: 12px 20px;
+    background: rgba(108,238,247,0.06);
+    border: 1px solid rgba(108,238,247,0.15);
+    border-radius: 12px;
+}
+.why-tech-line p {
+    font-size: 18px; /* Увеличил до размера карточек */
+    color: #E8EDF5; /* Почти белый текст */
+    line-height: 1.6;
+}
+.why-tech-line p strong {
+    color: #FFFFFF;
+}
 
-        .about-description {
-            font-size: 18px;
-            color: #B8C2D6;
-            max-width: 700px;
-            text-align: center;
-            line-height: 1.7;
-            width: 100%;
-        }
-
-        /* ===== АДАПТИВ ===== */
-        @media (max-width: 768px) {
-            .why-section {
-                padding: 40px 0 30px;
-            }
-            .why-head h2 {
-                font-size: 26px;
-            }
-            .why-grid-3 {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .why-card {
-                padding: 18px 16px;
-            }
-            .why-card--small {
-                padding: 16px 14px;
-            }
-            .why-card--narrow {
-                max-width: 100%;
-                text-align: center;
-            }
-            .why-card p {
-                font-size: 15px;
-            }
-            .why-divider span {
-                font-size: 17px;
-                padding: 0 14px;
-            }
-            .why-divider {
-                padding: 18px 0 14px;
-            }
-            .about-logo svg {
-                max-width: 70%;
-            }
-            .about-description {
-                font-size: 16px;
-                padding: 0 10px;
-            }
-        }
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    .why-section {
+        padding: 40px 0 30px;
+    }
+    .why-head h2 {
+        font-size: 26px;
+    }
+    .why-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .why-card {
+        padding: 18px 16px;
+    }
+    .why-card--small {
+        padding: 16px 14px;
+    }
+    .why-card--narrow {
+        max-width: 100%;
+        text-align: center;
+    }
+    .why-card p {
+        font-size: 15px; /* Чуть меньше на мобилках */
+    }
+    .why-divider span {
+        font-size: 17px;
+        padding: 0 14px;
+    }
+    .why-divider {
+        padding: 18px 0 14px;
+    }
+    .why-tech-line {
+        max-width: 100%;
+    }
+    .why-tech-line p {
+        font-size: 15px;
+    }
+    .why-card-icon-image {
+        width: 44px;
+        height: 44px;
+    }
+}
 
         @media (max-width: 480px) {
             .about-logo svg {
@@ -1215,12 +1221,12 @@ function toggleMenu() {
 <section class="why-section">
     <div class="container">
 
-        <!-- ЗАГОЛОВОК (без ПОЧЕМУ МЫ) -->
+        <!-- ЗАГОЛОВОК -->
         <div class="why-head">
             <h2>Почему сейчас сложно <span class="text-gradient">выйти в ТОП</span></h2>
         </div>
 
-        <!-- КАРТОЧКА 1 (сужается) -->
+        <!-- КАРТОЧКА 1 (Проблема) -->
         <div class="why-card why-card--full why-card--narrow">
             <p>Раньше SEO работало по схеме: тексты, ссылки, время — и сайт в ТОПе. Сейчас этого недостаточно. Конкуренты уже используют поведенческие факторы. Яндекс оценивает не содержание страниц, а то, <strong>как пользователи с ними взаимодействуют</strong>.</p>
             <p>Посетитель зашёл и сразу ушёл — сайт теряет позиции. Задержался, изучил, вернулся — сайт растёт. <strong>Поведение определяет позиции</strong>.</p>
@@ -1231,7 +1237,7 @@ function toggleMenu() {
             <span>Что делать?</span>
         </div>
 
-        <!-- КАРТОЧКА 2 (сужается) -->
+        <!-- КАРТОЧКА 2 (Что делать) -->
         <div class="why-card why-card--full why-card--narrow">
             <p>Нужно показать Яндексу: на сайт приходят, его изучают, на нём остаются. Создать поведенческий сигнал, который выглядит как <strong>естественный интерес аудитории</strong>. Чтобы алгоритмы видели: сайт полезен, люди не уходят сразу.</p>
         </div>
@@ -1241,28 +1247,28 @@ function toggleMenu() {
             <span>Как мы это решаем</span>
         </div>
 
-        <!-- 3 КАРТОЧКИ В РЯД -->
+        <!-- 3 КАРТОЧКИ В РЯД С PNG ИКОНКАМИ -->
         <div class="why-grid-3">
             <div class="why-card why-card--small">
-                <div class="why-card-icon">🧠</div>
+                <img src="brain.png" alt="Умные алгоритмы" class="why-card-icon-image">
                 <h4>Умные алгоритмы</h4>
                 <p>Используем AI-ботов с собственной историей поиска, интересами и сценариями поведения. Каждый бот уникален.</p>
             </div>
             <div class="why-card why-card--small">
-                <div class="why-card-icon">🎯</div>
+                <img src="behavior.png" alt="Правильное поведение" class="why-card-icon-image">
                 <h4>Правильное поведение</h4>
                 <p>Боты действуют как реальные пользователи: ищут, сравнивают, изучают, взаимодействуют с контентом.</p>
             </div>
             <div class="why-card why-card--small">
-                <div class="why-card-icon">🚀</div>
+                <img src="www-click.png" alt="Переход на сайт" class="why-card-icon-image">
                 <h4>Переход на сайт</h4>
                 <p>Боты находят сайт в выдаче, переходят на него, проводят время, изучают страницы. Яндекс фиксирует интерес и доверие к ресурсу.</p>
             </div>
         </div>
 
-        <!-- КАРТОЧКА 6 (сужается) -->
+        <!-- КАРТОЧКА 6 (Почему это работает) -->
         <div class="why-card why-card--full why-card--highlight why-card--narrow">
-            <div class="why-card-icon-large">📈</div>
+            <img src="grow.png" alt="Почему это работает" class="why-card-icon-image why-card-icon-image--large">
             <h3>Почему это работает</h3>
             <p>Яндекс видит: пользователи задерживаются на сайте, изучают его, не уходят сразу. Это прямой сигнал, что ресурс отвечает на запросы. Алгоритмы фиксируют это и <strong>поднимают сайт в выдаче</strong>.</p>
         </div>
