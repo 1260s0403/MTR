@@ -1308,6 +1308,93 @@
         .why-head .tag {
             display: none;
         }
+
+        /* ===== УЛУЧШЕННЫЕ ПОДПИСИ В КАЛЬКУЛЯТОРЕ ===== */
+.calc-result .sub {
+    font-size: 13px;
+    font-weight: 700;
+    color: #8892A6;
+    margin-top: 2px;
+    min-height: 36px;
+    max-height: 36px;
+    line-height: 1.3;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-result .sub .sub-line {
+    display: block;
+    width: 100%;
+}
+
+.calc-result.highlight .sub { 
+    color: rgba(18,22,30,0.6); 
+}
+
+/* ===== ЖИРНЫЙ ЗАГОЛОВОК "ПЕРЕХОДОВ НА САЙТ" ===== */
+.calc-result .k {
+    font-size: 14px;
+    color: #E8EDF5;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+.calc-result.highlight .k { 
+    color: rgba(18,22,30,0.6); 
+}
+
+/* ===== ПОЛОСКА ПОЛЗУНКА ===== */
+.calc-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 8px;
+    position: relative;
+}
+
+.calc-slider-wrap input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    -webkit-appearance: none;
+    box-shadow: 0 0 8px rgba(108,238,247,0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.calc-slider-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--grad);
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(108,238,247,0.25);
+    border: 2px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 3;
+}
+
+/* Тонкая голубая полоска по центру */
+.calc-slider-wrap .slider-track-line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    background: rgba(108,238,247,0.3);
+    z-index: 1;
+    pointer-events: none;
+}
     </style>
 </head>
 <body>
@@ -1567,6 +1654,7 @@ function toggleMenu() {
 
                 <div class="label label--left">Или точная сумма</div>
                 <div class="calc-slider-wrap">
+                    <span class="slider-track-line"></span>
                     <input type="range" id="depSlider" min="1000" max="250000" step="1000" value="1000" oninput="setAmount(+this.value, true)">
                     <div class="value" id="depDisplay">1 000 ₽</div>
                 </div>
@@ -1594,16 +1682,19 @@ function toggleMenu() {
                 </div>
             </div>
 
-            <!-- ===== БЛОК С БОНУСОМ ===== -->
-<div style="text-align: center; margin-top: 20px;">
-    <div class="calc-bonus" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05); padding: 14px 24px; border-radius: 14px; background: rgba(45,155,78,0.06); border: 1px solid rgba(45,155,78,0.12); font-size: 16px; color: #E8EDF5; display: inline-flex; align-items: flex-start; gap: 16px; width: auto; max-width: 100%; text-align: left;">
-        <img src="gift-card.png" alt="Бонус" style="height: 56px; width: auto; flex-shrink: 0; margin-top: 2px;">
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-            <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽.</span>
-            <span>На базовой цене это ещё примерно <b>1 429</b> переходов плюсом.</span>
+            <!-- ===== БЛОК С БОНУСОМ (ВЫНЕСЕН ИЗ КАЛЬКУЛЯТОРА) ===== -->
+            <div style="text-align: center; margin-top: 20px;">
+                <div class="calc-bonus" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05); padding: 14px 24px; border-radius: 14px; background: rgba(45,155,78,0.06); border: 1px solid rgba(45,155,78,0.12); font-size: 16px; color: #E8EDF5; display: inline-flex; align-items: flex-start; gap: 16px; width: auto; max-width: 100%; text-align: left;">
+                    <img src="gift-card.png" alt="Бонус" style="height: 56px; width: auto; flex-shrink: 0; margin-top: 2px;">
+                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                        <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽.</span>
+                        <span>На базовой цене это ещё примерно <b>1 429</b> переходов сверху.</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <script>
 let currentAmount = 1000;
@@ -1638,7 +1729,7 @@ function setAmount(value, fromSlider) {
     if (tier.cpc === null) {
         document.getElementById('resCpc').textContent = 'обсудим';
         document.getElementById('resClicks').textContent = 'ещё выгоднее';
-        document.getElementById('resClicksSub').textContent = '';
+        document.getElementById('resClicksSub').innerHTML = '';
         document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/iclobot_manager" target="_blank" style="color:#6CEEF7;font-weight:700;">Telegram</a>.';
     } else {
         const clicks = value / tier.cpc;
@@ -1649,7 +1740,10 @@ function setAmount(value, fromSlider) {
         const baseClicks = value / baseCpc;
         if (tier.cpc < baseCpc) {
             const extra = clicks - baseClicks;
-            document.getElementById('resClicksSub').textContent = 'на ' + formatNumber(extra) + ' больше, чем по базовой цене';
+            // ДВЕ СТРОКИ В ПОДПИСИ
+            document.getElementById('resClicksSub').innerHTML = 
+                '<span class="sub-line">на ' + formatNumber(extra) + ' больше,</span>' +
+                '<span class="sub-line">чем по базовой цене</span>';
             document.getElementById('calcNote').innerHTML = 
                 'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на ' +
                 '<strong style="color:#E8EDF5; white-space: nowrap;">' + formatNumber(baseClicks) + '</strong>' +
@@ -1657,7 +1751,7 @@ function setAmount(value, fromSlider) {
                 '<strong style="color:#2D9B4E; white-space: nowrap;">' + formatNumber(extra) + '</strong>' +
                 ' больше.';
         } else {
-            document.getElementById('resClicksSub').textContent = 'хватит на тестовый запуск';
+            document.getElementById('resClicksSub').innerHTML = '<span class="sub-line">хватит на тестовый запуск</span>';
             document.getElementById('calcNote').innerHTML = 'Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.';
         }
     }
