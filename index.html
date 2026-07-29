@@ -319,18 +319,22 @@
             border-spacing: 0;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--border);
-            font-size: 15px;
+            border: 1px solid rgba(108,238,247,0.15);
+            box-shadow: 0 0 30px rgba(108,238,247,0.05);
+            font-size: 17.6px;
         }
         .tariff-table th {
             text-align: left;
             padding: 14px 18px;
             background: rgba(255,255,255,0.04);
-            color: #8892A6;
-            font-size: 11px;
+            color: #6CEEF7;
+            font-size: 13px;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             font-weight: 700;
+        }
+        .tariff-table th:last-child {
+            text-align: right;
         }
         .tariff-table td {
             padding: 14px 18px;
@@ -339,37 +343,35 @@
             color: #E8EDF5;
             cursor: pointer;
             transition: background .2s, color .2s;
+            font-size: 17.6px;
+        }
+        .tariff-table td:last-child {
+            text-align: right;
+            font-weight: 600;
         }
         .tariff-table td .arrow-down {
             display: inline-block;
             margin-left: 8px;
             color: #6CEEF7;
-            font-size: 14px;
+            font-size: 21.25px;
             transition: transform .2s;
         }
         .tariff-table td:hover .arrow-down {
             transform: translateY(2px);
         }
-        .tariff-table td:last-child { text-align: right; font-weight: 600; }
         .tariff-table tr.highlight td {
-            background: rgba(108,238,247,0.12);
-            border-color: rgba(108,238,247,0.25);
-            color: #FFFFFF;
-            font-weight: 700;
-            box-shadow: inset 0 0 30px rgba(108,238,247,0.05);
+            background: rgba(108,238,247,0.12) !important;
+            border-color: rgba(108,238,247,0.25) !important;
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            box-shadow: inset 0 0 30px rgba(108,238,247,0.05) !important;
         }
         .tariff-table tr:hover td {
             background: rgba(108,238,247,0.06);
             color: #FFFFFF;
         }
         .tariff-table tr.highlight:hover td {
-            background: rgba(108,238,247,0.18);
-        }
-
-        .tariff-table td:first-child {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            background: rgba(108,238,247,0.18) !important;
         }
 
         /* ===== КАРТОЧКА-ПОДЛОЖКА ДЛЯ ТЕКСТА ПОД ТАБЛИЦЕЙ ===== */
@@ -384,30 +386,36 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 14px;
+            max-width: 920px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .tariff-partner-box .partner-text {
-            font-size: 15px;
-            color: #E8EDF5;
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 18px;
+            flex: 1;
         }
         .tariff-partner-box .partner-text img {
-            height: 28px;
+            height: 72px;
             width: auto;
+            flex-shrink: 0;
         }
-        .tariff-partner-box .partner-text strong {
-            color: #FFFFFF;
+        .tariff-partner-box .partner-text-two-lines {
+            display: flex;
+            flex-direction: column;
+            color: #E8EDF5;
+            font-size: 19px;
+            line-height: 1.5;
         }
         .btn-partner {
-            padding: 8px 18px;
+            padding: 8px 19px;
             border-radius: 30px;
             border: 1.5px solid #6CEEF7;
             background: transparent;
             color: #6CEEF7;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 14.7px;
             cursor: pointer;
             transition: all .25s;
             font-family: 'Nunito Sans', sans-serif;
@@ -416,6 +424,7 @@
             align-items: center;
             gap: 6px;
             white-space: nowrap;
+            flex-shrink: 0;
         }
         .btn-partner:hover {
             background: rgba(108,238,247,0.10);
@@ -868,6 +877,9 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            .tariff-partner-box .partner-text {
+                flex-wrap: wrap;
+            }
         }
         @media (max-width: 480px) {
             .hero-stats { grid-template-columns: 1fr 1fr; }
@@ -884,6 +896,12 @@
             .calc-preset {
                 font-size: 14px;
                 padding: 8px 10px;
+            }
+            .tariff-partner-box .partner-text-two-lines {
+                font-size: 16px;
+            }
+            .tariff-partner-box .partner-text img {
+                height: 56px;
             }
         }
 
@@ -1202,32 +1220,6 @@
             }
         }
 
-        /* ===== УСИЛЕННЫЕ СТИЛИ ДЛЯ ТАБЛИЦЫ ===== */
-.tariff-table tbody tr td {
-    background: transparent !important;
-    transition: background 0.25s ease, color 0.25s ease;
-}
-
-.tariff-table tr.highlight td {
-    background: rgba(108,238,247,0.15) !important;
-    border-color: rgba(108,238,247,0.3) !important;
-    color: #FFFFFF !important;
-    font-weight: 700 !important;
-    box-shadow: inset 0 0 30px rgba(108,238,247,0.08) !important;
-}
-
-.tariff-table tr.highlight:hover td {
-    background: rgba(108,238,247,0.22) !important;
-}
-
-.tariff-table tr:not(.highlight):hover td {
-    background: rgba(108,238,247,0.06) !important;
-    color: #FFFFFF !important;
-}
-
-.tariff-table td {
-    border-top: 1px solid var(--border);
-}
         /* ===== УБИРАЕМ ТЕГ В БЛОКЕ ПОЧЕМУ МЫ ===== */
         .why-head .tag {
             display: none;
@@ -1404,61 +1396,60 @@ function toggleMenu() {
             <p style="font-size: clamp(19.1px, 4.04vw, 44.6px); color: #FFFFFF; font-weight: 400;">Без абонплаты и обязательного депозита.</p>
         </div>
         <div style="margin-top:36px; max-width: 920px; margin-left: auto; margin-right: auto;" class="fade-up">
-            <table class="tariff-table" id="tariffTable" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
+            <table class="tariff-table" id="tariffTable">
                 <thead>
                     <tr>
-                        <th style="font-size: 13px; color: #6CEEF7;">Объём пополнения</th>
-                        <th style="font-size: 13px; color: #6CEEF7; text-align: right;">Цена за клик</th>
+                        <th>Объём пополнения</th>
+                        <th>Цена за клик</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr data-amount="1000">
-                        <td style="font-size: 17.6px; padding: 14px 18px;">Базовый (от 1 000 ₽)</td>
-                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
-                            0,35 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
+                        <td>Базовый (от 1 000 ₽)</td>
+                        <td onclick="scrollToCalc()">
+                            0,35 ₽ <span class="arrow-down">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="50000">
-                        <td style="font-size: 17.6px; padding: 14px 18px;">от 50 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
-                            0,30 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
+                        <td>от 50 000 ₽</td>
+                        <td onclick="scrollToCalc()">
+                            0,30 ₽ <span class="arrow-down">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="100000">
-                        <td style="font-size: 17.6px; padding: 14px 18px;">от 100 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
-                            0,25 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
+                        <td>от 100 000 ₽</td>
+                        <td onclick="scrollToCalc()">
+                            0,25 ₽ <span class="arrow-down">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="150000">
-                        <td style="font-size: 17.6px; padding: 14px 18px;">от 150 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
-                            0,20 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
+                        <td>от 150 000 ₽</td>
+                        <td onclick="scrollToCalc()">
+                            0,20 ₽ <span class="arrow-down">▼</span>
                         </td>
                     </tr>
-                    <!-- 👇 ВЫДЕЛЕННАЯ СТРОКА 👇 -->
                     <tr data-amount="200000" class="highlight">
-                        <td style="font-size: 17.6px; padding: 14px 18px;">от 200 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
-                            0,15 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
+                        <td>от 200 000 ₽</td>
+                        <td onclick="scrollToCalc()">
+                            0,15 ₽ <span class="arrow-down">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="250000">
-                        <td style="font-size: 17.6px; padding: 14px 18px;">от 250 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px;">по договорённости</td>
+                        <td>от 250 000 ₽</td>
+                        <td>по договорённости</td>
                     </tr>
                 </tbody>
             </table>
             
-            <div class="tariff-partner-box" style="max-width: 920px; margin-left: auto; margin-right: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 18px 24px; background: var(--bg-card); border: 1px solid rgba(108,238,247,0.12); border-radius: 14px; margin-top: 20px;">
-                <div class="partner-text" style="display: flex; align-items: center; gap: 18px; flex: 1;">
-                    <img src="customer.png" alt="Партнёры" style="height: 72px; width: auto; flex-shrink: 0;">
-                    <div style="display: flex; flex-direction: column; color: #E8EDF5; font-size: 19px; line-height: 1.5;">
+            <div class="tariff-partner-box">
+                <div class="partner-text">
+                    <img src="customer.png" alt="Партнёры">
+                    <div class="partner-text-two-lines">
                         <span>Управляете пулом сайтов?</span>
                         <span>Подготовим закрытый прайс-лист для партнеров.</span>
                     </div>
                 </div>
-                <a href="https://t.me/iclobot_manager" target="_blank" class="btn-partner" style="font-size: 14.7px; padding: 8px 19px; border-radius: 30px; border: 1.5px solid #6CEEF7; background: transparent; color: #6CEEF7; font-weight: 700; cursor: pointer; transition: all .25s; font-family: 'Nunito Sans', sans-serif; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">Напишите нам →</a>
+                <a href="https://t.me/iclobot_manager" target="_blank" class="btn-partner">Напишите нам →</a>
             </div>
         </div>
     </div>
@@ -1584,17 +1575,15 @@ document.querySelectorAll('#tariffTable tbody tr').forEach(row => {
         const amount = parseInt(this.dataset.amount, 10);
         if (amount) {
             setAmount(amount);
-            // активируем соответствующий пресет
             document.querySelectorAll('.calc-preset').forEach(el => {
                 el.classList.toggle('active', +el.dataset.s === amount);
             });
-            // скролл к калькулятору
             document.getElementById('calc').scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-    function scrollToCalc() {
+function scrollToCalc() {
     document.getElementById('calc').scrollIntoView({ behavior: 'smooth' });
 }
     
