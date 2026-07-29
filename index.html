@@ -1202,6 +1202,32 @@
             }
         }
 
+        /* ===== УСИЛЕННЫЕ СТИЛИ ДЛЯ ТАБЛИЦЫ ===== */
+.tariff-table tbody tr td {
+    background: transparent !important;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tariff-table tr.highlight td {
+    background: rgba(108,238,247,0.15) !important;
+    border-color: rgba(108,238,247,0.3) !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    box-shadow: inset 0 0 30px rgba(108,238,247,0.08) !important;
+}
+
+.tariff-table tr.highlight:hover td {
+    background: rgba(108,238,247,0.22) !important;
+}
+
+.tariff-table tr:not(.highlight):hover td {
+    background: rgba(108,238,247,0.06) !important;
+    color: #FFFFFF !important;
+}
+
+.tariff-table td {
+    border-top: 1px solid var(--border);
+}
         /* ===== УБИРАЕМ ТЕГ В БЛОКЕ ПОЧЕМУ МЫ ===== */
         .why-head .tag {
             display: none;
@@ -1387,47 +1413,47 @@ function toggleMenu() {
                 </thead>
                 <tbody>
                     <tr data-amount="1000">
-                        <td style="font-size: 17.6px;">Базовый (от 1 000 ₽)</td>
-                        <td style="font-size: 17.6px; text-align: right; cursor: pointer;" onclick="scrollToCalc()">
+                        <td style="font-size: 17.6px; padding: 14px 18px;">Базовый (от 1 000 ₽)</td>
+                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
                             0,35 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="50000">
-                        <td style="font-size: 17.6px;">от 50 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; cursor: pointer;" onclick="scrollToCalc()">
+                        <td style="font-size: 17.6px; padding: 14px 18px;">от 50 000 ₽</td>
+                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
                             0,30 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="100000">
-                        <td style="font-size: 17.6px;">от 100 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; cursor: pointer;" onclick="scrollToCalc()">
+                        <td style="font-size: 17.6px; padding: 14px 18px;">от 100 000 ₽</td>
+                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
                             0,25 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="150000">
-                        <td style="font-size: 17.6px;">от 150 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; cursor: pointer;" onclick="scrollToCalc()">
+                        <td style="font-size: 17.6px; padding: 14px 18px;">от 150 000 ₽</td>
+                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
                             0,20 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
                         </td>
                     </tr>
+                    <!-- 👇 ВЫДЕЛЕННАЯ СТРОКА 👇 -->
                     <tr data-amount="200000" class="highlight">
-                        <td style="font-size: 17.6px;">от 200 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right; cursor: pointer;" onclick="scrollToCalc()">
+                        <td style="font-size: 17.6px; padding: 14px 18px;">от 200 000 ₽</td>
+                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px; cursor: pointer;" onclick="scrollToCalc()">
                             0,15 ₽ <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; transition: transform .2s; margin-left: 4px;">▼</span>
                         </td>
                     </tr>
                     <tr data-amount="250000">
-                        <td style="font-size: 17.6px;">от 250 000 ₽</td>
-                        <td style="font-size: 17.6px; text-align: right;">по договорённости</td>
+                        <td style="font-size: 17.6px; padding: 14px 18px;">от 250 000 ₽</td>
+                        <td style="font-size: 17.6px; text-align: right; padding: 14px 18px;">по договорённости</td>
                     </tr>
                 </tbody>
             </table>
             
-            <!-- 👇 БЛОК ДЛЯ ПАРТНЁРОВ С ТЕКСТОМ В 2 СТРОКИ И УВЕЛИЧЕННОЙ ИКОНКОЙ 👇 -->
             <div class="tariff-partner-box" style="max-width: 920px; margin-left: auto; margin-right: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 18px 24px; background: var(--bg-card); border: 1px solid rgba(108,238,247,0.12); border-radius: 14px; margin-top: 20px;">
                 <div class="partner-text" style="display: flex; align-items: center; gap: 18px; flex: 1;">
                     <img src="customer.png" alt="Партнёры" style="height: 72px; width: auto; flex-shrink: 0;">
-                    <div style="display: flex; flex-direction: column; color: #E8EDF5; font-size: 18px; line-height: 1.5;">
+                    <div style="display: flex; flex-direction: column; color: #E8EDF5; font-size: 19px; line-height: 1.5;">
                         <span>Управляете пулом сайтов?</span>
                         <span>Подготовим закрытый прайс-лист для партнеров.</span>
                     </div>
