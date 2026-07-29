@@ -7,53 +7,53 @@
     <meta name="description" content="Быстрое продвижение сайта в ТОП Яндекса через AI-ботов с уникальной поведенческой историей. Без абонплаты. От 1000 ₽ на запуск. Бонус 500 ₽ новым клиентам.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         /* ===== RESET & BASE ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font: 18px/1.7 'Inter', 'Segoe UI', Arial, sans-serif;
+            font: 18px/1.7 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
             color: #E8EDF5;
             background: #12161E;
             -webkit-font-smoothing: antialiased;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-        a { color: #3D8EB8; text-decoration: none; transition: all .25s; }
+        a { color: #6CEEF7; text-decoration: none; transition: all .25s; }
         a:hover { opacity: .8; }
         strong, b { font-weight: 700; }
 
         /* ===== ШРИФТЫ ===== */
-        .h1, .h2, .h3, .display { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
-        .h1 { font-size: clamp(38px, 5.5vw, 58px); line-height: 1.08; }
-        .h2 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.15; }
+        .h1, .h2, .h3, .display { font-family: 'Nunito Sans', sans-serif; font-weight: 800; letter-spacing: -0.01em; }
+        .h1 { font-size: clamp(42px, 6vw, 60px); line-height: 1.08; }
+        .h2 { font-size: clamp(30px, 3.8vw, 42px); line-height: 1.15; }
         .h3 { font-size: 20px; font-weight: 700; }
         .tag {
             display: inline-block;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #3D8EB8;
+            color: #6CEEF7;
             margin-bottom: 14px;
         }
 
         /* ===== ЦВЕТА ===== */
         :root {
-    --bg: #12161E;
-    --bg-card: rgba(255,255,255,0.04);
-    --bg-card-hover: rgba(255,255,255,0.07);
-    --border: rgba(255,255,255,0.06);
-    --text: #E8EDF5;
-    --text-muted: #A8B2C6;
-    --accent: #4FC3F7;
-    --accent2: #29B6F6;
-    --green: #2D9B4E;
-    --grad: linear-gradient(100deg, #4FC3F7, #29B6F6);
-    --grad-green: linear-gradient(100deg, #2D9B4E, #3DB85E);
-}
+            --bg: #12161E;
+            --bg-card: rgba(255,255,255,0.04);
+            --bg-card-hover: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.06);
+            --text: #E8EDF5;
+            --text-muted: #B8C2D6;
+            --accent: #6CEEF7;
+            --accent2: #4AD8E6;
+            --green: #2D9B4E;
+            --grad: linear-gradient(100deg, #6CEEF7, #4AD8E6);
+            --grad-green: linear-gradient(100deg, #2D9B4E, #3DB85E);
+        }
         .bg-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; }
         .text-gradient {
             background: var(--grad);
@@ -94,22 +94,22 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 28px;
+            padding: 14px 32px;
             border-radius: 14px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 16px;
             border: none;
             cursor: pointer;
             transition: all .25s;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             text-decoration: none;
         }
         .btn-primary {
             background: var(--grad);
-            color: #fff;
-            box-shadow: 0 4px 24px rgba(61,142,184,0.2);
+            color: #12161E;
+            box-shadow: 0 4px 24px rgba(108,238,247,0.2);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(61,142,184,0.3); opacity: 1; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,238,247,0.3); opacity: 1; }
         .btn-ghost {
             background: transparent;
             color: #8892A6;
@@ -127,138 +127,152 @@
         .btn-full { width: 100%; justify-content: center; }
 
         /* ===== HERO ===== */
-.hero {
-    position: relative;
-    overflow: hidden;
-    padding: 70px 0 80px;
-    background: var(--bg);
-}
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 600px 600px at 10% 20%, rgba(74,155,199,0.08), transparent 70%),
-        radial-gradient(ellipse 500px 500px at 90% 80%, rgba(107,181,230,0.06), transparent 70%);
-    pointer-events: none;
-}
-.hero .container { position: relative; z-index: 2; }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 70px 0 80px;
+            background: var(--bg);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 600px at 10% 20%, rgba(108,238,247,0.06), transparent 70%),
+                radial-gradient(ellipse 500px 500px at 90% 80%, rgba(74,216,230,0.04), transparent 70%);
+            pointer-events: none;
+        }
+        .hero .container { position: relative; z-index: 2; }
 
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 820px;
-    margin: 0 auto;
-}
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto;
+        }
 
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 22px;
-    border-radius: 100px;
-    background: rgba(45,155,78,0.08);
-    border: 1px solid rgba(45,155,78,0.15);
-    font-weight: 700;
-    font-size: 14px;
-    color: #2D9B4E;
-    margin-bottom: 24px;
-}
-.hero-badge .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #2D9B4E;
-    position: relative;
-    flex-shrink: 0;
-}
-.hero-badge .dot::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 2px solid rgba(45,155,78,0.3);
-    animation: ping 1.6s ease-out infinite;
-}
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border-radius: 100px;
+            background: rgba(45,155,78,0.08);
+            border: 1px solid rgba(45,155,78,0.15);
+            font-weight: 700;
+            font-size: 14px;
+            color: #2D9B4E;
+            margin-bottom: 24px;
+        }
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2D9B4E;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .hero-badge .dot::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(45,155,78,0.3);
+            animation: ping 1.6s ease-out infinite;
+        }
+        @keyframes ping {
+            0% { transform: scale(0.6); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
 
-.hero h1 {
-    font-size: clamp(42px, 6vw, 60px);
-    font-weight: 800;
-    line-height: 1.08;
-    margin-bottom: 18px;
-    font-family: 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
-}
-.hero h1 .highlight {
-    background: var(--grad);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 60px);
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 18px;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        .hero h1 .highlight {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-.hero p {
-    font-size: 20px;
-    color: #A8B2C6;
-    max-width: 680px;
-    margin-bottom: 28px;
-    line-height: 1.7;
-    font-weight: 400;
-}
+        .hero p {
+            font-size: 20px;
+            color: #B8C2D6;
+            max-width: 680px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
 
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 40px;
-}
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
 
-.hero-stats-full {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 16px;
-    width: 100%;
-}
-.hero-stats-full .hero-stat {
-    padding: 18px 16px;
-    text-align: center;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-}
-.hero-stats-full .hero-stat .num {
-    font-size: 24px;
-    font-weight: 700;
-    font-family: 'Nunito Sans', sans-serif;
-    background: var(--grad);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-.hero-stats-full .hero-stat .label {
-    font-size: 14px;
-    color: #A8B2C6;
-    margin-top: 4px;
-}
+        .hero-stats-full {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            width: 100%;
+        }
+        .hero-stats-full .hero-stat {
+            padding: 18px 16px;
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .hero-stats-full .hero-stat .num {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: 'Nunito Sans', sans-serif;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-stats-full .hero-stat .label {
+            font-size: 16px;
+            color: #E8EDF5;
+            margin-top: 4px;
+            font-weight: 500;
+        }
 
-/* ===== АДАПТИВ ===== */
-@media (max-width: 768px) {
-    .hero { padding: 40px 0 50px; }
-    .hero h1 { font-size: 30px; }
-    .hero p { font-size: 17px; padding: 0 10px; }
-    .hero-stats-full {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-    .hero-stats-full .hero-stat .num { font-size: 20px; }
-}
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .hero { padding: 40px 0 50px; }
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 17px; padding: 0 10px; }
+            .hero-stats-full {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .hero-stats-full .hero-stat .num { font-size: 20px; }
+            .hero-stats-full .hero-stat .label { font-size: 13px; color: #B8C2D6; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-lg { padding: 14px 28px; font-size: 15px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .hero-stats-full { grid-template-columns: 1fr 1fr; }
+            .hero-stats-full .hero-stat { padding: 12px 10px; }
+            .hero-stats-full .hero-stat .num { font-size: 18px; }
+        }
 
         /* ===== СЕКЦИИ ===== */
         section { padding: 70px 0; }
         .section-head { text-align: center; max-width: 760px; margin: 0 auto 44px; }
         .section-head .tag { color: var(--accent2); }
-        .section-head p { color: #8892A6; font-size: 18px; }
+        .section-head p { color: #B8C2D6; font-size: 18px; }
 
         /* ===== КАРТОЧКИ ===== */
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
@@ -269,7 +283,7 @@
             padding: 30px 26px;
             transition: all .3s;
         }
-        .card:hover { transform: translateY(-4px); border-color: rgba(61,142,184,0.2); background: var(--bg-card-hover); }
+        .card:hover { transform: translateY(-4px); border-color: rgba(108,238,247,0.15); background: var(--bg-card-hover); }
         .card .icon {
             width: 52px;
             height: 52px;
@@ -278,13 +292,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: #12161E;
             font-size: 24px;
             margin-bottom: 16px;
         }
         .card h3 { margin-bottom: 6px; font-size: 19px; }
-        .card p { color: #8892A6; font-size: 15px; }
-        .card.highlight { border-color: rgba(61,142,184,0.2); background: rgba(61,142,184,0.04); }
+        .card p { color: #B8C2D6; font-size: 15px; }
+        .card.highlight { border-color: rgba(108,238,247,0.15); background: rgba(108,238,247,0.04); }
         .card .badge {
             display: inline-block;
             background: var(--grad-green);
@@ -325,8 +339,8 @@
             color: #8892A6;
         }
         .tariff-table tr.highlight td {
-            background: rgba(61,142,184,0.06);
-            border-color: rgba(61,142,184,0.12);
+            background: rgba(108,238,247,0.06);
+            border-color: rgba(108,238,247,0.12);
             color: #E8EDF5;
             font-weight: 700;
         }
@@ -350,7 +364,7 @@
             top: -160px;
             border-radius: 50%;
             filter: blur(80px);
-            background: radial-gradient(circle, rgba(61,142,184,0.06), transparent 65%);
+            background: radial-gradient(circle, rgba(108,238,247,0.04), transparent 65%);
             pointer-events: none;
         }
         .calc-block > * { position: relative; z-index: 2; }
@@ -371,14 +385,14 @@
             font-size: 14px;
             cursor: pointer;
             transition: all .2s;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
         }
         .calc-preset:hover { border-color: var(--accent); color: #E8EDF5; }
         .calc-preset.active {
             background: var(--grad);
             border-color: transparent;
-            color: #fff;
-            box-shadow: 0 4px 24px rgba(61,142,184,0.2);
+            color: #12161E;
+            box-shadow: 0 4px 24px rgba(108,238,247,0.2);
         }
         .calc-preset .rec {
             display: block;
@@ -386,10 +400,10 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            color: #3D8EB8;
+            color: #6CEEF7;
             margin-top: 2px;
         }
-        .calc-preset.active .rec { color: rgba(255,255,255,0.6); }
+        .calc-preset.active .rec { color: rgba(18,22,30,0.6); }
 
         .calc-slider-wrap {
             display: flex;
@@ -412,12 +426,12 @@
             border-radius: 50%;
             background: var(--grad);
             cursor: pointer;
-            box-shadow: 0 0 24px rgba(61,142,184,0.25);
+            box-shadow: 0 0 24px rgba(108,238,247,0.2);
             border: 2px solid rgba(255,255,255,0.08);
         }
         .calc-slider-wrap .value {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 800;
             font-size: 22px;
             min-width: 110px;
             text-align: right;
@@ -443,8 +457,8 @@
         }
         .calc-result .k { font-size: 12px; color: #8892A6; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
         .calc-result .v {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 800;
             font-size: 28px;
             margin-top: 4px;
             color: #E8EDF5;
@@ -453,14 +467,14 @@
             background: var(--grad);
             border-color: transparent;
         }
-        .calc-result.highlight .k { color: rgba(255,255,255,0.7); }
-        .calc-result.highlight .v { color: #fff; }
+        .calc-result.highlight .k { color: rgba(18,22,30,0.6); }
+        .calc-result.highlight .v { color: #12161E; }
         .calc-result .sub {
             font-size: 12px;
             color: #8892A6;
             margin-top: 2px;
         }
-        .calc-result.highlight .sub { color: rgba(255,255,255,0.5); }
+        .calc-result.highlight .sub { color: rgba(18,22,30,0.5); }
 
         .calc-bonus {
             margin-top: 20px;
@@ -504,7 +518,7 @@
             height: 28px;
             border-radius: 50%;
             background: var(--grad);
-            box-shadow: 0 0 0 4px rgba(61,142,184,0.08);
+            box-shadow: 0 0 0 4px rgba(108,238,247,0.08);
         }
         .step .num {
             position: absolute;
@@ -515,14 +529,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 800;
             font-size: 13px;
-            color: #fff;
+            color: #12161E;
             z-index: 2;
         }
         .step h3 { font-size: 18px; margin-bottom: 4px; }
-        .step p { color: #8892A6; font-size: 15px; }
+        .step p { color: #B8C2D6; font-size: 15px; }
 
         /* ===== СРАВНЕНИЕ ===== */
         .compare-grid {
@@ -549,7 +563,7 @@
         .compare-col ul li:last-child { border-bottom: none; }
         .compare-col ul li .check { color: #2D9B4E; font-weight: 700; }
         .compare-col ul li .cross { color: #E86060; font-weight: 700; }
-        .compare-col.highlight { border-color: rgba(61,142,184,0.2); background: rgba(61,142,184,0.04); }
+        .compare-col.highlight { border-color: rgba(108,238,247,0.15); background: rgba(108,238,247,0.04); }
 
         /* ===== ТЕХНОЛОГИИ ===== */
         .tech-grid {
@@ -592,10 +606,10 @@
             text-align: center;
             transition: all .3s;
         }
-        .case-item:hover { border-color: rgba(61,142,184,0.15); background: var(--bg-card-hover); }
+        .case-item:hover { border-color: rgba(108,238,247,0.15); background: var(--bg-card-hover); }
         .case-item .num {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 800;
             font-size: 32px;
             background: var(--grad);
             -webkit-background-clip: text;
@@ -628,7 +642,7 @@
         .faq-item summary::after {
             content: '+';
             flex-shrink: 0;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             font-size: 20px;
             color: var(--accent2);
             transition: transform .25s;
@@ -662,7 +676,7 @@
             bottom: -180px;
             border-radius: 50%;
             filter: blur(80px);
-            background: radial-gradient(circle, rgba(61,142,184,0.06), transparent 65%);
+            background: radial-gradient(circle, rgba(108,238,247,0.04), transparent 65%);
             pointer-events: none;
         }
         .cta-block > * { position: relative; z-index: 2; }
@@ -696,8 +710,8 @@
             max-width: 560px;
         }
         .promo-code {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 800;
             font-size: 13px;
             letter-spacing: 0.08em;
             padding: 4px 16px;
@@ -816,6 +830,7 @@
             cursor: pointer;
             line-height: 1;
         }
+        .mobile-menu-inner .btn { width: 100%; justify-content: center; }
 
         /* ===== АНИМАЦИИ ===== */
         .fade-up {
@@ -852,9 +867,9 @@
             }
 
             .hero-stats-full .hero-stat .num {
-                font-size: 24px;
-                font-family: 'Space Grotesk', sans-serif;
-                font-weight: 700;
+                font-size: 28px;
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 800;
                 background: var(--grad);
                 -webkit-background-clip: text;
                 background-clip: text;
@@ -862,8 +877,8 @@
             }
 
             .hero-stats-full .hero-stat .label {
-                font-size: 13px;
-                color: #8892A6;
+                font-size: 16px;
+                color: #E8EDF5;
                 margin-top: 4px;
             }
         }
@@ -921,14 +936,14 @@
         }
 
         .why-card--highlight {
-            border-color: rgba(79,195,247,0.2);
-            background: rgba(79,195,247,0.04);
+            border-color: rgba(108,238,247,0.2);
+            background: rgba(108,238,247,0.04);
             text-align: center;
         }
 
         .why-card p {
-            color: #8892A6;
-            font-size: 15px;
+            color: #B8C2D6;
+            font-size: 18px;
             line-height: 1.7;
             margin-bottom: 0;
         }
@@ -964,7 +979,7 @@
         }
         .why-divider span {
             display: inline-block;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             font-weight: 700;
             font-size: 20px;
             color: #E8EDF5;
@@ -1014,7 +1029,7 @@
 
         .about-description {
             font-size: 18px;
-            color: #8892A6;
+            color: #B8C2D6;
             max-width: 700px;
             text-align: center;
             line-height: 1.7;
@@ -1043,6 +1058,9 @@
                 max-width: 100%;
                 text-align: center;
             }
+            .why-card p {
+                font-size: 15px;
+            }
             .why-divider span {
                 font-size: 17px;
                 padding: 0 14px;
@@ -1066,24 +1084,28 @@
         }
 
         /* ===== ТЕХНОЛОГИЧЕСКАЯ СТРОКА ПОСЛЕ 6-Й КАРТОЧКИ ===== */
-.why-tech-line {
-    text-align: center;
-    max-width: 66.666%;
-    margin: 20px auto 0;
-    padding: 12px 20px;
-    background: rgba(61,142,184,0.04);
-    border: 1px solid rgba(61,142,184,0.1);
-    border-radius: 12px;
-}
-.why-tech-line p {
-    font-size: 14px;
-    color: #8892A6;
-    line-height: 1.6;
-}
-.why-tech-line p strong {
-    color: #E8EDF5;
-    }
-}    
+        .why-tech-line {
+            text-align: center;
+            max-width: 66.666%;
+            margin: 20px auto 0;
+            padding: 12px 20px;
+            background: rgba(108,238,247,0.04);
+            border: 1px solid rgba(108,238,247,0.1);
+            border-radius: 12px;
+        }
+        .why-tech-line p {
+            font-size: 15px;
+            color: #B8C2D6;
+            line-height: 1.6;
+        }
+        .why-tech-line p strong {
+            color: #E8EDF5;
+        }
+
+        /* ===== УБИРАЕМ ТЕГ В БЛОКЕ ПОЧЕМУ МЫ ===== */
+        .why-head .tag {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -1134,7 +1156,7 @@
         <a href="#calc" onclick="toggleMenu()">Калькулятор</a>
         <a href="#steps" onclick="toggleMenu()">Как начать</a>
         <a href="#faq" onclick="toggleMenu()">FAQ</a>
-        <a href="https://t.me/iclobot_manager" target="_blank" style="color:#3D8EB8;font-weight:700;" onclick="toggleMenu()">Telegram</a>
+        <a href="https://t.me/iclobot_manager" target="_blank" style="color:#6CEEF7;font-weight:700;" onclick="toggleMenu()">Telegram</a>
     </div>
 </div>
 
@@ -1193,9 +1215,8 @@ function toggleMenu() {
 <section class="why-section">
     <div class="container">
 
-        <!-- ЗАГОЛОВОК -->
+        <!-- ЗАГОЛОВОК (без ПОЧЕМУ МЫ) -->
         <div class="why-head">
-            <span class="tag">ПОЧЕМУ МЫ</span>
             <h2>Почему сейчас сложно <span class="text-gradient">выйти в ТОП</span></h2>
         </div>
 
@@ -1247,9 +1268,9 @@ function toggleMenu() {
         </div>
 
         <!-- ДОПОЛНЕНИЕ ПОСЛЕ 6-Й КАРТОЧКИ -->
-<div class="why-tech-line">
-    <p>Используем собственные фингерпринты, прокси-сеть по России и уникальные сценарии поведения. Без публичных баз и готовых решений.</p>
-</div>
+        <div class="why-tech-line">
+            <p>Используем собственные фингерпринты, прокси-сеть по России и уникальные сценарии поведения. Без публичных баз и готовых решений.</p>
+        </div>
 
     </div>
 </section>
@@ -1281,37 +1302,8 @@ function toggleMenu() {
 <section id="pricing">
     <div class="container">
         <div class="section-head fade-up">
-            <div class="tag">Стоимость</div>
-            <h2>Цены на <span class="text-gradient">продвижение</span></h2>
-            <p>Цена клика от 0,40 ₽. Без абонплаты и обязательного депозита.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
-            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;" class="fade-up delay-1">
-                <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;color:#E8EDF5;">
-                    0,40 ₽<span style="font-size:18px;font-weight:400;color:#8892A6;">/клик</span>
-                </div>
-                <div style="font-size:15px;color:#8892A6;margin:10px 0 18px;">
-                    <span style="background:var(--grad);color:#fff;padding:3px 16px;border-radius:6px;font-size:14px;font-weight:700;">от 1 000 ₽ на запуск</span>
-                </div>
-                <div style="font-size:15px;color:#8892A6;">
-                    Расчёт стоимости в AI-калькуляторе.
-                    <a href="#calc" style="color:#3D8EB8;font-weight:700;">Рассчитать сейчас →</a>
-                </div>
-                <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;">
-                    <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-primary">Зарегистрироваться</a>
-                    <a href="#calc" class="btn btn-ghost">Калькулятор</a>
-                </div>
-            </div>
-            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px 26px;" class="fade-up delay-2">
-                <div style="display:flex;align-items:center;gap:14px;">
-                    <span style="background:var(--grad-green);color:#fff;padding:3px 16px;border-radius:6px;font-size:15px;font-weight:700;">free</span>
-                    <span style="font-weight:700;font-size:17px;color:#E8EDF5;">Бесплатный пробный период</span>
-                </div>
-                <p style="color:#8892A6;font-size:15px;margin-top:12px;">
-                    Каждому клиенту предоставляем тестовый период для оценки возможностей продвижения через AI-бота
-                </p>
-                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-green" style="margin-top:16px;">Начать тест-драйв</a>
-            </div>
+            <h2>Цена клика от <span class="text-gradient">0,15 ₽</span></h2>
+            <p>Без абонплаты и обязательного депозита.</p>
         </div>
 
         <div style="margin-top:36px;" class="fade-up">
@@ -1327,7 +1319,7 @@ function toggleMenu() {
                 </tbody>
             </table>
             <div style="font-size:14px;color:#8892A6;margin-top:14px;">
-                💡 Для агентств и крупных заказчиков — система лояльности. <a href="https://t.me/iclobot_manager" target="_blank" style="color:#3D8EB8;font-weight:700;">Напишите нам</a>
+                💡 Для агентств и крупных заказчиков — система лояльности. <a href="https://t.me/iclobot_manager" target="_blank" style="color:#6CEEF7;font-weight:700;">Напишите нам</a>
             </div>
         </div>
     </div>
@@ -1338,8 +1330,8 @@ function toggleMenu() {
     <div class="container">
         <div style="max-width:920px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:32px;" class="fade-up">
-                <div class="tag" style="color:#3D8EB8;">Калькулятор</div>
-                <h2 style="color:#E8EDF5;">Рассчитайте <span style="color:#3D8EB8;">стоимость</span></h2>
+                <div class="tag" style="color:#6CEEF7;">Калькулятор</div>
+                <h2 style="color:#E8EDF5;">Рассчитайте <span style="color:#6CEEF7;">стоимость</span></h2>
                 <p style="color:#8892A6;font-size:17px;">Выберите сумму пополнения — увидите цену клика и количество переходов</p>
             </div>
 
@@ -1425,7 +1417,7 @@ function setAmount(value, fromSlider) {
         document.getElementById('resCpc').textContent = 'обсудим';
         document.getElementById('resClicks').textContent = 'ещё выгоднее';
         document.getElementById('resClicksSub').textContent = '';
-        document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/iclobot_manager" target="_blank" style="color:#3D8EB8;font-weight:700;">Telegram</a>.';
+        document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/iclobot_manager" target="_blank" style="color:#6CEEF7;font-weight:700;">Telegram</a>.';
     } else {
         const clicks = value / tier.cpc;
         document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
@@ -1457,19 +1449,19 @@ setAmount(1000);
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
             <div class="bg-card fade-up delay-1" style="padding:32px 24px;text-align:center;">
                 <div style="font-size:52px;margin-bottom:14px;">📋</div>
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;">1</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#12161E;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;margin-bottom:12px;">1</div>
                 <h3 style="color:#E8EDF5;font-size:19px;">Выберите ключи</h3>
                 <p style="color:#8892A6;font-size:15px;margin-top:6px;">Укажите запросы, по которым хотите продвигаться</p>
             </div>
             <div class="bg-card fade-up delay-2" style="padding:32px 24px;text-align:center;">
                 <div style="font-size:52px;margin-bottom:14px;">📊</div>
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;">2</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#12161E;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;margin-bottom:12px;">2</div>
                 <h3 style="color:#E8EDF5;font-size:19px;">Задайте объём</h3>
                 <p style="color:#8892A6;font-size:15px;margin-top:6px;">Определите количество переходов и бюджет</p>
             </div>
             <div class="bg-card fade-up delay-3" style="padding:32px 24px;text-align:center;">
                 <div style="font-size:52px;margin-bottom:14px;">🚀</div>
-                <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;">3</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#12161E;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;margin-bottom:12px;">3</div>
                 <h3 style="color:#E8EDF5;font-size:19px;">Нажмите старт</h3>
                 <p style="color:#8892A6;font-size:15px;margin-top:6px;">Запустите продвижение и получайте результаты</p>
             </div>
@@ -1553,7 +1545,7 @@ setAmount(1000);
 <section id="cta">
     <div class="container">
         <div class="cta-block fade-up">
-            <h2>Готовы <span style="color:#3D8EB8;">поднять</span> сайт в ТОП?</h2>
+            <h2>Готовы <span style="color:#6CEEF7;">поднять</span> сайт в ТОП?</h2>
             <p>Зарегистрируйтесь и получите бесплатный тест-драйв на 5 дней. Оцените эффективность до оплаты.</p>
             <div class="guarantee">🎁 <span><b>Бесплатный тест-драйв 5 дней</b> — оцените продвижение до оплаты.</span></div>
             <div class="guarantee">⚙️ <span>Индивидуально обученный AI-бот — неотличим от живого пользователя.</span></div>
@@ -1590,8 +1582,8 @@ function showCopied(el) {
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
     <div class="container">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#E8EDF5;">
-            Metric<span style="color:#3D8EB8;">Hit</span>
+        <div style="font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:20px;color:#E8EDF5;">
+            Metric<span style="color:#6CEEF7;">Hit</span>
         </div>
         <div style="margin-top:4px;font-size:14px;">Сервис продвижения сайтов в Яндексе через AI-ботов</div>
         <div class="links">
