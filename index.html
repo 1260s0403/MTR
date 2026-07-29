@@ -1374,47 +1374,65 @@ function toggleMenu() {
 <section id="pricing">
     <div class="container">
         <div class="section-head fade-up">
-            <h2>Цена клика от <span class="text-gradient">0,15 ₽</span></h2>
-            <p>Без абонплаты и обязательного депозита.</p>
+            <h2 style="font-size: clamp(39px, 4.94vw, 54.6px);">Цена клика от <span class="text-gradient">0,15 ₽</span></h2>
+            <p style="font-size: clamp(22.5px, 4.75vw, 52.5px); color: #FFFFFF; font-weight: 400;">Без абонплаты и обязательного депозита.</p>
         </div>
-        <div style="margin-top:36px;" class="fade-up">
+        <div style="margin-top:36px; max-width: 920px; margin-left: auto; margin-right: auto;" class="fade-up">
             <table class="tariff-table" id="tariffTable">
                 <thead>
                     <tr>
-                        <th>Объём пополнения</th>
-                        <th>Цена за клик</th>
+                        <th style="font-size: 19.5px; color: #6CEEF7;">Объём пополнения</th>
+                        <th style="font-size: 19.5px; color: #6CEEF7;">Цена за клик</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr data-amount="1000">
-                        <td>Базовый (от 1 000 ₽) <span class="arrow-down">↓</span></td>
-                        <td>0,35 ₽</td>
+                        <td style="font-size: 19.5px; display: flex; align-items: center; gap: 6px;">
+                            <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; cursor: pointer; transition: transform .2s;" onclick="scrollToCalc()">▼</span>
+                            Базовый (от 1 000 ₽)
+                        </td>
+                        <td style="font-size: 19.5px;">0,35 ₽</td>
                     </tr>
                     <tr data-amount="50000">
-                        <td>от 50 000 ₽ <span class="arrow-down">↓</span></td>
-                        <td>0,30 ₽</td>
+                        <td style="font-size: 19.5px; display: flex; align-items: center; gap: 6px;">
+                            <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; cursor: pointer; transition: transform .2s;" onclick="scrollToCalc()">▼</span>
+                            от 50 000 ₽
+                        </td>
+                        <td style="font-size: 19.5px;">0,30 ₽</td>
                     </tr>
                     <tr data-amount="100000">
-                        <td>от 100 000 ₽ <span class="arrow-down">↓</span></td>
-                        <td>0,25 ₽</td>
+                        <td style="font-size: 19.5px; display: flex; align-items: center; gap: 6px;">
+                            <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; cursor: pointer; transition: transform .2s;" onclick="scrollToCalc()">▼</span>
+                            от 100 000 ₽
+                        </td>
+                        <td style="font-size: 19.5px;">0,25 ₽</td>
                     </tr>
                     <tr data-amount="150000">
-                        <td>от 150 000 ₽ <span class="arrow-down">↓</span></td>
-                        <td>0,20 ₽</td>
+                        <td style="font-size: 19.5px; display: flex; align-items: center; gap: 6px;">
+                            <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; cursor: pointer; transition: transform .2s;" onclick="scrollToCalc()">▼</span>
+                            от 150 000 ₽
+                        </td>
+                        <td style="font-size: 19.5px;">0,20 ₽</td>
                     </tr>
                     <tr data-amount="200000" class="highlight">
-                        <td>от 200 000 ₽ <span class="arrow-down">↓</span></td>
-                        <td>0,15 ₽</td>
+                        <td style="font-size: 19.5px; display: flex; align-items: center; gap: 6px;">
+                            <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; cursor: pointer; transition: transform .2s;" onclick="scrollToCalc()">▼</span>
+                            от 200 000 ₽
+                        </td>
+                        <td style="font-size: 19.5px;">0,15 ₽</td>
                     </tr>
                     <tr data-amount="250000">
-                        <td>от 250 000 ₽ <span class="arrow-down">↓</span></td>
-                        <td>по договорённости</td>
+                        <td style="font-size: 19.5px; display: flex; align-items: center; gap: 6px;">
+                            <span class="arrow-down" style="display: inline-block; font-size: 21.25px; color: #6CEEF7; cursor: pointer; transition: transform .2s;" onclick="scrollToCalc()">▼</span>
+                            от 250 000 ₽
+                        </td>
+                        <td style="font-size: 19.5px;">по договорённости</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="tariff-partner-box">
-                <div class="partner-text">
-                    <img src="customer.png" alt="Партнёры">
+            <div class="tariff-partner-box" style="max-width: 920px; margin-left: auto; margin-right: auto;">
+                <div class="partner-text" style="font-size: 22.5px; color: #FFFFFF;">
+                    <img src="customer.png" alt="Партнёры" style="height: 56px; width: auto;">
                     <span>Управляете пулом сайтов? Подготовим закрытый прайс-лист для партнеров.</span>
                 </div>
                 <a href="https://t.me/iclobot_manager" target="_blank" class="btn-partner">Напишите нам →</a>
@@ -1553,6 +1571,10 @@ document.querySelectorAll('#tariffTable tbody tr').forEach(row => {
     });
 });
 
+    function scrollToCalc() {
+    document.getElementById('calc').scrollIntoView({ behavior: 'smooth' });
+}
+    
 // Инициализация
 setAmount(1000);
 </script>
