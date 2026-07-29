@@ -1465,7 +1465,7 @@ function toggleMenu() {
                 <p style="color:#8892A6;font-size:17px;">Выберите сумму пополнения — увидите цену клика и количество переходов</p>
             </div>
 
-            <div class="calc-block">
+            <div class="calc-block" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
                 <div class="label" style="text-align:center;">Сумма пополнения</div>
                 <div class="calc-presets">
                     <button class="calc-preset active" data-s="1000" onclick="setAmount(1000)">
@@ -1500,12 +1500,15 @@ function toggleMenu() {
                     </div>
                 </div>
 
-                <div class="calc-bonus">
-                    <img src="gift-card.png" alt="Бонус">
-                    <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽ — на базовой цене это ещё примерно 1 250 переходов сверху.</span>
+                <div class="calc-bonus" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
+                    <img src="gift-card.png" alt="Бонус" style="height: 56px; width: auto; flex-shrink: 0; margin-top: 2px;">
+                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                        <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽.</span>
+                        <span>На базовой цене это ещё примерно 1 250 переходов сверху.</span>
+                    </div>
                 </div>
 
-                <div class="calc-note" id="calcNote">
+                <div class="calc-note" id="calcNote" style="font-size: 18px; line-height: 1.6;">
                     Этого хватит на тестовый запуск одного проекта.
                 </div>
             </div>
@@ -1553,13 +1556,13 @@ function setAmount(value, fromSlider) {
         document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
         document.getElementById('resClicks').textContent = '≈ ' + formatNumber(clicks);
 
-        const baseCpc = 0.40;
+        const baseCpc = 0.35; // Исправлено с 0.40 на 0.35
         const baseClicks = value / baseCpc;
         if (tier.cpc < baseCpc) {
             const extra = clicks - baseClicks;
             document.getElementById('resClicksSub').textContent = 'на ' + formatNumber(extra) + ' больше, чем по базовой цене';
             document.getElementById('calcNote').innerHTML =
-                'Скидка от объёма: на базовой цене 0,40 ₽ этих денег хватило бы на <strong style="color:#E8EDF5;">' +
+                'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на <strong style="color:#E8EDF5;">' +
                 formatNumber(baseClicks) + '</strong> переходов, на вашем объёме — на <strong style="color:#2D9B4E;">' +
                 formatNumber(extra) + '</strong> больше.';
         } else {
