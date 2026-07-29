@@ -1223,7 +1223,21 @@
         /* ===== УБИРАЕМ ТЕГ В БЛОКЕ ПОЧЕМУ МЫ ===== */
         .why-head .tag {
             display: none;
+            }
         }
+
+        /* ===== ФИКСИРОВАННАЯ ВЫСОТА ДЛЯ КАЛЬКУЛЯТОРА ===== */
+.calc-note {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #E8EDF5;
+}
+.calc-note strong {
+    color: #FFFFFF;
+}
     </style>
 </head>
 <body>
@@ -1508,7 +1522,8 @@ function toggleMenu() {
                     </div>
                 </div>
 
-                <div class="calc-note" id="calcNote" style="font-size: 18px; line-height: 1.6;">
+                <!-- 👇 ИСПРАВЛЕННЫЙ БЛОК С ФИКСИРОВАННОЙ ВЫСОТОЙ 👇 -->
+                <div class="calc-note" id="calcNote" style="min-height: 80px; display: flex; align-items: center; font-size: 18px; line-height: 1.6;">
                     Этого хватит на тестовый запуск одного проекта.
                 </div>
             </div>
