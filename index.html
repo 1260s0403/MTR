@@ -1505,18 +1505,18 @@
     opacity: 1;
 }
 
-/* ===== МЕРЦАНИЕ ДЛЯ БЕЙДЖА ===== */
+/* ===== МЕРЦАНИЕ ДЛЯ БЕЙДЖА (уменьшенное) ===== */
 @keyframes glowPulse {
     0% {
-        box-shadow: 0 0 20px rgba(108,238,247,0.15);
+        box-shadow: 0 0 12px rgba(108,238,247,0.10);
         border-color: rgba(108,238,247,0.3);
     }
     50% {
-        box-shadow: 0 0 40px rgba(108,238,247,0.35), 0 0 80px rgba(108,238,247,0.1);
-        border-color: rgba(108,238,247,0.6);
+        box-shadow: 0 0 24px rgba(108,238,247,0.25), 0 0 50px rgba(108,238,247,0.06);
+        border-color: rgba(108,238,247,0.5);
     }
     100% {
-        box-shadow: 0 0 20px rgba(108,238,247,0.15);
+        box-shadow: 0 0 12px rgba(108,238,247,0.10);
         border-color: rgba(108,238,247,0.3);
     }
 }
@@ -1580,7 +1580,7 @@ function toggleMenu() {
 </script>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" style="padding: 170px 0 80px;">
     <div class="container">
         <div class="hero-content">
             <h1 style="margin-bottom: 50px;">Продвигаем сайты в <span class="highlight">ТОП</span></h1>
@@ -1607,8 +1607,8 @@ function toggleMenu() {
                     <div class="label">абонентская плата</div>
                 </div>
             </div>
-            <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; border-radius: 100px; background: rgba(108,238,247,0.10); border: 1px solid rgba(108,238,247,0.3); font-weight: 700; font-size: 16px; color: #6CEEF7; margin: 0 auto; animation: glowPulse 2s ease-in-out infinite; box-shadow: 0 0 20px rgba(108,238,247,0.15);">
-                <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: #6CEEF7; position: relative; flex-shrink: 0; box-shadow: 0 0 12px rgba(108,238,247,0.6);"></span>
+            <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; border-radius: 100px; background: rgba(108,238,247,0.10); border: 1px solid rgba(108,238,247,0.3); font-weight: 700; font-size: 16px; color: #6CEEF7; margin: 0 auto; animation: glowPulse 2s ease-in-out infinite; box-shadow: 0 0 12px rgba(108,238,247,0.10);">
+                <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: #6CEEF7; position: relative; flex-shrink: 0; box-shadow: 0 0 8px rgba(108,238,247,0.4);"></span>
                 БОНУС 500 ₽
             </div>
         </div>
