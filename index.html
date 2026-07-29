@@ -710,53 +710,6 @@
             }
         }
 
-        /* ===== ШАГИ ===== */
-        .steps { margin-top: 8px; }
-        .step {
-            position: relative;
-            padding: 0 0 24px 48px;
-        }
-        .step:last-child { padding-bottom: 0; }
-        .step::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 24px;
-            bottom: -4px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), var(--accent2));
-            opacity: 0.3;
-        }
-        .step:last-child::before { display: none; }
-        .step::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 4px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--grad);
-            box-shadow: 0 0 0 4px rgba(108,238,247,0.08);
-        }
-        .step .num {
-            position: absolute;
-            left: 0;
-            top: 4px;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: 800;
-            font-size: 13px;
-            color: #12161E;
-            z-index: 2;
-        }
-        .step h3 { font-size: 18px; margin-bottom: 4px; }
-        .step p { color: #B8C2D6; font-size: 15px; }
-
         /* ===== СРАВНЕНИЕ ===== */
         .compare-grid {
             display: grid;
@@ -1381,473 +1334,470 @@
                 box-shadow: 0 0 20px rgba(108,238,247,0.15);
                 border-color: rgba(108,238,247,0.3);
             }
-
-            /* ===== НОВАЯ СЕКЦИЯ "КАК НАЧАТЬ" ===== */
-.steps-widget {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    gap: 40px;
-    margin-top: 20px;
-    background: #1e1e28;
-    border: 1px solid rgba(108,238,247,0.15);
-    border-radius: 20px;
-    padding: 40px 44px;
-    min-height: 480px;
-}
-
-/* ===== ЛЕВАЯ КОЛОНКА - ТАЙМЛАЙН ===== */
-.steps-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-right: 20px;
-    border-right: 1px solid rgba(108,238,247,0.08);
-}
-
-.step-trigger {
-    display: flex;
-    gap: 16px;
-    padding: 16px 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all .3s ease;
-    position: relative;
-    background: transparent;
-}
-
-.step-trigger:hover {
-    background: rgba(108,238,247,0.04);
-}
-
-.step-trigger.active {
-    background: rgba(108,238,247,0.08);
-    border: 1px solid rgba(108,238,247,0.15);
-    box-shadow: 0 0 30px rgba(108,238,247,0.03);
-}
-
-.step-number {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    color: rgba(108,238,247,0.3);
-    min-width: 32px;
-    padding-top: 2px;
-    transition: color .3s ease;
-}
-
-.step-trigger.active .step-number {
-    color: #6CEEF7;
-}
-
-.step-content {
-    flex: 1;
-}
-
-.step-title {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #8892A6;
-    transition: color .3s ease;
-    margin-bottom: 4px;
-}
-
-.step-trigger.active .step-title {
-    color: #FFFFFF;
-}
-
-.step-desc {
-    font-size: 14px;
-    color: #5A6478;
-    line-height: 1.5;
-    transition: color .3s ease;
-}
-
-.step-trigger.active .step-desc {
-    color: #8892A6;
-}
-
-.step-line {
-    display: none;
-}
-
-/* ===== ПРАВАЯ КОЛОНКА - ПРЕВЬЮ ===== */
-.preview-window {
-    background: #16161E;
-    border-radius: 14px;
-    border: 1px solid rgba(108,238,247,0.08);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.preview-screen {
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    animation: previewFade .4s ease;
-}
-
-.preview-screen.active {
-    display: flex;
-}
-
-@keyframes previewFade {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Заголовок окна */
-.preview-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 20px;
-    background: rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(108,238,247,0.06);
-}
-
-.preview-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.preview-dot.red { background: #FF5F57; }
-.preview-dot.yellow { background: #FFBD2E; }
-.preview-dot.green { background: #28C840; }
-
-.preview-title {
-    font-size: 13px;
-    color: #5A6478;
-    margin-left: 6px;
-    font-weight: 600;
-}
-
-/* Тело окна */
-.preview-body {
-    padding: 20px 22px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* Экран 1: Форма */
-.preview-label {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #5A6478;
-}
-
-.preview-textarea {
-    width: 100%;
-    min-height: 120px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(108,238,247,0.08);
-    border-radius: 10px;
-    padding: 14px 16px;
-    color: #E8EDF5;
-    font-family: 'Nunito Sans', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    resize: vertical;
-    transition: border-color .3s ease;
-    outline: none;
-}
-
-.preview-textarea:focus {
-    border-color: rgba(108,238,247,0.25);
-}
-
-.preview-textarea::placeholder {
-    color: #3A4050;
-}
-
-.preview-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    border: 1px solid #6CEEF7;
-    color: #6CEEF7;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all .25s ease;
-    width: fit-content;
-}
-
-.preview-btn:hover {
-    background: rgba(108,238,247,0.08);
-    box-shadow: 0 0 30px rgba(108,238,247,0.06);
-}
-
-.preview-btn-icon {
-    font-size: 16px;
-}
-
-.preview-status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: #5A6478;
-    padding: 8px 0;
-}
-
-.preview-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.preview-status-dot.green {
-    background: #00FF66;
-    box-shadow: 0 0 12px rgba(0,255,102,0.3);
-}
-
-/* Экран 2: Аналитика */
-.preview-analytics {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-.preview-chart {
-    width: 100%;
-    height: 80px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 10px;
-    border: 1px solid rgba(108,238,247,0.06);
-    padding: 10px;
-}
-
-.preview-chart-svg {
-    width: 100%;
-    height: 100%;
-}
-
-.preview-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.preview-metric {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 14px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 10px;
-    border: 1px solid rgba(108,238,247,0.06);
-}
-
-.preview-metric-label {
-    font-size: 13px;
-    color: #5A6478;
-}
-
-.preview-metric-value {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: #FFFFFF;
-}
-
-.preview-metric-value small {
-    font-size: 12px;
-    font-weight: 400;
-    color: #5A6478;
-    margin-left: 4px;
-}
-
-.preview-metric-tag {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 20px;
-}
-
-.preview-metric-tag.green {
-    color: #00FF66;
-    background: rgba(0,255,102,0.08);
-    border: 1px solid rgba(0,255,102,0.15);
-}
-
-/* Экран 3: Терминал */
-.preview-terminal {
-    background: #0D0D14;
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    line-height: 2;
-    border: 1px solid rgba(108,238,247,0.06);
-    min-height: 140px;
-}
-
-.preview-terminal-line {
-    color: #5A6478;
-}
-
-.preview-terminal-time {
-    color: #3A4050;
-    margin-right: 8px;
-}
-
-.preview-terminal-ok {
-    color: #00FF66;
-}
-
-.preview-terminal-wait {
-    color: #FFBD2E;
-}
-
-.preview-counter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 20px;
-    background: rgba(0,255,102,0.04);
-    border: 1px solid rgba(0,255,102,0.12);
-    border-radius: 10px;
-}
-
-.preview-counter-label {
-    font-size: 13px;
-    color: #5A6478;
-}
-
-.preview-counter-value {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: #00FF66;
-    text-shadow: 0 0 30px rgba(0,255,102,0.15);
-}
-
-/* ===== АДАПТИВНОСТЬ ===== */
-@media (max-width: 1024px) {
-    .steps-widget {
-        grid-template-columns: 40% 60%;
-        padding: 30px 32px;
-        gap: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .steps-widget {
-        grid-template-columns: 1fr;
-        padding: 24px 20px;
-        gap: 24px;
-        min-height: auto;
-    }
-
-    .steps-timeline {
-        border-right: none;
-        padding-right: 0;
-        gap: 4px;
-    }
-
-    .step-trigger {
-        padding: 14px 16px;
-    }
-
-    .step-desc {
-        font-size: 13px;
-    }
-
-    .preview-window {
-        min-height: 400px;
-    }
-
-    .preview-body {
-        padding: 16px 18px;
-    }
-
-    .preview-textarea {
-        min-height: 80px;
-        font-size: 13px;
-    }
-
-    .preview-metric-value {
-        font-size: 17px;
-    }
-
-    .preview-counter-value {
-        font-size: 22px;
-    }
-
-    .preview-terminal {
-        font-size: 12px;
-        min-height: 100px;
-        padding: 12px 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .steps-widget {
-        padding: 16px 12px;
-    }
-
-    .step-trigger {
-        padding: 10px 12px;
-        gap: 10px;
-    }
-
-    .step-number {
-        font-size: 12px;
-        min-width: 24px;
-    }
-
-    .step-title {
-        font-size: 14px;
-    }
-
-    .preview-window {
-        min-height: 340px;
-    }
-
-    .preview-body {
-        padding: 12px 14px;
-        gap: 12px;
-    }
-
-    .preview-textarea {
-        min-height: 60px;
-        font-size: 12px;
-        padding: 10px 12px;
-    }
-
-    .preview-btn {
-        font-size: 12px;
-        padding: 10px 18px;
-    }
-
-    .preview-metric-value {
-        font-size: 15px;
-    }
-
-    .preview-counter-value {
-        font-size: 18px;
-    }
-
-    .preview-terminal {
-        font-size: 11px;
-        min-height: 80px;
-        padding: 10px 12px;
-    }
-}
+        }
+
+        /* ===== НОВАЯ СЕКЦИЯ "КАК НАЧАТЬ" ===== */
+        .steps-widget {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 40px;
+            margin-top: 20px;
+            background: #1e1e28;
+            border: 1px solid rgba(108,238,247,0.15);
+            border-radius: 20px;
+            padding: 40px 44px;
+            min-height: 480px;
+        }
+
+        /* ===== ЛЕВАЯ КОЛОНКА - ТАЙМЛАЙН ===== */
+        .steps-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 20px;
+            border-right: 1px solid rgba(108,238,247,0.08);
+        }
+
+        .step-trigger {
+            display: flex;
+            gap: 16px;
+            padding: 16px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all .3s ease;
+            position: relative;
+            background: transparent;
+        }
+
+        .step-trigger:hover {
+            background: rgba(108,238,247,0.04);
+        }
+
+        .step-trigger.active {
+            background: rgba(108,238,247,0.08);
+            border: 1px solid rgba(108,238,247,0.15);
+            box-shadow: 0 0 30px rgba(108,238,247,0.03);
+        }
+
+        .step-number {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            color: rgba(108,238,247,0.3);
+            min-width: 32px;
+            padding-top: 2px;
+            transition: color .3s ease;
+        }
+
+        .step-trigger.active .step-number {
+            color: #6CEEF7;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #8892A6;
+            transition: color .3s ease;
+            margin-bottom: 4px;
+        }
+
+        .step-trigger.active .step-title {
+            color: #FFFFFF;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #5A6478;
+            line-height: 1.5;
+            transition: color .3s ease;
+        }
+
+        .step-trigger.active .step-desc {
+            color: #8892A6;
+        }
+
+        /* ===== ПРАВАЯ КОЛОНКА - ПРЕВЬЮ ===== */
+        .preview-window {
+            background: #16161E;
+            border-radius: 14px;
+            border: 1px solid rgba(108,238,247,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-screen {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            animation: previewFade .4s ease;
+        }
+
+        .preview-screen.active {
+            display: flex;
+        }
+
+        @keyframes previewFade {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Заголовок окна */
+        .preview-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(108,238,247,0.06);
+        }
+
+        .preview-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .preview-dot.red { background: #FF5F57; }
+        .preview-dot.yellow { background: #FFBD2E; }
+        .preview-dot.green { background: #28C840; }
+
+        .preview-title {
+            font-size: 13px;
+            color: #5A6478;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        /* Тело окна */
+        .preview-body {
+            padding: 20px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Экран 1: Форма */
+        .preview-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #5A6478;
+        }
+
+        .preview-textarea {
+            width: 100%;
+            min-height: 120px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(108,238,247,0.08);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: #E8EDF5;
+            font-family: 'Nunito Sans', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            resize: vertical;
+            transition: border-color .3s ease;
+            outline: none;
+        }
+
+        .preview-textarea:focus {
+            border-color: rgba(108,238,247,0.25);
+        }
+
+        .preview-textarea::placeholder {
+            color: #3A4050;
+        }
+
+        .preview-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 1px solid #6CEEF7;
+            color: #6CEEF7;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all .25s ease;
+            width: fit-content;
+        }
+
+        .preview-btn:hover {
+            background: rgba(108,238,247,0.08);
+            box-shadow: 0 0 30px rgba(108,238,247,0.06);
+        }
+
+        .preview-btn-icon {
+            font-size: 16px;
+        }
+
+        .preview-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #5A6478;
+            padding: 8px 0;
+        }
+
+        .preview-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .preview-status-dot.green {
+            background: #00FF66;
+            box-shadow: 0 0 12px rgba(0,255,102,0.3);
+        }
+
+        /* Экран 2: Аналитика */
+        .preview-analytics {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .preview-chart {
+            width: 100%;
+            height: 80px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(108,238,247,0.06);
+            padding: 10px;
+        }
+
+        .preview-chart-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .preview-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(108,238,247,0.06);
+        }
+
+        .preview-metric-label {
+            font-size: 13px;
+            color: #5A6478;
+        }
+
+        .preview-metric-value {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+
+        .preview-metric-value small {
+            font-size: 12px;
+            font-weight: 400;
+            color: #5A6478;
+            margin-left: 4px;
+        }
+
+        .preview-metric-tag {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+        }
+
+        .preview-metric-tag.green {
+            color: #00FF66;
+            background: rgba(0,255,102,0.08);
+            border: 1px solid rgba(0,255,102,0.15);
+        }
+
+        /* Экран 3: Терминал */
+        .preview-terminal {
+            background: #0D0D14;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 2;
+            border: 1px solid rgba(108,238,247,0.06);
+            min-height: 140px;
+        }
+
+        .preview-terminal-line {
+            color: #5A6478;
+        }
+
+        .preview-terminal-time {
+            color: #3A4050;
+            margin-right: 8px;
+        }
+
+        .preview-terminal-ok {
+            color: #00FF66;
+        }
+
+        .preview-terminal-wait {
+            color: #FFBD2E;
+        }
+
+        .preview-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: rgba(0,255,102,0.04);
+            border: 1px solid rgba(0,255,102,0.12);
+            border-radius: 10px;
+        }
+
+        .preview-counter-label {
+            font-size: 13px;
+            color: #5A6478;
+        }
+
+        .preview-counter-value {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #00FF66;
+            text-shadow: 0 0 30px rgba(0,255,102,0.15);
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 1024px) {
+            .steps-widget {
+                grid-template-columns: 40% 60%;
+                padding: 30px 32px;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .steps-widget {
+                grid-template-columns: 1fr;
+                padding: 24px 20px;
+                gap: 24px;
+                min-height: auto;
+            }
+
+            .steps-timeline {
+                border-right: none;
+                padding-right: 0;
+                gap: 4px;
+            }
+
+            .step-trigger {
+                padding: 14px 16px;
+            }
+
+            .step-desc {
+                font-size: 13px;
+            }
+
+            .preview-window {
+                min-height: 400px;
+            }
+
+            .preview-body {
+                padding: 16px 18px;
+            }
+
+            .preview-textarea {
+                min-height: 80px;
+                font-size: 13px;
+            }
+
+            .preview-metric-value {
+                font-size: 17px;
+            }
+
+            .preview-counter-value {
+                font-size: 22px;
+            }
+
+            .preview-terminal {
+                font-size: 12px;
+                min-height: 100px;
+                padding: 12px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .steps-widget {
+                padding: 16px 12px;
+            }
+
+            .step-trigger {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .step-number {
+                font-size: 12px;
+                min-width: 24px;
+            }
+
+            .step-title {
+                font-size: 14px;
+            }
+
+            .preview-window {
+                min-height: 340px;
+            }
+
+            .preview-body {
+                padding: 12px 14px;
+                gap: 12px;
+            }
+
+            .preview-textarea {
+                min-height: 60px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+
+            .preview-btn {
+                font-size: 12px;
+                padding: 10px 18px;
+            }
+
+            .preview-metric-value {
+                font-size: 15px;
+            }
+
+            .preview-counter-value {
+                font-size: 18px;
+            }
+
+            .preview-terminal {
+                font-size: 11px;
+                min-height: 80px;
+                padding: 10px 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2231,352 +2181,124 @@ setAmount(1000);
 </script>
 
 <!-- ===== STEPS ===== -->
-<!-- ===== ЗАПУСК В 4 ШАГА: ТАЙМЛАЙН-ПЛЕЕР ===== -->
-<style>
-    /* Главная обертка секции */
-    #steps {
-        padding: 80px 0;
-        background-color: #16161E;
-    }
-    
-    /* Горизонтальная линия прогресса (Таймлайн) */
-    .timeline-progress-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        margin: 40px auto 50px auto;
-        max-width: 900px;
-    }
-    .timeline-progress-bar::before {
-        content: '';
-        position: absolute;
-        top: 25px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: rgba(108, 238, 247, 0.1);
-        z-index: 1;
-    }
-    /* Светящаяся линия заполнения */
-    .timeline-fill {
-        position: absolute;
-        top: 25px;
-        left: 0;
-        height: 2px;
-        background: #6CEEF7;
-        box-shadow: 0 0 10px #6CEEF7;
-        z-index: 2;
-        width: 0%;
-        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Точки шагов */
-    .timeline-node {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        z-index: 3;
-        cursor: pointer;
-        width: 60px;
-    }
-    .node-circle {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #1E1E28;
-        border: 2px solid rgba(108, 238, 247, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #8892A6;
-        font-weight: 700;
-        font-size: 16px;
-        transition: all 0.4s ease;
-    }
-    .timeline-node:hover .node-circle {
-        border-color: rgba(108, 238, 247, 0.6);
-        color: #fff;
-    }
-    .timeline-node.active .node-circle {
-        background-color: #16161E;
-        border-color: #6CEEF7;
-        color: #6CEEF7;
-        box-shadow: 0 0 20px rgba(108, 238, 247, 0.4), inset 0 0 10px rgba(108, 238, 247, 0.2);
-    }
-    .node-label {
-        margin-top: 10px;
-        font-size: 12px;
-        color: #8892A6;
-        font-weight: 500;
-        white-space: nowrap;
-        transition: color 0.3s ease;
-    }
-    .timeline-node.active .node-label {
-        color: #ffffff;
-    }
-
-    /* Двухколоночный плеер */
-    .player-container {
-        display: flex;
-        gap: 50px;
-        max-width: 1100px;
-        margin: 0 auto;
-        align-items: center;
-    }
-    
-    /* Левая колонка - Тексты */
-    .player-info-side {
-        flex: 0 0 40%;
-        text-align: left;
-    }
-    .info-pane {
-        display: none;
-        animation: textSlideIn 0.4s ease forwards;
-    }
-    .info-pane.active {
-        display: block;
-    }
-    .info-pane h3 {
-        color: #ffffff;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        line-height: 1.3;
-        margin-top: 0;
-    }
-    .info-pane p {
-        color: #8892A6;
-        font-size: 16px;
-        line-height: 1.6;
-        margin: 0;
-    }
-    
-    /* Правая колонка - Имитация интерфейса */
-    .player-view-side {
-        flex: 1;
-        background-color: #1E1E28;
-        border: 1px solid rgba(108, 238, 247, 0.15);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-    .screen-header {
-        background-color: #16161E;
-        padding: 14px 20px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .screen-dots { display: flex; gap: 8px; margin-right: 20px; }
-    .screen-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .screen-tab { color: #6c7a9c; font-family: monospace; font-size: 12px; }
-    
-    .screen-body {
-        padding: 35px;
-        min-height: 260px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: #111116;
-        text-align: left;
-        box-sizing: border-box;
-    }
-    .view-pane {
-        display: none;
-        animation: viewFadeIn 0.4s ease forwards;
-    }
-    .view-pane.active {
-        display: block;
-    }
-
-    /* Стили элементов внутри экранов */
-    .mock-input-group {
-        display: flex;
-        background: #16161E;
-        border: 1px solid rgba(108, 238, 247, 0.2);
-        border-radius: 8px;
-        overflow: hidden;
-        margin-bottom: 15px;
-    }
-    .mock-input-group span {
-        padding: 14px 20px;
-        background: rgba(255,255,255,0.02);
-        color: #8892A6;
-        font-size: 14px;
-        border-right: 1px solid rgba(255,255,255,0.05);
-    }
-    .mock-input-group div {
-        padding: 14px 20px;
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 14px;
-    }
-    .btn-mock-blue {
-        display: inline-block;
-        padding: 14px 28px;
-        border: 2px solid #6CEEF7;
-        color: #6CEEF7;
-        border-radius: 8px;
-        font-weight: 700;
-        font-size: 14px;
-        background: transparent;
-    }
-    
-    .mock-terminal {
-        background: #09090D;
-        border: 1px solid rgba(0, 255, 102, 0.15);
-        border-radius: 8px;
-        padding: 20px;
-        font-family: monospace;
-        color: #00FF66;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-    
-    .live-clicks-list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    .click-row {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 10px;
-        border-bottom: 1px dashed rgba(255,255,255,0.05);
-        font-size: 14px;
-    }
-    .click-row .phrase { color: #e8edf5; }
-    .click-row .count { color: #00FF66; font-weight: 700; font-family: monospace; }
-    
-    /* Таблица позиций (Шаг 4) */
-    .positions-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .positions-table th {
-        color: #8892A6;
-        font-size: 11px;
-        text-transform: uppercase;
-        padding-bottom: 10px;
-        font-weight: 600;
-    }
-    .positions-table td {
-        padding: 12px 0;
-        color: #ffffff;
-        font-size: 14px;
-        border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-    .pos-old {
-        color: #8892A6;
-        text-decoration: line-through;
-        margin-right: 8px;
-    }
-    .pos-new {
-        color: #00FF66;
-        font-weight: 700;
-        text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
-    }
-
-    /* Анимации */
-    @keyframes textSlideIn {
-        from { opacity: 0; transform: translateX(-15px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes viewFadeIn {
-        from { opacity: 0; transform: scale(0.97); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    /* Адаптивность */
-    @media (max-width: 992px) {
-        .player-container { flex-direction: column; gap: 30px; }
-        .player-info-side { flex: 1; text-align: center; }
-        .timeline-progress-bar { max-width: 100%; padding: 0 10px; box-sizing: border-box; }
-        .node-label { font-size: 10px; }
-    }
-</style>
-
-<section id="steps">
+<section id="steps" style="padding: 70px 0; background: var(--bg);">
     <div class="container">
         <div class="section-head fade-up">
-            <h2>До запуска — всего 5 минут</h2>
-            <p style="margin-top: 10px;">Без звонков менеджеру, без предоплат и обязательств.</p>
+            <div class="tag" style="color: #6CEEF7;">Как начать</div>
+            <h2>Запуск продвижения <span class="text-gradient">в три шага</span></h2>
+            <p style="color: #B8C2D6; font-size: 18px;">Выберите этап — справа увидите, как выглядит каждый шаг в личном кабинете</p>
         </div>
 
-        <!-- Горизонтальный таймлайн -->
-        <div class="timeline-progress-bar fade-up">
-            <div class="timeline-fill" id="timeline-glow-line"></div>
-            
-            <div class="timeline-node active" onclick="jumpToStep(0)">
-                <div class="node-circle">01</div>
-                <div class="node-label">Регистрация</div>
-            </div>
-            <div class="timeline-node" onclick="jumpToStep(1)">
-                <div class="node-circle">02</div>
-                <div class="node-label">Ключевые фразы</div>
-            </div>
-            <div class="timeline-node" onclick="jumpToStep(2)">
-                <div class="node-circle">03</div>
-                <div class="node-label">Работа ИИ</div>
-            </div>
-            <div class="timeline-node" onclick="jumpToStep(3)">
-                <div class="node-circle">04</div>
-                <div class="node-label">Сайт в ТОПе</div>
-            </div>
-        </div>
+        <div class="steps-widget fade-up">
+            <!-- Левая колонка - таймлайн -->
+            <div class="steps-timeline">
+                <div class="step-trigger active" data-step="1">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-title">Загрузите ключевые фразы</div>
+                        <div class="step-desc">Добавьте целевые запросы вручную или импортируйте готовый пул ключевых слов из Яндекс.Вебмастера</div>
+                    </div>
+                </div>
 
-        <!-- Плеер-контейнер -->
-        <div class="player-container fade-up">
-            <!-- Левая сторона: Динамический текст -->
-            <div class="player-info-side">
-                <div class="info-pane active">
-                    <h3>Регистрация и добавление сайта</h3>
-                    <p>Заполните форму за минуту и добавьте свой домен. После регистрации — 7 дней тестового периода и +500 ₽ бонусом на первое пополнение баланса.</p>
+                <div class="step-trigger" data-step="2">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-title">Настройте интенсивность</div>
+                        <div class="step-desc">Укажите бюджет или доверьтесь ИИ-алгоритму: система сама рассчитает безопасный суточный объем переходов без риска санкций</div>
+                    </div>
                 </div>
-                <div class="info-pane">
-                    <h3>Ключевые фразы и регион</h3>
-                    <p>Укажите фразы, по которым хотите расти. Доступен моментальный импорт семантического ядра напрямую из Яндекс.Вебмастера в 1 клик.</p>
-                </div>
-                <div class="info-pane">
-                    <h3>Дальше сервис всё делает сам</h3>
-                    <p>Алгоритм рассчитывает число кликов по частотности и распределяет их по часам. Обученные ИИ-боты имитируют живой интерес, продвигая сайт.</p>
-                </div>
-                <div class="info-pane">
-                    <h3>Сайт в ТОП по вашим фразам</h3>
-                    <p>Позиции растут на глазах алгоритмов. Первые результаты видны в личном кабинете уже за 3 дня продвижения. Динамика обновляется ежедневно.</p>
+
+                <div class="step-trigger" data-step="3">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-title">Активируйте ИИ-продвижение</div>
+                        <div class="step-desc">Нажмите «Старт». Обученные AI-боты с уникальной цифровой историей начнут взаимодействовать с вашим сайтом, и первые сигналы пойдут через 15 минут</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Правая сторона: Личный кабинет (Комикс) -->
-            <div class="player-view-side">
-                <div class="screen-header">
-                    <div class="screen-dots">
-                        <div class="screen-dot" style="background-color: #ff5f56;"></div>
-                        <div class="screen-dot" style="background-color: #ffbd2e;"></div>
+            <!-- Правая колонка - превью -->
+            <div class="preview-window">
+                <!-- Экран 1: Импорт ключей -->
+                <div class="preview-screen active" data-screen="1">
+                    <div class="preview-header">
+                        <span class="preview-dot red"></span>
+                        <span class="preview-dot yellow"></span>
+                        <span class="preview-dot green"></span>
+                        <span class="preview-title">Импорт ключевых слов</span>
+                    </div>
+                    <div class="preview-body">
+                        <div class="preview-label">Ключевые фразы</div>
+                        <textarea class="preview-textarea" placeholder="купить кондиционер — Москва&#10;сплит-система с установкой&#10;кондиционер для дома цена&#10;монтаж сплит-системы недорого">купить кондиционер — Москва
+сплит-система с установкой
+кондиционер для дома цена
+монтаж сплит-системы недорого</textarea>
+                        <button class="preview-btn">
+                            <span class="preview-btn-icon">⚡</span>
+                            Импорт из Яндекс.Вебмастера
+                        </button>
+                        <div class="preview-status">
+                            <span class="preview-status-dot green"></span>
+                            Готово к импорту: 4 фразы
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Экран 2: Настройка интенсивности -->
+                <div class="preview-screen" data-screen="2">
+                    <div class="preview-header">
+                        <span class="preview-dot red"></span>
+                        <span class="preview-dot yellow"></span>
+                        <span class="preview-dot green"></span>
+                        <span class="preview-title">ИИ-анализ ниши</span>
+                    </div>
+                    <div class="preview-body">
+                        <div class="preview-analytics">
+                            <div class="preview-chart">
+                                <svg viewBox="0 0 120 60" class="preview-chart-svg">
+                                    <polyline points="0,50 20,45 40,30 60,35 80,20 100,25 120,10" fill="none" stroke="#6CEEF7" stroke-width="2"/>
+                                    <polygon points="0,50 20,45 40,30 60,35 80,20 100,25 120,10 120,60 0,60" fill="rgba(108,238,247,0.08)"/>
+                                </svg>
+                            </div>
+                            <div class="preview-metrics">
+                                <div class="preview-metric">
+                                    <span class="preview-metric-label">Рекомендуемый объем</span>
+                                    <span class="preview-metric-value">45 <small>переходов/сутки</small></span>
+                                </div>
+                                <div class="preview-metric">
+                                    <span class="preview-metric-label">Статус</span>
+                                    <span class="preview-metric-tag green">🛡️ Безопасно / Защита от бана</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Экран 3: Лог и счетчик -->
+                <div class="preview-screen" data-screen="3">
+                    <div class="preview-header">
+                        <span class="preview-dot red"></span>
+                        <span class="preview-dot yellow"></span>
+                        <span class="preview-dot green"></span>
+                        <span class="preview-title">Лог ИИ-ботов</span>
+                    </div>
+                    <div class="preview-body">
+                        <div class="preview-terminal">
+                            <div class="preview-terminal-line"><span class="preview-terminal-time">[15:23:12]</span> <span class="preview-terminal-ok">●</span> AI-Bot #402 Изучение выдачи Яндекса... OK</div>
+                            <div class="preview-terminal-line"><span class="preview-terminal-time">[15:23:18]</span> <span class="preview-terminal-ok">●</span> AI-Bot #402 Переход по запросу... Выполнено</div>
+                            <div class="preview-terminal-line"><span class="preview-terminal-time">[15:23:25]</span> <span class="preview-terminal-ok">●</span> AI-Bot #403 Поведенческий сценарий... Запущен</div>
+                            <div class="preview-terminal-line"><span class="preview-terminal-time">[15:23:33]</span> <span class="preview-terminal-wait">○</span> Ожидание следующего цикла...</div>
+                        </div>
+                        <div class="preview-counter">
+                            <span class="preview-counter-label">Кликов сегодня</span>
+                            <span class="preview-counter-value">+24</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    // Чистая функция переключения экранов
-    function switchStep(index) {
-        const items = document.querySelectorAll('.step-item');
-        items.forEach(item => item.classList.remove('active'));
-        
-        const screens = document.querySelectorAll('.preview-screen');
-        screens.forEach(screen => screen.classList.remove('active'));
-        
-        items[index].classList.add('active');
-        screens[index].classList.add('active');
-    }
-</script>
-
 
 <!-- ===== CASES ===== -->
 <section style="background:rgba(255,255,255,0.02);">
@@ -2688,7 +2410,7 @@ function showCopied(el) {
 }
 </script>
 
-    <!-- ===== НОВЫЙ СКРИПТ ДЛЯ ВИДЖЕТА ===== -->
+<!-- ===== НОВЫЙ СКРИПТ ДЛЯ ВИДЖЕТА ===== -->
 <script>
 // ===== ИНТЕРАКТИВНЫЙ ВИДЖЕТ "КАК НАЧАТЬ" =====
 (function() {
