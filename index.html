@@ -1254,7 +1254,44 @@
     }
     .calc-note {
         font-size: 15px;
+        }
     }
+
+    /* ===== ФИКСИРОВАННАЯ ВЫСОТА ДЛЯ КАРТОЧЕК РЕЗУЛЬТАТОВ ===== */
+.calc-result {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-result .v {
+    font-size: 28px;
+    margin-top: 4px;
+    color: #E8EDF5;
+}
+
+.calc-result .sub {
+    font-size: 12px;
+    color: #8892A6;
+    margin-top: 2px;
+    min-height: 18px;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 480px) {
+    .calc-result {
+        min-height: 100px;
+    }
+    .calc-result .v {
+        font-size: 22px;
+    }
+    .calc-result .sub {
+        font-size: 11px;
+        min-height: 16px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1539,8 +1576,7 @@ function toggleMenu() {
                     </div>
                 </div>
 
-                <!-- 👇 ФИКСИРОВАННЫЙ БЛОК С РЕЗУЛЬТАТАМИ 👇 -->
-                <div id="calcNoteContainer" style="min-height: 110px; display: flex; align-items: center; justify-content: center; margin-top: 16px;">
+                <div id="calcNoteContainer" style="min-height: 100px; display: flex; align-items: center; justify-content: center; margin-top: 16px;">
                     <div class="calc-note" id="calcNote" style="font-size: 17px; line-height: 1.6; color: #E8EDF5; text-align: center; max-width: 100%;">
                         Этого хватит на тестовый запуск одного проекта.
                     </div>
@@ -1594,8 +1630,9 @@ function setAmount(value, fromSlider) {
         const baseClicks = value / baseCpc;
         if (tier.cpc < baseCpc) {
             const extra = clicks - baseClicks;
+            // Устанавливаем подпись
             document.getElementById('resClicksSub').textContent = 'на ' + formatNumber(extra) + ' больше, чем по базовой цене';
-            // Компактный текст без разрывов
+            // Основной текст
             document.getElementById('calcNote').innerHTML = 
                 'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на ' +
                 '<strong style="color:#E8EDF5; white-space: nowrap;">' + formatNumber(baseClicks) + '</strong>' +
