@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
     <title>MetricHit — быстрое продвижение сайта в ТОП Яндекса</title>
-    <meta name="description" content="Быстрое продвижение сайта в ТОП Яндекса через AI-ботов с уникальной поведенческой историей. Без абонплаты. От 1000 ₽ на запуск. Бонус 500 ₽ новым клиентам.">
+    <meta name="description" content="Быстрое продвижение сайта в ТОП Яндекса через AI-ботов с уникальной поведенческой историей. Без абонплаты. От 1000 ₽ на запуск. Бонус 1500 кликов новым клиентам.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== RESET & BASE ===== */ 
+        /* ===== RESET & BASE ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -64,6 +64,9 @@
         .text-green {
             color: var(--green);
         }
+        .text-accent {
+            color: #6CEEF7;
+        }
 
         /* ===== HEADER ===== */
         .header {
@@ -74,6 +77,7 @@
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 14px 0;
+            transition: all .3s ease;
         }
         .header .container {
             display: flex;
@@ -86,7 +90,10 @@
             align-items: center;
             flex-shrink: 0;
         }
-        .logo svg { height: 38px; width: auto; }
+        .logo svg { height: 38px; width: auto; transition: all .3s ease; }
+        .logo .logo-scroll { display: none; }
+        .header.scrolled .logo .logo-default { display: none; }
+        .header.scrolled .logo .logo-scroll { display: block; }
         .nav { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
         .nav a { color: #8892A6; }
         .nav a:hover { color: #E8EDF5; opacity: 1; }
@@ -125,6 +132,24 @@
         .btn-sm { padding: 8px 20px; font-size: 13px; }
         .btn-lg { padding: 16px 38px; font-size: 17px; }
         .btn-full { width: 100%; justify-content: center; }
+        .btn-hero-primary {
+            background: #6CEEF7;
+            color: #12161E;
+            box-shadow: 0 4px 24px rgba(108,238,247,0.3);
+            padding: 16px 38px;
+            font-size: 17px;
+            font-weight: 700;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all .25s;
+            font-family: 'Nunito Sans', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(108,238,247,0.4); opacity: 1; }
 
         /* ===== HERO ===== */
         .hero {
@@ -213,6 +238,29 @@
             font-weight: 500;
         }
 
+        /* ===== БОНУСНЫЙ БЛОК (ПРЯМОУГОЛЬНИК) ===== */
+        .bonus-block {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            background: rgba(45,155,78,0.06);
+            border: 1px solid rgba(45,155,78,0.12);
+            font-size: 16px;
+            color: #E8EDF5;
+            text-align: left;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .bonus-block img {
+            height: 56px;
+            width: auto;
+            flex-shrink: 0;
+        }
+        .bonus-block b { color: #FFFFFF; }
+
         /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
             .hero { padding: 40px 0 50px; }
@@ -226,6 +274,8 @@
             .hero-stats-full .hero-stat .label { font-size: 13px; color: #B8C2D6; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .btn-lg { padding: 14px 28px; font-size: 15px; }
+            .bonus-block { flex-direction: column; text-align: center; padding: 16px 18px; }
+            .bonus-block img { height: 44px; }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 26px; }
@@ -1079,8 +1129,8 @@
         /* ===== АНИМАЦИИ ===== */
         .fade-up {
             opacity: 0;
-            transform: translateY(24px);
-            animation: fadeUp .6s ease forwards;
+            transform: translateY(30px);
+            animation: fadeUp .8s ease forwards;
         }
         @keyframes fadeUp {
             to { opacity: 1; transform: translateY(0); }
@@ -1091,6 +1141,63 @@
         .delay-4 { animation-delay: .4s; }
         .delay-5 { animation-delay: .5s; }
         .delay-6 { animation-delay: .6s; }
+        .delay-7 { animation-delay: .7s; }
+        .delay-8 { animation-delay: .8s; }
+        .delay-9 { animation-delay: .9s; }
+        .delay-10 { animation-delay: 1s; }
+
+        /* WOW-анимации */
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn .7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes scaleIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .glow-in {
+            opacity: 0;
+            animation: glowIn 1s ease forwards;
+        }
+        @keyframes glowIn {
+            0% { opacity: 0; filter: blur(10px); }
+            100% { opacity: 1; filter: blur(0); }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: slideInLeft .7s ease forwards;
+        }
+        @keyframes slideInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            animation: slideInRight .7s ease forwards;
+        }
+        @keyframes slideInRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .pulse-on-hover:hover {
+            animation: pulse 1s ease infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
         /* ===== СТАТИСТИКА НА ВСЮ ШИРИНУ ===== */
         @media (min-width: 769px) {
@@ -1230,7 +1337,7 @@
             font-family: 'Nunito Sans', sans-serif;
             font-weight: 700;
             font-size: 20px;
-            color: #E8EDF5;
+            color: #6CEEF7;
             background: var(--bg);
             padding: 0 20px;
             position: relative;
@@ -1243,8 +1350,9 @@
             top: 50%;
             width: 100%;
             height: 1px;
-            background: var(--border);
+            background: rgba(108,238,247,0.3);
             z-index: 1;
+            box-shadow: 0 0 10px rgba(108,238,247,0.1);
         }
 
         .why-grid-3 {
@@ -1261,8 +1369,9 @@
             margin: 20px auto 0;
             padding: 12px 20px;
             background: rgba(108,238,247,0.06);
-            border: 1px solid rgba(108,238,247,0.15);
+            border: 1px solid rgba(108,238,247,0.25);
             border-radius: 12px;
+            box-shadow: 0 0 30px rgba(108,238,247,0.05), inset 0 0 30px rgba(108,238,247,0.02);
         }
         .why-tech-line p {
             font-size: 18px;
@@ -1321,52 +1430,6 @@
             display: none;
         }
 
-        /* ===== НОВЫЕ СТИЛИ ДЛЯ КНОПОК HERO ===== */
-        .btn-hero-primary {
-            background: #6CEEF7;
-            color: #12161E;
-            box-shadow: 0 4px 24px rgba(108,238,247,0.3);
-            padding: 16px 38px;
-            font-size: 17px;
-            font-weight: 700;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: all .25s;
-            font-family: 'Nunito Sans', sans-serif;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-hero-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(108,238,247,0.4);
-            opacity: 1;
-        }
-
-        .btn-hero-secondary {
-            background: transparent;
-            color: #6CEEF7;
-            border: 1.5px solid #6CEEF7;
-            padding: 16px 38px;
-            font-size: 17px;
-            font-weight: 700;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: all .25s;
-            font-family: 'Nunito Sans', sans-serif;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-hero-secondary:hover {
-            background: rgba(108,238,247,0.08);
-            box-shadow: 0 0 30px rgba(108,238,247,0.1);
-            opacity: 1;
-        }
-
         /* ===== МЕРЦАНИЕ ДЛЯ БЕЙДЖА ===== */
         @keyframes glowPulse {
             0% {
@@ -1383,470 +1446,86 @@
             }
         }
 
-        /* ===== НОВАЯ СЕКЦИЯ "КАК НАЧАТЬ" ===== */
-        .steps-widget {
+        /* ===== НОВАЯ СЕКЦИЯ "ЧТО ДАЕТ ПРОДВИЖЕНИЕ" ===== */
+        .what-gives-section {
+            padding: 60px 0;
+            background: var(--bg);
+        }
+        .what-gives-grid {
             display: grid;
-            grid-template-columns: 35% 65%;
-            gap: 40px;
-            margin-top: 20px;
-            background: #1e1e28;
-            border: 1px solid rgba(108,238,247,0.15);
-            border-radius: 20px;
-            padding: 40px 44px;
-            min-height: 480px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-
-        /* ===== ЛЕВАЯ КОЛОНКА - ТАЙМЛАЙН ===== */
-        .steps-timeline {
+        .what-gives-item {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-right: 20px;
-            border-right: 1px solid rgba(108,238,247,0.08);
-        }
-
-        .step-trigger {
-            display: flex;
-            gap: 16px;
-            padding: 16px 18px;
-            border-radius: 12px;
-            cursor: pointer;
+            gap: 18px;
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 22px;
             transition: all .3s ease;
-            position: relative;
-            background: transparent;
         }
-
-        .step-trigger:hover {
-            background: rgba(108,238,247,0.04);
+        .what-gives-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(108,238,247,0.2);
+            background: var(--bg-card-hover);
+            box-shadow: 0 8px 40px rgba(108,238,247,0.05);
         }
-
-        .step-trigger.active {
+        .what-gives-item .icon-wrap {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             background: rgba(108,238,247,0.08);
-            border: 1px solid rgba(108,238,247,0.15);
-            box-shadow: 0 0 30px rgba(108,238,247,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
         }
-
-        .step-number {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 800;
-            color: rgba(108,238,247,0.3);
-            min-width: 32px;
-            padding-top: 2px;
-            transition: color .3s ease;
-        }
-
-        .step-trigger.active .step-number {
-            color: #6CEEF7;
-        }
-
-        .step-content {
-            flex: 1;
-        }
-
-        .step-title {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+        .what-gives-item .text-wrap h4 {
+            color: #FFFFFF;
+            font-size: 18px;
             font-weight: 700;
-            color: #8892A6;
-            transition: color .3s ease;
             margin-bottom: 4px;
         }
-
-        .step-trigger.active .step-title {
-            color: #FFFFFF;
-        }
-
-        .step-desc {
-            font-size: 14px;
-            color: #5A6478;
-            line-height: 1.5;
-            transition: color .3s ease;
-        }
-
-        .step-trigger.active .step-desc {
+        .what-gives-item .text-wrap p {
             color: #8892A6;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
         }
-
-        .step-line {
-            display: none;
-        }
-
-        /* ===== ПРАВАЯ КОЛОНКА - ПРЕВЬЮ ===== */
-        .preview-window {
-            background: #16161E;
+        .what-gives-result {
+            text-align: center;
+            max-width: 700px;
+            margin: 32px auto 0;
+            padding: 20px 28px;
+            background: rgba(108,238,247,0.04);
+            border: 1px solid rgba(108,238,247,0.12);
             border-radius: 14px;
-            border: 1px solid rgba(108,238,247,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
-
-        .preview-screen {
-            display: none;
-            flex-direction: column;
-            height: 100%;
-            animation: previewFade .4s ease;
-        }
-
-        .preview-screen.active {
-            display: flex;
-        }
-
-        @keyframes previewFade {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Заголовок окна */
-        .preview-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 20px;
-            background: rgba(255,255,255,0.02);
-            border-bottom: 1px solid rgba(108,238,247,0.06);
-        }
-
-        .preview-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .preview-dot.red { background: #FF5F57; }
-        .preview-dot.yellow { background: #FFBD2E; }
-        .preview-dot.green { background: #28C840; }
-
-        .preview-title {
-            font-size: 13px;
-            color: #5A6478;
-            margin-left: 6px;
-            font-weight: 600;
-        }
-
-        /* Тело окна */
-        .preview-body {
-            padding: 20px 22px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* Экран 1: Форма */
-        .preview-label {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #5A6478;
-        }
-
-        .preview-textarea {
-            width: 100%;
-            min-height: 120px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(108,238,247,0.08);
-            border-radius: 10px;
-            padding: 14px 16px;
-            color: #E8EDF5;
-            font-family: 'Nunito Sans', monospace;
-            font-size: 14px;
-            line-height: 1.7;
-            resize: vertical;
-            transition: border-color .3s ease;
-            outline: none;
-        }
-
-        .preview-textarea:focus {
-            border-color: rgba(108,238,247,0.25);
-        }
-
-        .preview-textarea::placeholder {
-            color: #3A4050;
-        }
-
-        .preview-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            border: 1px solid #6CEEF7;
-            color: #6CEEF7;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all .25s ease;
-            width: fit-content;
-        }
-
-        .preview-btn:hover {
-            background: rgba(108,238,247,0.08);
-            box-shadow: 0 0 30px rgba(108,238,247,0.06);
-        }
-
-        .preview-btn-icon {
-            font-size: 16px;
-        }
-
-        .preview-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            color: #5A6478;
-            padding: 8px 0;
-        }
-
-        .preview-status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .preview-status-dot.green {
-            background: #00FF66;
-            box-shadow: 0 0 12px rgba(0,255,102,0.3);
-        }
-
-        /* Экран 2: Аналитика */
-        .preview-analytics {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            flex: 1;
-        }
-
-        .preview-chart {
-            width: 100%;
-            height: 80px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 10px;
-            border: 1px solid rgba(108,238,247,0.06);
-            padding: 10px;
-        }
-
-        .preview-chart-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .preview-metrics {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .preview-metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 14px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 10px;
-            border: 1px solid rgba(108,238,247,0.06);
-        }
-
-        .preview-metric-label {
-            font-size: 13px;
-            color: #5A6478;
-        }
-
-        .preview-metric-value {
-            font-family: 'Nunito Sans', sans-serif;
+        .what-gives-result p {
             font-size: 20px;
-            font-weight: 800;
+            font-weight: 700;
             color: #FFFFFF;
+            margin: 0;
         }
-
-        .preview-metric-value small {
-            font-size: 12px;
-            font-weight: 400;
-            color: #5A6478;
-            margin-left: 4px;
-        }
-
-        .preview-metric-tag {
-            font-size: 13px;
-            font-weight: 600;
-            padding: 4px 14px;
-            border-radius: 20px;
-        }
-
-        .preview-metric-tag.green {
-            color: #00FF66;
-            background: rgba(0,255,102,0.08);
-            border: 1px solid rgba(0,255,102,0.15);
-        }
-
-        /* Экран 3: Терминал */
-        .preview-terminal {
-            background: #0D0D14;
-            border-radius: 10px;
-            padding: 14px 18px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            line-height: 2;
-            border: 1px solid rgba(108,238,247,0.06);
-            min-height: 140px;
-        }
-
-        .preview-terminal-line {
-            color: #5A6478;
-        }
-
-        .preview-terminal-time {
-            color: #3A4050;
-            margin-right: 8px;
-        }
-
-        .preview-terminal-ok {
-            color: #00FF66;
-        }
-
-        .preview-terminal-wait {
-            color: #FFBD2E;
-        }
-
-        .preview-counter {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 20px;
-            background: rgba(0,255,102,0.04);
-            border: 1px solid rgba(0,255,102,0.12);
-            border-radius: 10px;
-        }
-
-        .preview-counter-label {
-            font-size: 13px;
-            color: #5A6478;
-        }
-
-        .preview-counter-value {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 28px;
-            font-weight: 900;
-            color: #00FF66;
-            text-shadow: 0 0 30px rgba(0,255,102,0.15);
-        }
-
-        /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 1024px) {
-            .steps-widget {
-                grid-template-columns: 40% 60%;
-                padding: 30px 32px;
-                gap: 30px;
-            }
+        .what-gives-result p .highlight {
+            color: #6CEEF7;
         }
 
         @media (max-width: 768px) {
-            .steps-widget {
+            .what-gives-grid {
                 grid-template-columns: 1fr;
-                padding: 24px 20px;
-                gap: 24px;
-                min-height: auto;
+                gap: 16px;
             }
-
-            .steps-timeline {
-                border-right: none;
-                padding-right: 0;
-                gap: 4px;
+            .what-gives-item {
+                padding: 18px 16px;
             }
-
-            .step-trigger {
-                padding: 14px 16px;
-            }
-
-            .step-desc {
-                font-size: 13px;
-            }
-
-            .preview-window {
-                min-height: 400px;
-            }
-
-            .preview-body {
-                padding: 16px 18px;
-            }
-
-            .preview-textarea {
-                min-height: 80px;
-                font-size: 13px;
-            }
-
-            .preview-metric-value {
+            .what-gives-result p {
                 font-size: 17px;
-            }
-
-            .preview-counter-value {
-                font-size: 22px;
-            }
-
-            .preview-terminal {
-                font-size: 12px;
-                min-height: 100px;
-                padding: 12px 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .steps-widget {
-                padding: 16px 12px;
-            }
-
-            .step-trigger {
-                padding: 10px 12px;
-                gap: 10px;
-            }
-
-            .step-number {
-                font-size: 12px;
-                min-width: 24px;
-            }
-
-            .step-title {
-                font-size: 14px;
-            }
-
-            .preview-window {
-                min-height: 340px;
-            }
-
-            .preview-body {
-                padding: 12px 14px;
-                gap: 12px;
-            }
-
-            .preview-textarea {
-                min-height: 60px;
-                font-size: 12px;
-                padding: 10px 12px;
-            }
-
-            .preview-btn {
-                font-size: 12px;
-                padding: 10px 18px;
-            }
-
-            .preview-metric-value {
-                font-size: 15px;
-            }
-
-            .preview-counter-value {
-                font-size: 18px;
-            }
-
-            .preview-terminal {
-                font-size: 11px;
-                min-height: 80px;
-                padding: 10px 12px;
             }
         }
 
@@ -1900,7 +1579,7 @@
             justify-content: center;
             color: #8892A6;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
             transition: all 0.4s ease;
         }
         .timeline-node:hover .node-circle {
@@ -1926,38 +1605,38 @@
         }
 
         /* ===== СТИЛИ ДЛЯ ПЛЕЕРА ===== */
-.player-container {
-    display: flex;
-    gap: 50px;
-    max-width: 1100px;
-    margin: 0 auto;
-    align-items: center;
-}
-.player-info-side {
-    flex: 0 0 40%;
-    text-align: left;
-}
-.info-pane {
-    display: none;
-    animation: textSlideIn 0.4s ease forwards;
-}
-.info-pane.active {
-    display: block;
-}
-.info-pane h3 {
-    color: #ffffff;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    line-height: 1.2;
-    margin-top: 0;
-}
-.info-pane p {
-    color: #8892A6;
-    font-size: 16px;
-    line-height: 1.3;
-    margin: 0;
-}
+        .player-container {
+            display: flex;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .player-info-side {
+            flex: 0 0 40%;
+            text-align: left;
+        }
+        .info-pane {
+            display: none;
+            animation: textSlideIn 0.4s ease forwards;
+        }
+        .info-pane.active {
+            display: block;
+        }
+        .info-pane h3 {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            margin-top: 0;
+        }
+        .info-pane p {
+            color: #8892A6;
+            font-size: 16px;
+            line-height: 1.3;
+            margin: 0;
+        }
         .info-pane p a {
             color: #6CEEF7;
             text-decoration: none;
@@ -2092,7 +1771,7 @@
         }
         @media (max-width: 480px) {
             .node-label { font-size: 11px; }
-            .node-circle { width: 40px; height: 40px; font-size: 14px; }
+            .node-circle { width: 40px; height: 40px; font-size: 16px; }
             .timeline-progress-bar::before { top: 20px; }
             .timeline-fill { top: 20px; }
         }
@@ -2101,10 +1780,11 @@
 <body>
 
 <!-- ===== HEADER ===== -->
-<header class="header">
+<header class="header" id="mainHeader">
     <div class="container">
         <a href="#" class="logo">
-            <svg width="auto" height="38" viewBox="0 0 910 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Логотип по умолчанию -->
+            <svg class="logo-default" width="auto" height="38" viewBox="0 0 910 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g>
                     <polygon fill="white" points="92.796,15.338 93.005,58.346 70.673,97.074 53.529,97.074 29.84,57.75 30.268,114.929 6.295,114.929 6.295,15.338 31.477,15.338 63.053,68.087 "/>
                     <polygon fill="#00F0FF" points="98.942,114.929 98.942,15.339 125.12,15.339 125.12,51.334 161.399,51.334 161.399,15.339 187.578,15.339 187.578,114.929 161.399,114.929 161.399,75.236 125.12,75.236 125.12,114.929 "/>
@@ -2121,6 +1801,11 @@
                     <path fill="#00F0FF" d="M884.848 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.674 -7.136,-20.936l0 -67.914 25.804 0 0 20.771 16.164 0 0 20.275 -16.164 0 0 22.685c0,3.497 0.828,5.955 2.482,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.859,-0.19 4.301,-0.544 1.441,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.284 -3.309,0.922 -6.83,1.395 -10.563,1.395zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
                 </g>
             </svg>
+            <!-- Логотип при скроле -->
+            <svg class="logo-scroll" width="185px" height="105px" viewBox="0 0 185 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon fill="white" points="87.861,3.205 88.069,46.213 65.737,84.94 48.594,84.94 24.904,45.616 25.332,102.795 1.359,102.795 1.359,3.205 26.541,3.205 58.118,55.953 "/>
+                <polygon fill="#00F0FF" points="94.006,102.796 94.006,3.205 120.184,3.205 120.184,39.2 156.464,39.2 156.464,3.205 182.642,3.205 182.642,102.796 156.464,102.796 156.464,63.102 120.184,63.102 120.184,102.796 "/>
+            </svg>
         </a>
         <nav class="nav">
             <a href="#about">О сервисе</a>
@@ -2135,6 +1820,18 @@
         </button>
     </div>
 </header>
+
+<script>
+// Смена логотипа при скроле
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('mainHeader');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+</script>
 
 <!-- ===== MOBILE MENU ===== -->
 <div class="mobile-menu" id="mobileMenu" onclick="if(event.target===this) toggleMenu()">
@@ -2159,28 +1856,40 @@ function toggleMenu() {
 <section class="hero" style="padding: 170px 0 80px;">
     <div class="container">
         <div class="hero-content">
-            <h1 style="margin-bottom: 50px;">Продвигаем сайты в <span class="highlight">ТОП</span></h1>
-            <p style="margin-bottom: 50px; font-size: 20px; color: #FFFFFF; max-width: 680px; line-height: 1.7; font-weight: 400;">Продвижение в Яндексе через AI-ботов с уникальной поведенческой историей. Регистрируйся и получай бонус на тестовый запуск.</p>
-            <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; border-radius: 100px; background: rgba(108,238,247,0.10); border: 1px solid rgba(108,238,247,0.3); font-weight: 700; font-size: 16px; color: #6CEEF7; margin: 0 auto 50px; animation: glowPulse 2s ease-in-out infinite; box-shadow: 0 0 20px rgba(108,238,247,0.15);">
+            <h1 style="margin-bottom: 50px;" class="fade-up">Продвигаем сайты в <span class="highlight">ТОП</span></h1>
+            <p style="margin-bottom: 50px; font-size: 20px; color: #FFFFFF; max-width: 680px; line-height: 1.7; font-weight: 400;" class="fade-up delay-1">Продвижение в Яндексе через AI-ботов с уникальной поведенческой историей. Регистрируйся и получай бонус на тестовый запуск.</p>
+            
+            <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; border-radius: 100px; background: rgba(108,238,247,0.10); border: 1px solid rgba(108,238,247,0.3); font-weight: 700; font-size: 16px; color: #6CEEF7; margin: 0 auto 40px; animation: glowPulse 2s ease-in-out infinite; box-shadow: 0 0 20px rgba(108,238,247,0.15);" class="fade-up delay-2">
                 <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: #6CEEF7; position: relative; flex-shrink: 0; box-shadow: 0 0 12px rgba(108,238,247,0.6);"></span>
-                БОНУС 500 ₽
+                Бесплатный ТЕСТ
             </div>
-            <div class="hero-buttons" style="margin-bottom: 50px; gap: 50px;">
-                <a href="https://lk.iclobot.ru/register" target="_blank" class="btn btn-hero-primary btn-lg">Получить бонус</a>
-                <a href="#calc" class="btn btn-hero-secondary btn-lg">Рассчитать стоимость</a>
+
+            <!-- Бонусный блок -->
+            <div class="bonus-block fade-up delay-3" style="max-width: 560px; margin: 0 auto 30px;">
+                <img src="gift-card.png" alt="Бонус">
+                <div>
+                    <b>Новым пользователям</b> при регистрации будет начислено <b>1500 кликов</b>.<br>
+                    Протестируйте наш сервис без депозита и рисков.
+                </div>
             </div>
-            <div class="hero-stats-full">
+
+            <!-- Кнопка -->
+            <div class="hero-buttons" style="margin-bottom: 50px; justify-content: center;">
+                <a href="https://t.me/Metric_Hit" target="_blank" class="btn btn-hero-primary btn-lg">Получить бонус</a>
+            </div>
+
+            <div class="hero-stats-full fade-up delay-4">
                 <div class="hero-stat">
-                    <div class="num">2-3 дня</div>
+                    <div class="num">1-2 дня</div>
                     <div class="label">среднее время вывода в топ-10</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="num">0,35 ₽</div>
-                    <div class="label">цена клика на старте</div>
+                    <div class="num">0,15 ₽</div>
+                    <div class="label">цена за клик</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="num">от 1000 ₽</div>
-                    <div class="label">достаточно для старта</div>
+                    <div class="num">1500</div>
+                    <div class="label">кликов бесплатно</div>
                 </div>
                 <div class="hero-stat">
                     <div class="num">0 ₽</div>
@@ -2194,46 +1903,85 @@ function toggleMenu() {
 <!-- ===== БЛОК: ПОЧЕМУ СЕЙЧАС СЛОЖНО ВЫЙТИ В ТОП ===== -->
 <section class="why-section">
     <div class="container">
-        <div class="why-head">
+        <div class="why-head fade-up">
             <h2>Почему сейчас сложно <span class="text-gradient">выйти в ТОП</span></h2>
         </div>
-        <div class="why-card why-card--full why-card--narrow">
-            <p>Раньше SEO работало по схеме: тексты, ссылки, время — и сайт в ТОПе. Сейчас этого недостаточно. Конкуренты уже используют поведенческие факторы. Яндекс оценивает не содержание страниц, а то, <strong>как пользователи с ними взаимодействуют</strong>.</p>
-            <p>Посетитель зашёл и сразу ушёл — сайт теряет позиции. Задержался, изучил, вернулся — сайт растёт. <strong>Поведение определяет позиции</strong>.</p>
+        <div class="why-card why-card--full why-card--narrow fade-up delay-1">
+            <p>Раньше <span class="text-accent">SEO работало</span> по схеме: тексты, ссылки, время — и сайт в ТОПе. <span class="text-accent">Сейчас нет</span>. Конкуренты уже используют <span class="text-accent">поведенческие факторы</span>. Яндекс оценивает не содержание страниц, а то, как <span class="text-accent">пользователи</span> с ними <span class="text-accent">взаимодействуют</span>.</p>
+            <p>Посетитель зашёл и сразу ушёл — сайт теряет позиции. Задержался, изучил, вернулся — сайт растёт. <span class="text-accent">Поведение определяет позиции</span>.</p>
         </div>
-        <div class="why-divider" style="margin-top: 50px;">
+        <div class="why-divider" style="margin-top: 50px;" class="fade-up delay-2">
             <span>Что делать?</span>
         </div>
-        <div class="why-card why-card--full why-card--narrow">
+        <div class="why-card why-card--full why-card--narrow fade-up delay-3">
             <p>Нужно показать Яндексу: на сайт приходят, его изучают, на нём остаются. Создать поведенческий сигнал, который выглядит как <strong>естественный интерес аудитории</strong>. Чтобы алгоритмы видели: сайт полезен, люди не уходят сразу.</p>
         </div>
-        <div class="why-divider" style="margin-top: 50px;">
+        <div class="why-divider" style="margin-top: 50px;" class="fade-up delay-4">
             <span>Как мы это решаем</span>
         </div>
-        <div class="why-grid-3">
-            <div class="why-card why-card--small">
+        <div class="why-grid-3 fade-up delay-5">
+            <div class="why-card why-card--small scale-in" style="animation-delay: 0.1s;">
                 <img src="brain.png" alt="Умные алгоритмы" class="why-card-icon-image">
-                <h4>Умные алгоритмы</h4>
+                <h4 style="font-size: 18px;">Умные алгоритмы</h4>
                 <p>Используем AI-ботов с собственной историей поиска, интересами и сценариями поведения. Каждый бот уникален.</p>
             </div>
-            <div class="why-card why-card--small">
+            <div class="why-card why-card--small scale-in" style="animation-delay: 0.3s;">
                 <img src="behavior.png" alt="Правильное поведение" class="why-card-icon-image">
-                <h4>Правильное поведение</h4>
+                <h4 style="font-size: 18px;">Правильное поведение</h4>
                 <p>Боты действуют как реальные пользователи: ищут, сравнивают, изучают, взаимодействуют с контентом.</p>
             </div>
-            <div class="why-card why-card--small">
+            <div class="why-card why-card--small scale-in" style="animation-delay: 0.5s;">
                 <img src="www-click.png" alt="Переход на сайт" class="why-card-icon-image">
-                <h4>Переход на сайт</h4>
+                <h4 style="font-size: 18px;">Переход на сайт</h4>
                 <p>Боты находят сайт в выдаче, переходят на него, проводят время, изучают страницы. Яндекс фиксирует интерес и доверие к ресурсу.</p>
             </div>
         </div>
-        <div class="why-card why-card--full why-card--highlight why-card--narrow" style="margin-top: 20px;">
+        <div class="why-card why-card--full why-card--highlight why-card--narrow" style="margin-top: 20px;" class="fade-up delay-6">
             <img src="grow.png" alt="Почему это работает" class="why-card-icon-image why-card-icon-image--large">
             <h3>Почему это работает</h3>
             <p>Яндекс видит: пользователи задерживаются на сайте, изучают его, не уходят сразу. Это прямой сигнал, что ресурс отвечает на запросы. Алгоритмы фиксируют это и <strong>поднимают сайт в выдаче</strong>.</p>
         </div>
-        <div class="why-tech-line">
+        <div class="why-tech-line fade-up delay-7">
             <p>Используем собственные фингерпринты, прокси-сеть по России и уникальные сценарии поведения. Без публичных баз и готовых решений.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== НОВЫЙ БЛОК: ЧТО ДАЕТ ПРОДВИЖЕНИЕ ===== -->
+<section class="what-gives-section">
+    <div class="container">
+        <div class="section-head fade-up">
+            <div class="tag" style="color:#6CEEF7;">Преимущества</div>
+            <h2>Что даёт продвижение <span class="text-gradient">в ТОП Яндекса</span></h2>
+            <p style="color: #B8C2D6; font-size: 18px;">Рост в ТОП — это не просто трафик. Это реальные клиенты.</p>
+        </div>
+
+        <div class="what-gives-grid">
+            <div class="what-gives-item slide-in-left" style="animation-delay: 0.1s;">
+                <div class="icon-wrap">🔥</div>
+                <div class="text-wrap">
+                    <h4>Горячая аудитория</h4>
+                    <p>Пользователи кликают на верхние позиции осознаннее. Они уже готовы покупать, а не просто смотреть.</p>
+                </div>
+            </div>
+            <div class="what-gives-item scale-in" style="animation-delay: 0.3s;">
+                <div class="icon-wrap">💎</div>
+                <div class="text-wrap">
+                    <h4>Кредит доверия</h4>
+                    <p>Сайт на первом месте вызывает больше доверия. Посетители дольше изучают предложение и реже уходят.</p>
+                </div>
+            </div>
+            <div class="what-gives-item slide-in-right" style="animation-delay: 0.5s;">
+                <div class="icon-wrap">📈</div>
+                <div class="text-wrap">
+                    <h4>Качество трафика</h4>
+                    <p>Аудитория из ТОПа — более целевая. Это не случайные посетители, а те, кто ищет именно ваш товар или услугу.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="what-gives-result glow-in" style="animation-delay: 0.7s;">
+            <p>Итог: растёт не только <span class="highlight">количество клиентов</span>, но и их <span class="highlight">вовлечённость</span></p>
         </div>
     </div>
 </section>
@@ -2242,7 +1990,7 @@ function toggleMenu() {
 <section id="about">
     <div class="container">
         <div class="about-content" style="text-align: center;">
-            <div class="about-logo" style="margin-bottom: 16px;">
+            <div class="about-logo" style="margin-bottom: 16px;" class="fade-up">
                 <svg width="auto" height="72" viewBox="0 0 690 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <polygon fill="white" points="4.082,114.48 4.082,15.232 29.178,15.232 65.97,76.695 55.549,76.837 90.286,15.232 115.311,15.232 115.311,114.48 90.144,114.48 90.641,48.268 95.178,49.969 68.239,96.686 51.154,96.686 23.01,49.969 27.476,48.268 27.972,114.48 "/>
                     <path fill="white" d="M170.819 116.607c-8.129,0 -15.242,-1.631 -21.339,-4.868 -6.096,-3.237 -10.823,-7.751 -14.202,-13.54 -3.378,-5.79 -5.08,-12.548 -5.08,-20.299 0,-5.671 0.992,-10.87 2.978,-15.573 1.985,-4.702 4.773,-8.766 8.364,-12.193 3.592,-3.426 7.846,-6.073 12.737,-7.964 4.892,-1.89 10.256,-2.835 16.116,-2.835 6.569,0 12.406,1.134 17.487,3.426 5.08,2.293 9.263,5.507 12.571,9.642 3.308,4.135 5.601,8.979 6.853,14.509 1.253,5.529 1.229,11.555 -0.047,18.077l-53.736 0c0.142,2.411 0.993,4.514 2.529,6.309 1.536,1.797 3.615,3.191 6.262,4.207 2.646,1.016 5.695,1.536 9.145,1.536 4.395,0 8.507,-0.544 12.335,-1.607 3.828,-1.063 7.585,-2.741 11.271,-5.057l7.799 17.227c-2.222,1.701 -5.128,3.213 -8.743,4.56 -3.616,1.347 -7.491,2.434 -11.603,3.238 -4.112,0.803 -8.011,1.205 -11.697,1.205zm-15.667 -48.632l27.718 0c-0.047,-3.119 -1.252,-5.624 -3.639,-7.514 -2.386,-1.89 -5.577,-2.836 -9.546,-2.836 -4.018,0 -7.35,0.946 -10.02,2.836 -2.67,1.89 -4.183,4.395 -4.513,7.514z"/>
@@ -2255,7 +2003,7 @@ function toggleMenu() {
                     <path fill="#00F0FF" d="M667.061 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.673 -7.136,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.922 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
                 </svg>
             </div>
-            <p class="about-description" style="text-align: center; max-width: 700px; margin: 10px auto 0; font-size: 22px; line-height: 1.7; color: #FFFFFF;">
+            <p class="about-description" style="text-align: center; max-width: 700px; margin: 10px auto 0; font-size: 22px; line-height: 1.7; color: #FFFFFF;" class="fade-up delay-1">
                 <span>Сервис для быстрого продвижения сайта по ключевым запросам</span><br>
                 <span>через работу с поведенческими факторами в Яндексе.</span>
             </p>
@@ -2268,9 +2016,9 @@ function toggleMenu() {
     <div class="container">
         <div class="section-head fade-up">
             <h2 style="font-size: clamp(28.6px, 4.08vw, 40.8px);">Цена клика от <span class="text-gradient">0,15 ₽</span></h2>
-            <p style="font-size: clamp(19.1px, 4.04vw, 44.6px); color: #FFFFFF; font-weight: 400;">Без абонплаты и обязательного депозита.</p>
+            <p style="font-size: clamp(16px, 2vw, 20px); color: #FFFFFF; font-weight: 400;">Без абонплаты и обязательного депозита.</p>
         </div>
-        <div style="margin-top:36px; max-width: 920px; margin-left: auto; margin-right: auto;" class="fade-up">
+        <div style="margin-top:36px; max-width: 920px; margin-left: auto; margin-right: auto;" class="fade-up delay-1">
             <table class="tariff-table" id="tariffTable">
                 <thead>
                     <tr>
@@ -2335,17 +2083,16 @@ function toggleMenu() {
     <div class="container">
         <div style="max-width:920px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:32px;" class="fade-up">
-                <div class="tag" style="color:#6CEEF7; font-size: 18px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;">Калькулятор</div>
+                <div class="tag" style="color:#6CEEF7; font-size: 15px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;">Калькулятор</div>
                 <h2 style="color:#E8EDF5; font-family: 'Nunito Sans', sans-serif; font-size: clamp(36px, 5vw, 52px);">Рассчитайте <span style="color:#6CEEF7;">стоимость</span></h2>
                 <p style="color:#FFFFFF; font-size:20px; font-family: 'Nunito Sans', sans-serif;">Выберите сумму пополнения — увидите цену клика и количество переходов</p>
             </div>
 
-            <div class="calc-block" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
+            <div class="calc-block fade-up delay-1" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
                 <div class="label" style="text-align:center;">Сумма пополнения</div>
                 <div class="calc-presets">
                     <button class="calc-preset active" data-s="1000" onclick="setAmount(1000)">
                         1 000 ₽
-                        <span class="rec">для теста</span>
                     </button>
                     <button class="calc-preset" data-s="50000" onclick="setAmount(50000)">50 000 ₽</button>
                     <button class="calc-preset" data-s="100000" onclick="setAmount(100000)">100 000 ₽</button>
@@ -2382,13 +2129,13 @@ function toggleMenu() {
                 </div>
             </div>
 
-            <!-- ===== БЛОК С БОНУСОМ (ВЫНЕСЕН ИЗ КАЛЬКУЛЯТОРА) ===== -->
-            <div style="text-align: center; margin-top: 20px;">
-                <div class="calc-bonus" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05); padding: 14px 24px; border-radius: 14px; background: rgba(45,155,78,0.06); border: 1px solid rgba(45,155,78,0.12); font-size: 16px; color: #E8EDF5; display: inline-flex; align-items: flex-start; gap: 16px; width: auto; max-width: 100%; text-align: left;">
+            <!-- ===== БЛОК С БОНУСОМ ===== -->
+            <div style="text-align: center; margin-top: 20px;" class="fade-up delay-2">
+                <div class="bonus-block" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05); padding: 14px 24px; border-radius: 14px; background: rgba(45,155,78,0.06); border: 1px solid rgba(45,155,78,0.12); font-size: 16px; color: #E8EDF5; display: inline-flex; align-items: flex-start; gap: 16px; width: auto; max-width: 100%; text-align: left;">
                     <img src="gift-card.png" alt="Бонус" style="height: 56px; width: auto; flex-shrink: 0; margin-top: 2px;">
                     <div style="display: flex; flex-direction: column; gap: 2px;">
-                        <span><b>Новичкам:</b> при первом запуске к вашему балансу добавится бонус 500 ₽.</span>
-                        <span>На базовой цене это ещё примерно <b>1 429</b> переходов сверху.</span>
+                        <span><b>Новым пользователям</b> при регистрации будет начислено <b>1500 кликов</b>.</span>
+                        <span>Протестируйте наш сервис без депозита и рисков.</span>
                     </div>
                 </div>
             </div>
@@ -2483,66 +2230,173 @@ setAmount(1000);
     <div class="container">
         <!-- ===== НОВАЯ ШАПКА ===== -->
         <div class="section-head fade-up" style="max-width: 700px;">
-            <h2 style="font-size: clamp(32px, 4.5vw, 48px); line-height: 1.2;">Начать продвижение — <br><span style="color: #6CEEF7;">быстро и просто</span></h2>
+            <h2 style="font-size: clamp(32px, 4.5vw, 48px); line-height: 1.2;">Начать продвижение — <br><span class="text-gradient">быстро и просто</span></h2>
             <p style="font-size: 22px; color: #FFFFFF; margin-top: 8px; font-weight: 400;">Всего <span style="color: #6CEEF7; font-weight: 700;">3 шага</span> до результата</p>
         </div>
 
-        <!-- ===== ТАЙМЛАЙН ===== -->
+        <!-- ===== ГОРИЗОНТАЛЬНЫЙ ТАЙМЛАЙН ===== -->
         <div class="timeline-progress-bar fade-up">
             <div class="timeline-fill" id="timeline-glow-line"></div>
-            <div class="timeline-node active" onclick="jumpToStep(0)"><div class="node-circle">01</div><div class="node-label">Регистрация</div></div>
-            <div class="timeline-node" onclick="jumpToStep(1)"><div class="node-circle">02</div><div class="node-label">Настройка проекта</div></div>
-            <div class="timeline-node" onclick="jumpToStep(2)"><div class="node-circle">03</div><div class="node-label">Продвижение</div></div>
-            <div class="timeline-node" onclick="jumpToStep(3)"><div class="node-circle">04</div><div class="node-label">Результат</div></div>
+            
+            <div class="timeline-node active" onclick="jumpToStep(0)">
+                <div class="node-circle">1</div>
+                <div class="node-label">Регистрация</div>
+            </div>
+            <div class="timeline-node" onclick="jumpToStep(1)">
+                <div class="node-circle">2</div>
+                <div class="node-label">Настройка проекта</div>
+            </div>
+            <div class="timeline-node" onclick="jumpToStep(2)">
+                <div class="node-circle">3</div>
+                <div class="node-label">Продвижение</div>
+            </div>
+            <div class="timeline-node" onclick="jumpToStep(3)">
+                <div class="node-circle">4</div>
+                <div class="node-label">Результат</div>
+            </div>
         </div>
 
-        <!-- ===== ПЛЕЕР ===== -->
+        <!-- ===== ПЛЕЕР (СЛАЙДЫ) ===== -->
         <div class="player-container fade-up">
+            <!-- Левая колонка: Текст -->
             <div class="player-info-side">
-                <!-- Слайд 1 -->
-                <div class="info-pane active" data-pane="0">
-                    <h3>Регистрация</h3>
-                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3;">Пройдите регистрацию на платформе.<br>Не забудьте забрать <span style="color: #6CEEF7; font-weight: 600;">бонус</span>.</p>
+                <!-- Шаг 1: Регистрация -->
+                <div class="info-pane active" data-pane="0" style="display: block !important;">
+                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Регистрация</h3>
+                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3 !important; margin: 0;">
+                        Пройдите регистрацию на платформе.<br>
+                        Не забудьте забрать <span style="color: #6CEEF7; font-weight: 600;">бонус</span>.
+                    </p>
                 </div>
-                <!-- Слайд 2 -->
+                <!-- Шаг 2: Настройка проекта -->
                 <div class="info-pane" data-pane="1">
-                    <h3>Настройка проекта</h3>
-                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3;">Укажите свой домен.<br>Добавьте нужные ключевые фразы.<br><span style="color: #6CEEF7; font-weight: 600;">Важно:</span> укажите регион.<br>Выберите количество и частоту визитов.</p>
+                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Настройка проекта</h3>
+                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3 !important; margin: 0;">
+                        Укажите свой домен.<br>
+                        Добавьте нужные ключевые фразы.<br>
+                        <span style="color: #6CEEF7; font-weight: 600;">Важно:</span> укажите регион.<br>
+                        Выберите количество и частоту визитов.
+                    </p>
                 </div>
-                <!-- Слайд 3 -->
+                <!-- Шаг 3: Продвижение -->
                 <div class="info-pane" data-pane="2">
-                    <h3>Продвижение</h3>
-                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3;">Нажмите <span style="color: #6CEEF7; font-weight: 600;">«Запустить»</span><br>Все остальное система сделает сама.</p>
+                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Продвижение</h3>
+                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3 !important; margin: 0;">
+                        Нажмите <span style="color: #6CEEF7; font-weight: 600;">«Запустить»</span><br>
+                        Все остальное система сделает сама.
+                    </p>
                 </div>
-                <!-- Слайд 4 -->
+                <!-- Шаг 4: Результат -->
                 <div class="info-pane" data-pane="3">
-                    <h3>Результат</h3>
-                    <p style="line-height: 1.3;"><span style="color: #6CEEF7; font-size: 24px; font-weight: 700; display: block;">Сайт в ТОПе!</span><span style="font-size: 18px; color: #FFFFFF;">Результат будет заметен уже в первый день.</span><br><span style="font-size: 18px; color: #FFFFFF;">Всю статистику можно отслеживать в личном кабинете.</span></p>
+                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Результат</h3>
+                    <p style="line-height: 1.3 !important; margin: 0;">
+                        <span style="color: #6CEEF7; font-size: 24px; font-weight: 700; display: block; margin-bottom: 4px;">Сайт в ТОПе!</span>
+                        <span style="font-size: 18px; color: #FFFFFF;">Результат будет заметен уже в первый день.</span><br>
+                        <span style="font-size: 18px; color: #FFFFFF;">Всю статистику можно отслеживать в личном кабинете.</span>
+                    </p>
                 </div>
             </div>
 
-            <!-- Правая колонка (без изменений, она не дублирует текст) -->
+            <!-- Правая колонка: Имитация ЛК -->
             <div class="player-view-side">
                 <div class="screen-header">
-                    <div class="screen-dots"><div class="screen-dot" style="background:#ff5f56;"></div><div class="screen-dot" style="background:#ffbd2e;"></div><div class="screen-dot" style="background:#28c840;"></div></div>
-                    <span class="screen-tab" style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:#FFFFFF;font-family:'Nunito Sans',sans-serif;"><img src="user.png" alt="user" style="height:28px;width:auto;display:block;">Личный кабинет</span>
+                    <div class="screen-dots">
+                        <div class="screen-dot" style="background: #ff5f56;"></div>
+                        <div class="screen-dot" style="background: #ffbd2e;"></div>
+                        <div class="screen-dot" style="background: #28c840;"></div>
+                    </div>
+                    <span class="screen-tab" style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #FFFFFF; font-family: 'Nunito Sans', sans-serif;">
+                        <img src="user.png" alt="user" style="height: 28px; width: auto; display: block;">
+                        Личный кабинет
+                    </span>
                 </div>
-                <div class="screen-body" style="min-height:280px;display:flex;flex-direction:column;justify-content:center;">
+                <div class="screen-body" style="min-height: 280px; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Панель 0: Регистрация -->
                     <div class="view-pane active" data-view="0">
-                        <div class="mock-input-group"><div style="display:flex;align-items:center;padding:12px 14px;background:rgba(255,255,255,0.02);border-right:1px solid rgba(255,255,255,0.05);"><img src="email.png" alt="email" style="height:20px;width:auto;display:block;"></div><div style="padding:12px 18px;color:#8892A6;font-weight:400;font-size:14px;">Ваша_Почта@mail.com</div></div>
-                        <div class="mock-input-group"><div style="display:flex;align-items:center;padding:12px 14px;background:rgba(255,255,255,0.02);border-right:1px solid rgba(255,255,255,0.05);"><img src="password.png" alt="password" style="height:20px;width:auto;display:block;"></div><div style="padding:12px 18px;color:#8892A6;font-weight:400;font-size:14px;">Ваш Пароль</div></div>
-                        <div style="display:flex;gap:30px;margin-top:8px;align-items:center;"><span class="btn-mock-blue" style="background:#6CEEF7;color:#12161E;border:none;font-weight:700;padding:8px 18px;font-size:16px;cursor:pointer;border-radius:10px;">Регистрация</span><span style="display:inline-block;padding:6px 16px;border-radius:20px;background:rgba(108,238,247,0.12);border:1px solid rgba(108,238,247,0.25);font-size:13px;font-weight:700;color:#6CEEF7;">БОНУС 500 ₽</span></div>
+                        <div class="mock-input-group">
+                            <div style="display: flex; align-items: center; padding: 12px 14px; background: rgba(255,255,255,0.02); border-right: 1px solid rgba(255,255,255,0.05);">
+                                <img src="email.png" alt="email" style="height: 20px; width: auto; display: block;">
+                            </div>
+                            <div style="padding: 12px 18px; color: #8892A6; font-weight: 400; font-size: 14px;">Ваша_Почта@mail.com</div>
+                        </div>
+                        <div class="mock-input-group">
+                            <div style="display: flex; align-items: center; padding: 12px 14px; background: rgba(255,255,255,0.02); border-right: 1px solid rgba(255,255,255,0.05);">
+                                <img src="password.png" alt="password" style="height: 20px; width: auto; display: block;">
+                            </div>
+                            <div style="padding: 12px 18px; color: #8892A6; font-weight: 400; font-size: 14px;">Ваш Пароль</div>
+                        </div>
+                        <div style="display: flex; gap: 30px; margin-top: 8px; align-items: center;">
+                            <span class="btn-mock-blue" style="background: #6CEEF7; color: #12161E; border: none; font-weight: 700; padding: 8px 18px; font-size: 16px; cursor: pointer; border-radius: 10px;">Регистрация</span>
+                            <span style="display: inline-block; padding: 6px 16px; border-radius: 20px; background: rgba(108,238,247,0.12); border: 1px solid rgba(108,238,247,0.25); font-size: 13px; font-weight: 700; color: #6CEEF7;">БОНУС 500 ₽</span>
+                        </div>
                     </div>
+                    <!-- Панель 1: Настройка проекта -->
                     <div class="view-pane" data-view="1">
-                        <div style="color:#FFFFFF;font-size:15px;font-weight:700;margin-bottom:8px;">Ключевые слова</div>
-                        <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:20px;"><div style="color:#E8EDF5;font-size:14px;line-height:1.5;"><span style="color:#6CEEF7;font-weight:700;">•</span> Аренда экскаватора погрузчика в Москве</div><div style="color:#E8EDF5;font-size:14px;line-height:1.5;"><span style="color:#6CEEF7;font-weight:700;">•</span> Аренда автокрана недорого</div><div style="color:#E8EDF5;font-size:14px;line-height:1.5;"><span style="color:#6CEEF7;font-weight:700;">•</span> Услуги спецтехники Москва</div><div style="color:#E8EDF5;font-size:14px;line-height:1.5;"><span style="color:#6CEEF7;font-weight:700;">•</span> Заказать экскаватор гусеничный</div></div>
-                        <div style="display:flex;gap:25px;flex-wrap:wrap;"><span class="btn-mock-blue" style="padding:6px 14px;font-size:12px;border-color:#6CEEF7;color:#6CEEF7;background:transparent;border-radius:8px;">+ Ещё 17 фраз</span><span style="display:inline-block;padding:6px 14px;border-radius:8px;border:1.5px solid rgba(108,238,247,0.3);font-size:12px;font-weight:600;color:#6CEEF7;background:transparent;">Регион: Москва</span></div>
+                        <div style="color: #FFFFFF; font-size: 15px; font-weight: 700; margin-bottom: 8px;">Ключевые слова</div>
+                        <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px;">
+                            <div style="color: #E8EDF5; font-size: 14px; line-height: 1.5;">
+                                <span style="color: #6CEEF7; font-weight: 700;">•</span> Аренда экскаватора погрузчика в Москве
+                            </div>
+                            <div style="color: #E8EDF5; font-size: 14px; line-height: 1.5;">
+                                <span style="color: #6CEEF7; font-weight: 700;">•</span> Аренда автокрана недорого
+                            </div>
+                            <div style="color: #E8EDF5; font-size: 14px; line-height: 1.5;">
+                                <span style="color: #6CEEF7; font-weight: 700;">•</span> Услуги спецтехники Москва
+                            </div>
+                            <div style="color: #E8EDF5; font-size: 14px; line-height: 1.5;">
+                                <span style="color: #6CEEF7; font-weight: 700;">•</span> Заказать экскаватор гусеничный
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 25px; flex-wrap: wrap;">
+                            <span class="btn-mock-blue" style="padding: 6px 14px; font-size: 12px; border-color: #6CEEF7; color: #6CEEF7; background: transparent; border-radius: 8px;">+ Ещё 17 фраз</span>
+                            <span style="display: inline-block; padding: 6px 14px; border-radius: 8px; border: 1.5px solid rgba(108,238,247,0.3); font-size: 12px; font-weight: 600; color: #6CEEF7; background: transparent;">Регион: Москва</span>
+                        </div>
                     </div>
+                    <!-- Панель 2: Продвижение -->
                     <div class="view-pane" data-view="2">
-                        <div style="font-size:12px;line-height:1.5;"><div><span style="color:#6CEEF7;font-weight:600;">[AI-бот #04]</span> <span style="color:#E8EDF5;">Поиск в Яндексе: “услуги спецтехники Москва”</span></div><div style="color:#4A8FE0;padding-left:4px;">➜ Переход на сайт, просмотр 3 страниц</div><div style="color:#A78BFA;padding-left:20px;">Изучены: Главная → Услуги → Контакты (глубина просмотра: 6:12 мин.)</div><div style="color:#00FF66;">✔ Поведенческий сигнал зафиксирован</div><div style="border-top:1px solid rgba(255,255,255,0.05);margin:4px 0;"></div><div><span style="color:#4AD8E6;font-weight:600;">[AI-бот #12]</span> <span style="color:#E8EDF5;">Поиск в Яндексе: “аренда автокрана недорого”</span></div><div style="color:#4A8FE0;padding-left:4px;">➜ Переход на сайт, просмотр контента, клик по картинке, скролл до конца</div><div style="color:#A78BFA;padding-left:20px;">Изучение страницы “Контакты” (глубина просмотра: 4:38 мин.)</div><div style="color:#00FF66;">✔ Взаимодействие с контентом подтверждено</div></div>
+                        <div style="font-size: 12px; line-height: 1.5;">
+                            <div><span style="color: #6CEEF7; font-weight: 600;">[AI-бот #04]</span> <span style="color: #E8EDF5;">Поиск в Яндексе: “услуги спецтехники Москва”</span></div>
+                            <div style="color: #4A8FE0; padding-left: 4px;">➜ Переход на сайт, просмотр 3 страниц</div>
+                            <div style="color: #A78BFA; padding-left: 20px;">Изучены: Главная → Услуги → Контакты (глубина просмотра: 6:12 мин.)</div>
+                            <div style="color: #00FF66;">✔ Поведенческий сигнал зафиксирован</div>
+                            
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05); margin: 4px 0;"></div>
+                            
+                            <div><span style="color: #4AD8E6; font-weight: 600;">[AI-бот #12]</span> <span style="color: #E8EDF5;">Поиск в Яндексе: “аренда автокрана недорого”</span></div>
+                            <div style="color: #4A8FE0; padding-left: 4px;">➜ Переход на сайт, просмотр контента, клик по картинке, скролл до конца</div>
+                            <div style="color: #A78BFA; padding-left: 20px;">Изучение страницы “Контакты” (глубина просмотра: 4:38 мин.)</div>
+                            <div style="color: #00FF66;">✔ Взаимодействие с контентом подтверждено</div>
+                        </div>
                     </div>
+                    <!-- Панель 3: Результат -->
                     <div class="view-pane" data-view="3">
-                        <table class="positions-table" style="width:100%;border-collapse:collapse;"><tr><th style="color:#FFFFFF;font-size:11px;text-transform:uppercase;padding-bottom:8px;text-align:left;font-weight:600;">Запрос</th><th style="color:#FFFFFF;font-size:11px;text-transform:uppercase;padding-bottom:8px;text-align:center;font-weight:600;">ДО</th><th style="color:#FFFFFF;font-size:11px;text-transform:uppercase;padding-bottom:8px;text-align:center;font-weight:600;">ПОСЛЕ</th></tr><tr><td style="color:#E8EDF5;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);">Аренда экскаватора погрузчика в Москве</td><td style="color:#FFFFFF;font-size:13px;padding:6px 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03);">#17</td><td style="color:#00FF66;font-size:13px;padding:6px 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:700;">#1</td></tr><tr><td style="color:#E8EDF5;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);">Аренда автокрана недорого</td><td style="color:#FFFFFF;font-size:13px;padding:6px 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03);">#32</td><td style="color:#00FF66;font-size:13px;padding:6px 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:700;">#2</td></tr><tr><td style="color:#E8EDF5;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);">Услуги спецтехники Москва</td><td style="color:#FFFFFF;font-size:13px;padding:6px 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03);">#25</td><td style="color:#00FF66;font-size:13px;padding:6px 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:700;">#1</td></tr><tr><td style="color:#E8EDF5;font-size:13px;padding:6px 0;border-bottom:none;">Заказать экскаватор гусеничный</td><td style="color:#FFFFFF;font-size:13px;padding:6px 0;text-align:center;border-bottom:none;">#48</td><td style="color:#00FF66;font-size:13px;padding:6px 0;text-align:center;border-bottom:none;font-weight:700;">#3</td></tr></table>
+                        <table class="positions-table" style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <th style="color: #FFFFFF; font-size: 11px; text-transform: uppercase; padding-bottom: 8px; text-align: left; font-weight: 600;">Запрос</th>
+                                <th style="color: #FFFFFF; font-size: 11px; text-transform: uppercase; padding-bottom: 8px; text-align: center; font-weight: 600;">ДО</th>
+                                <th style="color: #FFFFFF; font-size: 11px; text-transform: uppercase; padding-bottom: 8px; text-align: center; font-weight: 600;">ПОСЛЕ</th>
+                            </tr>
+                            <tr>
+                                <td style="color: #E8EDF5; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">Аренда экскаватора погрузчика в Москве</td>
+                                <td style="color: #FFFFFF; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03);">#17</td>
+                                <td style="color: #00FF66; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03); font-weight: 700;">#1</td>
+                            </tr>
+                            <tr>
+                                <td style="color: #E8EDF5; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">Аренда автокрана недорого</td>
+                                <td style="color: #FFFFFF; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03);">#32</td>
+                                <td style="color: #00FF66; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03); font-weight: 700;">#2</td>
+                            </tr>
+                            <tr>
+                                <td style="color: #E8EDF5; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">Услуги спецтехники Москва</td>
+                                <td style="color: #FFFFFF; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03);">#25</td>
+                                <td style="color: #00FF66; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03); font-weight: 700;">#1</td>
+                            </tr>
+                            <tr>
+                                <td style="color: #E8EDF5; font-size: 13px; padding: 6px 0; border-bottom: none;">Заказать экскаватор гусеничный</td>
+                                <td style="color: #FFFFFF; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: none;">#48</td>
+                                <td style="color: #00FF66; font-size: 13px; padding: 6px 0; text-align: center; border-bottom: none; font-weight: 700;">#3</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -2560,29 +2414,24 @@ setAmount(1000);
     function jumpToStep(stepIndex) {
         if (stepIndex === currentStep) return;
 
-        // 1. Обновляем активный класс у точек таймлайна
         document.querySelectorAll('.timeline-node').forEach((node, idx) => {
             node.classList.toggle('active', idx === stepIndex);
         });
 
-        // 2. Обновляем заполнение линии прогресса
         const fill = document.getElementById('timeline-glow-line');
         const percent = (stepIndex / (totalSteps - 1)) * 100;
         fill.style.width = percent + '%';
 
-        // 3. Переключаем левые текстовые панели
         document.querySelectorAll('.info-pane').forEach((pane, idx) => {
             pane.classList.toggle('active', idx === stepIndex);
         });
 
-        // 4. Переключаем правые панели (имитация интерфейса)
         document.querySelectorAll('.view-pane').forEach((pane, idx) => {
             pane.classList.toggle('active', idx === stepIndex);
         });
 
         currentStep = stepIndex;
 
-        // Если пользователь кликнул вручную — отключаем автоплей
         if (!userInteracted) {
             userInteracted = true;
             if (autoplayInterval) {
@@ -2592,16 +2441,13 @@ setAmount(1000);
         }
     }
 
-    // Автоматическое переключение шагов (каждые 7 секунд)
     function nextStep() {
         let next = (currentStep + 1) % totalSteps;
         jumpToStep(next);
     }
 
-    // Запускаем автоплей при загрузке страницы
-    autoplayInterval = setInterval(nextStep, 4000);
+    autoplayInterval = setInterval(nextStep, 7000);
 
-    // Инициализация: устанавливаем линию в 0% и первый шаг активным
     document.addEventListener('DOMContentLoaded', function() {
         jumpToStep(0);
     });
