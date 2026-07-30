@@ -1381,473 +1381,474 @@
                 box-shadow: 0 0 20px rgba(108,238,247,0.15);
                 border-color: rgba(108,238,247,0.3);
             }
-
-            /* ===== НОВАЯ СЕКЦИЯ "КАК НАЧАТЬ" ===== */
-.steps-widget {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    gap: 40px;
-    margin-top: 20px;
-    background: #1e1e28;
-    border: 1px solid rgba(108,238,247,0.15);
-    border-radius: 20px;
-    padding: 40px 44px;
-    min-height: 480px;
-}
-
-/* ===== ЛЕВАЯ КОЛОНКА - ТАЙМЛАЙН ===== */
-.steps-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-right: 20px;
-    border-right: 1px solid rgba(108,238,247,0.08);
-}
-
-.step-trigger {
-    display: flex;
-    gap: 16px;
-    padding: 16px 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all .3s ease;
-    position: relative;
-    background: transparent;
-}
-
-.step-trigger:hover {
-    background: rgba(108,238,247,0.04);
-}
-
-.step-trigger.active {
-    background: rgba(108,238,247,0.08);
-    border: 1px solid rgba(108,238,247,0.15);
-    box-shadow: 0 0 30px rgba(108,238,247,0.03);
-}
-
-.step-number {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    color: rgba(108,238,247,0.3);
-    min-width: 32px;
-    padding-top: 2px;
-    transition: color .3s ease;
-}
-
-.step-trigger.active .step-number {
-    color: #6CEEF7;
-}
-
-.step-content {
-    flex: 1;
-}
-
-.step-title {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #8892A6;
-    transition: color .3s ease;
-    margin-bottom: 4px;
-}
-
-.step-trigger.active .step-title {
-    color: #FFFFFF;
-}
-
-.step-desc {
-    font-size: 14px;
-    color: #5A6478;
-    line-height: 1.5;
-    transition: color .3s ease;
-}
-
-.step-trigger.active .step-desc {
-    color: #8892A6;
-}
-
-.step-line {
-    display: none;
-}
-
-/* ===== ПРАВАЯ КОЛОНКА - ПРЕВЬЮ ===== */
-.preview-window {
-    background: #16161E;
-    border-radius: 14px;
-    border: 1px solid rgba(108,238,247,0.08);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.preview-screen {
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    animation: previewFade .4s ease;
-}
-
-.preview-screen.active {
-    display: flex;
-}
-
-@keyframes previewFade {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Заголовок окна */
-.preview-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 20px;
-    background: rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(108,238,247,0.06);
-}
-
-.preview-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.preview-dot.red { background: #FF5F57; }
-.preview-dot.yellow { background: #FFBD2E; }
-.preview-dot.green { background: #28C840; }
-
-.preview-title {
-    font-size: 13px;
-    color: #5A6478;
-    margin-left: 6px;
-    font-weight: 600;
-}
-
-/* Тело окна */
-.preview-body {
-    padding: 20px 22px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* Экран 1: Форма */
-.preview-label {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #5A6478;
-}
-
-.preview-textarea {
-    width: 100%;
-    min-height: 120px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(108,238,247,0.08);
-    border-radius: 10px;
-    padding: 14px 16px;
-    color: #E8EDF5;
-    font-family: 'Nunito Sans', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    resize: vertical;
-    transition: border-color .3s ease;
-    outline: none;
-}
-
-.preview-textarea:focus {
-    border-color: rgba(108,238,247,0.25);
-}
-
-.preview-textarea::placeholder {
-    color: #3A4050;
-}
-
-.preview-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    border: 1px solid #6CEEF7;
-    color: #6CEEF7;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all .25s ease;
-    width: fit-content;
-}
-
-.preview-btn:hover {
-    background: rgba(108,238,247,0.08);
-    box-shadow: 0 0 30px rgba(108,238,247,0.06);
-}
-
-.preview-btn-icon {
-    font-size: 16px;
-}
-
-.preview-status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: #5A6478;
-    padding: 8px 0;
-}
-
-.preview-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.preview-status-dot.green {
-    background: #00FF66;
-    box-shadow: 0 0 12px rgba(0,255,102,0.3);
-}
-
-/* Экран 2: Аналитика */
-.preview-analytics {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-.preview-chart {
-    width: 100%;
-    height: 80px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 10px;
-    border: 1px solid rgba(108,238,247,0.06);
-    padding: 10px;
-}
-
-.preview-chart-svg {
-    width: 100%;
-    height: 100%;
-}
-
-.preview-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.preview-metric {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 14px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 10px;
-    border: 1px solid rgba(108,238,247,0.06);
-}
-
-.preview-metric-label {
-    font-size: 13px;
-    color: #5A6478;
-}
-
-.preview-metric-value {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: #FFFFFF;
-}
-
-.preview-metric-value small {
-    font-size: 12px;
-    font-weight: 400;
-    color: #5A6478;
-    margin-left: 4px;
-}
-
-.preview-metric-tag {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 20px;
-}
-
-.preview-metric-tag.green {
-    color: #00FF66;
-    background: rgba(0,255,102,0.08);
-    border: 1px solid rgba(0,255,102,0.15);
-}
-
-/* Экран 3: Терминал */
-.preview-terminal {
-    background: #0D0D14;
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    line-height: 2;
-    border: 1px solid rgba(108,238,247,0.06);
-    min-height: 140px;
-}
-
-.preview-terminal-line {
-    color: #5A6478;
-}
-
-.preview-terminal-time {
-    color: #3A4050;
-    margin-right: 8px;
-}
-
-.preview-terminal-ok {
-    color: #00FF66;
-}
-
-.preview-terminal-wait {
-    color: #FFBD2E;
-}
-
-.preview-counter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 20px;
-    background: rgba(0,255,102,0.04);
-    border: 1px solid rgba(0,255,102,0.12);
-    border-radius: 10px;
-}
-
-.preview-counter-label {
-    font-size: 13px;
-    color: #5A6478;
-}
-
-.preview-counter-value {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: #00FF66;
-    text-shadow: 0 0 30px rgba(0,255,102,0.15);
-}
-
-/* ===== АДАПТИВНОСТЬ ===== */
-@media (max-width: 1024px) {
-    .steps-widget {
-        grid-template-columns: 40% 60%;
-        padding: 30px 32px;
-        gap: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .steps-widget {
-        grid-template-columns: 1fr;
-        padding: 24px 20px;
-        gap: 24px;
-        min-height: auto;
-    }
-
-    .steps-timeline {
-        border-right: none;
-        padding-right: 0;
-        gap: 4px;
-    }
-
-    .step-trigger {
-        padding: 14px 16px;
-    }
-
-    .step-desc {
-        font-size: 13px;
-    }
-
-    .preview-window {
-        min-height: 400px;
-    }
-
-    .preview-body {
-        padding: 16px 18px;
-    }
-
-    .preview-textarea {
-        min-height: 80px;
-        font-size: 13px;
-    }
-
-    .preview-metric-value {
-        font-size: 17px;
-    }
-
-    .preview-counter-value {
-        font-size: 22px;
-    }
-
-    .preview-terminal {
-        font-size: 12px;
-        min-height: 100px;
-        padding: 12px 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .steps-widget {
-        padding: 16px 12px;
-    }
-
-    .step-trigger {
-        padding: 10px 12px;
-        gap: 10px;
-    }
-
-    .step-number {
-        font-size: 12px;
-        min-width: 24px;
-    }
-
-    .step-title {
-        font-size: 14px;
-    }
-
-    .preview-window {
-        min-height: 340px;
-    }
-
-    .preview-body {
-        padding: 12px 14px;
-        gap: 12px;
-    }
-
-    .preview-textarea {
-        min-height: 60px;
-        font-size: 12px;
-        padding: 10px 12px;
-    }
-
-    .preview-btn {
-        font-size: 12px;
-        padding: 10px 18px;
-    }
-
-    .preview-metric-value {
-        font-size: 15px;
-    }
-
-    .preview-counter-value {
-        font-size: 18px;
-    }
-
-    .preview-terminal {
-        font-size: 11px;
-        min-height: 80px;
-        padding: 10px 12px;
-    }
-}
+        }
+
+        /* ===== НОВАЯ СЕКЦИЯ "КАК НАЧАТЬ" ===== */
+        .steps-widget {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 40px;
+            margin-top: 20px;
+            background: #1e1e28;
+            border: 1px solid rgba(108,238,247,0.15);
+            border-radius: 20px;
+            padding: 40px 44px;
+            min-height: 480px;
+        }
+
+        /* ===== ЛЕВАЯ КОЛОНКА - ТАЙМЛАЙН ===== */
+        .steps-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 20px;
+            border-right: 1px solid rgba(108,238,247,0.08);
+        }
+
+        .step-trigger {
+            display: flex;
+            gap: 16px;
+            padding: 16px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all .3s ease;
+            position: relative;
+            background: transparent;
+        }
+
+        .step-trigger:hover {
+            background: rgba(108,238,247,0.04);
+        }
+
+        .step-trigger.active {
+            background: rgba(108,238,247,0.08);
+            border: 1px solid rgba(108,238,247,0.15);
+            box-shadow: 0 0 30px rgba(108,238,247,0.03);
+        }
+
+        .step-number {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            color: rgba(108,238,247,0.3);
+            min-width: 32px;
+            padding-top: 2px;
+            transition: color .3s ease;
+        }
+
+        .step-trigger.active .step-number {
+            color: #6CEEF7;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #8892A6;
+            transition: color .3s ease;
+            margin-bottom: 4px;
+        }
+
+        .step-trigger.active .step-title {
+            color: #FFFFFF;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #5A6478;
+            line-height: 1.5;
+            transition: color .3s ease;
+        }
+
+        .step-trigger.active .step-desc {
+            color: #8892A6;
+        }
+
+        .step-line {
+            display: none;
+        }
+
+        /* ===== ПРАВАЯ КОЛОНКА - ПРЕВЬЮ ===== */
+        .preview-window {
+            background: #16161E;
+            border-radius: 14px;
+            border: 1px solid rgba(108,238,247,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-screen {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            animation: previewFade .4s ease;
+        }
+
+        .preview-screen.active {
+            display: flex;
+        }
+
+        @keyframes previewFade {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Заголовок окна */
+        .preview-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(108,238,247,0.06);
+        }
+
+        .preview-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .preview-dot.red { background: #FF5F57; }
+        .preview-dot.yellow { background: #FFBD2E; }
+        .preview-dot.green { background: #28C840; }
+
+        .preview-title {
+            font-size: 13px;
+            color: #5A6478;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        /* Тело окна */
+        .preview-body {
+            padding: 20px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Экран 1: Форма */
+        .preview-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #5A6478;
+        }
+
+        .preview-textarea {
+            width: 100%;
+            min-height: 120px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(108,238,247,0.08);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: #E8EDF5;
+            font-family: 'Nunito Sans', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            resize: vertical;
+            transition: border-color .3s ease;
+            outline: none;
+        }
+
+        .preview-textarea:focus {
+            border-color: rgba(108,238,247,0.25);
+        }
+
+        .preview-textarea::placeholder {
+            color: #3A4050;
+        }
+
+        .preview-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 1px solid #6CEEF7;
+            color: #6CEEF7;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all .25s ease;
+            width: fit-content;
+        }
+
+        .preview-btn:hover {
+            background: rgba(108,238,247,0.08);
+            box-shadow: 0 0 30px rgba(108,238,247,0.06);
+        }
+
+        .preview-btn-icon {
+            font-size: 16px;
+        }
+
+        .preview-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #5A6478;
+            padding: 8px 0;
+        }
+
+        .preview-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .preview-status-dot.green {
+            background: #00FF66;
+            box-shadow: 0 0 12px rgba(0,255,102,0.3);
+        }
+
+        /* Экран 2: Аналитика */
+        .preview-analytics {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .preview-chart {
+            width: 100%;
+            height: 80px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(108,238,247,0.06);
+            padding: 10px;
+        }
+
+        .preview-chart-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .preview-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(108,238,247,0.06);
+        }
+
+        .preview-metric-label {
+            font-size: 13px;
+            color: #5A6478;
+        }
+
+        .preview-metric-value {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+
+        .preview-metric-value small {
+            font-size: 12px;
+            font-weight: 400;
+            color: #5A6478;
+            margin-left: 4px;
+        }
+
+        .preview-metric-tag {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+        }
+
+        .preview-metric-tag.green {
+            color: #00FF66;
+            background: rgba(0,255,102,0.08);
+            border: 1px solid rgba(0,255,102,0.15);
+        }
+
+        /* Экран 3: Терминал */
+        .preview-terminal {
+            background: #0D0D14;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 2;
+            border: 1px solid rgba(108,238,247,0.06);
+            min-height: 140px;
+        }
+
+        .preview-terminal-line {
+            color: #5A6478;
+        }
+
+        .preview-terminal-time {
+            color: #3A4050;
+            margin-right: 8px;
+        }
+
+        .preview-terminal-ok {
+            color: #00FF66;
+        }
+
+        .preview-terminal-wait {
+            color: #FFBD2E;
+        }
+
+        .preview-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: rgba(0,255,102,0.04);
+            border: 1px solid rgba(0,255,102,0.12);
+            border-radius: 10px;
+        }
+
+        .preview-counter-label {
+            font-size: 13px;
+            color: #5A6478;
+        }
+
+        .preview-counter-value {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #00FF66;
+            text-shadow: 0 0 30px rgba(0,255,102,0.15);
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 1024px) {
+            .steps-widget {
+                grid-template-columns: 40% 60%;
+                padding: 30px 32px;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .steps-widget {
+                grid-template-columns: 1fr;
+                padding: 24px 20px;
+                gap: 24px;
+                min-height: auto;
+            }
+
+            .steps-timeline {
+                border-right: none;
+                padding-right: 0;
+                gap: 4px;
+            }
+
+            .step-trigger {
+                padding: 14px 16px;
+            }
+
+            .step-desc {
+                font-size: 13px;
+            }
+
+            .preview-window {
+                min-height: 400px;
+            }
+
+            .preview-body {
+                padding: 16px 18px;
+            }
+
+            .preview-textarea {
+                min-height: 80px;
+                font-size: 13px;
+            }
+
+            .preview-metric-value {
+                font-size: 17px;
+            }
+
+            .preview-counter-value {
+                font-size: 22px;
+            }
+
+            .preview-terminal {
+                font-size: 12px;
+                min-height: 100px;
+                padding: 12px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .steps-widget {
+                padding: 16px 12px;
+            }
+
+            .step-trigger {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .step-number {
+                font-size: 12px;
+                min-width: 24px;
+            }
+
+            .step-title {
+                font-size: 14px;
+            }
+
+            .preview-window {
+                min-height: 340px;
+            }
+
+            .preview-body {
+                padding: 12px 14px;
+                gap: 12px;
+            }
+
+            .preview-textarea {
+                min-height: 60px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+
+            .preview-btn {
+                font-size: 12px;
+                padding: 10px 18px;
+            }
+
+            .preview-metric-value {
+                font-size: 15px;
+            }
+
+            .preview-counter-value {
+                font-size: 18px;
+            }
+
+            .preview-terminal {
+                font-size: 11px;
+                min-height: 80px;
+                padding: 10px 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2004,7 +2005,7 @@ function toggleMenu() {
                     <path fill="white" d="M428.722 116.607c-7.75,0 -14.698,-1.702 -20.842,-5.081 -6.144,-3.379 -10.988,-7.963 -14.533,-13.776 -3.544,-5.813 -5.317,-12.406 -5.317,-19.779 0,-5.482 1.064,-10.587 3.167,-15.289 2.103,-4.703 5.033,-8.791 8.791,-12.288 3.757,-3.497 8.152,-6.215 13.209,-8.152 5.057,-1.938 10.515,-2.907 16.376,-2.907 5.672,0 10.964,0.78 15.856,2.363 4.891,1.584 9.287,3.923 13.209,6.995l-11.201 19.069c-2.362,-2.221 -4.891,-3.851 -7.609,-4.868 -2.717,-1.016 -5.576,-1.512 -8.554,-1.512 -3.733,0 -6.9,0.638 -9.523,1.938 -2.623,1.3 -4.655,3.19 -6.073,5.648 -1.417,2.457 -2.126,5.458 -2.126,9.003 0,5.199 1.582,9.263 4.749,12.193 3.167,2.931 7.515,4.395 13.044,4.395 3.308,0 6.475,-0.637 9.476,-1.89 3.001,-1.252 5.789,-3.096 8.389,-5.553l10.066 19.495c-4.111,3.119 -8.885,5.553 -14.32,7.326 -5.434,1.772 -10.846,2.67 -16.234,2.67z"/>
                     <polygon fill="#00F0FF" points="481.325,114.48 481.325,15.232 507.413,15.232 507.413,51.103 543.568,51.103 543.568,15.232 569.656,15.232 569.656,114.48 543.568,114.48 543.568,74.923 507.413,74.923 507.413,114.48 "/>
                     <path fill="#00F0FF" d="M590.214 114.48l0 -73.018 25.805 0 0 73.018 -25.805 0zm12.903 -83.156c-4.065,0 -7.586,-1.252 -10.587,-3.733 -3.001,-2.481 -4.513,-5.884 -4.513,-10.232 0,-4.301 1.512,-7.704 4.513,-10.209 3.001,-2.505 6.522,-3.757 10.587,-3.757 4.064,0 7.609,1.252 10.61,3.757 3.001,2.505 4.49,5.908 4.49,10.209 0,4.348 -1.489,7.751 -4.49,10.232 -3.001,2.481 -6.546,3.733 -10.61,3.733z"/>
-                    <path fill="#00F0FF" d="M667.061 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.673 -7.136,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.921 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
+                    <path fill="#00F0FF" d="M667.061 116.607c-8.412,0 -14.982,-2.363 -19.732,-7.066 -4.749,-4.703 -7.136,-11.673 -7.136,-20.936l0 -67.914 25.805 0 0 20.771 16.163 0 0 20.275 -16.163 0 0 22.685c0,3.497 0.827,5.955 2.481,7.373 1.654,1.418 3.686,2.127 6.096,2.127 1.418,0 2.86,-0.19 4.301,-0.544 1.442,-0.355 2.765,-0.874 3.994,-1.583l3.048 20.133c-2.221,1.276 -4.986,2.363 -8.294,3.285 -3.308,0.922 -6.829,1.394 -10.563,1.394zm-40.408 -54.87l0 -20.275 15.738 0 0 20.275 -15.738 0z"/>
                 </svg>
             </div>
             <p class="about-description" style="text-align: center; max-width: 700px; margin: 10px auto 0; font-size: 22px; line-height: 1.7; color: #FFFFFF;">
@@ -2531,32 +2532,81 @@ setAmount(1000);
         <div class="player-container fade-up">
             <!-- Левая сторона: Динамический текст -->
             <div class="player-info-side">
-                <div class="info-pane active">
+                <div class="info-pane active" data-pane="0">
                     <h3>Регистрация и добавление сайта</h3>
                     <p>Заполните форму за минуту и добавьте свой домен. После регистрации — 7 дней тестового периода и +500 ₽ бонусом на первое пополнение баланса.</p>
                 </div>
-                <div class="info-pane">
+                <div class="info-pane" data-pane="1">
                     <h3>Ключевые фразы и регион</h3>
                     <p>Укажите фразы, по которым хотите расти. Доступен моментальный импорт семантического ядра напрямую из Яндекс.Вебмастера в 1 клик.</p>
                 </div>
-                <div class="info-pane">
+                <div class="info-pane" data-pane="2">
                     <h3>Дальше сервис всё делает сам</h3>
                     <p>Алгоритм рассчитывает число кликов по частотности и распределяет их по часам. Обученные ИИ-боты имитируют живой интерес, продвигая сайт.</p>
                 </div>
-                <div class="info-pane">
+                <div class="info-pane" data-pane="3">
                     <h3>Сайт в ТОП по вашим фразам</h3>
                     <p>Позиции растут на глазах алгоритмов. Первые результаты видны в личном кабинете уже за 3 дня продвижения. Динамика обновляется ежедневно.</p>
                 </div>
             </div>
 
-            <!-- Правая сторона: Личный кабинет (Комикс) -->
+            <!-- Правая сторона: Имитация ЛК -->
             <div class="player-view-side">
                 <div class="screen-header">
                     <div class="screen-dots">
-                        <div class="screen-dot" style="background-color: #ff5f56;"></div>
-                        <div class="screen-dot" style="background-color: #ffbd2e;"></div>
-
-
+                        <div class="screen-dot" style="background: #ff5f56;"></div>
+                        <div class="screen-dot" style="background: #ffbd2e;"></div>
+                        <div class="screen-dot" style="background: #28c840;"></div>
+                    </div>
+                    <span class="screen-tab">📊 Личный кабинет</span>
+                </div>
+                <div class="screen-body">
+                    <!-- Панель 0: Регистрация -->
+                    <div class="view-pane active" data-view="0">
+                        <div class="mock-input-group">
+                            <span>🔗</span>
+                            <div>mysite.ru</div>
+                        </div>
+                        <div class="mock-input-group">
+                            <span>📱</span>
+                            <div>+7 (999) 123-45-67</div>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-top: 8px;">
+                            <span class="btn-mock-blue">Создать кампанию</span>
+                            <span style="color: #8892A6; font-size: 13px; align-self: center;">+7 дней теста</span>
+                        </div>
+                    </div>
+                    <!-- Панель 1: Ключевые фразы -->
+                    <div class="view-pane" data-view="1">
+                        <div style="color: #5A6478; font-size: 13px; margin-bottom: 12px;">Импортировано из Вебмастера</div>
+                        <div class="mock-input-group">
+                            <span>📋</span>
+                            <div>услуги грузчиков цена</div>
+                        </div>
+                        <div class="mock-input-group">
+                            <span>📋</span>
+                            <div>доставка стройматериалов</div>
+                        </div>
+                        <span class="btn-mock-blue" style="padding: 8px 16px; font-size: 12px;">+ Ещё 9 фраз</span>
+                    </div>
+                    <!-- Панель 2: Работа ИИ -->
+                    <div class="view-pane" data-view="2">
+                        <div class="mock-terminal">
+                            <div>➜ [AI-bot #04] Поиск: “услуги грузчиков цена” ...</div>
+                            <div style="color: #6CEEF7;">✔ Переход на сайт выполнен (6 мин. 32 сек.)</div>
+                            <div>➜ [AI-bot #12] Просмотр страницы “Контакты” ...</div>
+                            <div style="color: #6CEEF7;">✔ Прокрутка, клик по картинке</div>
+                        </div>
+                    </div>
+                    <!-- Панель 3: Сайт в ТОПе -->
+                    <div class="view-pane" data-view="3">
+                        <table class="positions-table">
+                            <tr><th>Запрос</th><th>Позиция</th></tr>
+                            <tr><td>услуги грузчиков цена</td><td><span class="pos-old">#17</span> <span class="pos-new">#9</span></td></tr>
+                            <tr><td>доставка стройматериалов</td><td><span class="pos-old">#24</span> <span class="pos-new">#12</span></td></tr>
+                            <tr><td>ремонт квартир недорого</td><td><span class="pos-old">#31</span> <span class="pos-new">#15</span></td></tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2564,19 +2614,63 @@ setAmount(1000);
 </section>
 
 <script>
-    // Чистая функция переключения экранов
-    function switchStep(index) {
-        const items = document.querySelectorAll('.step-item');
-        items.forEach(item => item.classList.remove('active'));
-        
-        const screens = document.querySelectorAll('.preview-screen');
-        screens.forEach(screen => screen.classList.remove('active'));
-        
-        items[index].classList.add('active');
-        screens[index].classList.add('active');
-    }
-</script>
+    // ===== ИНТЕРАКТИВНЫЙ ТАЙМЛАЙН И ПЛЕЕР =====
+    const totalSteps = 4;
+    let currentStep = 0;
+    let autoplayInterval = null;
+    let userInteracted = false;
 
+    function jumpToStep(stepIndex) {
+        if (stepIndex === currentStep) return;
+
+        // 1. Обновляем активный класс у точек таймлайна
+        document.querySelectorAll('.timeline-node').forEach((node, idx) => {
+            node.classList.toggle('active', idx === stepIndex);
+        });
+
+        // 2. Обновляем заполнение линии прогресса
+        const fill = document.getElementById('timeline-glow-line');
+        const percent = (stepIndex / (totalSteps - 1)) * 100;
+        fill.style.width = percent + '%';
+
+        // 3. Переключаем левые текстовые панели
+        document.querySelectorAll('.info-pane').forEach((pane, idx) => {
+            pane.classList.toggle('active', idx === stepIndex);
+        });
+
+        // 4. Переключаем правые панели (имитация интерфейса)
+        document.querySelectorAll('.view-pane').forEach((pane, idx) => {
+            pane.classList.toggle('active', idx === stepIndex);
+        });
+
+        currentStep = stepIndex;
+
+        // Если пользователь кликнул вручную — отключаем автоплей
+        if (!userInteracted) {
+            userInteracted = true;
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+    }
+
+    // Автоматическое переключение шагов (каждые 7 секунд)
+    function nextStep() {
+        let next = (currentStep + 1) % totalSteps;
+        jumpToStep(next);
+    }
+
+    // Запускаем автоплей при загрузке страницы
+    autoplayInterval = setInterval(nextStep, 7000);
+
+    // Навешиваем обработчики на все точки таймлайна (уже есть onclick в HTML)
+    // Инициализация: устанавливаем линию в 0% и первый шаг активным
+    document.addEventListener('DOMContentLoaded', function() {
+        // Убедимся, что первый шаг активен
+        jumpToStep(0);
+    });
+</script>
 
 <!-- ===== CASES ===== -->
 <section style="background:rgba(255,255,255,0.02);">
@@ -2686,55 +2780,6 @@ function showCopied(el) {
     el.textContent = '✓ СКОПИРОВАНО';
     setTimeout(() => { el.textContent = orig; }, 1600);
 }
-</script>
-
-    <!-- ===== НОВЫЙ СКРИПТ ДЛЯ ВИДЖЕТА ===== -->
-<script>
-// ===== ИНТЕРАКТИВНЫЙ ВИДЖЕТ "КАК НАЧАТЬ" =====
-(function() {
-    const triggers = document.querySelectorAll('.step-trigger');
-    const screens = document.querySelectorAll('.preview-screen');
-    let autoplayInterval = null;
-    let userInteracted = false;
-    let currentStep = 1;
-
-    function setActiveStep(stepNumber) {
-        triggers.forEach(trigger => {
-            const step = parseInt(trigger.dataset.step);
-            trigger.classList.toggle('active', step === stepNumber);
-        });
-
-        screens.forEach(screen => {
-            const screenStep = parseInt(screen.dataset.screen);
-            screen.classList.toggle('active', screenStep === stepNumber);
-        });
-
-        currentStep = stepNumber;
-    }
-
-    function nextStep() {
-        let next = currentStep + 1;
-        if (next > 3) next = 1;
-        setActiveStep(next);
-    }
-
-    triggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            const step = parseInt(this.dataset.step);
-            setActiveStep(step);
-            
-            if (!userInteracted) {
-                userInteracted = true;
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                    autoplayInterval = null;
-                }
-            }
-        });
-    });
-
-    autoplayInterval = setInterval(nextStep, 7000);
-})();
 </script>
 
 <!-- ===== FOOTER ===== -->
