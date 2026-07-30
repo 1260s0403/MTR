@@ -2605,22 +2605,51 @@ setAmount(1000);
                             <span style="display: inline-block; padding: 8px 16px; border-radius: 8px; border: 1.5px solid rgba(108,238,247,0.3); font-size: 12px; font-weight: 600; color: #6CEEF7; background: transparent;">Регион: Москва</span>
                         </div>
                     </div>
-                    <!-- Панель 2: Продвижение -->
+                    <!-- Панель 2: Продвижение (Вариант 2 - Карточки-сессии) -->
                     <div class="view-pane" data-view="2">
-                        <div class="mock-terminal">
-                            <div>➜ [AI-bot #04] Поиск: “услуги грузчиков цена” ...</div>
-                            <div style="color: #6CEEF7;">✔ Переход на сайт выполнен (6 мин. 32 сек.)</div>
-                            <div>➜ [AI-bot #12] Просмотр страницы “Контакты” ...</div>
-                            <div style="color: #6CEEF7;">✔ Прокрутка, клик по картинке</div>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <!-- Сессия 1 -->
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(108,238,247,0.1); border-radius: 10px; padding: 14px 16px;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6CEEF7; box-shadow: 0 0 12px rgba(108,238,247,0.3);"></span>
+                                    <span style="color: #6CEEF7; font-weight: 700; font-size: 14px;">AI-бот #04</span>
+                                    <span style="color: #5A6478; font-size: 12px;">активен</span>
+                                </div>
+                                <div style="color: #E8EDF5; font-size: 14px; line-height: 1.8; padding-left: 4px;">
+                                    <div>🔍 Поиск в Яндексе: <span style="color: #FFFFFF; font-weight: 600;">“услуги спецтехники Москва”</span></div>
+                                    <div style="color: #8892A6;">➜ Переход на сайт, просмотр 3 страниц</div>
+                                    <div style="color: #5A6478; font-size: 13px; padding-left: 20px;">
+                                        Изучены: Главная → Услуги → Контакты <span style="color: #5A6478;">(6:12 мин.)</span>
+                                    </div>
+                                    <div style="color: #00FF66; margin-top: 4px;">✔ Поведенческий сигнал зафиксирован</div>
+                                </div>
+                            </div>
+
+                            <!-- Сессия 2 -->
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(74,216,230,0.1); border-radius: 10px; padding: 14px 16px;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4AD8E6; box-shadow: 0 0 12px rgba(74,216,230,0.3);"></span>
+                                    <span style="color: #4AD8E6; font-weight: 700; font-size: 14px;">AI-бот #12</span>
+                                    <span style="color: #5A6478; font-size: 12px;">активен</span>
+                                </div>
+                                <div style="color: #E8EDF5; font-size: 14px; line-height: 1.8; padding-left: 4px;">
+                                    <div>🔍 Поиск в Яндексе: <span style="color: #FFFFFF; font-weight: 600;">“аренда автокрана недорого”</span></div>
+                                    <div style="color: #8892A6;">➜ Переход на сайт, просмотр контента, клик по картинке, скролл до конца</div>
+                                    <div style="color: #5A6478; font-size: 13px; padding-left: 20px;">
+                                        Изучение страницы “Контакты” <span style="color: #5A6478;">(4:38 мин.)</span>
+                                    </div>
+                                    <div style="color: #00FF66; margin-top: 4px;">✔ Взаимодействие с контентом подтверждено</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- Панель 3: Результат -->
                     <div class="view-pane" data-view="3">
                         <table class="positions-table">
                             <tr><th>Запрос</th><th>Позиция</th></tr>
-                            <tr><td>услуги грузчиков цена</td><td><span class="pos-old">#17</span> <span class="pos-new">#9</span></td></tr>
-                            <tr><td>доставка стройматериалов</td><td><span class="pos-old">#24</span> <span class="pos-new">#12</span></td></tr>
-                            <tr><td>ремонт квартир недорого</td><td><span class="pos-old">#31</span> <span class="pos-new">#15</span></td></tr>
+                            <tr><td>услуги спецтехники Москва</td><td><span class="pos-old">#17</span> <span class="pos-new">#9</span></td></tr>
+                            <tr><td>аренда автокрана недорого</td><td><span class="pos-old">#24</span> <span class="pos-new">#12</span></td></tr>
+                            <tr><td>заказать экскаватор гусеничный</td><td><span class="pos-old">#31</span> <span class="pos-new">#15</span></td></tr>
                         </table>
                     </div>
                 </div>
