@@ -852,6 +852,71 @@
         .tech-col .item .x { color: #E86060; font-weight: 700; margin-right: 6px; }
         .tech-col .item .check { color: #2D9B4E; font-weight: 700; margin-right: 6px; }
 
+        /* ===== КЕЙСЫ ===== */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .case-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 18px;
+            text-align: center;
+            transition: all .3s;
+        }
+        .case-item:hover { border-color: rgba(108,238,247,0.15); background: var(--bg-card-hover); }
+        .case-item .num {
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .case-item .label { color: #8892A6; font-size: 14px; margin-top: 4px; }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            background: var(--bg-card);
+            overflow: hidden;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            padding: 16px 22px;
+            font-weight: 700;
+            font-size: 16px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            color: #E8EDF5;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            flex-shrink: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 20px;
+            color: var(--accent2);
+            transition: transform .25s;
+        }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item .answer {
+            padding: 0 22px 20px;
+            color: #8892A6;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .faq-item[open] .answer { animation: fadeIn .3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
         /* ===== CTA ===== */
         .cta-block {
             background: var(--bg-card);
@@ -2059,17 +2124,18 @@ function toggleMenu() {
             <div class="calc-block fade-up delay-1" style="border: 1px solid rgba(108,238,247,0.15); box-shadow: 0 0 30px rgba(108,238,247,0.05);">
                 <div class="label" style="text-align:center;">Сумма пополнения</div>
                 <div class="calc-presets">
-                    <button class="calc-preset active" data-s="1000" onclick="setAmount(1000)">1 000 ₽</button>
-                    <button class="calc-preset" data-s="15000" onclick="setAmount(15000)">15 000 ₽</button>
+                    <button class="calc-preset active" data-s="1000" onclick="setAmount(1000)">
+                        1 000 ₽
+                    </button>
                     <button class="calc-preset" data-s="50000" onclick="setAmount(50000)">50 000 ₽</button>
                     <button class="calc-preset" data-s="100000" onclick="setAmount(100000)">100 000 ₽</button>
                     <button class="calc-preset" data-s="150000" onclick="setAmount(150000)">150 000 ₽</button>
-                    <button class="calc-preset" data-s="250000" onclick="setAmount(250000)">250 000 ₽</button>
+                    <button class="calc-preset" data-s="200000" onclick="setAmount(200000)">200 000 ₽</button>
                 </div>
 
                 <div class="label label--left">Или точная сумма</div>
                 <div class="calc-slider-wrap">
-                    <input type="range" id="depSlider" min="1000" max="500000" step="1000" value="1000" oninput="setAmount(+this.value, true)">
+                    <input type="range" id="depSlider" min="1000" max="250000" step="1000" value="1000" oninput="setAmount(+this.value, true)">
                     <div class="value" id="depDisplay">1 000 ₽</div>
                 </div>
 
@@ -2078,14 +2144,14 @@ function toggleMenu() {
                         <div class="k">Пополнение</div>
                         <div class="v" id="resDep">—</div>
                     </div>
-                    <div class="calc-result" id="resTariffBox">
-                        <div class="k">Тариф</div>
-                        <div class="v" id="resTariff">—</div>
-                    </div>
-                    <div class="calc-result highlight" id="resCpcBox">
-                        <div class="k">Цена за клик</div>
+                    <div class="calc-result" id="resCpcBox">
+                        <div class="k">Цена клика</div>
                         <div class="v" id="resCpc">—</div>
-                        <div class="sub" id="resCpcSub"></div>
+                    </div>
+                    <div class="calc-result highlight" id="resClicksBox">
+                        <div class="k">Переходов на сайт</div>
+                        <div class="v" id="resClicks">—</div>
+                        <div class="sub" id="resClicksSub"></div>
                     </div>
                 </div>
 
@@ -2114,13 +2180,12 @@ function toggleMenu() {
 let currentAmount = 1000;
 
 function getTier(amount) {
-    if (amount >= 500000) return { id: 't500', cpc: null, tariff: 'Партнер' };
-    if (amount >= 250000) return { id: 't250', cpc: 0.20, tariff: 'Монополия' };
-    if (amount >= 150000) return { id: 't150', cpc: 0.35, tariff: 'Профи' };
-    if (amount >= 100000) return { id: 't100', cpc: 0.50, tariff: 'Агентство' };
-    if (amount >= 50000)  return { id: 't50',  cpc: 0.90, tariff: 'Мастер' };
-    if (amount >= 15000)  return { id: 't15',  cpc: 1.20, tariff: 'Фриланс' };
-    return { id: 't0', cpc: 1.50, tariff: 'Старт' };
+    if (amount >= 250000) return { id: 't250', cpc: null };
+    if (amount >= 200000) return { id: 't200', cpc: 0.15 };
+    if (amount >= 150000) return { id: 't150', cpc: 0.20 };
+    if (amount >= 100000) return { id: 't100', cpc: 0.25 };
+    if (amount >= 50000)  return { id: 't50',  cpc: 0.30 };
+    return { id: 't0', cpc: 0.35 };
 }
 
 function formatNumber(n) {
@@ -2140,40 +2205,39 @@ function setAmount(value, fromSlider) {
 
     const tier = getTier(value);
     document.getElementById('resDep').textContent = formatNumber(value) + ' ₽';
-    document.getElementById('resTariff').textContent = tier.tariff;
 
     if (tier.cpc === null) {
-        document.getElementById('resCpc').textContent = 'Индивидуально';
-        document.getElementById('resCpcSub').innerHTML = '';
-        document.getElementById('calcNote').innerHTML = 'От 500 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/Metric_Hit" target="_blank" style="color:#6CEEF7;font-weight:700;">Telegram</a>.';
+        document.getElementById('resCpc').textContent = 'по договоренности';
+        document.getElementById('resClicks').innerHTML = '<img src="rocket-2.png" alt="ещё выгоднее">';
+        document.getElementById('resClicksSub').innerHTML = '';
+        document.getElementById('calcNote').innerHTML = 'От 250 000 ₽ условия согласуем индивидуально — напишите в <a href="https://t.me/Metric_Hit" target="_blank" style="color:#6CEEF7;font-weight:700;">Telegram</a>.';
     } else {
+        const clicks = value / tier.cpc;
         document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
-        
-        const baseCpc = 1.50;
+        document.getElementById('resClicks').textContent = '≈ ' + formatNumber(clicks);
+
+        const baseCpc = 0.35;
         const baseClicks = value / baseCpc;
-        const currentClicks = value / tier.cpc;
-        const savingPercent = Math.round((1 - tier.cpc / baseCpc) * 100);
-        
         if (tier.cpc < baseCpc) {
-            const extra = currentClicks - baseClicks;
-            document.getElementById('resCpcSub').innerHTML = 
-                '<span class="sub-line">экономия ' + savingPercent + '%</span>';
+            const extra = clicks - baseClicks;
+            document.getElementById('resClicksSub').innerHTML = 
+                '<span class="sub-line">на ' + formatNumber(extra) + ' больше,</span>' +
+                '<span class="sub-line">чем по базовой цене</span>';
             document.getElementById('calcNote').innerHTML = 
-                'По тарифу <strong style="color:#6CEEF7;">' + tier.tariff + '</strong> вы получаете ' +
-                '<strong style="color:#00FF66;">' + formatNumber(currentClicks) + '</strong> переходов. ' +
-                'При базовой цене 1,50 ₽ это стоило бы <strong style="color:#FFFFFF;">' + formatNumber(baseClicks) + '</strong> переходов — ' +
-                'вы получаете <strong style="color:#2D9B4E;">на ' + formatNumber(extra) + ' переходов больше</strong>.';
+                'Скидка от объёма: на базовой цене 0,35 ₽ этих денег хватило бы на ' +
+                '<strong style="color:#E8EDF5; white-space: nowrap;">' + formatNumber(baseClicks) + '</strong>' +
+                ' переходов, на вашем объёме — на ' +
+                '<strong style="color:#2D9B4E; white-space: nowrap;">' + formatNumber(extra) + '</strong>' +
+                ' больше.';
         } else {
-            document.getElementById('resCpcSub').innerHTML = '<span class="sub-line">базовый тариф</span>';
-            document.getElementById('calcNote').innerHTML = 
-                'Тариф <strong style="color:#6CEEF7;">' + tier.tariff + '</strong>: ' +
-                formatNumber(currentClicks) + ' переходов. Этого хватит на тестовый запуск проекта.';
+            document.getElementById('resClicksSub').innerHTML = '<span class="sub-line">хватит на тестовый запуск</span>';
+            document.getElementById('calcNote').innerHTML = 'Этого хватит на тестовый запуск одного проекта. Дальше объём наращивается от результатов.';
         }
     }
 }
 
 // Интерактивная связь с таблицей
-document.querySelectorAll('#tariffTable tbody tr')?.forEach(row => {
+document.querySelectorAll('#tariffTable tbody tr').forEach(row => {
     row.addEventListener('click', function() {
         const amount = parseInt(this.dataset.amount, 10);
         if (amount) {
@@ -2421,6 +2485,78 @@ setAmount(1000);
         jumpToStep(0);
     });
 </script>
+
+<!-- ===== CASES ===== -->
+<section style="background:rgba(255,255,255,0.02);">
+    <div class="container">
+        <div class="section-head fade-up">
+            <div class="tag">Кейсы</div>
+            <h2>Результаты <span class="text-gradient glow-text">наших клиентов</span></h2>
+            <p>Рост позиций в ТОП-10 по основным запросам после подключения</p>
+        </div>
+        <div class="cases-grid stagger-children">
+            <div class="case-item scale-up" style="animation-delay: 0.05s;"><div class="num">85%</div><div class="label">Услуги грузового ремонта</div></div>
+            <div class="case-item scale-up" style="animation-delay: 0.15s;"><div class="num">92%</div><div class="label">Перевозка грузов из Китая</div></div>
+            <div class="case-item scale-up" style="animation-delay: 0.25s;"><div class="num">100%</div><div class="label">Стоматология</div></div>
+            <div class="case-item scale-up" style="animation-delay: 0.35s;"><div class="num">93%</div><div class="label">Магазин стройматериалов</div></div>
+            <div class="case-item scale-up" style="animation-delay: 0.45s;"><div class="num">89%</div><div class="label">Косметология</div></div>
+            <div class="case-item scale-up" style="animation-delay: 0.55s;"><div class="num">94%</div><div class="label">Офисная мебель</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" style="background:rgba(255,255,255,0.02);">
+    <div class="container">
+        <div class="section-head fade-up">
+            <div class="tag">Вопросы</div>
+            <h2>Частые <span class="text-gradient glow-text">вопросы</span></h2>
+        </div>
+        <div style="max-width:820px;margin:0 auto;">
+            <details class="faq-item fade-up">
+                <summary>Сколько будет совершено переходов?</summary>
+                <div class="answer">
+                    Всё зависит от нескольких факторов:<br>
+                    а) Насколько хорошо ваш сайт оптимизирован. Чем лучше проработано стандартное SEO, тем меньше переходов потребуется.<br>
+                    б) Частотность фразы. Чем выше частотность, тем больше переходов.<br>
+                    в) Конкурентность ниши. Нужно больше переходов, чем у конкурентов.<br><br>
+                    Наш алгоритм на основе ИИ автоматически анализирует все показатели и высчитывает оптимальное количество переходов.
+                </div>
+            </details>
+            <details class="faq-item fade-up delay-1">
+                <summary>Это безопасно?</summary>
+                <div class="answer">
+                    Да, все переходы осуществляются строго по алгоритмам ранжирования Яндекса. AI-бот имеет поведенческий фактор как у настоящего человека, он ежедневно совершает различные действия в интернете (читает новости, смотрит погоду, вводит различные запросы) так же как и мы с вами. Поэтому сервис полностью безопасен.
+                </div>
+            </details>
+            <details class="faq-item fade-up delay-2">
+                <summary>Как правильно подобрать запросы?</summary>
+                <div class="answer">
+                    Не советуем останавливаться только на высокочастотных запросах: с них много трафика, но мало заявок. Используйте НЧ запросы по названию товара или его характеристикам. Если возникли сложности, обратитесь в поддержку — поможем.
+                </div>
+            </details>
+            <details class="faq-item fade-up delay-3">
+                <summary>Как отслеживать результат?</summary>
+                <div class="answer">
+                    1. С помощью наших отчётов. В отчёт входят: точная частотность каждого запроса, позиция сайта на момент запуска и на момент окончания.<br><br>
+                    2. С помощью мониторинга поисковой выдачи. Уже на 1-3 день видна положительная динамика.
+                </div>
+            </details>
+            <details class="faq-item fade-up delay-4">
+                <summary>Сколько нужно пользоваться сервисом?</summary>
+                <div class="answer">
+                    Как и в базовом SEO, здесь нельзя точно сказать, сколько будет держаться результат. Конкуренты не спят. Предлагаем сначала получить желаемый результат, просчитать количество новых клиентов и следить за динамикой. Если результаты пойдут вниз — воспользуйтесь сервисом повторно.
+                </div>
+            </details>
+            <details class="faq-item fade-up delay-5">
+                <summary>Что такое поведенческие факторы?</summary>
+                <div class="answer">
+                    Поведенческие факторы — это сигналы, которые показывают, как пользователи взаимодействуют с сайтом и поисковой выдачей. Поисковым системам важно понять: человек нашёл то, что искал, или вернулся назад. На ПФ влияет: заголовок в выдаче, описание страницы, скорость загрузки, структура, контент, наличие цен и отзывов.
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
 
 <!-- ===== CTA ===== -->
 <section id="cta">
