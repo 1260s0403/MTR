@@ -652,14 +652,18 @@
             line-height: 1.2;
             text-align: center;
             word-break: break-word;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .calc-result .v img {
-            height: 48px;
+            height: 40px;
             width: auto;
             display: block;
-            margin: 0 auto;
             animation: rocketShake 0.6s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         @keyframes rocketShake {
@@ -749,7 +753,7 @@
                 font-size: 20px;
             }
             .calc-result .v img {
-                height: 36px;
+                height: 30px;
             }
             .calc-result .sub {
                 font-size: 11px;
@@ -1428,6 +1432,11 @@
             color: #FFFFFF;
         }
 
+        /* Специальный отступ для карточки под "Что делать" */
+        .why-card--narrow.mt-0 {
+            margin-top: 0;
+        }
+
         @media (max-width: 768px) {
             .why-section {
                 padding: 40px 0 30px;
@@ -1923,12 +1932,13 @@ function toggleMenu() {
                 </div>
             </div>
 
-            <!-- Кнопка -->
-            <div class="hero-buttons" style="margin-bottom: 40px; justify-content: center;">
+            <!-- Кнопка - отступ 30px до карточек такой же как между бейджем и кнопкой -->
+            <div class="hero-buttons" style="margin-bottom: 30px; justify-content: center;">
                 <a href="https://t.me/Metric_Hit" target="_blank" class="btn btn-hero-primary btn-lg scale-up" style="animation-delay: 0.5s;">Получить бонус</a>
             </div>
 
-            <div class="hero-stats-full fade-up delay-4 stagger-children">
+            <!-- Карточки статистики - отступ сверху 30px такой же как между кнопкой и карточками -->
+            <div class="hero-stats-full fade-up delay-4 stagger-children" style="margin-top: 30px;">
                 <div class="hero-stat scale-up" style="animation-delay: 0.1s;">
                     <div class="num">1-3 дня</div>
                     <div class="label">среднее время вывода в топ-10</div>
@@ -1960,13 +1970,14 @@ function toggleMenu() {
             <p>Раньше <span class="text-accent">SEO работало</span> по схеме: тексты, ссылки, время — и сайт в ТОПе. <span class="text-accent">Сейчас нет</span>. Конкуренты уже используют <span class="text-accent">поведенческие факторы</span>. Яндекс оценивает не содержание страниц, а то, как <span class="text-accent">пользователи</span> с ними <span class="text-accent">взаимодействуют</span>.</p>
             <p>Посетитель зашёл и сразу ушёл — сайт теряет позиции. Задержался, изучил, вернулся — сайт растёт. <span class="text-accent glow-text">Поведение определяет позиции</span>.</p>
         </div>
-        <div class="why-divider" style="margin-top: 50px;" class="fade-up delay-2">
+        <div class="why-divider" style="margin-top: 40px;" class="fade-up delay-2">
             <span>Что делать?</span>
         </div>
-        <div class="why-card why-card--full why-card--narrow fade-up delay-3 glow-border">
+        <!-- Карточка под "Что делать" с уменьшенным отступом (mt-0) -->
+        <div class="why-card why-card--full why-card--narrow fade-up delay-3 glow-border mt-0" style="margin-top: 0;">
             <p>Нужно <span class="text-accent">показать Яндексу</span>: на сайт приходят, его изучают, на нём остаются. Создать поведенческий сигнал, который выглядит как <span class="text-accent">естественный интерес аудитории</span>. Чтобы алгоритмы видели: сайт полезен, люди не уходят сразу.</p>
         </div>
-        <!-- ===== НОВАЯ КАРТОЧКА В ЦЕНТРЕ (ПОДНЯТА БЛИЖЕ) ===== -->
+        <!-- ===== НОВАЯ КАРТОЧКА В ЦЕНТРЕ ===== -->
         <div class="why-card why-card--full why-card--narrow fade-up delay-3" style="margin-top: 20px;">
             <p style="font-size: 18px; line-height: 1.7; color: #E8EDF5;">Продемонстрировать Яндексу интерес аудитории. Сделать так, чтобы поисковые алгоритмы увидели стабильный поток вовлеченных пользователей, которые находят ответы именно на вашем сайте и не возвращаются в поиск.</p>
         </div>
@@ -2251,8 +2262,13 @@ function setAmount(value, fromSlider) {
         const clicks = value / tier.cpc;
         document.getElementById('resCpc').textContent = tier.cpc.toFixed(2).replace('.', ',') + ' ₽';
         
-        if (rocketImg) rocketImg.style.display = 'none';
-        clicksText.textContent = '≈ ' + formatNumber(clicks);
+        // Показываем ракету с правильным размером
+        if (rocketImg) {
+            rocketImg.style.display = 'block';
+            rocketImg.style.height = '40px';
+            rocketImg.style.width = 'auto';
+        }
+        clicksText.innerHTML = '≈ ' + formatNumber(clicks);
 
         const baseCpc = 1.50;
         const baseClicks = value / baseCpc;
@@ -2334,40 +2350,25 @@ setAmount(1000);
         <div class="player-container fade-up">
             <!-- Левая колонка: Текст -->
             <div class="player-info-side">
-                <!-- Шаг 1: Регистрация (ТЕКСТ ЕСТЬ ТОЛЬКО ЗДЕСЬ) -->
-                <div class="info-pane active" data-pane="0" style="display: block !important;">
-                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Регистрация</h3>
-                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3 !important; margin: 0;">
-                        Пройдите регистрацию на платформе.<br>
-                        Не забудьте забрать <span style="color: #6CEEF7; font-weight: 600;">бонус</span>.
-                    </p>
+                <!-- Шаг 1: Регистрация -->
+                <div class="info-pane active" data-pane="0">
+                    <h3>Регистрация</h3>
+                    <p>Пройдите регистрацию на платформе.<br>Не забудьте забрать <span style="color: #6CEEF7; font-weight: 600;">бонус</span>.</p>
                 </div>
-                <!-- Шаг 2: Настройка проекта (ТЕКСТА НЕТ) -->
+                <!-- Шаг 2: Настройка проекта -->
                 <div class="info-pane" data-pane="1">
-                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Настройка проекта</h3>
-                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3 !important; margin: 0;">
-                        Укажите свой домен.<br>
-                        Добавьте нужные ключевые фразы.<br>
-                        <span style="color: #6CEEF7; font-weight: 600;">Важно:</span> укажите регион.<br>
-                        Выберите количество и частоту визитов.
-                    </p>
+                    <h3>Настройка проекта</h3>
+                    <p>Укажите свой домен.<br>Добавьте нужные ключевые фразы.<br><span style="color: #6CEEF7; font-weight: 600;">Важно:</span> укажите регион.<br>Выберите количество и частоту визитов.</p>
                 </div>
-                <!-- Шаг 3: Продвижение (ТЕКСТА НЕТ) -->
+                <!-- Шаг 3: Продвижение -->
                 <div class="info-pane" data-pane="2">
-                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Продвижение</h3>
-                    <p style="font-size: 18px; color: #FFFFFF; line-height: 1.3 !important; margin: 0;">
-                        Нажмите <span style="color: #6CEEF7; font-weight: 600;">«Запустить»</span><br>
-                        Все остальное система сделает сама.
-                    </p>
+                    <h3>Продвижение</h3>
+                    <p>Нажмите <span style="color: #6CEEF7; font-weight: 600;">«Запустить»</span><br>Все остальное система сделает сама.</p>
                 </div>
-                <!-- Шаг 4: Результат (ТЕКСТА НЕТ) -->
+                <!-- Шаг 4: Результат -->
                 <div class="info-pane" data-pane="3">
-                    <h3 style="font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px !important; line-height: 1.2;">Результат</h3>
-                    <p style="line-height: 1.3 !important; margin: 0;">
-                        <span style="color: #6CEEF7; font-size: 24px; font-weight: 700; display: block; margin-bottom: 4px;">Сайт в ТОПе!</span>
-                        <span style="font-size: 18px; color: #FFFFFF;">Результат будет заметен уже в первый день.</span><br>
-                        <span style="font-size: 18px; color: #FFFFFF;">Всю статистику можно отслеживать в личном кабинете.</span>
-                    </p>
+                    <h3>Результат</h3>
+                    <p><span style="color: #6CEEF7; font-size: 24px; font-weight: 700; display: block; margin-bottom: 4px;">Сайт в ТОПе!</span><span style="font-size: 18px; color: #FFFFFF;">Результат будет заметен уже в первый день.</span><br><span style="font-size: 18px; color: #FFFFFF;">Всю статистику можно отслеживать в личном кабинете.</span></p>
                 </div>
             </div>
 
@@ -2429,16 +2430,16 @@ setAmount(1000);
                     <!-- Панель 2: Продвижение -->
                     <div class="view-pane" data-view="2">
                         <div style="font-size: 12px; line-height: 1.5;">
-                            <div><span style="color: #6CEEF7; font-weight: 600;">[AI-бот #04]</span> <span style="color: #E8EDF5;">Поиск в Яндексе: “услуги спецтехники Москва”</span></div>
+                            <div><span style="color: #6CEEF7; font-weight: 600;">[AI-бот #04]</span> <span style="color: #E8EDF5;">Поиск в Яндексе: "услуги спецтехники Москва"</span></div>
                             <div style="color: #4A8FE0; padding-left: 4px;">➜ Переход на сайт, просмотр 3 страниц</div>
                             <div style="color: #A78BFA; padding-left: 20px;">Изучены: Главная → Услуги → Контакты (глубина просмотра: 6:12 мин.)</div>
                             <div style="color: #00FF66;">✔ Поведенческий сигнал зафиксирован</div>
                             
                             <div style="border-top: 1px solid rgba(255,255,255,0.05); margin: 4px 0;"></div>
                             
-                            <div><span style="color: #4AD8E6; font-weight: 600;">[AI-бот #12]</span> <span style="color: #E8EDF5;">Поиск в Яндексе: “аренда автокрана недорого”</span></div>
+                            <div><span style="color: #4AD8E6; font-weight: 600;">[AI-бот #12]</span> <span style="color: #E8EDF5;">Поиск в Яндексе: "аренда автокрана недорого"</span></div>
                             <div style="color: #4A8FE0; padding-left: 4px;">➜ Переход на сайт, просмотр контента, клик по картинке, скролл до конца</div>
-                            <div style="color: #A78BFA; padding-left: 20px;">Изучение страницы “Контакты” (глубина просмотра: 4:38 мин.)</div>
+                            <div style="color: #A78BFA; padding-left: 20px;">Изучение страницы "Контакты" (глубина просмотра: 4:38 мин.)</div>
                             <div style="color: #00FF66;">✔ Взаимодействие с контентом подтверждено</div>
                         </div>
                     </div>
